@@ -170,6 +170,32 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* Table Style for Vulnerabilities */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            font-size: 1.1em;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1e3d3;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
 <body>
@@ -237,6 +263,44 @@
     <button class="section-btn" onclick="toggleCollapse('vulnerabilities')">Vulnerabilities Identified</button>
     <div id="vulnerabilities" class="content">
         <p>Vulnerabilities were identified across several systems. The risks were assessed based on their severity and impact on the bank's operations.</p>
+        
+        <!-- Table for Vulnerabilities -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Vulnerability</th>
+                    <th>Severity</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SQL Injection</td>
+                    <td>High</td>
+                    <td>Unprotected web applications vulnerable to SQL injection attacks, allowing unauthorized access to sensitive data.</td>
+                </tr>
+                <tr>
+                    <td>Cross-Site Scripting (XSS)</td>
+                    <td>Medium</td>
+                    <td>Potential XSS vulnerabilities in web applications, allowing attackers to execute malicious scripts in users' browsers.</td>
+                </tr>
+                <tr>
+                    <td>Unpatched Software</td>
+                    <td>High</td>
+                    <td>Multiple systems running outdated software, susceptible to known exploits.</td>
+                </tr>
+                <tr>
+                    <td>Weak Passwords</td>
+                    <td>Medium</td>
+                    <td>Employees using weak or default passwords that can be easily guessed or cracked by attackers.</td>
+                </tr>
+                <tr>
+                    <td>Open Ports</td>
+                    <td>Low</td>
+                    <td>Unnecessary open ports that could provide an entry point for attackers into the network.</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('outcome')">Outcome</button>
