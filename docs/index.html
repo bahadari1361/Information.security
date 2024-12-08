@@ -7,28 +7,41 @@
     <title>Hashmatullah Bahadari - Information Security Manager</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
-        body, h1, h2, h3, p, ul, li {
+        /* Reset and Global Styles */
+        body, h1, h2, h3, p, ul, li, a {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            background-color: #f9f9f9;
             color: #333;
-            background-color: #f4f6f9;
             line-height: 1.6;
             overflow-x: hidden;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #007BFF;
         }
 
         /* Header */
         header {
-            background: #222;
+            background: #333;
             color: #fff;
-            padding: 100px 0;
+            padding: 80px 0;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
@@ -39,120 +52,133 @@
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 400;
-            color: #ccc;
+            color: #ddd;
         }
 
         /* Main Content */
         .container {
-            width: 85%;
             max-width: 1200px;
             margin: 50px auto;
-            padding: 30px;
+            padding: 20px;
+            text-align: center;
         }
 
         .section-title {
             font-size: 2.5rem;
-            font-weight: 500;
-            margin-bottom: 20px;
+            font-weight: 600;
+            margin-bottom: 30px;
             color: #333;
         }
 
-        .portfolio-section {
-            background: #fff;
-            padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .about, .skills, .projects, .contact {
+            margin-bottom: 80px;
+            padding: 40px 20px;
+            background-color: #fff;
             border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
         }
 
-        .portfolio-section:hover {
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .about:hover, .skills:hover, .projects:hover, .contact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
-        .portfolio-section ul {
-            list-style-type: none;
-            padding-left: 20px;
+        /* About Section */
+        .about p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
         }
 
-        .portfolio-section ul li {
-            font-size: 1.1rem;
-            margin: 15px 0;
-            transition: color 0.3s ease;
+        .about span {
+            font-weight: bold;
         }
 
-        .portfolio-section ul li:hover {
-            color: #007BFF;
-        }
-
-        /* Skills Grid */
+        /* Skills Section */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
         }
 
         .skill-card {
-            background-color: #f7f7f7;
+            background-color: #f4f4f4;
             padding: 20px;
-            text-align: center;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .skill-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
+            font-weight: 600;
             color: #333;
         }
 
         .skill-card p {
-            color: #777;
             font-size: 1rem;
+            color: #777;
+        }
+
+        /* Projects Section */
+        .projects ul {
+            list-style-type: none;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: #444;
+        }
+
+        .projects li {
+            margin-bottom: 15px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .projects li:hover {
+            color: #007BFF;
         }
 
         /* Footer */
         footer {
-            background-color: #222;
+            background-color: #333;
             color: #fff;
             text-align: center;
-            padding: 20px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
 
         footer p {
             font-size: 1rem;
             font-weight: 400;
-            color: #ccc;
+            color: #ddd;
         }
 
-        /* Mobile Responsiveness */
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
             header h1 {
                 font-size: 2.5rem;
             }
 
-            .container {
-                width: 90%;
-                padding: 20px;
-            }
-
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .skills-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .about p, .skills p, .projects li {
+                font-size: 1rem;
             }
         }
     </style>
@@ -168,63 +194,69 @@
 
     <!-- Main Content -->
     <div class="container">
-
         <!-- About Me Section -->
-        <div class="portfolio-section">
+        <div id="about" class="about">
             <h2 class="section-title">About Me</h2>
-            <p>I am an experienced Information Security Manager with a strong background in securing financial systems and sensitive data. With extensive expertise in developing information security strategies, managing teams, and conducting audits, I have successfully led various security initiatives in the banking and financial sectors, including my tenure at the Central Bank of Afghanistan. My approach emphasizes a balance between security measures, risk management, and compliance with industry standards.</p>
-            <p>Having worked with cutting-edge technologies and frameworks, I specialize in vulnerability assessments, incident response, penetration testing, and security audits, ensuring that businesses maintain high levels of protection against cyber threats.</p>
+            <p>
+                I am an experienced Information Security Manager with extensive expertise in securing financial systems and sensitive data. 
+                Over the years, I have developed a deep understanding of risk management, penetration testing, and incident response. 
+                I have worked at high-profile organizations, including the Central Bank of Afghanistan, and am well-versed in implementing information security strategies, 
+                managing compliance, and leading teams to secure digital infrastructures.
+            </p>
         </div>
 
         <!-- Skills Section -->
-        <div class="portfolio-section">
+        <div id="skills" class="skills">
             <h2 class="section-title">Skills & Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-card">
                     <h3>Cybersecurity Risk Management</h3>
-                    <p>Expert in identifying, analyzing, and mitigating risks across various platforms and systems. Skilled in ensuring compliance with NIST, ISO 27001, and other cybersecurity frameworks.</p>
+                    <p>Risk assessment and mitigation across all platforms, ensuring compliance with major cybersecurity frameworks like NIST and ISO 27001.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Penetration Testing</h3>
-                    <p>Proficient in using tools like Kali Linux, Nessus, Nmap, and Wireshark to conduct comprehensive penetration tests and vulnerability assessments.</p>
+                    <p>Expertise in conducting penetration testing using industry-standard tools such as Kali Linux, Nmap, and Nessus.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Incident Response</h3>
-                    <p>Experienced in developing and executing incident response plans, as well as managing security breaches to minimize damage and restore operations.</p>
+                    <p>Proven ability to develop and execute incident response plans to address breaches swiftly and efficiently.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Security Audits</h3>
-                    <p>Specialized in conducting IT security audits to ensure systems are secure, compliant with regulations, and free from vulnerabilities.</p>
+                    <p>Comprehensive experience in conducting IT security audits, ensuring systems meet industry standards for security and compliance.</p>
                 </div>
                 <div class="skill-card">
                     <h3>Security Policy Development</h3>
-                    <p>Proven ability to create comprehensive security policies that align with organizational objectives and safeguard critical assets.</p>
+                    <p>Creating robust security policies that mitigate risks and safeguard sensitive data across organizations.</p>
                 </div>
                 <div class="skill-card">
-                    <h3>Business Continuity Planning (BCP)</h3>
-                    <p>Developed and implemented business continuity and disaster recovery plans to ensure operations are resilient against unforeseen disruptions.</p>
+                    <h3>Business Continuity Planning</h3>
+                    <p>Developing and implementing effective business continuity plans to ensure operational resilience during disruptions.</p>
                 </div>
             </div>
         </div>
 
         <!-- Projects Section -->
-        <div class="portfolio-section">
+        <div id="projects" class="projects">
             <h2 class="section-title">Key Projects</h2>
             <ul>
-                <li><a href="bcp.html" style="text-decoration: none; color: #333;">Business Continuity Planning (BCP)</a></li>
-                <li><a href="policies.html" style="text-decoration: none; color: #333;">Information Security Policies</a></li>
-                <li><a href="incident-response.html" style="text-decoration: none; color: #333;">Incident Response Planning</a></li>
-                <li><a href="audit.html" style="text-decoration: none; color: #333;">IT Security Audits</a></li>
-                <li><a href="pentesting.html" style="text-decoration: none; color: #333;">Penetration Testing & Vulnerability Management</a></li>
+                <li><a href="bcp.html">Business Continuity Planning (BCP)</a></li>
+                <li><a href="policies.html">Information Security Policies</a></li>
+                <li><a href="incident-response.html">Incident Response Planning</a></li>
+                <li><a href="audit.html">IT Security Audits</a></li>
+                <li><a href="pentesting.html">Penetration Testing & Vulnerability Management</a></li>
             </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="contact">
+            <h2 class="section-title">Contact</h2>
+            <p>Feel free to reach out for collaboration or inquiries.</p>
+            <p>Email: <strong>your-email@example.com</strong></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/your-profile" target="_blank">linkedin.com/in/your-profile</a></p>
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Hashmatullah Bahadari - All Rights Reserved</p>
-    </footer>
-
-</body>
-
-</html>
+        <p>&copy; 
