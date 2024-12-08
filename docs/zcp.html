@@ -3,167 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCP Portfolio</title>
+    <title>Collapsible Sections</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f4;
         }
 
-        .accordion {
-            background: #e3e3e3;
-            cursor: pointer;
-            padding: 15px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .section-button {
+            width: 80%;
+            padding: 20px;
+            margin: 10px 0;
             font-size: 18px;
-            transition: background 0.3s;
-            margin-bottom: 5px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
         }
 
-        .accordion:hover {
-            background: #d6d6d6;
+        .section-button:hover {
+            background-color: #0056b3;
         }
 
-        .active {
-            background: #ccc;
-        }
-
-        .panel {
-            padding: 0 15px;
-            display: none;
-            background-color: #fff;
+        .collapsible {
+            width: 80%;
+            max-height: 0;
             overflow: hidden;
-            border-left: 4px solid #d6d6d6;
-            margin-bottom: 10px;
-            animation: crumpled-paper 0.6s ease-out;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: max-height 0.5s ease-in-out;
         }
 
-        @keyframes crumpled-paper {
-            from {
-                transform: translateY(-50px) scaleY(0.8);
+        .collapsible p {
+            margin: 20px;
+            font-size: 16px;
+            line-height: 1.5;
+            animation: crumpleEffect 1s ease;
+        }
+
+        @keyframes crumpleEffect {
+            0% {
+                transform: scale(0.8) rotate(5deg);
                 opacity: 0;
             }
-            to {
-                transform: translateY(0) scaleY(1);
+            50% {
+                transform: scale(1.05) rotate(-2deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1) rotate(0);
                 opacity: 1;
             }
+        }
+
+        .back-to-home {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .back-to-home:hover {
+            background-color: #1e7e34;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <button class="section-button" onclick="toggleSection('intro')">Introduction</button>
+        <div id="intro" class="collapsible">
+            <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions...</p>
+        </div>
 
-<h1 style="text-align:center; margin:20px;">Business Continuity Planning Portfolio</h1>
+        <button class="section-button" onclick="toggleSection('policy')">Policy Development and Governance</button>
+        <div id="policy" class="collapsible">
+            <p>Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards...</p>
+        </div>
 
-<button class="accordion">Introduction</button>
-<div class="panel">
-    <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions. My proficiency spans policy formulation, risk assessment, recovery strategy design, and incident management, ensuring critical business functions remain operational under adverse conditions. This portfolio highlights my structured approach to BCP, illustrating my ability to safeguard organizational integrity and uphold stakeholder trust.</p>
-</div>
+        <button class="section-button" onclick="toggleSection('risk')">Risk Assessment and Business Impact Analysis</button>
+        <div id="risk" class="collapsible">
+            <p>Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters...</p>
+        </div>
 
-<button class="accordion">Policy Development and Governance</button>
-<div class="panel">
-    <ul>
-        <li><strong>Policy Framework Creation:</strong> Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301).</li>
-        <li><strong>Leadership Engagement:</strong> Collaborated with executive leadership to secure buy-in for BCP initiatives.</li>
-        <li><strong>Documentation:</strong> Authored detailed policies outlining objectives, scope, and implementation protocols for BCP.</li>
-    </ul>
-</div>
+        <button class="section-button" onclick="toggleSection('recovery')">Recovery Objectives and Strategies</button>
+        <div id="recovery" class="collapsible">
+            <p>Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems...</p>
+        </div>
 
-<button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
-<div class="panel">
-    <ul>
-        <li><strong>Threat Identification:</strong> Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures.</li>
-        <li><strong>Critical Asset Analysis:</strong> Evaluated business functions and assets to determine their criticality and interdependencies.</li>
-        <li><strong>Impact Assessment:</strong> Performed BIAs to quantify the financial, operational, and reputational impact of potential disruptions.</li>
-    </ul>
-</div>
+        <button class="section-button" onclick="toggleSection('incident')">Incident Management and Response</button>
+        <div id="incident" class="collapsible">
+            <p>Established protocols for detecting and reporting incidents promptly...</p>
+        </div>
 
-<button class="accordion">Recovery Objectives and Strategies</button>
-<div class="panel">
-    <ul>
-        <li><strong>Recovery Objectives:</strong> Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems.</li>
-        <li><strong>Strategic Planning:</strong> Developed and implemented recovery strategies such as failover systems, disaster recovery sites, and cloud backups.</li>
-        <li><strong>Process Optimization:</strong> Ensured alignment of recovery plans with organizational priorities and operational workflows.</li>
-    </ul>
-</div>
+        <button class="section-button" onclick="toggleSection('training')">Training and Awareness</button>
+        <div id="training" class="collapsible">
+            <p>Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols...</p>
+        </div>
 
-<button class="accordion">Incident Management and Response</button>
-<div class="panel">
-    <ul>
-        <li><strong>Incident Identification:</strong> Established protocols for detecting and reporting incidents promptly.</li>
-        <li><strong>Response Procedures:</strong> Designed response frameworks to contain, mitigate, and recover from disruptions efficiently.</li>
-        <li><strong>Continuous Monitoring:</strong> Implemented monitoring tools to ensure real-time tracking of critical operations.</li>
-    </ul>
-</div>
+        <button class="section-button" onclick="toggleSection('testing')">BCP Testing and Maintenance</button>
+        <div id="testing" class="collapsible">
+            <p>Conducted regular testing of BCP components to ensure they remain effective and up-to-date...</p>
+        </div>
 
-<button class="accordion">Training and Awareness</button>
-<div class="panel">
-    <ul>
-        <li><strong>Employee Training:</strong> Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols.</li>
-        <li><strong>Simulation Exercises:</strong> Orchestrated tabletop exercises and live drills to validate the efficacy of continuity plans.</li>
-        <li><strong>Awareness Campaigns:</strong> Fostered a culture of preparedness through targeted communication initiatives.</li>
-    </ul>
-</div>
+        <button class="section-button" onclick="toggleSection('conclusion')">Conclusion</button>
+        <div id="conclusion" class="collapsible">
+            <p>My comprehensive approach to Business Continuity Planning ensures organizational resilience...</p>
+        </div>
 
-<button class="accordion">BCP Testing and Maintenance</button>
-<div class="panel">
-    <ul>
-        <li><strong>Plan Validation:</strong> Conducted regular testing of BCP components to ensure they remain effective and up-to-date.</li>
-        <li><strong>Feedback Integration:</strong> Incorporated lessons learned from drills and real incidents to enhance BCP strategies.</li>
-        <li><strong>Continuous Improvement:</strong> Reviewed and updated BCP documentation in response to organizational changes, technological advancements, and evolving threats.</li>
-    </ul>
-</div>
+        <button class="back-to-home" onclick="scrollToTop()">Back to Home</button>
+    </div>
 
-<button class="accordion">RTO and RPO Table</button>
-<div class="panel">
-    <table border="1" style="width:100%; text-align:left; border-collapse:collapse;">
-        <tr>
-            <th>Critical System</th>
-            <th>Recovery Time Objective (RTO)</th>
-            <th>Recovery Point Objective (RPO)</th>
-        </tr>
-        <tr>
-            <td>System 1</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>System 2</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>System 3</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-</div>
+    <script>
+        function toggleSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            const maxHeight = section.style.maxHeight;
 
-<button class="accordion">Conclusion</button>
-<div class="panel">
-    <p>My comprehensive approach to Business Continuity Planning ensures organizational resilience, enabling continued operations and safeguarding stakeholder interests during disruptions. Through meticulous planning, risk mitigation, and proactive training, I deliver robust continuity strategies tailored to organizational needs. This portfolio demonstrates my commitment to excellence and my ability to navigate complex challenges to achieve sustainable business resilience.</p>
-</div>
+            // Close other sections
+            const allSections = document.querySelectorAll('.collapsible');
+            allSections.forEach(sec => {
+                if (sec !== section) sec.style.maxHeight = null;
+            });
 
-<script>
-    const accordions = document.querySelectorAll(".accordion");
+            // Toggle the clicked section
+            section.style.maxHeight = maxHeight ? null : section.scrollHeight + 'px';
+        }
 
-    accordions.forEach(accordion => {
-        accordion.addEventListener("click", function() {
-            this.classList.toggle("active");
-            const panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-    });
-</script>
-
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
