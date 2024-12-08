@@ -12,6 +12,11 @@
             padding: 0;
         }
 
+        h1 {
+            text-align: center;
+            margin: 20px;
+        }
+
         .accordion {
             background: #e3e3e3;
             cursor: pointer;
@@ -34,13 +39,18 @@
         }
 
         .panel {
-            padding: 0 15px;
+            padding: 15px;
             display: none;
             background-color: #fff;
             overflow: hidden;
             border-left: 4px solid #d6d6d6;
             margin-bottom: 10px;
+            width: 50%; /* Half of A4 size in width */
             animation: crumpled-paper 0.6s ease-out;
+            background: url('https://www.transparenttextures.com/patterns/crumpled-paper-1.png'); /* Crumpled paper texture */
+            background-size: cover;
+            color: #333;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         @keyframes crumpled-paper {
@@ -53,11 +63,26 @@
                 opacity: 1;
             }
         }
+
+        table {
+            width: 100%;
+            text-align: left;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
 
-<h1 style="text-align:center; margin:20px;">Business Continuity Planning Portfolio</h1>
+<h1>Business Continuity Planning Portfolio</h1>
 
 <button class="accordion">Introduction</button>
 <div class="panel">
@@ -120,7 +145,7 @@
 
 <button class="accordion">RTO and RPO Table</button>
 <div class="panel">
-    <table border="1" style="width:100%; text-align:left; border-collapse:collapse;">
+    <table>
         <tr>
             <th>Critical System</th>
             <th>Recovery Time Objective (RTO)</th>
