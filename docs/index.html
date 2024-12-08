@@ -32,25 +32,42 @@
             color: #007BFF;
         }
 
-        /* Header */
+        /* Header Section */
         header {
-            background: linear-gradient(to right, #4b6cb7, #182848);
-            color: #fff;
-            padding: 120px 0;
+            position: relative;
+            height: 400px;
+            background: url('https://www.example.com/your-cybersecurity-image.jpg') no-repeat center center/cover; /* Change this URL to your background image */
+            color: white;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
         }
 
         header h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 700;
+            z-index: 2;
             letter-spacing: 2px;
-            margin-bottom: 10px;
         }
 
         header p {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 400;
+            z-index: 2;
             color: #ddd;
         }
 
@@ -82,10 +99,11 @@
 
         /* Skills Section */
         .skills {
-            background-color: #f4f4f4;
+            background-color: #fff;
             padding: 60px 20px;
             margin-top: 60px;
             border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .skills h2 {
@@ -128,7 +146,56 @@
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
         }
 
-        /* Footer */
+        /* Projects Section */
+        .projects {
+            background-color: #f9f9f9;
+            padding: 60px 20px;
+            margin-top: 60px;
+            border-radius: 8px;
+        }
+
+        .projects h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #333;
+        }
+
+        .project-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .project-card p {
+            font-size: 1rem;
+            color: #777;
+        }
+
+        .project-card a {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Section */
         footer {
             background-color: #333;
             color: #fff;
@@ -157,11 +224,15 @@
                 font-size: 2rem;
             }
 
+            .projects h2 {
+                font-size: 2rem;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
 
-            .about p, .skills p {
+            .about p, .skills p, .projects p {
                 font-size: 1rem;
             }
         }
@@ -212,6 +283,24 @@
                 <h3>Business Continuity Planning</h3>
                 <p>Developing and implementing effective business continuity plans to ensure operational resilience during disruptions.</p>
             </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="projects">
+        <h2>My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Project 1</h3>
+                <p>A detailed description of a major cybersecurity project I worked on, focusing on risk management, incident response, or securing digital infrastructures.</p>
+                <a href="#">Read More</a>
+            </div>
+            <div class="project-card">
+                <h3>Project 2</h3>
+                <p>A comprehensive project where I implemented new security measures for an organization or a financial institution, improving security protocols.</p>
+                <a href="#">Read More</a>
+            </div>
+            <!-- Add more project cards here -->
         </div>
     </div>
 
