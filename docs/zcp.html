@@ -17,9 +17,9 @@
             height: 100%;
         }
 
-        /* Simple Header */
+        /* Header Style - Dark Gray */
         header {
-            background-color: #4CAF50; /* Simple green color */
+            background-color: #333333; /* Dark gray color */
             color: white;
             padding: 1em;
             text-align: center;
@@ -34,26 +34,25 @@
             z-index: 10;
         }
 
-        /* Back to Home Button */
+        /* Back to Home Button - Top Left */
         .back-btn {
-            background-color: #003366; /* Dark blue to match header */
+            background-color: #4a4a4a; /* Dark gray button color */
             color: white;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border: none;
             border-radius: 12px;
             font-size: 1.2em;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s;
             position: fixed;
-            top: 90px; /* Adjusting position to be below the header */
-            left: 50%;
-            transform: translateX(-50%);
+            top: 20px;
+            left: 20px;
             z-index: 11;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .back-btn:hover {
-            background-color: #00509e; /* Lighter blue */
+            background-color: #6c6c6c; /* Lighter gray */
             transform: translateY(-3px);
         }
 
@@ -71,9 +70,9 @@
             align-items: center;
         }
 
-        /* Section Buttons (text size) */
+        /* Section Buttons (Dark Gray Mixed) */
         .section-btn {
-            background-color: #4CAF50;
+            background-color: #666666; /* Dark gray mixed color */
             color: white;
             font-size: 1.2em;
             padding: 10px 20px;
@@ -88,7 +87,7 @@
         }
 
         .section-btn:hover {
-            background-color: #45a049;
+            background-color: #565656;
             transform: translateY(-3px);
         }
 
@@ -176,7 +175,7 @@
 <body>
 
 <!-- Back to Home Button -->
-<button class="back-btn" onclick="scrollToTop()">Back to Home</button>
+<a href="index.html"><button class="back-btn">Back to Home</button></a>
 
 <header>
     Business Continuity Planning (BCP) Policy and Procedures
@@ -223,7 +222,7 @@
         <p><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</p>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section7')">Testing and Maintenance</button>
+    <button class="section-btn" onclick="toggleCollapse('section7')">Testing & Maintenance</button>
     <div id="section7" class="content">
         <p><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</p>
         <p><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</p>
@@ -248,13 +247,6 @@
 
         const currentSection = document.getElementById(sectionId);
         currentSection.classList.toggle('open');
-    }
-
-    function scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     }
 </script>
 
