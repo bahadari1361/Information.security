@@ -7,11 +7,10 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            line-height: 1.6;
             background-color: #f4f7fa;
+            color: #333;
             margin: 0;
             padding: 0;
-            color: #333;
         }
 
         header {
@@ -49,18 +48,26 @@
 
         section {
             margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            margin-left: 5%;
+            position: relative;
         }
 
         h2 {
             background-color: #007bff;
             color: #fff;
-            padding: 12px;
-            border: 1px solid #007bff;
-            border-radius: 5px;
+            padding: 20px;
+            border-radius: 50%;
             cursor: pointer;
-            font-size: 1.2em;
-            margin: 10px 0;
+            font-size: 1.5em;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            line-height: 20px;
             transition: background-color 0.3s ease;
+            text-transform: uppercase;
+            margin-right: 20px;
         }
 
         h2:hover {
@@ -73,8 +80,8 @@
             border-left: 3px solid #007bff;
             border-right: 3px solid #007bff;
             border-bottom: 1px solid #ddd;
-            border-radius: 0 0 5px 5px;
-            margin-bottom: 20px;
+            border-radius: 5px;
+            width: 80%;
             display: none;
             transition: max-height 0.3s ease-in-out;
         }
@@ -92,10 +99,6 @@
         .content li strong {
             font-weight: bold;
             color: #007bff;
-        }
-
-        .transition {
-            transition: max-height 0.3s ease-in-out;
         }
 
         /* Add responsive design */
@@ -117,7 +120,7 @@
     <a href="index.html" class="btn">Back to Home</a>
 
     <section>
-        <h2 onclick="toggleCollapse('section1')">1. Policy Framework</h2>
+        <h2 onclick="toggleCollapse('section1')">1</h2>
         <div id="section1" class="content">
             <ul>
                 <li><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</li>
@@ -128,7 +131,7 @@
     </section>
 
     <section>
-        <h2 onclick="toggleCollapse('section2')">2. Risk Assessment and Business Impact Analysis (BIA)</h2>
+        <h2 onclick="toggleCollapse('section2')">2</h2>
         <div id="section2" class="content">
             <ul>
                 <li><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</li>
@@ -138,7 +141,7 @@
     </section>
 
     <section>
-        <h2 onclick="toggleCollapse('section3')">3. Recovery Objectives and Strategies</h2>
+        <h2 onclick="toggleCollapse('section3')">3</h2>
         <div id="section3" class="content">
             <ul>
                 <li><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</li>
@@ -149,7 +152,7 @@
     </section>
 
     <section>
-        <h2 onclick="toggleCollapse('section4')">4. Communication Plan</h2>
+        <h2 onclick="toggleCollapse('section4')">4</h2>
         <div id="section4" class="content">
             <ul>
                 <li><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</li>
@@ -159,7 +162,7 @@
     </section>
 
     <section>
-        <h2 onclick="toggleCollapse('section5')">5. Incident Response and Recovery Procedures</h2>
+        <h2 onclick="toggleCollapse('section5')">5</h2>
         <div id="section5" class="content">
             <ul>
                 <li><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</li>
@@ -170,7 +173,7 @@
     </section>
 
     <section>
-        <h2 onclick="toggleCollapse('section6')">6. Training and Awareness</h2>
+        <h2 onclick="toggleCollapse('section6')">6</h2>
         <div id="section6" class="content">
             <ul>
                 <li><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</li>
@@ -180,7 +183,7 @@
     </section>
 
     <section>
-        <h2 onclick="toggleCollapse('section7')">7. Testing, Maintenance, and Continuous Improvement</h2>
+        <h2 onclick="toggleCollapse('section7')">7</h2>
         <div id="section7" class="content">
             <ul>
                 <li><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</li>
@@ -191,7 +194,7 @@
     </section>
 
     <section>
-        <h2 onclick="toggleCollapse('section8')">8. Documentation and Reporting</h2>
+        <h2 onclick="toggleCollapse('section8')">8</h2>
         <div id="section8" class="content">
             <ul>
                 <li><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</li>
