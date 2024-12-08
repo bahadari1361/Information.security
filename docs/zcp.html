@@ -12,32 +12,6 @@
             padding: 0;
         }
 
-        /* Header and Back to Home Button */
-        h1 {
-            text-align: center;
-            margin: 20px;
-        }
-
-        .back-home {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            font-size: 18px;
-            text-decoration: none;
-            margin-top: 20px;
-            width: 200px;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px;
-        }
-
-        .back-home:hover {
-            background-color: #45a049;
-        }
-
-        /* Accordion Button Styling */
         .accordion {
             background: #e3e3e3;
             cursor: pointer;
@@ -46,12 +20,9 @@
             border: none;
             text-align: left;
             outline: none;
-            font-size: 16px;
+            font-size: 18px;
             transition: background 0.3s;
             margin-bottom: 5px;
-            text-transform: uppercase;
-            font-weight: bold;
-            border-radius: 5px;
         }
 
         .accordion:hover {
@@ -62,7 +33,6 @@
             background: #ccc;
         }
 
-        /* Panel content */
         .panel {
             padding: 0 15px;
             display: none;
@@ -73,7 +43,6 @@
             animation: crumpled-paper 0.6s ease-out;
         }
 
-        /* Crumpled Paper Effect */
         @keyframes crumpled-paper {
             from {
                 transform: translateY(-50px) scaleY(0.8);
@@ -85,40 +54,44 @@
             }
         }
 
-        /* Paper Effect for A4 Portrait */
-        .panel p, .panel ul, .panel table {
-            width: 50%; /* To simulate half-A4 */
-            margin: 0 auto;
-            transform: rotate(2deg);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        .back-to-home {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 20px;
         }
-        
-        /* Table Styling */
+
+        .back-to-home:hover {
+            background-color: #0056b3;
+        }
+
         table {
-            border-collapse: collapse;
             width: 100%;
-            text-align: left;
+            border-collapse: collapse;
+            margin-top: 15px;
         }
-        
+
         th, td {
-            padding: 8px;
+            padding: 8px 12px;
             border: 1px solid #ddd;
+            text-align: left;
         }
 
         th {
             background-color: #f2f2f2;
         }
-        
     </style>
 </head>
 <body>
 
-<!-- Back to Home Button -->
-<a href="#" class="back-home">Back to Home</a>
+<a href="#" class="back-to-home">Back to Home</a>
 
-<h1>Business Continuity Planning Portfolio</h1>
+<h1 style="text-align:center; margin:20px;">Business Continuity Planning (BCP) Portfolio</h1>
 
-<!-- Accordion Buttons and Panels -->
 <button class="accordion">Introduction</button>
 <div class="panel">
     <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions. My proficiency spans policy formulation, risk assessment, recovery strategy design, and incident management, ensuring critical business functions remain operational under adverse conditions. This portfolio highlights my structured approach to BCP, illustrating my ability to safeguard organizational integrity and uphold stakeholder trust.</p>
@@ -127,54 +100,128 @@
 <button class="accordion">Policy Development and Governance</button>
 <div class="panel">
     <ul>
-        <li><strong>Policy Framework Creation:</strong> Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301).</li>
-        <li><strong>Leadership Engagement:</strong> Collaborated with executive leadership to secure buy-in for BCP initiatives.</li>
-        <li><strong>Documentation:</strong> Authored detailed policies outlining objectives, scope, and implementation protocols for BCP.</li>
+        <li><strong>Policy Framework Creation:</strong>
+            <ul>
+                <li>Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301).</li>
+                <li>Defined governance structures, roles, and responsibilities for effective plan execution.</li>
+            </ul>
+        </li>
+        <li><strong>Leadership Engagement:</strong>
+            <ul>
+                <li>Collaborated with executive leadership to secure buy-in for BCP initiatives.</li>
+                <li>Established a governance model assigning clear accountability to cross-functional teams.</li>
+            </ul>
+        </li>
+        <li><strong>Documentation:</strong>
+            <ul>
+                <li>Authored detailed policies outlining objectives, scope, and implementation protocols for BCP.</li>
+            </ul>
+        </li>
     </ul>
 </div>
 
 <button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
 <div class="panel">
     <ul>
-        <li><strong>Threat Identification:</strong> Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures.</li>
-        <li><strong>Critical Asset Analysis:</strong> Evaluated business functions and assets to determine their criticality and interdependencies.</li>
-        <li><strong>Impact Assessment:</strong> Performed BIAs to quantify the financial, operational, and reputational impact of potential disruptions.</li>
+        <li><strong>Threat Identification:</strong>
+            <ul>
+                <li>Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures.</li>
+            </ul>
+        </li>
+        <li><strong>Critical Asset Analysis:</strong>
+            <ul>
+                <li>Evaluated business functions and assets to determine their criticality and interdependencies.</li>
+            </ul>
+        </li>
+        <li><strong>Impact Assessment:</strong>
+            <ul>
+                <li>Performed BIAs to quantify the financial, operational, and reputational impact of potential disruptions.</li>
+            </ul>
+        </li>
     </ul>
 </div>
 
 <button class="accordion">Recovery Objectives and Strategies</button>
 <div class="panel">
     <ul>
-        <li><strong>Recovery Objectives:</strong> Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems.</li>
-        <li><strong>Strategic Planning:</strong> Developed and implemented recovery strategies such as failover systems, disaster recovery sites, and cloud backups.</li>
-        <li><strong>Process Optimization:</strong> Ensured alignment of recovery plans with organizational priorities and operational workflows.</li>
+        <li><strong>Recovery Objectives:</strong>
+            <ul>
+                <li>Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems.</li>
+            </ul>
+        </li>
+        <li><strong>Strategic Planning:</strong>
+            <ul>
+                <li>Developed and implemented recovery strategies such as failover systems, disaster recovery sites, and cloud backups.</li>
+            </ul>
+        </li>
+        <li><strong>Process Optimization:</strong>
+            <ul>
+                <li>Ensured alignment of recovery plans with organizational priorities and operational workflows.</li>
+            </ul>
+        </li>
     </ul>
 </div>
 
 <button class="accordion">Incident Management and Response</button>
 <div class="panel">
     <ul>
-        <li><strong>Incident Identification:</strong> Established protocols for detecting and reporting incidents promptly.</li>
-        <li><strong>Response Procedures:</strong> Designed response frameworks to contain, mitigate, and recover from disruptions efficiently.</li>
-        <li><strong>Continuous Monitoring:</strong> Implemented monitoring tools to ensure real-time tracking of critical operations.</li>
+        <li><strong>Incident Identification:</strong>
+            <ul>
+                <li>Established protocols for detecting and reporting incidents promptly.</li>
+            </ul>
+        </li>
+        <li><strong>Response Procedures:</strong>
+            <ul>
+                <li>Designed response frameworks to contain, mitigate, and recover from disruptions efficiently.</li>
+            </ul>
+        </li>
+        <li><strong>Continuous Monitoring:</strong>
+            <ul>
+                <li>Implemented monitoring tools to ensure real-time tracking of critical operations.</li>
+            </ul>
+        </li>
     </ul>
 </div>
 
 <button class="accordion">Training and Awareness</button>
 <div class="panel">
     <ul>
-        <li><strong>Employee Training:</strong> Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols.</li>
-        <li><strong>Simulation Exercises:</strong> Orchestrated tabletop exercises and live drills to validate the efficacy of continuity plans.</li>
-        <li><strong>Awareness Campaigns:</strong> Fostered a culture of preparedness through targeted communication initiatives.</li>
+        <li><strong>Employee Training:</strong>
+            <ul>
+                <li>Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols.</li>
+            </ul>
+        </li>
+        <li><strong>Simulation Exercises:</strong>
+            <ul>
+                <li>Orchestrated tabletop exercises and live drills to validate the efficacy of continuity plans.</li>
+            </ul>
+        </li>
+        <li><strong>Awareness Campaigns:</strong>
+            <ul>
+                <li>Fostered a culture of preparedness through targeted communication initiatives.</li>
+            </ul>
+        </li>
     </ul>
 </div>
 
 <button class="accordion">BCP Testing and Maintenance</button>
 <div class="panel">
     <ul>
-        <li><strong>Plan Validation:</strong> Conducted regular testing of BCP components to ensure they remain effective and up-to-date.</li>
-        <li><strong>Feedback Integration:</strong> Incorporated lessons learned from drills and real incidents to enhance BCP strategies.</li>
-        <li><strong>Continuous Improvement:</strong> Reviewed and updated BCP documentation in response to organizational changes, technological advancements, and evolving threats.</li>
+        <li><strong>Plan Validation:</strong>
+            <ul>
+                <li>Conducted regular testing of BCP components to ensure they remain effective and up-to-date.</li>
+            </ul>
+        </li>
+        <li><strong>Feedback Integration:</strong>
+            <ul>
+                <li>Incorporated lessons learned from drills and real incidents to enhance BCP strategies.</li>
+            </ul>
+        </li>
+        <li><strong>Continuous Improvement:</strong>
+            <ul>
+                <li>Reviewed and updated BCP documentation in response to organizational changes, technological advancements, and evolving threats.</li>
+            </ul>
+        </li>
     </ul>
 </div>
 
@@ -188,18 +235,18 @@
         </tr>
         <tr>
             <td>System 1</td>
-            <td>2 hours</td>
-            <td>1 hour</td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>System 2</td>
-            <td>4 hours</td>
-            <td>2 hours</td>
+            <td></td>
+            <td></td>
         </tr>
         <tr>
             <td>System 3</td>
-            <td>6 hours</td>
-            <td>3 hours</td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
 </div>
