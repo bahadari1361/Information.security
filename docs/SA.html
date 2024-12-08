@@ -77,7 +77,7 @@
             font-size: 1.2em;
             padding: 10px 20px;
             margin: 5px 0; /* Reduced space between buttons */
-            width: auto; /* Fit to text size */
+            width: 100%; /* Ensure all buttons are the same size */
             text-align: center;
             border: none;
             border-radius: 8px;
@@ -167,16 +167,11 @@
             color: #007bff;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Table Style for Vulnerabilities */
+        /* Table for Vulnerabilities Identified */
         table {
             width: 100%;
-            margin-top: 20px;
             border-collapse: collapse;
-            font-size: 1.1em;
+            margin-top: 20px;
         }
 
         table, th, td {
@@ -184,17 +179,20 @@
         }
 
         th, td {
-            padding: 10px;
+            padding: 12px;
             text-align: left;
         }
 
         th {
-            background-color: #f1e3d3;
-            color: #333;
+            background-color: #f4f7fa;
         }
 
-        tr:nth-child(even) {
+        td {
             background-color: #f9f9f9;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -262,44 +260,37 @@
 
     <button class="section-btn" onclick="toggleCollapse('vulnerabilities')">Vulnerabilities Identified</button>
     <div id="vulnerabilities" class="content">
-        <p>Vulnerabilities were identified across several systems. The risks were assessed based on their severity and impact on the bank's operations.</p>
-        
-        <!-- Table for Vulnerabilities -->
         <table>
-            <thead>
-                <tr>
-                    <th>Vulnerability</th>
-                    <th>Severity</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>SQL Injection</td>
-                    <td>High</td>
-                    <td>Unprotected web applications vulnerable to SQL injection attacks, allowing unauthorized access to sensitive data.</td>
-                </tr>
-                <tr>
-                    <td>Cross-Site Scripting (XSS)</td>
-                    <td>Medium</td>
-                    <td>Potential XSS vulnerabilities in web applications, allowing attackers to execute malicious scripts in users' browsers.</td>
-                </tr>
-                <tr>
-                    <td>Unpatched Software</td>
-                    <td>High</td>
-                    <td>Multiple systems running outdated software, susceptible to known exploits.</td>
-                </tr>
-                <tr>
-                    <td>Weak Passwords</td>
-                    <td>Medium</td>
-                    <td>Employees using weak or default passwords that can be easily guessed or cracked by attackers.</td>
-                </tr>
-                <tr>
-                    <td>Open Ports</td>
-                    <td>Low</td>
-                    <td>Unnecessary open ports that could provide an entry point for attackers into the network.</td>
-                </tr>
-            </tbody>
+            <tr>
+                <th>Vulnerability</th>
+                <th>Severity</th>
+                <th>Impact</th>
+                <th>Recommendation</th>
+            </tr>
+            <tr>
+                <td>SQL Injection in Login Form</td>
+                <td>High</td>
+                <td>Data theft or manipulation</td>
+                <td>Implement input validation and prepared statements</td>
+            </tr>
+            <tr>
+                <td>Weak Password Policy</td>
+                <td>Medium</td>
+                <td>Potential unauthorized access</td>
+                <td>Enforce strong password policies and two-factor authentication</td>
+            </tr>
+            <tr>
+                <td>Unpatched Web Application</td>
+                <td>High</td>
+                <td>Exploitation by attackers</td>
+                <td>Apply security patches and updates regularly</td>
+            </tr>
+            <tr>
+                <td>Open Ports on Firewall</td>
+                <td>Medium</td>
+                <td>Unauthorized access or data leakage</td>
+                <td>Close unnecessary ports and restrict access</td>
+            </tr>
         </table>
     </div>
 
