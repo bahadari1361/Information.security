@@ -107,9 +107,11 @@
             position: absolute;
             top: 100px; /* Keep content below the header */
             right: 10%;
+            max-height: 0;
+            overflow: hidden;
             transform-origin: top;
             opacity: 0;
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.5s ease-out;
             font-family: 'Georgia', serif;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
@@ -118,7 +120,37 @@
         .content.open {
             display: block;
             opacity: 1;
+            max-height: 1000px;
             transform: scaleY(1);
+            animation: crumpledPaper 1s ease-out forwards;
+        }
+
+        @keyframes crumpledPaper {
+            0% {
+                transform: scaleY(0.3) rotate(10deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scaleY(1.2) rotate(-5deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scaleY(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Crumpled Paper Design */
+        .content p {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1.1em;
+            margin: 10px 0;
+            line-height: 1.6;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transform: rotate(3deg);
         }
 
         ul {
@@ -192,4 +224,31 @@
 
     <button class="section-btn" onclick="toggleCollapse('section7')">Testing & Maintenance</button>
     <div id="section7" class="content">
-        <p><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to
+        <p><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</p>
+        <p><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</p>
+        <p><strong>Lessons Learned and Continuous Improvement:</strong> After each test or real incident, conduct a post-mortem analysis to identify areas for improvement and implement changes as necessary.</p>
+    </div>
+
+    <button class="section-btn" onclick="toggleCollapse('section8')">Documentation & Reporting</button>
+    <div id="section8" class="content">
+        <p><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</p>
+        <p><strong>Reporting:</strong> Establish reporting requirements for both internal and external stakeholders. This may include regular reports on BCP readiness, issues encountered during tests, and post-incident evaluations.</p>
+    </div>
+</div>
+
+<script>
+    function toggleCollapse(sectionId) {
+        const sections = document.querySelectorAll('.content');
+        sections.forEach(section => {
+            if (section.id !== sectionId) {
+                section.classList.remove('open');
+            }
+        });
+
+        const currentSection = document.getElementById(sectionId);
+        currentSection.classList.toggle('open');
+    }
+</script>
+
+</body>
+</html>
