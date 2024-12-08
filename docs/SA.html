@@ -183,73 +183,74 @@
 
 <!-- Container for Buttons (Left side aligned) -->
 <div class="sections-container">
-    <button class="section-btn" onclick="toggleCollapse('section1')">Overview</button>
-    <div id="section1" class="content">
+    <button class="section-btn" onclick="toggleCollapse('overview')">Overview</button>
+    <div id="overview" class="content">
         <p>As the Information Security Manager at the Central Bank of Afghanistan, I led comprehensive security assessments to evaluate the integrity and security posture of the bank's IT infrastructure. These assessments were essential for identifying potential vulnerabilities and ensuring the protection of sensitive financial data. Using a combination of manual and automated testing tools, I conducted thorough penetration testing, vulnerability scans, and risk analysis to assess the security landscape and provide actionable recommendations for improvement.</p>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section2')">Objectives</button>
-    <div id="section2" class="content">
+    <button class="section-btn" onclick="toggleCollapse('objectives')">Objectives</button>
+    <div id="objectives" class="content">
         <ul>
-            <li><strong>Identify vulnerabilities</strong> in the bank's internal and external networks.</li>
-            <li><strong>Evaluate the security</strong> of critical systems and applications.</li>
-            <li><strong>Ensure compliance</strong> with industry standards.</li>
-            <li><strong>Develop and implement strategies</strong> to address identified risks.</li>
+            <li>Identify vulnerabilities in the bank's internal and external networks.</li>
+            <li>Evaluate the security of critical systems and applications.</li>
+            <li>Ensure compliance with industry standards.</li>
+            <li>Develop and implement strategies to address identified risks.</li>
         </ul>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section3')">Tools Used</button>
-    <div id="section3" class="content">
-        <p><strong>Nessus:</strong> Vulnerability scanning and risk assessment tool to identify known security flaws and weaknesses across systems and networks.</p>
-        <p><strong>Nmap:</strong> Network discovery and security auditing tool that helps identify open ports, running services, and network configurations.</p>
-        <p><strong>Kali Linux:</strong> A penetration testing platform equipped with numerous tools for vulnerability assessment and exploitation.</p>
-        <p><strong>Acunetix:</strong> Automated web application security scanner that detects vulnerabilities like SQL injection, XSS, and other web-based security risks.</p>
-        <p><strong>Wireshark:</strong> Network protocol analyzer for capturing and analyzing network traffic to identify potential vulnerabilities in network protocols and communication.</p>
-        <p><strong>OWASP ZAP (Zed Attack Proxy):</strong> A popular web application security scanner that helps in finding vulnerabilities in web apps, such as XSS, SQL injection, and others.</p>
-        <p><strong>Burp Suite:</strong> A suite of tools for web application security testing, including features for vulnerability scanning, penetration testing, and manual security assessments.</p>
-        <p><strong>Metasploit:</strong> A penetration testing framework that allows security professionals to develop and execute exploit code against a remote target machine.</p>
-        <p><strong>Nessus Essentials:</strong> A free version of Nessus for conducting vulnerability assessments in a more limited scope, often used in smaller environments.</p>
-        <p><strong>Snort:</strong> Open-source intrusion detection and prevention system that monitors network traffic for signs of malicious activity.</p>
-        <p><strong>OpenVAS (Greenbone):</strong> An open-source vulnerability scanner that identifies vulnerabilities across various services and systems.</p>
-        <p><strong>Qualys:</strong> Cloud-based vulnerability management platform that automates vulnerability scanning and helps organizations stay compliant with industry standards.</p>
-        <p><strong>Netcat:</strong> A network utility used for debugging and scanning network connections, often used in penetration testing for its ability to read and write data across network connections.</p>
-        <p><strong>John the Ripper:</strong> A fast password cracking tool used to assess password strength and help in identifying weak or easily guessed passwords.</p>
-        <p><strong>Hydra:</strong> A network login cracker that supports multiple protocols, used for brute-force password testing and auditing.</p>
-        <p><strong>Sysinternals Suite:</strong> A collection of tools for advanced system monitoring and management, particularly useful for identifying and analyzing security issues on Windows systems.</p>
-        <p><strong>Nikto:</strong> A web server scanner that helps identify various vulnerabilities, including outdated software, security misconfigurations, and common flaws.</p>
-        <p><strong>Sleuth Kit:</strong> A suite of digital forensics tools for investigating disk images, file systems, and data to detect malicious activity and recover evidence.</p>
-        <p><strong>Cuckoo Sandbox:</strong> A malware analysis tool that allows you to run files in an isolated environment to analyze their behavior and identify malicious activity.</p>
-        <p><strong>AlienVault OSSIM:</strong> Open-source SIEM (Security Information and Event Management) platform for monitoring and analyzing security incidents, providing threat detection and response capabilities.</p>
+    <button class="section-btn" onclick="toggleCollapse('tools')">Tools Used</button>
+    <div id="tools" class="content">
+        <ul>
+            <li><strong>Nessus:</strong> Vulnerability scanning and risk assessment tool.</li>
+            <li><strong>Nmap:</strong> Network discovery and security auditing tool.</li>
+            <li><strong>Kali Linux:</strong> Penetration testing platform with numerous tools.</li>
+            <li><strong>Acunetix:</strong> Automated web application security scanner.</li>
+            <li><strong>Wireshark:</strong> Network protocol analyzer for capturing and analyzing network traffic.</li>
+            <li><strong>OWASP ZAP:</strong> Web application security scanner.</li>
+            <li><strong>Burp Suite:</strong> Suite of tools for web application security testing.</li>
+            <li><strong>Metasploit:</strong> Penetration testing framework.</li>
+            <li><strong>Snort:</strong> Open-source intrusion detection and prevention system.</li>
+            <li><strong>OpenVAS:</strong> Open-source vulnerability scanner.</li>
+            <li><strong>Qualys:</strong> Cloud-based vulnerability management platform.</li>
+            <li><strong>Netcat:</strong> Network utility for debugging and scanning network connections.</li>
+            <li><strong>John the Ripper:</strong> Password cracking tool.</li>
+            <li><strong>Hydra:</strong> Network login cracker.</li>
+            <li><strong>Sysinternals Suite:</strong> Tools for advanced system monitoring.</li>
+            <li><strong>Nikto:</strong> Web server scanner.</li>
+            <li><strong>Sleuth Kit:</strong> Suite of digital forensics tools.</li>
+            <li><strong>Cuckoo Sandbox:</strong> Malware analysis tool.</li>
+            <li><strong>AlienVault OSSIM:</strong> Open-source SIEM platform.</li>
+        </ul>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section4')">Process</button>
-    <div id="section4" class="content">
+    <button class="section-btn" onclick="toggleCollapse('process')">Process</button>
+    <div id="process" class="content">
         <ul>
             <li><strong>Preparation:</strong> Defined the scope and objectives of the security assessment, identifying systems and applications to be tested.</li>
-            <li><strong>Vulnerability Scanning:</strong> Performed automated scans using Nessus, Acunetix, OpenVAS, and Qualys to identify known vulnerabilities across the bank's network and applications.</li>
-            <li><strong>Penetration Testing:</strong> Utilized Kali Linux, Metasploit, Burp Suite, and Hydra to simulate real-world cyber-attacks and assess the bank’s defenses.</li>
-            <li><strong>Risk Assessment:</strong> Prioritized vulnerabilities based on their severity and business impact, providing a clear risk level for each identified issue.</li>
-            <li><strong>Remediation Support:</strong> Collaborated with IT teams to address vulnerabilities and implement security improvements, ensuring that critical vulnerabilities were mitigated.</li>
+            <li><strong>Vulnerability Scanning:</strong> Performed automated scans using various tools like Nessus and Qualys.</li>
+            <li><strong>Penetration Testing:</strong> Utilized tools like Kali Linux and Metasploit for simulated cyber-attacks.</li>
+            <li><strong>Risk Assessment:</strong> Prioritized vulnerabilities based on severity and business impact.</li>
+            <li><strong>Remediation Support:</strong> Collaborated with IT teams to address vulnerabilities and improve security.</li>
         </ul>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section5')">Vulnerabilities Identified</button>
-    <div id="section5" class="content">
-        <p><strong>Summary:</strong> This section includes the identified vulnerabilities, their severity, risk level, affected assets, descriptions, and the remediation actions taken to resolve them.</p>
+    <button class="section-btn" onclick="toggleCollapse('vulnerabilities')">Vulnerabilities Identified</button>
+    <div id="vulnerabilities" class="content">
+        <p>Vulnerabilities were identified across several systems. The risks were assessed based on their severity and impact on the bank's operations.</p>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section6')">Outcome</button>
-    <div id="section6" class="content">
-        <p>The security assessment identified critical vulnerabilities within the bank's systems. These vulnerabilities were promptly addressed, improving the bank's overall security posture and ensuring the integrity of sensitive financial data. The assessment also provided valuable insights into areas requiring continuous monitoring and improvement.</p>
+    <button class="section-btn" onclick="toggleCollapse('outcome')">Outcome</button>
+    <div id="outcome" class="content">
+        <p>The security assessment identified critical vulnerabilities, which were promptly addressed to improve the bank’s overall security posture and ensure the integrity of sensitive financial data.</p>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section7')">Impact</button>
-    <div id="section7" class="content">
+    <button class="section-btn" onclick="toggleCollapse('impact')">Impact</button>
+    <div id="impact" class="content">
         <ul>
-            <li><strong>Strengthened</strong> the security of sensitive financial data, preventing potential data breaches.</li>
-            <li><strong>Reduced</strong> the risk of cyber-attacks through proactive vulnerability management and remediation.</li>
-            <li><strong>Improved</strong> security awareness among internal teams, fostering a culture of continuous security improvement.</li>
-            <li><strong>Enhanced</strong> compliance with industry regulations, reducing the risk of penalties and ensuring best practices were followed.</li>
+            <li>Strengthened the security of sensitive financial data, preventing potential data breaches.</li>
+            <li>Reduced the risk of cyber-attacks through proactive vulnerability management.</li>
+            <li>Improved security awareness among internal teams.</li>
+            <li>Enhanced compliance with industry regulations.</li>
         </ul>
     </div>
 </div>
