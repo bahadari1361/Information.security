@@ -27,66 +27,36 @@
             width: 100%;
         }
 
-        /* Donut Chart Container */
-        .donut-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: conic-gradient(
-                #007bff 0deg 45deg,
-                #28a745 45deg 90deg,
-                #ffc107 90deg 135deg,
-                #dc3545 135deg 180deg,
-                #17a2b8 180deg 225deg,
-                #fd7e14 225deg 270deg,
-                #6f42c1 270deg 315deg,
-                #6610f2 315deg 360deg
-            );
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            cursor: pointer;
+        /* Container for the buttons */
+        .sections-container {
+            width: 80%;
+            max-width: 900px;
             margin-top: 50px;
-            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Labels for the sections */
-        .donut-labels {
-            position: absolute;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            flex-wrap: wrap;
-            pointer-events: none;
         }
 
-        .donut-label {
-            position: absolute;
+        /* Button styles */
+        .section-btn {
+            background-color: #007bff;
             color: white;
-            font-weight: bold;
-            font-size: 1.1em;
+            font-size: 1.2em;
+            padding: 15px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: left;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
-            pointer-events: auto;
-            transform-origin: center;
-            transition: transform 0.3s;
+            transition: background-color 0.3s;
         }
 
-        /* Label positions within the donut chart */
-        #label1 { top: 10%; left: 50%; transform: translateX(-50%) rotate(0deg); }
-        #label2 { top: 30%; left: 85%; transform: translateY(-50%) translateX(-50%) rotate(45deg); }
-        #label3 { top: 50%; left: 85%; transform: translateY(-50%) translateX(-50%) rotate(90deg); }
-        #label4 { bottom: 30%; left: 50%; transform: translateX(-50%) rotate(135deg); }
-        #label5 { bottom: 50%; left: 15%; transform: translateY(50%) translateX(-50%) rotate(180deg); }
-        #label6 { top: 50%; left: 15%; transform: translateY(-50%) translateX(-50%) rotate(225deg); }
-        #label7 { top: 30%; left: 15%; transform: translateY(-50%) translateX(-50%) rotate(270deg); }
-        #label8 { top: 10%; left: 50%; transform: translateX(-50%) rotate(315deg); }
+        .section-btn:hover {
+            background-color: #0056b3;
+        }
 
-        /* The content sections with notebook folding effect */
+        /* The content sections with the notebook folding effect */
         .content {
             display: none;
             padding: 20px;
@@ -94,7 +64,7 @@
             border-radius: 5px;
             border: 1px solid #ddd;
             margin-top: 20px;
-            width: 80%;
+            width: 100%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transform-origin: top;
             transition: transform 0.5s ease-out, max-height 0.3s ease-out;
@@ -132,79 +102,75 @@
     Business Continuity Planning (BCP) Policy and Procedures
 </header>
 
-<!-- Donut Chart -->
-<div class="donut-container">
-    <div class="donut-labels">
-        <div id="label1" class="donut-label" onclick="toggleCollapse('section1')">Policy Framework</div>
-        <div id="label2" class="donut-label" onclick="toggleCollapse('section2')">Risk Assessment</div>
-        <div id="label3" class="donut-label" onclick="toggleCollapse('section3')">Recovery Objectives</div>
-        <div id="label4" class="donut-label" onclick="toggleCollapse('section4')">Communication Plan</div>
-        <div id="label5" class="donut-label" onclick="toggleCollapse('section5')">Incident Response</div>
-        <div id="label6" class="donut-label" onclick="toggleCollapse('section6')">Training & Awareness</div>
-        <div id="label7" class="donut-label" onclick="toggleCollapse('section7')">Testing & Maintenance</div>
-        <div id="label8" class="donut-label" onclick="toggleCollapse('section8')">Documentation</div>
+<!-- Container for Buttons -->
+<div class="sections-container">
+    <button class="section-btn" onclick="toggleCollapse('section1')">Policy Framework</button>
+    <div id="section1" class="content">
+        <ul>
+            <li><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</li>
+            <li><strong>Leadership and Responsibility:</strong> Identify the leadership team, including the Business Continuity Manager and other key personnel responsible for planning, implementation, and maintenance.</li>
+            <li><strong>Governance Structure:</strong> Outline the organizational structure that will support the BCP, including departments, roles, and responsibilities.</li>
+        </ul>
     </div>
-</div>
 
-<!-- Content for each section -->
-<div id="section1" class="content">
-    <ul>
-        <li><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</li>
-        <li><strong>Leadership and Responsibility:</strong> Identify the leadership team, including the Business Continuity Manager and other key personnel responsible for planning, implementation, and maintenance.</li>
-        <li><strong>Governance Structure:</strong> Outline the organizational structure that will support the BCP, including departments, roles, and responsibilities.</li>
-    </ul>
-</div>
+    <button class="section-btn" onclick="toggleCollapse('section2')">Risk Assessment</button>
+    <div id="section2" class="content">
+        <ul>
+            <li><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</li>
+            <li><strong>Business Impact Analysis (BIA):</strong> Identify critical business functions and processes. Determine the potential impact of disruptions on these functions, including financial, operational, and reputational effects.</li>
+        </ul>
+    </div>
 
-<div id="section2" class="content">
-    <ul>
-        <li><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</li>
-        <li><strong>Business Impact Analysis (BIA):</strong> Identify critical business functions and processes. Determine the potential impact of disruptions on these functions, including financial, operational, and reputational effects.</li>
-    </ul>
-</div>
+    <button class="section-btn" onclick="toggleCollapse('section3')">Recovery Objectives</button>
+    <div id="section3" class="content">
+        <ul>
+            <li><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</li>
+            <li><strong>Recovery Point Objectives (RPO):</strong> Define the maximum acceptable data loss in terms of time (how much data can be lost before the business operation is significantly impacted).</li>
+            <li><strong>Business Continuity Strategies:</strong> Develop strategies for maintaining or quickly restoring critical functions. This may include cloud backups, disaster recovery sites, or manual processes.</li>
+        </ul>
+    </div>
 
-<div id="section3" class="content">
-    <ul>
-        <li><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</li>
-        <li><strong>Recovery Point Objectives (RPO):</strong> Define the maximum acceptable data loss in terms of time (how much data can be lost before the business operation is significantly impacted).</li>
-        <li><strong>Business Continuity Strategies:</strong> Develop strategies for maintaining or quickly restoring critical functions. This may include cloud backups, disaster recovery sites, or manual processes.</li>
-    </ul>
-</div>
+    <button class="section-btn" onclick="toggleCollapse('section4')">Communication Plan</button>
+    <div id="section4" class="content">
+        <ul>
+            <li><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</li>
+            <li><strong>External Communication:</strong> Define how the organization will communicate with external stakeholders (e.g., customers, suppliers, regulators) in the event of a disruption.</li>
+        </ul>
+    </div>
 
-<div id="section4" class="content">
-    <ul>
-        <li><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</li>
-        <li><strong>External Communication:</strong> Define how the organization will communicate with external stakeholders (e.g., customers, suppliers, regulators) in the event of a disruption.</li>
-    </ul>
-</div>
+    <button class="section-btn" onclick="toggleCollapse('section5')">Incident Response</button>
+    <div id="section5" class="content">
+        <ul>
+            <li><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</li>
+            <li><strong>Response Procedures:</strong> Define the steps to take immediately after an incident is detected, such as activating the BCP, notifying relevant stakeholders, and containing the impact.</li>
+            <li><strong>Recovery Procedures:</strong> Outline how the business will recover from the incident, including restoring systems, processes, and communications.</li>
+        </ul>
+    </div>
 
-<div id="section5" class="content">
-    <ul>
-        <li><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</li>
-        <li><strong>Response Procedures:</strong> Define the steps to take immediately after an incident is detected, such as activating the BCP, notifying relevant stakeholders, and containing the impact.</li>
-        <li><strong>Recovery Procedures:</strong> Outline how the business will recover from the incident, including restoring systems, processes, and communications.</li>
-    </ul>
-</div>
+    <button class="section-btn" onclick="toggleCollapse('section6')">Training & Awareness</button>
+    <div id="section6" class="content">
+        <ul>
+            <li><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</li>
+            <li><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</li>
+        </ul>
+    </div>
 
-<div id="section6" class="content">
-    <ul>
-        <li><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</li>
-        <li><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</li>
-    </ul>
-</div>
+    <button class="section-btn" onclick="toggleCollapse('section7')">Testing & Maintenance</button>
+    <div id="section7" class="content">
+        <ul>
+            <li><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</li>
+            <li><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</li>
+            <li><strong>Lessons Learned and Continuous Improvement:</strong> After each test or real incident, conduct a post-mortem analysis to identify areas for improvement and implement changes as necessary.</li>
+        </ul>
+    </div>
 
-<div id="section7" class="content">
-    <ul>
-        <li><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</li>
-        <li><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</li>
-        <li><strong>Lessons Learned and Continuous Improvement:</strong> After each test or real incident, conduct a post-mortem analysis to identify areas for improvement and implement changes as necessary.</li>
-    </ul>
-</div>
-
-<div id="section8" class="content">
-    <ul>
-        <li><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</li>
-        <li><strong>Reporting:</strong> Establish reporting requirements for both internal and external stakeholders. This may include regular reports on BCP readiness, issues encountered during tests, and post-incident evaluations.</li>
-    </ul>
+    <button class="section-btn" onclick="toggleCollapse('section8')">Documentation</button>
+    <div id="section8" class="content">
+        <ul>
+            <li><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</li>
+            <li><strong>Reporting:</strong> Establish reporting requirements for both internal and external stakeholders. This may include regular reports on BCP readiness, issues encountered during tests, and post-incident evaluations.</li>
+        </ul>
+    </div>
 </div>
 
 <script>
