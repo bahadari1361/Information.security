@@ -15,14 +15,15 @@
         .accordion {
             background: #e3e3e3;
             cursor: pointer;
-            padding: 15px;
-            width: 100%;
+            padding: 10px 20px;
+            width: auto;
             border: none;
             text-align: left;
             outline: none;
-            font-size: 18px;
+            font-size: 16px;
             transition: background 0.3s;
             margin-bottom: 5px;
+            border-radius: 5px;
         }
 
         .accordion:hover {
@@ -41,6 +42,9 @@
             border-left: 4px solid #d6d6d6;
             margin-bottom: 10px;
             animation: crumpled-paper 0.6s ease-out;
+            width: 80%;
+            margin: auto;
+            max-width: 210mm;
         }
 
         @keyframes crumpled-paper {
@@ -52,6 +56,21 @@
                 transform: translateY(0) scaleY(1);
                 opacity: 1;
             }
+        }
+
+        @keyframes waterfall-effect {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .panel-waterfall {
+            animation: waterfall-effect 1s ease-out;
         }
 
         .back-to-home {
@@ -94,12 +113,12 @@
 
 <button class="accordion">Introduction</button>
 <div class="panel">
-    <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions. My proficiency spans policy formulation, risk assessment, recovery strategy design, and incident management, ensuring critical business functions remain operational under adverse conditions. This portfolio highlights my structured approach to BCP, illustrating my ability to safeguard organizational integrity and uphold stakeholder trust.</p>
+    <p class="panel-waterfall">As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions. My proficiency spans policy formulation, risk assessment, recovery strategy design, and incident management, ensuring critical business functions remain operational under adverse conditions. This portfolio highlights my structured approach to BCP, illustrating my ability to safeguard organizational integrity and uphold stakeholder trust.</p>
 </div>
 
 <button class="accordion">Policy Development and Governance</button>
 <div class="panel">
-    <ul>
+    <ul class="panel-waterfall">
         <li><strong>Policy Framework Creation:</strong>
             <ul>
                 <li>Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301).</li>
@@ -122,7 +141,7 @@
 
 <button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
 <div class="panel">
-    <ul>
+    <ul class="panel-waterfall">
         <li><strong>Threat Identification:</strong>
             <ul>
                 <li>Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures.</li>
@@ -143,7 +162,7 @@
 
 <button class="accordion">Recovery Objectives and Strategies</button>
 <div class="panel">
-    <ul>
+    <ul class="panel-waterfall">
         <li><strong>Recovery Objectives:</strong>
             <ul>
                 <li>Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems.</li>
@@ -164,7 +183,7 @@
 
 <button class="accordion">Incident Management and Response</button>
 <div class="panel">
-    <ul>
+    <ul class="panel-waterfall">
         <li><strong>Incident Identification:</strong>
             <ul>
                 <li>Established protocols for detecting and reporting incidents promptly.</li>
@@ -185,7 +204,7 @@
 
 <button class="accordion">Training and Awareness</button>
 <div class="panel">
-    <ul>
+    <ul class="panel-waterfall">
         <li><strong>Employee Training:</strong>
             <ul>
                 <li>Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols.</li>
@@ -206,7 +225,7 @@
 
 <button class="accordion">BCP Testing and Maintenance</button>
 <div class="panel">
-    <ul>
+    <ul class="panel-waterfall">
         <li><strong>Plan Validation:</strong>
             <ul>
                 <li>Conducted regular testing of BCP components to ensure they remain effective and up-to-date.</li>
@@ -227,7 +246,7 @@
 
 <button class="accordion">RTO and RPO Table</button>
 <div class="panel">
-    <table>
+    <table class="panel-waterfall">
         <tr>
             <th>Critical System</th>
             <th>Recovery Time Objective (RTO)</th>
@@ -253,7 +272,7 @@
 
 <button class="accordion">Conclusion</button>
 <div class="panel">
-    <p>My comprehensive approach to Business Continuity Planning ensures organizational resilience, enabling continued operations and safeguarding stakeholder interests during disruptions. Through meticulous planning, risk mitigation, and proactive training, I deliver robust continuity strategies tailored to organizational needs. This portfolio demonstrates my commitment to excellence and my ability to navigate complex challenges to achieve sustainable business resilience.</p>
+    <p class="panel-waterfall">My comprehensive approach to Business Continuity Planning ensures organizational resilience, enabling continued operations and safeguarding stakeholder interests during disruptions. Through meticulous planning, risk mitigation, and proactive training, I deliver robust continuity strategies tailored to organizational needs. This portfolio demonstrates my commitment to excellence and my ability to navigate complex challenges to achieve sustainable business resilience.</p>
 </div>
 
 <script>
