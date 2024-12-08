@@ -66,12 +66,13 @@
             top: 160px; /* Below header */
             left: 10px;
             width: 200px;
-            height: 100%;
+            height: calc(100% - 160px); /* Full height minus header height */
             padding: 10px;
             background-color: #f1f1f1;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             z-index: 10;
+            overflow-y: auto;
         }
 
         .section-btn {
@@ -107,6 +108,7 @@
             flex-direction: column;
             align-items: center;
             overflow-y: auto;
+            margin-top: 160px; /* To avoid overlap with header */
         }
 
         /* Paper collapse with crumpled effect */
@@ -298,20 +300,18 @@
     </div>
 
     <div id="section12" class="content">
-        <p><strong>Improved Detection:</strong> Implementing machine learning and advanced analytics will help identify threats earlier in the incident lifecycle.</p>
+        <p><strong>Improved Detection:</strong> Implementing machine learning and advanced analytics will help identify threats faster.</p>
+        <p><strong>Training:</strong> Regularly training the incident response team to ensure preparedness and refine skills.</p>
+        <p><strong>Automation:</strong> Automating responses to certain incidents to reduce response times.</p>
     </div>
 
     <div id="section13" class="content">
-        <p>This Incident Response Plan Portfolio Project showcases my expertise in preparing for and handling cybersecurity incidents. By using structured processes and continually testing and refining the plan, organizations can effectively handle security incidents and minimize disruption to business operations.</p>
-        <p>Through this project, I demonstrate my commitment to organizational resilience and my ability to navigate complex challenges to ensure business continuity.</p>
+        <p>In conclusion, this IRP Portfolio project highlights my comprehensive approach to managing cybersecurity incidents, from preparation and detection to recovery and post-incident analysis. It demonstrates my capability to lead and manage security incidents efficiently, ensuring business continuity and protection from future threats.</p>
     </div>
 
     <div id="section14" class="content">
-        <p><strong>Email:</strong> hashmat.bahadari@icloud.com</p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bahadari" target="_blank">LinkedIn Profile</a></p>
-        <p><strong>GitHub:</strong> <a href="https://bahadari1361.github.io/information-security-project/index.html" target="_blank">GitHub Portfolio</a></p>
+        <p>If you have any questions or wish to collaborate on incident response strategies, feel free to reach out!</p>
     </div>
-
 </div>
 
 <script>
