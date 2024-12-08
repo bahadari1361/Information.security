@@ -8,7 +8,6 @@
         body {
             font-family: 'Arial', sans-serif;
             background-color: #f4f7fa;
-            color: #333;
             margin: 0;
             padding: 0;
             display: flex;
@@ -29,21 +28,10 @@
             width: 100%;
         }
 
-        .container {
+        .donut-container {
             position: relative;
-            width: 300px;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            position: relative;
-        }
-
-        .donut-chart {
-            position: relative;
-            width: 200px;
-            height: 200px;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
             background: conic-gradient(
                 #007bff 0deg 45deg,
@@ -55,24 +43,76 @@
                 #6f42c1 270deg 315deg,
                 #6610f2 315deg 360deg
             );
-            cursor: pointer;
-        }
-
-        .donut-chart span {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .donut-labels {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .label {
+            position: absolute;
+            font-size: 1.2em;
             color: white;
             font-weight: bold;
-            font-size: 1.2em;
-            z-index: 1;
+        }
+
+        #section1 {
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #section2 {
+            top: 45%;
+            left: 87%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+
+        #section3 {
+            bottom: 15%;
+            left: 87%;
+            transform: translateY(50%) translateX(-50%);
+        }
+
+        #section4 {
+            bottom: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        #section5 {
+            bottom: 45%;
+            left: 13%;
+            transform: translateY(50%) translateX(-50%);
+        }
+
+        #section6 {
+            top: 45%;
+            left: 13%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+
+        #section7 {
+            top: 15%;
+            left: 13%;
+            transform: translateY(-50%) translateX(-50%);
+        }
+
+        #section8 {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.9em;
         }
 
         .content {
@@ -108,30 +148,16 @@
 </header>
 
 <!-- Donut Chart -->
-<div class="container">
-    <div class="donut-chart" onclick="toggleCollapse('section1')">
-        <span>1</span>
-    </div>
-    <div class="donut-chart" onclick="toggleCollapse('section2')">
-        <span>2</span>
-    </div>
-    <div class="donut-chart" onclick="toggleCollapse('section3')">
-        <span>3</span>
-    </div>
-    <div class="donut-chart" onclick="toggleCollapse('section4')">
-        <span>4</span>
-    </div>
-    <div class="donut-chart" onclick="toggleCollapse('section5')">
-        <span>5</span>
-    </div>
-    <div class="donut-chart" onclick="toggleCollapse('section6')">
-        <span>6</span>
-    </div>
-    <div class="donut-chart" onclick="toggleCollapse('section7')">
-        <span>7</span>
-    </div>
-    <div class="donut-chart" onclick="toggleCollapse('section8')">
-        <span>8</span>
+<div class="donut-container">
+    <div class="donut-labels">
+        <div id="section1" class="label" onclick="toggleCollapse('section1')">Policy Framework</div>
+        <div id="section2" class="label" onclick="toggleCollapse('section2')">Risk Assessment</div>
+        <div id="section3" class="label" onclick="toggleCollapse('section3')">Recovery Objectives</div>
+        <div id="section4" class="label" onclick="toggleCollapse('section4')">Communication Plan</div>
+        <div id="section5" class="label" onclick="toggleCollapse('section5')">Incident Response</div>
+        <div id="section6" class="label" onclick="toggleCollapse('section6')">Training & Awareness</div>
+        <div id="section7" class="label" onclick="toggleCollapse('section7')">Testing & Maintenance</div>
+        <div id="section8" class="label" onclick="toggleCollapse('section8')">Documentation</div>
     </div>
 </div>
 
