@@ -1,313 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hashmatullah Bahadari - Information Security Manager</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <title>Your Portfolio</title>
     <style>
-        /* Global Styles */
-        body, h1, h2, h3, p, ul, li, a {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        body {
-            background-color: #f5f5f5;
+            background-color: #f4f4f4;
             color: #333;
-            line-height: 1.6;
-            overflow-x: hidden;
         }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: color 0.3s ease;
-        }
-
-        a:hover {
-            color: #007BFF;
-        }
-
-        /* Header Section */
         header {
-            background: url('https://www.example.com/your-cybersecurity-image.jpg') no-repeat center center/cover; /* Change this URL */
+            background-color: #4CAF50;
             color: white;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            z-index: 2;
-            letter-spacing: 2px;
-        }
-
-        header p {
-            font-size: 1.5rem;
-            font-weight: 400;
-            z-index: 2;
-            color: #ddd;
-        }
-
-        /* Navigation Bar */
-        .sidebar {
-            position: fixed;
-            top: 50%;
-            left: 0;
-            transform: translateY(-50%);
-            background-color: #333;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        .sidebar a {
-            display: block;
-            padding: 10px;
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .sidebar a:hover {
-            background-color: #007BFF;
-        }
-
-        /* Content Section */
-        .content {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* About Section */
-        .about, .skills, .projects {
-            background-color: #fff;
-            margin-bottom: 60px;
-            padding: 40px 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .about h2, .skills h2, .projects h2 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 20px;
+            padding: 10px 0;
             text-align: center;
         }
-
-        .about p, .skills p, .projects p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            text-align: center;
-            color: #555;
+        nav {
+            margin: 15px 0;
         }
-
-        /* Skills Section */
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .skill-card {
-            background-color: #007BFF;
+        nav a {
+            margin: 0 15px;
             color: white;
-            padding: 20px;
-            border-radius: 8px;
-            flex: 1 1 220px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .skill-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .skill-card p {
-            font-size: 1rem;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .project-card h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .project-card p {
-            font-size: 1rem;
-            color: #777;
-        }
-
-        .project-card a {
-            display: inline-block;
-            margin-top: 10px;
-            font-size: 1rem;
-            color: #007BFF;
             text-decoration: none;
         }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Footer Section */
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
+        .container {
+            max-width: 800px;
+            margin: auto;
             padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        footer p {
-            font-size: 1rem;
-            font-weight: 400;
-            color: #ddd;
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2.5rem;
-            }
-
-            .skills h2, .projects h2 {
-                font-size: 2rem;
-            }
-
-            .skills-list {
-                flex-direction: column;
-            }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #4CAF50;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Left Sidebar Navigation -->
-    <div class="sidebar">
-        <a href="#about">About Me</a>
-        <a href="#skills">Skills & Expertise</a>
-        <a href="#projects">Projects</a>
-    </div>
+<header>
+    <h1>Welcome to My Portfolio</h1>
+</header>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Hashmatullah Bahadari</h1>
-        <p>Information Security Manager</p>
-    </header>
+<nav>
+    <a href="#about">About Me</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-    <!-- Content Section -->
-    <div class="content">
-        <!-- About Me Section -->
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <p>
-                I am an experienced Information Security Manager with extensive expertise in securing financial systems and sensitive data. I have developed a deep understanding of risk management, penetration testing, and incident response, with experience in high-profile organizations like the Central Bank of Afghanistan.
-            </p>
-        </section>
+<div class="container">
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I am a passionate web developer with experience in building dynamic and responsive websites.</p>
+    </section>
 
-        <!-- Skills & Expertise Section -->
-        <section id="skills" class="skills">
-            <h2>Skills & Expertise</h2>
-            <div class="skills-list">
-                <div class="skill-card">
-                    <h3>Cybersecurity Risk Management</h3>
-                    <p>Risk assessment and mitigation across all platforms.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Penetration Testing</h3>
-                    <p>Expert in conducting penetration tests using Kali Linux, Nmap, Nessus, etc.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Incident Response</h3>
-                    <p>Developing and executing incident response plans to address breaches efficiently.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Security Audits</h3>
-                    <p>Conducting IT security audits to ensure compliance and security standards.</p>
-                </div>
-                <div class="skill-card">
-                    <h3>Business Continuity Planning</h3>
-                    <p>Creating effective business continuity plans to ensure operational resilience.</p>
-                </div>
-            </div>
-        </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>Here are some of the projects I've worked on:</p>
+        <ul>
+            <li>Project 1</li>
+            <li>Project 2</li>
+            <li>Project 3</li>
+        </ul>
+    </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects">
-            <h2>My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Project 1</h3>
-                    <p>Implementation of security measures for a banking institution to secure online transactions and prevent cyber attacks.</p>
-                    <a href="#">Read More</a>
-                </div>
-                <div class="project-card">
-                    <h3>Project 2</h3>
-                    <p>Developed a comprehensive risk management framework for a multinational company to safeguard their digital assets.</p>
-                    <a href="#">Read More</a>
-                </div>
-            </div>
-        </section>
-    </div>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Feel free to reach out via email at example@example.com</p>
+    </section>
+</div>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 Hashmatullah Bahadari. All rights reserved.</p>
-    </footer>
+<footer>
+    <p>&copy; 2023 Your Name</p>
+</footer>
 
 </body>
-
 </html>
