@@ -167,25 +167,32 @@
             color: #007bff;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* RTO & RPO Table Styling */
         table {
             width: 100%;
-            margin-top: 20px;
             border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
         }
 
         th, td {
-            border: 1px solid #ddd;
             padding: 10px;
-            text-align: center;
+            text-align: left;
         }
 
         th {
-            background-color: #f1f1f1;
-            font-weight: bold;
+            background-color: #f1e3d3; /* Crumpled paper color */
         }
 
-        html {
-            scroll-behavior: smooth;
+        td {
+            text-align: center;
         }
     </style>
 </head>
@@ -202,89 +209,41 @@
 <div class="sections-container">
     <button class="section-btn" onclick="toggleCollapse('section1')">Policy Framework</button>
     <div id="section1" class="content">
-        <p><strong>Purpose and Scope:</strong> Business Continuity Planning (BCP) is a critical process that ensures an organization can maintain essential functions during and after a disaster or unforeseen disruption. The goal of BCP is to prepare the organization for unexpected events, minimize operational downtime, and safeguard the organization's reputation, assets, and key stakeholders. A comprehensive BCP includes strategies for risk assessment, crisis communication, incident response, recovery objectives, and continuous improvement.</p>
-        <p><strong>Leadership and Responsibility:</strong> The leadership team, consisting of senior management and the Business Continuity Manager, is responsible for the planning, execution, and ongoing maintenance of the BCP. This team will ensure resources are allocated, stakeholders are informed, and recovery strategies are tested regularly.</p>
-        <p><strong>Governance Structure:</strong> A governance committee, including IT, HR, Operations, and Communication departments, will oversee the BCP’s implementation. Each department has specific responsibilities for identifying risks, implementing recovery strategies, and testing the effectiveness of the BCP.</p>
+        <p><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</p>
+        <p><strong>Leadership and Responsibility:</strong> Identify the leadership team, including the Business Continuity Manager and other key personnel responsible for planning, implementation, and maintenance.</p>
+        <p><strong>Governance Structure:</strong> Outline the organizational structure that will support the BCP, including departments, roles, and responsibilities.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section2')">Risk Assessment</button>
     <div id="section2" class="content">
-        <p><strong>Risk Assessment:</strong> Effective BCP begins with identifying potential risks and understanding their impact on business functions. A comprehensive Risk Assessment and BIA are essential to develop strategies for mitigating risks and minimizing damage during an incident.</p>
-        <p><strong>Business Impact Analysis (BIA):</strong> BIA determines which functions, processes, and systems are critical to the organization’s continued operation. It evaluates the financial, operational, and reputational impact of disruptions and establishes strategies for business continuity.</p>
+        <p><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</p>
+        <p><strong>Business Impact Analysis (BIA):</strong> Identify critical business functions and processes. Determine the potential impact of disruptions on these functions, including financial, operational, and reputational effects.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section3')">Recovery Objectives</button>
     <div id="section3" class="content">
-        <p><strong>Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO):</strong> RTO defines the maximum time allowed for restoring a business process after a disruption, while RPO indicates the maximum data loss (in time) that is acceptable. Below is a table summarizing both:</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Recovery Time Objective (RTO)</th>
-                    <th>Recovery Point Objective (RPO)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Defines the maximum allowable time for the recovery of a business function or process.</td>
-                    <td>Defines the maximum allowable amount of data loss before it affects business continuity.</td>
-                </tr>
-                <tr>
-                    <td>Sets a time frame within which business operations must be restored to avoid unacceptable consequences.</td>
-                    <td>Helps determine how frequently data backups or replication should occur to meet the business continuity requirements.</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <p><strong>Business Continuity Strategies:</strong> Strategies include the use of cloud backups, disaster recovery sites, or manual procedures to maintain or restore critical functions within the RTO and RPO parameters.</p>
+        <p><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</p>
+        <p><strong>Recovery Point Objectives (RPO):</strong> Define the maximum acceptable data loss in terms of time (how much data can be lost before the business operation is significantly impacted).</p>
+        <p><strong>Business Continuity Strategies:</strong> Develop strategies for maintaining or quickly restoring critical functions. This may include cloud backups, disaster recovery sites, or manual processes.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section4')">Communication Plan</button>
     <div id="section4" class="content">
-        <p><strong>Internal Communication:</strong> A clear communication hierarchy ensures timely information dissemination to all employees. Emergency contact lists, communication tools, and escalation procedures should be pre-established.</p>
-        <p><strong>External Communication:</strong> Communicating with external stakeholders such as customers, suppliers, regulators, and the public is crucial during a crisis. The organization should prepare standard communication templates and designate spokespersons to ensure consistency and clarity.</p>
+        <p><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</p>
+        <p><strong>External Communication:</strong> Define how the organization will communicate with external stakeholders (e.g., customers, suppliers, regulators) in the event of a disruption.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section5')">Incident Response</button>
     <div id="section5" class="content">
-        <p><strong>Incident Identification and Notification:</strong> Early detection of incidents is essential for effective response. A clear process for identifying, reporting, and escalating incidents must be established.</p>
-        <p><strong>Response Procedures:</strong> Response actions should be defined for various scenarios, such as cyberattacks, power failures, or natural disasters. The response plan should include containment measures, damage assessment, and restoration procedures.</p>
-        <p><strong>Recovery Procedures:</strong> Once the immediate threat is contained, recovery procedures focus on restoring affected systems, data, and operations to a normal state.</p>
+        <p><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</p>
+        <p><strong>Response Procedures:</strong> Define the steps to take immediately after an incident is detected, such as activating the BCP, notifying relevant stakeholders, and containing the impact.</p>
+        <p><strong>Recovery Procedures:</strong> Outline how the business will recover from the incident, including restoring systems, processes, and communications.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section6')">Training & Awareness</button>
     <div id="section6" class="content">
-        <p><strong>Staff Training:</strong> Employees should be regularly trained to understand their role in the BCP, ensuring they know how to respond during a crisis.</p>
-        <p><strong>Simulations and Drills:</strong> To test the effectiveness of the BCP, regular drills and simulations should be conducted. These exercises provide valuable insights into the readiness of the response teams and help refine the plan.</p>
+        <p><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</p>
+        <p><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</p>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section7')">Testing & Maintenance</button>
-    <div id="section7" class="content">
-        <p><strong>Testing the BCP:</strong> Regular testing, such as disaster recovery exercises, ensures that the plan works effectively. These tests should include scenarios based on real-world incidents to validate response strategies and recovery procedures.</p>
-        <p><strong>Updating the BCP:</strong> The BCP must be periodically reviewed and updated to accommodate changes in technology, organizational processes, and risk landscapes.</p>
-        <p><strong>Lessons Learned and Continuous Improvement:</strong> After each test or actual incident, the organization should conduct a post-incident review to identify weaknesses and implement corrective actions to improve the BCP.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section8')">Documentation & Reporting</button>
-    <div id="section8" class="content">
-        <p><strong>BCP Documentation:</strong> Maintaining comprehensive and up-to-date documentation is essential. It should include all procedures, recovery plans, contacts, and lessons learned.</p>
-        <p><strong>Reporting:</strong> Regular internal and external reports on the status of BCP readiness, testing outcomes, and post-incident analysis help ensure transparency and continuous improvement.</p>
-    </div>
-</div>
-
-<script>
-    function toggleCollapse(sectionId) {
-        const sections = document.querySelectorAll('.content');
-        sections.forEach(section => {
-            if (section.id !== sectionId) {
-                section.classList.remove('open');
-            }
-        });
-
-        const currentSection = document.getElementById(sectionId);
-        currentSection.classList.toggle('open');
-    }
-</script>
-
-</body>
-</html>
+    <button class="section
