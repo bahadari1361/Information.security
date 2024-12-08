@@ -3,158 +3,173 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collapsible Sections with Crumpled Paper Effect</title>
+  <title>BCP Portfolio</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #f4f4f4;
+    }
+
+    header {
+      width: 100%;
+      background-color: #333;
+      color: #fff;
+      padding: 15px 0;
+      text-align: center;
+      font-size: 1.5rem;
+    }
+
+    .container {
+      margin-top: 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .button-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .section-button {
-      width: 150px;
-      height: 50px;
-      background-color: #4CAF50;
+    .button {
+      width: 200px;
+      margin: 10px;
+      padding: 10px;
+      background-color: #007bff;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 1rem;
       text-align: center;
-      line-height: 50px;
-      transition: background-color 0.3s;
+      transition: transform 0.2s;
     }
 
-    .section-button:hover {
-      background-color: #45a049;
+    .button:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
     }
 
-    .content-overlay {
+    .content-section {
       display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      position: relative;
       width: 50%;
-      height: 70%;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/a/a9/Crumpled_paper_texture.jpg') no-repeat center center/cover;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      border: 2px solid #ccc;
-      border-radius: 5px;
       padding: 20px;
-      overflow-y: auto;
+      margin: 20px auto;
+      background: url('https://i.imgur.com/Y7c4OEA.png'); /* Crumpled paper texture */
+      background-size: cover;
+      background-repeat: no-repeat;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       animation: fall 1s ease;
     }
 
-    @keyframes fall {
-      from {
-        transform: translate(-50%, -200%);
-        opacity: 0;
-      }
-      to {
-        transform: translate(-50%, -50%);
-        opacity: 1;
-      }
+    .content-section h2 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .content-section p {
+      line-height: 1.5;
     }
 
     .back-button {
       margin-top: 20px;
       padding: 10px 20px;
-      font-size: 16px;
+      background-color: #28a745;
       color: white;
-      background-color: #007BFF;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 1rem;
       display: none;
     }
 
     .back-button:hover {
-      background-color: #0056b3;
+      background-color: #1e7e34;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Business Continuity Planning Portfolio</h1>
-
-  <div class="button-container">
-    <button class="section-button" data-section="introduction">Introduction</button>
-    <button class="section-button" data-section="policy">Policy Development</button>
-    <button class="section-button" data-section="risk">Risk Assessment</button>
-    <button class="section-button" data-section="recovery">Recovery Strategies</button>
-    <button class="section-button" data-section="incident">Incident Management</button>
-    <button class="section-button" data-section="training">Training</button>
-    <button class="section-button" data-section="testing">Testing and Maintenance</button>
+  <header>Business Continuity Portfolio</header>
+  <div class="container">
+    <button class="button" onclick="showSection('introduction')">Introduction</button>
+    <button class="button" onclick="showSection('policy')">Policy Development</button>
+    <button class="button" onclick="showSection('risk')">Risk Assessment</button>
+    <button class="button" onclick="showSection('recovery')">Recovery Strategies</button>
+    <button class="button" onclick="showSection('incident')">Incident Management</button>
+    <button class="button" onclick="showSection('training')">Training & Awareness</button>
+    <button class="button" onclick="showSection('testing')">BCP Testing</button>
   </div>
 
-  <div class="content-overlay" id="content">
-    <div id="content-text"></div>
+  <div id="introduction" class="content-section">
+    <h2>Introduction</h2>
+    <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions...</p>
   </div>
 
-  <button class="back-button" id="back-button">Back to Home</button>
+  <div id="policy" class="content-section">
+    <h2>Policy Development</h2>
+    <p>Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards...</p>
+  </div>
+
+  <div id="risk" class="content-section">
+    <h2>Risk Assessment</h2>
+    <p>Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures...</p>
+  </div>
+
+  <div id="recovery" class="content-section">
+    <h2>Recovery Strategies</h2>
+    <p>Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems...</p>
+  </div>
+
+  <div id="incident" class="content-section">
+    <h2>Incident Management</h2>
+    <p>Established protocols for detecting and reporting incidents promptly...</p>
+  </div>
+
+  <div id="training" class="content-section">
+    <h2>Training & Awareness</h2>
+    <p>Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols...</p>
+  </div>
+
+  <div id="testing" class="content-section">
+    <h2>BCP Testing</h2>
+    <p>Conducted regular testing of BCP components to ensure they remain effective and up-to-date...</p>
+  </div>
+
+  <button id="backButton" class="back-button" onclick="goBack()">Back to Home</button>
 
   <script>
-    const sections = {
-      introduction: `
-        <h2>Introduction</h2>
-        <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP)...</p>
-      `,
-      policy: `
-        <h2>Policy Development</h2>
-        <p>Policy Framework Creation: Designed comprehensive BCP frameworks tailored to organizational objectives...</p>
-      `,
-      risk: `
-        <h2>Risk Assessment</h2>
-        <p>Threat Identification: Conducted risk assessments to identify potential disruptions, including cyberattacks...</p>
-      `,
-      recovery: `
-        <h2>Recovery Strategies</h2>
-        <p>Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems...</p>
-      `,
-      incident: `
-        <h2>Incident Management</h2>
-        <p>Established protocols for detecting and reporting incidents promptly...</p>
-      `,
-      training: `
-        <h2>Training</h2>
-        <p>Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols...</p>
-      `,
-      testing: `
-        <h2>Testing and Maintenance</h2>
-        <p>Conducted regular testing of BCP components to ensure they remain effective and up-to-date...</p>
-      `
-    };
-
-    const buttons = document.querySelectorAll('.section-button');
-    const contentOverlay = document.getElementById('content');
-    const contentText = document.getElementById('content-text');
-    const backButton = document.getElementById('back-button');
-
-    buttons.forEach(button => {
-      button.addEventListener('click', () => {
-        const section = button.getAttribute('data-section');
-        contentText.innerHTML = sections[section];
-        contentOverlay.style.display = 'block';
-        backButton.style.display = 'block';
+    function showSection(sectionId) {
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
       });
-    });
 
-    backButton.addEventListener('click', () => {
-      contentOverlay.style.display = 'none';
-      backButton.style.display = 'none';
-    });
+      document.getElementById(sectionId).style.display = 'block';
+      document.getElementById('backButton').style.display = 'block';
+      document.querySelector('.container').style.display = 'none';
+    }
+
+    function goBack() {
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.style.display = 'none';
+      });
+
+      document.getElementById('backButton').style.display = 'none';
+      document.querySelector('.container').style.display = 'flex';
+    }
   </script>
 </body>
 </html>
