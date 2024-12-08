@@ -1,288 +1,272 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1894.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Assessment for the Central Bank of Afghanistan</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        /* Header Style - Crumpled Paper Color */
+        header {
+            background-color: #f1e3d3; /* Crumpled paper color */
+            color: #333;
+            padding: 1em;
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        /* Back to Home Button - Positioned on the right side */
+        .back-btn {
+            background-color: #4a4a4a; /* Dark gray button color */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s;
+            position: fixed;
+            top: 120px; /* Positioned below the header */
+            right: 20px; /* Moved to the right side */
+            z-index: 11;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            background-color: #6c6c6c; /* Lighter gray */
+            transform: translateY(-3px);
+        }
+
+        .back-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Container for the buttons (Move to the left side) */
+        .sections-container {
+            width: 80%;
+            max-width: 900px;
+            margin-top: 200px; /* Adjusted for header and back button space */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align items to the left */
+        }
+
+        /* Section Buttons (Dark Gray Mixed) */
+        .section-btn {
+            background-color: #666666; /* Dark gray mixed color */
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 5px 0; /* Reduced space between buttons */
+            width: auto; /* Fit to text size */
+            text-align: center;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-btn:hover {
+            background-color: #565656;
+            transform: translateY(-3px);
+        }
+
+        .section-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Paper collapse with crumpled effect */
+        .content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            width: 50%;
+            position: absolute;
+            top: 100px; /* Keep content below the header */
+            right: 10%;
+            max-height: 0;
+            overflow: hidden;
+            transform-origin: top;
+            opacity: 0;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.5s ease-out;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .content.open {
+            display: block;
+            opacity: 1;
+            max-height: 1000px;
+            transform: scaleY(1);
+            animation: crumpledPaper 1s ease-out forwards;
+        }
+
+        @keyframes crumpledPaper {
+            0% {
+                transform: scaleY(0.3) rotate(10deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scaleY(1.2) rotate(-5deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scaleY(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Crumpled Paper Design */
+        .content p {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1.1em;
+            margin: 10px 0;
+            line-height: 1.6;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transform: rotate(3deg);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        li strong {
+            color: #007bff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Security Assessment for the Central Bank of Afghanistan&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Arial', sans-serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f4f7fa;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: flex-start;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Header Style - Crumpled Paper Color */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>header {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f1e3d3; /* Crumpled paper color */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 1em;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 2.5em;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateX(-50%);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 10;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Back to Home Button - Positioned on the right side */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.back-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #4a4a4a; /* Dark gray button color */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 12px 25px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 12px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2em;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: background 0.3s ease, transform 0.3s;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 120px; /* Positioned below the header */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>right: 20px; /* Moved to the right side */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>z-index: 11;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.back-btn:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #6c6c6c; /* Lighter gray */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-3px);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.back-btn:active {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Container for the buttons (Move to the left side) */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.sections-container {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 80%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-width: 900px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 200px; /* Adjusted for header and back button space */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>align-items: flex-start; /* Align items to the left */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Section Buttons (Dark Gray Mixed) */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-btn {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #666666; /* Dark gray mixed color */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.2em;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 5px 0; /* Reduced space between buttons */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: auto; /* Fit to text size */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: background 0.3s ease, transform 0.3s;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-btn:hover {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #565656;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(-3px);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.section-btn:active {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: translateY(0);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Paper collapse with crumpled effect */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.content {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #fff;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>width: 50%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>top: 100px; /* Keep content below the header */</p>
-<p class="p1"><span class="Apple-converted-space">            </span>right: 10%;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-height: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform-origin: top;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.5s ease-out;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Georgia', serif;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>text-align: left;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>.content.open {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>display: block;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>max-height: 1000px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: scaleY(1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>animation: crumpledPaper 1s ease-out forwards;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>@keyframes crumpledPaper {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>0% {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: scaleY(0.3) rotate(10deg);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>50% {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: scaleY(1.2) rotate(-5deg);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 0.7;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">            </span>100% {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>transform: scaleY(1) rotate(0deg);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>opacity: 1;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>/* Crumpled Paper Design */</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.content p {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f7f7f7;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 8px;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1em;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 10px 0;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>line-height: 1.6;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>transform: rotate(3deg);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>ul {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>list-style-type: none;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>padding-left: 20px;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>li {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>font-size: 1.1em;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>margin: 10px 0;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>li strong {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>color: #007bff;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>html {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>scroll-behavior: smooth;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- Back to Home Button --&gt;</p>
-<p class="p1">&lt;a href="index.html"&gt;&lt;button class="back-btn"&gt;Back to Home&lt;/button&gt;&lt;/a&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;header&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>Security Assessment for the Central Bank of Afghanistan</p>
-<p class="p1">&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;!-- Container for Buttons (Left side aligned) --&gt;</p>
-<p class="p1">&lt;div class="sections-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="section-btn" onclick="toggleCollapse('section1')"&gt;Overview&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="section1" class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;As the Information Security Manager at the Central Bank of Afghanistan, I led comprehensive security assessments to evaluate the integrity and security posture of the bank's IT infrastructure. These assessments were essential for identifying potential vulnerabilities and ensuring the protection of sensitive financial data. Using a combination of manual and automated testing tools, I conducted thorough penetration testing, vulnerability scans, and risk analysis to assess the security landscape and provide actionable recommendations for improvement.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="section-btn" onclick="toggleCollapse('section2')"&gt;Objectives&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="section2" class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Identify vulnerabilities&lt;/strong&gt; in the bank's internal and external networks.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Evaluate the security&lt;/strong&gt; of critical systems and applications.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Ensure compliance&lt;/strong&gt; with industry standards.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Develop and implement strategies&lt;/strong&gt; to address identified risks.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="section-btn" onclick="toggleCollapse('section3')"&gt;Tools Used&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="section3" class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Nessus:&lt;/strong&gt; Vulnerability scanning and risk assessment tool to identify known security flaws and weaknesses across systems and networks.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Nmap:&lt;/strong&gt; Network discovery and security auditing tool that helps identify open ports, running services, and network configurations.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Kali Linux:&lt;/strong&gt; A penetration testing platform equipped with numerous tools for vulnerability assessment and exploitation.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Acunetix:&lt;/strong&gt; Automated web application security scanner that detects vulnerabilities like SQL injection, XSS, and other web-based security risks.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Wireshark:&lt;/strong&gt; Network protocol analyzer for capturing and analyzing network traffic to identify potential vulnerabilities in network protocols and communication.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;OWASP ZAP (Zed Attack Proxy):&lt;/strong&gt; A popular web application security scanner that helps in finding vulnerabilities in web apps, such as XSS, SQL injection, and others.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Burp Suite:&lt;/strong&gt; A suite of tools for web application security testing, including features for vulnerability scanning, penetration testing, and manual security assessments.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Metasploit:&lt;/strong&gt; A penetration testing framework that allows security professionals to develop and execute exploit code against a remote target machine.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Nessus Essentials:&lt;/strong&gt; A free version of Nessus for conducting vulnerability assessments in a more limited scope, often used in smaller environments.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Snort:&lt;/strong&gt; Open-source intrusion detection and prevention system that monitors network traffic for signs of malicious activity.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;OpenVAS (Greenbone):&lt;/strong&gt; An open-source vulnerability scanner that identifies vulnerabilities across various services and systems.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Qualys:&lt;/strong&gt; Cloud-based vulnerability management platform that automates vulnerability scanning and helps organizations stay compliant with industry standards.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Netcat:&lt;/strong&gt; A network utility used for debugging and scanning network connections, often used in penetration testing for its ability to read and write data across network connections.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;John the Ripper:&lt;/strong&gt; A fast password cracking tool used to assess password strength and help in identifying weak or easily guessed passwords.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Hydra:&lt;/strong&gt; A network login cracker that supports multiple protocols, used for brute-force password testing and auditing.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Sysinternals Suite:&lt;/strong&gt; A collection of tools for advanced system monitoring and management, particularly useful for identifying and analyzing security issues on Windows systems.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Nikto:&lt;/strong&gt; A web server scanner that helps identify various vulnerabilities, including outdated software, security misconfigurations, and common flaws.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Sleuth Kit:&lt;/strong&gt; A suite of digital forensics tools for investigating disk images, file systems, and data to detect malicious activity and recover evidence.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Cuckoo Sandbox:&lt;/strong&gt; A malware analysis tool that allows you to run files in an isolated environment to analyze their behavior and identify malicious activity.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;AlienVault OSSIM:&lt;/strong&gt; Open-source SIEM (Security Information and Event Management) platform for monitoring and analyzing security incidents, providing threat detection and response capabilities.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="section-btn" onclick="toggleCollapse('section4')"&gt;Process&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="section4" class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Preparation:&lt;/strong&gt; Defined the scope and objectives of the security assessment, identifying systems and applications to be tested.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Vulnerability Scanning:&lt;/strong&gt; Performed automated scans using Nessus, Acunetix, OpenVAS, and Qualys to identify known vulnerabilities across the bank's network and applications.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Penetration Testing:&lt;/strong&gt; Utilized Kali Linux, Metasploit, Burp Suite, and Hydra to simulate real-world cyber-attacks and assess the bank’s defenses.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Risk Assessment:&lt;/strong&gt; Prioritized vulnerabilities based on their severity and business impact, providing a clear risk level for each identified issue.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Remediation Support:&lt;/strong&gt; Collaborated with IT teams to address vulnerabilities and implement security improvements, ensuring that critical vulnerabilities were mitigated.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="section-btn" onclick="toggleCollapse('section5')"&gt;Vulnerabilities Identified&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="section5" class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;&lt;strong&gt;Summary:&lt;/strong&gt; This section includes the identified vulnerabilities, their severity, risk level, affected assets, descriptions, and the remediation actions taken to resolve them.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="section-btn" onclick="toggleCollapse('section6')"&gt;Outcome&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="section6" class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;The security assessment identified critical vulnerabilities within the bank's systems. These vulnerabilities were promptly addressed, improving the bank's overall security posture and ensuring the integrity of sensitive financial data. The assessment also provided valuable insights into areas requiring continuous monitoring and improvement.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="section-btn" onclick="toggleCollapse('section7')"&gt;Impact&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="section7" class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Strengthened&lt;/strong&gt; the security of sensitive financial data, preventing potential data breaches.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Reduced&lt;/strong&gt; the risk of cyber-attacks through proactive vulnerability management and remediation.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Improved&lt;/strong&gt; security awareness among internal teams, fostering a culture of continuous security improvement.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;li&gt;&lt;strong&gt;Enhanced&lt;/strong&gt; compliance with industry regulations, reducing the risk of penalties and ensuring best practices were followed.&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1">&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>function toggleCollapse(sectionId) {</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const sections = document.querySelectorAll('.content');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>sections.forEach(section =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (section.id !== sectionId) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>section.classList.remove('open');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>const currentSection = document.getElementById(sectionId);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>currentSection.classList.toggle('open');</p>
-<p class="p1"><span class="Apple-converted-space">    </span>}</p>
-<p class="p1">&lt;/script&gt;</p>
-<p class="p2"><br></p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+
+<!-- Back to Home Button -->
+<a href="index.html"><button class="back-btn">Back to Home</button></a>
+
+<header>
+    Security Assessment for the Central Bank of Afghanistan
+</header>
+
+<!-- Container for Buttons (Left side aligned) -->
+<div class="sections-container">
+    <button class="section-btn" onclick="toggleCollapse('section1')">Overview</button>
+    <div id="section1" class="content">
+        <p>As the Information Security Manager at the Central Bank of Afghanistan, I led comprehensive security assessments to evaluate the integrity and security posture of the bank's IT infrastructure. These assessments were essential for identifying potential vulnerabilities and ensuring the protection of sensitive financial data. Using a combination of manual and automated testing tools, I conducted thorough penetration testing, vulnerability scans, and risk analysis to assess the security landscape and provide actionable recommendations for improvement.</p>
+    </div>
+
+    <button class="section-btn" onclick="toggleCollapse('section2')">Objectives</button>
+    <div id="section2" class="content">
+        <ul>
+            <li><strong>Identify vulnerabilities</strong> in the bank's internal and external networks.</li>
+            <li><strong>Evaluate the security</strong> of critical systems and applications.</li>
+            <li><strong>Ensure compliance</strong> with industry standards.</li>
+            <li><strong>Develop and implement strategies</strong> to address identified risks.</li>
+        </ul>
+    </div>
+
+    <button class="section-btn" onclick="toggleCollapse('section3')">Tools Used</button>
+    <div id="section3" class="content">
+        <p><strong>Nessus:</strong> Vulnerability scanning and risk assessment tool to identify known security flaws and weaknesses across systems and networks.</p>
+        <p><strong>Nmap:</strong> Network discovery and security auditing tool that helps identify open ports, running services, and network configurations.</p>
+        <p><strong>Kali Linux:</strong> A penetration testing platform equipped with numerous tools for vulnerability assessment and exploitation.</p>
+        <p><strong>Acunetix:</strong> Automated web application security scanner that detects vulnerabilities like SQL injection, XSS, and other web-based security risks.</p>
+        <p><strong>Wireshark:</strong> Network protocol analyzer for capturing and analyzing network traffic to identify potential vulnerabilities in network protocols and communication.</p>
+        <p><strong>OWASP ZAP (Zed Attack Proxy):</strong> A popular web application security scanner that helps in finding vulnerabilities in web apps, such as XSS, SQL injection, and others.</p>
+        <p><strong>Burp Suite:</strong> A suite of tools for web application security testing, including features for vulnerability scanning, penetration testing, and manual security assessments.</p>
+        <p><strong>Metasploit:</strong> A penetration testing framework that allows security professionals to develop and execute exploit code against a remote target machine.</p>
+        <p><strong>Nessus Essentials:</strong> A free version of Nessus for conducting vulnerability assessments in a more limited scope, often used in smaller environments.</p>
+        <p><strong>Snort:</strong> Open-source intrusion detection and prevention system that monitors network traffic for signs of malicious activity.</p>
+        <p><strong>OpenVAS (Greenbone):</strong> An open-source vulnerability scanner that identifies vulnerabilities across various services and systems.</p>
+        <p><strong>Qualys:</strong> Cloud-based vulnerability management platform that automates vulnerability scanning and helps organizations stay compliant with industry standards.</p>
+        <p><strong>Netcat:</strong> A network utility used for debugging and scanning network connections, often used in penetration testing for its ability to read and write data across network connections.</p>
+        <p><strong>John the Ripper:</strong> A fast password cracking tool used to assess password strength and help in identifying weak or easily guessed passwords.</p>
+        <p><strong>Hydra:</strong> A network login cracker that supports multiple protocols, used for brute-force password testing and auditing.</p>
+        <p><strong>Sysinternals Suite:</strong> A collection of tools for advanced system monitoring and management, particularly useful for identifying and analyzing security issues on Windows systems.</p>
+        <p><strong>Nikto:</strong> A web server scanner that helps identify various vulnerabilities, including outdated software, security misconfigurations, and common flaws.</p>
+        <p><strong>Sleuth Kit:</strong> A suite of digital forensics tools for investigating disk images, file systems, and data to detect malicious activity and recover evidence.</p>
+        <p><strong>Cuckoo Sandbox:</strong> A malware analysis tool that allows you to run files in an isolated environment to analyze their behavior and identify malicious activity.</p>
+        <p><strong>AlienVault OSSIM:</strong> Open-source SIEM (Security Information and Event Management) platform for monitoring and analyzing security incidents, providing threat detection and response capabilities.</p>
+    </div>
+
+    <button class="section-btn" onclick="toggleCollapse('section4')">Process</button>
+    <div id="section4" class="content">
+        <ul>
+            <li><strong>Preparation:</strong> Defined the scope and objectives of the security assessment, identifying systems and applications to be tested.</li>
+            <li><strong>Vulnerability Scanning:</strong> Performed automated scans using Nessus, Acunetix, OpenVAS, and Qualys to identify known vulnerabilities across the bank's network and applications.</li>
+            <li><strong>Penetration Testing:</strong> Utilized Kali Linux, Metasploit, Burp Suite, and Hydra to simulate real-world cyber-attacks and assess the bank’s defenses.</li>
+            <li><strong>Risk Assessment:</strong> Prioritized vulnerabilities based on their severity and business impact, providing a clear risk level for each identified issue.</li>
+            <li><strong>Remediation Support:</strong> Collaborated with IT teams to address vulnerabilities and implement security improvements, ensuring that critical vulnerabilities were mitigated.</li>
+        </ul>
+    </div>
+
+    <button class="section-btn" onclick="toggleCollapse('section5')">Vulnerabilities Identified</button>
+    <div id="section5" class="content">
+        <p><strong>Summary:</strong> This section includes the identified vulnerabilities, their severity, risk level, affected assets, descriptions, and the remediation actions taken to resolve them.</p>
+    </div>
+
+    <button class="section-btn" onclick="toggleCollapse('section6')">Outcome</button>
+    <div id="section6" class="content">
+        <p>The security assessment identified critical vulnerabilities within the bank's systems. These vulnerabilities were promptly addressed, improving the bank's overall security posture and ensuring the integrity of sensitive financial data. The assessment also provided valuable insights into areas requiring continuous monitoring and improvement.</p>
+    </div>
+
+    <button class="section-btn" onclick="toggleCollapse('section7')">Impact</button>
+    <div id="section7" class="content">
+        <ul>
+            <li><strong>Strengthened</strong> the security of sensitive financial data, preventing potential data breaches.</li>
+            <li><strong>Reduced</strong> the risk of cyber-attacks through proactive vulnerability management and remediation.</li>
+            <li><strong>Improved</strong> security awareness among internal teams, fostering a culture of continuous security improvement.</li>
+            <li><strong>Enhanced</strong> compliance with industry regulations, reducing the risk of penalties and ensuring best practices were followed.</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleCollapse(sectionId) {
+        const sections = document.querySelectorAll('.content');
+        sections.forEach(section => {
+            if (section.id !== sectionId) {
+                section.classList.remove('open');
+            }
+        });
+
+        const currentSection = document.getElementById(sectionId);
+        currentSection.classList.toggle('open');
+    }
+</script>
+
 </body>
 </html>
