@@ -17,14 +17,18 @@
             flex-direction: column;
         }
 
+        /* Header with mixed color and 3D effect */
         header {
-            background-color: #007bff;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
             color: white;
             padding: 1.5em 0;
             text-align: center;
-            font-size: 2em;
+            font-size: 3em;
             font-weight: bold;
             width: 100%;
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+            transform: perspective(200px) rotateX(10deg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Back to Home Button */
@@ -240,17 +244,17 @@
                 section.classList.remove('open');
             }
         });
-        
-        const content = document.getElementById(sectionId);
-        if (content.classList.contains('open')) {
-            content.classList.remove('open');
-        } else {
-            content.classList.add('open');
-        }
+
+        const currentSection = document.getElementById(sectionId);
+        currentSection.classList.toggle('open');
     }
 
+    // Function to scroll back to the top (Back to Home)
     function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
     }
 </script>
 
