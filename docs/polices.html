@@ -3,94 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Information Security Policies</title>
+    <title>Incident Response Plan Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
+            background-color: #f4f4f9;
         }
-        header {
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
+
+        /* Crumpled Paper Animation */
+        @keyframes crumpled-paper {
+            from {
+                transform: translateY(-20px) scale(1);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
         }
-        header h1 {
-            font-size: 36px;
-            margin: 0;
-        }
-        header p {
-            margin: 10px 0;
-            font-size: 20px;
-        }
-        .container {
-            width: 85%;
-            margin: auto;
-            overflow: hidden;
-            padding: 60px 0;
-        }
-        .section-title {
-            color: #007bff;
-            font-size: 30px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .content {
-            background-color: #fff;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        .content p {
+
+        /* Style for buttons */
+        .accordion {
+            background: linear-gradient(145deg, #ccc, #fff);
+            box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.2), 1px 1px 5px rgba(0, 0, 0, 0.2);
+            border: none;
+            padding: 12px 25px;
+            margin: 10px;
+            width: auto;
             font-size: 18px;
-            line-height: 1.8;
-        }
-        footer {
-            background-color: #007bff;
-            color: white;
             text-align: center;
-            padding: 20px 0;
-            margin-top: 50px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
         }
-        footer p {
-            margin: 0;
-            font-size: 16px;
+
+        .accordion:hover {
+            background: linear-gradient(145deg, #bbb, #f0f0f0);
+            transform: scale(1.05);
         }
+
+        .panel {
+            padding: 20px;
+            display: none;
+            background-color: #fff;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #ddd;
+            margin-top: 10px;
+            animation: crumpled-paper 0.6s ease-out;
+        }
+
+        /* Layout for the page */
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .buttons {
+            width: 30%;
+        }
+
+        .content {
+            width: 65%;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-left: 20px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .home-button {
+            background: #007bff;
+            color: white;
+            padding: 12px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .home-button:hover {
+            background: #0056b3;
+        }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Information Security Policies</h1>
-        <p>Central Bank of Afghanistan</p>
-    </header>
+<h1 style="text-align:center; margin:20px;">Incident Response Plan Portfolio</h1>
 
-    <div class="container">
-        <section>
-            <h2 class="section-title">Network Security Policy</h2>
-            <div class="content">
-                <p>Developed guidelines for the protection of the bank's network infrastructure, including firewalls, routers, and other network devices.</p>
-            </div>
-
-            <h2 class="section-title">Email Security Policy</h2>
-            <div class="content">
-                <p>Established protocols for secure email communication, including encryption standards and rules for handling sensitive information.</p>
-            </div>
-
-            <h2 class="section-title">User Management and Password Policy</h2>
-            <div class="content">
-                <p>Created guidelines for user account management, including password strength requirements, user authentication protocols, and role-based access controls.</p>
-            </div>
-        </section>
+<div class="container">
+    <div class="buttons">
+        <button class="accordion">Introduction</button>
+        <button class="accordion">Incident Response Phases</button>
+        <button class="accordion">Incident Response Team (IRT)</button>
+        <button class="accordion">Incident Detection and Reporting</button>
+        <button class="accordion">Containment and Mitigation Strategies</button>
+        <button class="accordion">Eradication and Recovery</button>
+        <button class="accordion">Post-Incident Review</button>
+        <button class="accordion">Incident Response Testing and Drills</button>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Hashmatullah Bahadari</p>
-    </footer>
+    <div class="content">
+        <div id="intro" class="panel">
+            <h2>Introduction</h2>
+            <p>The Incident Response Plan (IRP) Portfolio Project demonstrates my approach to handling cybersecurity incidents, outlining the methodology and steps involved in developing, executing, and refining a comprehensive plan. The objective is to ensure that organizations are prepared to effectively detect, respond, and recover from security incidents while minimizing business disruption.</p>
+        </div>
+
+        <div id="phases" class="panel">
+            <h2>Incident Response Phases</h2>
+            <p>The IRP consists of several clearly defined phases: Preparation, Identification, Containment, Eradication, Recovery, and Lessons Learned.</p>
+        </div>
+
+        <div id="team" class="panel">
+            <h2>Incident Response Team (IRT)</h2>
+            <p>An effective IRP requires a dedicated team with defined roles including Incident Response Manager, Technical Leads, Legal Advisors, and Communication Leads.</p>
+        </div>
+
+        <div id="detection" class="panel">
+            <h2>Incident Detection and Reporting</h2>
+            <p>Leveraging SIEM systems and endpoint protection tools, I ensure quick identification of incidents through continuous monitoring and efficient reporting systems.</p>
+        </div>
+
+        <div id="containment" class="panel">
+            <h2>Containment and Mitigation Strategies</h2>
+            <p>Containment strategies are implemented immediately after detection, focusing on short-term containment and long-term fixes to secure affected systems.</p>
+        </div>
+
+        <div id="eradication" class="panel">
+            <h2>Eradication and Recovery</h2>
+            <p>After containment, the eradication phase focuses on removing the threat completely, followed by recovery where systems are restored to full functionality.</p>
+        </div>
+
+        <div id="review" class="panel">
+            <h2>Post-Incident Review</h2>
+            <p>After every incident, a detailed review is conducted to analyze the root cause, and lessons learned are documented to improve future response efforts.</p>
+        </div>
+
+        <div id="testing" class="panel">
+            <h2>Incident Response Testing and Drills</h2>
+            <p>Regular drills and tabletop exercises are conducted to test the response plan and ensure that all team members are well-prepared for any security incidents.</p>
+        </div>
+
+        <a href="index.html" class="home-button">Back to Home</a>
+    </div>
+</div>
+
+<script>
+    const accordions = document.querySelectorAll(".accordion");
+    const panels = document.querySelectorAll(".panel");
+
+    accordions.forEach(accordion => {
+        accordion.addEventListener("click", function() {
+            this.classList.toggle("active");
+            const panel = document.getElementById(this.innerText.toLowerCase().replace(/\s+/g, ''));
+            panels.forEach(p => p.style.display = "none");  // Hide all panels
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
