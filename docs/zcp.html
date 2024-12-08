@@ -27,6 +27,29 @@
             width: 100%;
         }
 
+        /* Back to home button */
+        .back-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-btn:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
+        }
+
+        .back-btn:active {
+            transform: translateY(0);
+        }
+
         /* Container for the buttons */
         .sections-container {
             width: 80%;
@@ -47,13 +70,18 @@
             width: 100%;
             text-align: left;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .section-btn:hover {
             background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        .section-btn:active {
+            transform: translateY(0);
         }
 
         /* The content sections with the notebook folding effect */
@@ -61,22 +89,23 @@
             display: none;
             padding: 20px;
             background-color: #fff;
-            border-radius: 5px;
+            border-radius: 8px;
             border: 1px solid #ddd;
             margin-top: 20px;
             width: 100%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transform-origin: top;
-            transition: transform 0.5s ease-out, max-height 0.3s ease-out;
             max-height: 0;
             overflow: hidden;
+            transform-origin: top;
+            transition: transform 0.5s ease-out, max-height 0.3s ease-out;
+            opacity: 0;
         }
 
-        /* Styling for the notebook paper effect */
         .content.open {
             display: block;
             max-height: 1000px;
-            transform: rotateX(0deg);
+            opacity: 1;
+            transform: scaleY(1);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
@@ -94,9 +123,17 @@
             color: #007bff;
         }
 
+        /* Smooth scroll for "Back to Home" button */
+        html {
+            scroll-behavior: smooth;
+        }
+
     </style>
 </head>
 <body>
+
+<!-- Back to Home Button -->
+<button class="back-btn" onclick="scrollToTop()">Back to Home</button>
 
 <header>
     Business Continuity Planning (BCP) Policy and Procedures
@@ -181,6 +218,10 @@
         } else {
             content.classList.add('open');
         }
+    }
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
 
