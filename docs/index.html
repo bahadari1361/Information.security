@@ -5,95 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information Security Portfolio</title>
     <style>
+        /* General Styles */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f6f9;
+            background-color: #f8f9fa;
             color: #333;
             line-height: 1.6;
         }
 
         header {
-            background-color: #007bff;
+            background-color: #007bff; /* Blue background */
             color: white;
             text-align: center;
             padding: 40px 20px;
         }
 
         header h1 {
-            margin: 0;
             font-size: 36px;
+            margin: 0;
+            font-weight: bold;
         }
 
         header p {
-            margin: 5px 0;
-            font-size: 18px;
+            margin: 10px 0;
+            font-size: 20px;
         }
 
         .container {
             width: 85%;
             margin: auto;
             overflow: hidden;
-            padding: 50px 0;
+            padding: 60px 0;
         }
 
-        .container section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
+        /* Section Styles */
+        .section-title {
             color: #007bff;
-            font-size: 28px;
+            font-size: 30px;
             margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
         }
 
-        .overview-text {
+        .overview {
             background-color: #fff;
-            border-left: 5px solid #007bff;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
             margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        .overview p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .portfolio-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             gap: 20px;
+            margin-top: 20px;
         }
 
-        li {
-            background-color: #fff;
-            padding: 20px;
+        .portfolio-item {
+            background-color: #ffffff;
+            padding: 30px;
+            width: 48%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            transition: transform 0.3s, background-color 0.3s;
+            text-align: center;
         }
 
-        li:hover {
-            background-color: #f4f6f9;
+        .portfolio-item:hover {
             transform: translateY(-5px);
+            background-color: #e9ecef;
         }
 
-        a {
+        .portfolio-item a {
             text-decoration: none;
             color: #007bff;
+            font-size: 20px;
             font-weight: bold;
-            font-size: 18px;
+            display: inline-block;
+            margin-top: 10px;
         }
 
-        a:hover {
+        .portfolio-item a:hover {
             color: #0056b3;
-            text-decoration: underline;
         }
 
+        /* Footer Styles */
         footer {
             background-color: #007bff;
             color: white;
-            padding: 20px;
             text-align: center;
+            padding: 20px 0;
             margin-top: 50px;
         }
 
@@ -102,53 +111,74 @@
             font-size: 16px;
         }
 
-        .btn {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            font-size: 18px;
-            margin-top: 20px;
-            transition: background-color 0.3s;
-        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .portfolio-item {
+                width: 100%;
+            }
 
-        .btn:hover {
-            background-color: #0056b3;
+            .container {
+                width: 90%;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Information Security Management Portfolio</h1>
+        <h1>Portfolio: Information Security Management</h1>
         <p>Central Bank of Afghanistan</p>
     </header>
 
     <div class="container">
+        <!-- Overview Section -->
         <section>
-            <h2>Overview</h2>
-            <div class="overview-text">
-                <p>This portfolio showcases my work as the Information Security Manager at the Central Bank of Afghanistan. It includes policies, plans, audits, assessments, and tools used to safeguard the bank's critical infrastructure. My contributions helped align the bank’s security posture with international best practices, ensuring its resilience against evolving cyber threats.</p>
+            <h2 class="section-title">Overview</h2>
+            <div class="overview">
+                <p>This portfolio showcases my work as the Information Security Manager at the Central Bank of Afghanistan. It includes policies, plans, audits, assessments, and tools used to safeguard the bank's critical infrastructure. My role involved ensuring the security of sensitive data, networks, and IT systems. Additionally, I contributed to implementing ISO 27001 standards to strengthen the bank's security framework.</p>
             </div>
         </section>
 
+        <!-- Portfolio Sections -->
         <section>
-            <h2>Portfolio Sections</h2>
-            <ul>
-                <li><a href="policies.html">Information Security Policies</a></li>
-                <li><a href="bcp.html">Business Continuity Planning</a></li>
-                <li><a href="irp.html">Incident Response Plan</a></li>
-                <li><a href="audits.html">IT Audits</a></li>
-                <li><a href="pentesting.html">Penetration Testing</a></li>
-                <li><a href="security-assessments.html">Security Assessments</a></li>
-                <li><a href="compliance.html">Compliance Frameworks</a></li>
-            </ul>
-        </section>
-
-        <section>
-            <a href="contact.html" class="btn">Contact Me</a>
+            <h2 class="section-title">Portfolio Sections</h2>
+            <div class="portfolio-list">
+                <div class="portfolio-item">
+                    <h3>Information Security Policies</h3>
+                    <p>Development and implementation of security policies to safeguard the bank's IT infrastructure and data.</p>
+                    <a href="policies.html">Learn More</a>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Business Continuity Planning</h3>
+                    <p>Creating plans to ensure the bank's operations continue during and after disruptive events.</p>
+                    <a href="bcp.html">Learn More</a>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Incident Response Plan</h3>
+                    <p>Developing strategies to respond to and recover from cybersecurity incidents.</p>
+                    <a href="irp.html">Learn More</a>
+                </div>
+                <div class="portfolio-item">
+                    <h3>IT Audits</h3>
+                    <p>Conducting audits to ensure compliance with security policies and identify potential vulnerabilities.</p>
+                    <a href="audits.html">Learn More</a>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Penetration Testing</h3>
+                    <p>Performing simulated attacks to assess the security posture of the bank's systems.</p>
+                    <a href="pentesting.html">Learn More</a>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Security Assessments</h3>
+                    <p>Regular assessments to identify risks and improve the overall security framework.</p>
+                    <a href="security-assessments.html">Learn More</a>
+                </div>
+                <div class="portfolio-item">
+                    <h3>Compliance Frameworks</h3>
+                    <p>Ensuring compliance with industry standards such as ISO 27001 and data protection regulations.</p>
+                    <a href="compliance.html">Learn More</a>
+                </div>
+            </div>
         </section>
     </div>
 
