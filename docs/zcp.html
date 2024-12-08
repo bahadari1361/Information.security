@@ -3,216 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCP Portfolio</title>
+    <title>Business Continuity Planning (BCP)</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f7fa;
             display: flex;
-            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            height: 100%;
         }
 
-        /* Styling for crumpled paper button */
-        .crumpled-button {
-            background: linear-gradient(135deg, #f3f3f3 25%, #ddd 75%);
-            border: 1px solid #bbb;
-            border-radius: 5px;
-            padding: 10px 20px;
-            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
-            cursor: pointer;
-            font-size: 16px;
+        /* Header Style - Crumpled Paper Color */
+        header {
+            background-color: #f1e3d3; /* Crumpled paper color */
+            color: #333;
+            padding: 1em;
             text-align: center;
-            transition: transform 0.2s ease-in-out;
-            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: bold;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
         }
 
-        .crumpled-button:hover {
+        /* Back to Home Button - Positioned below the Header */
+        .back-btn {
+            background-color: #4a4a4a; /* Dark gray button color */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s;
+            position: fixed;
+            top: 120px; /* Positioned below the header */
+            left: 20px;
+            z-index: 11;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            background-color: #6c6c6c; /* Lighter gray */
             transform: translateY(-3px);
         }
 
-        .crumpled-button:active {
-            transform: translateY(1px);
+        .back-btn:active {
+            transform: translateY(0);
         }
 
-        /* Paper-like content panel */
-        .crumpled-paper {
-            background: #fff;
-            padding: 20px;
-            border: 1px solid #ddd;
+        /* Container for the buttons */
+        .sections-container {
+            width: 80%;
+            max-width: 900px;
+            margin-top: 200px; /* Adjusted for header and back button space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Section Buttons (Dark Gray Mixed) */
+        .section-btn {
+            background-color: #666666; /* Dark gray mixed color */
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px 0;
+            width: auto; /* Fit to text size */
+            text-align: center;
+            border: none;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: crumpled-paper 0.6s ease-out;
-            overflow: hidden;
-            max-height: 85vh;
-            margin: 10px;
-            width: 48%;
-            display: inline-block;
-            vertical-align: top;
-            background-color: #fafafa;
-            opacity: 0;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        @keyframes crumpled-paper {
-            from {
-                transform: translateY(-50px) scaleY(0.8);
+        .section-btn:hover {
+            background-color: #565656;
+            transform: translateY(-3px);
+        }
+
+        .section-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Paper collapse with crumpled effect */
+        .content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            width: 50%;
+            position: absolute;
+            top: 100px; /* Keep content below the header */
+            right: 10%;
+            max-height: 0;
+            overflow: hidden;
+            transform-origin: top;
+            opacity: 0;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.5s ease-out;
+            font-family: 'Georgia', serif;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+
+        .content.open {
+            display: block;
+            opacity: 1;
+            max-height: 1000px;
+            transform: scaleY(1);
+            animation: crumpledPaper 1s ease-out forwards;
+        }
+
+        @keyframes crumpledPaper {
+            0% {
+                transform: scaleY(0.3) rotate(10deg);
                 opacity: 0;
             }
-            to {
-                transform: translateY(0) scaleY(1);
+            50% {
+                transform: scaleY(1.2) rotate(-5deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scaleY(1) rotate(0deg);
                 opacity: 1;
             }
         }
 
-        /* Content container styles */
-        .container {
-            width: 50%;
-            margin-left: 20px;
+        /* Crumpled Paper Design */
+        .content p {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1.1em;
+            margin: 10px 0;
+            line-height: 1.6;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transform: rotate(3deg);
         }
 
-        .back-to-home {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            font-size: 16px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 20px;
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
         }
 
-        .back-to-home:hover {
-            background-color: #0056b3;
+        li {
+            font-size: 1.1em;
+            margin: 10px 0;
         }
 
-        /* Accordion button styles */
-        .accordion {
-            background: #e3e3e3;
-            cursor: pointer;
-            padding: 15px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 18px;
-            margin-bottom: 5px;
-            transition: background 0.3s;
+        li strong {
+            color: #007bff;
         }
 
-        .accordion:hover {
-            background: #d6d6d6;
+        html {
+            scroll-behavior: smooth;
         }
-
-        .active {
-            background: #ccc;
-        }
-
-        .panel {
-            display: none;
-        }
-
-        /* Ensuring layout is responsive */
-        @media screen and (max-width: 768px) {
-            .container {
-                width: 100%;
-                margin-left: 0;
-            }
-
-            .crumpled-paper {
-                width: 100%;
-                margin: 0;
-                margin-top: 10px;
-            }
-        }
-
     </style>
 </head>
 <body>
 
-<div class="container">
-    <a href="index.html" class="back-to-home">Back to Home</a>
-    <h1 style="text-align:center;">Business Continuity Planning (BCP) Portfolio</h1>
+<!-- Back to Home Button -->
+<a href="index.html"><button class="back-btn">Back to Home</button></a>
 
-    <!-- Accordion buttons for each section -->
-    <button class="accordion">Introduction</button>
-    <div class="panel">
-        <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions...</p>
+<header>
+    Business Continuity Planning (BCP) Policy and Procedures
+</header>
+
+<!-- Container for Buttons -->
+<div class="sections-container">
+    <button class="section-btn" onclick="toggleCollapse('section1')">Policy Framework</button>
+    <div id="section1" class="content">
+        <p><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</p>
+        <p><strong>Leadership and Responsibility:</strong> Identify the leadership team, including the Business Continuity Manager and other key personnel responsible for planning, implementation, and maintenance.</p>
+        <p><strong>Governance Structure:</strong> Outline the organizational structure that will support the BCP, including departments, roles, and responsibilities.</p>
     </div>
 
-    <button class="accordion">Policy Development and Governance</button>
-    <div class="panel">
-        <p>Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301)...</p>
+    <button class="section-btn" onclick="toggleCollapse('section2')">Risk Assessment</button>
+    <div id="section2" class="content">
+        <p><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</p>
+        <p><strong>Business Impact Analysis (BIA):</strong> Identify critical business functions and processes. Determine the potential impact of disruptions on these functions, including financial, operational, and reputational effects.</p>
     </div>
 
-    <button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
-    <div class="panel">
-        <p>Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures...</p>
+    <button class="section-btn" onclick="toggleCollapse('section3')">Recovery Objectives</button>
+    <div id="section3" class="content">
+        <p><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</p>
+        <p><strong>Recovery Point Objectives (RPO):</strong> Define the maximum acceptable data loss in terms of time (how much data can be lost before the business operation is significantly impacted).</p>
+        <p><strong>Business Continuity Strategies:</strong> Develop strategies for maintaining or quickly restoring critical functions. This may include cloud backups, disaster recovery sites, or manual processes.</p>
     </div>
 
-    <button class="accordion">Recovery Objectives and Strategies</button>
-    <div class="panel">
-        <p>Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems...</p>
+    <button class="section-btn" onclick="toggleCollapse('section4')">Communication Plan</button>
+    <div id="section4" class="content">
+        <p><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</p>
+        <p><strong>External Communication:</strong> Define how the organization will communicate with external stakeholders (e.g., customers, suppliers, regulators) in the event of a disruption.</p>
     </div>
 
-    <button class="accordion">Incident Management and Response</button>
-    <div class="panel">
-        <p>Established protocols for detecting and reporting incidents promptly...</p>
+    <button class="section-btn" onclick="toggleCollapse('section5')">Incident Response</button>
+    <div id="section5" class="content">
+        <p><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</p>
+        <p><strong>Response Procedures:</strong> Define the steps to take immediately after an incident is detected, such as activating the BCP, notifying relevant stakeholders, and containing the impact.</p>
+        <p><strong>Recovery Procedures:</strong> Outline how the business will recover from the incident, including restoring systems, processes, and communications.</p>
     </div>
 
-    <button class="accordion">Training and Awareness</button>
-    <div class="panel">
-        <p>Designed and conducted regular training sessions for employees...</p>
+    <button class="section-btn" onclick="toggleCollapse('section6')">Training & Awareness</button>
+    <div id="section6" class="content">
+        <p><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</p>
+        <p><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</p>
     </div>
 
-    <button class="accordion">BCP Testing and Maintenance</button>
-    <div class="panel">
-        <p>Conducted regular testing of BCP components to ensure they remain effective...</p>
+    <button class="section-btn" onclick="toggleCollapse('section7')">Testing & Maintenance</button>
+    <div id="section7" class="content">
+        <p><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</p>
+        <p><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</p>
+        <p><strong>Lessons Learned and Continuous Improvement:</strong> After each test or real incident, conduct a post-mortem analysis to identify areas for improvement and implement changes as necessary.</p>
     </div>
 
-    <button class="accordion">RTO and RPO Table</button>
-    <div class="panel">
-        <table>
-            <tr>
-                <th>Critical System</th>
-                <th>Recovery Time Objective (RTO)</th>
-                <th>Recovery Point Objective (RPO)</th>
-            </tr>
-            <tr>
-                <td>System 1</td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-    </div>
-
-    <button class="accordion">Conclusion</button>
-    <div class="panel">
-        <p>My comprehensive approach to Business Continuity Planning ensures organizational resilience...</p>
+    <button class="section-btn" onclick="toggleCollapse('section8')">Documentation & Reporting</button>
+    <div id="section8" class="content">
+        <p><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</p>
+        <p><strong>Reporting:</strong> Establish reporting requirements for both internal and external stakeholders. This may include regular reports on BCP readiness, issues encountered during tests, and post-incident evaluations.</p>
     </div>
 </div>
 
-<!-- Content area where crumpled paper effects are displayed -->
-<div class="crumpled-paper" id="content-area"></div>
-
 <script>
-    const accordions = document.querySelectorAll(".accordion");
-    const contentArea = document.getElementById("content-area");
-
-    accordions.forEach(accordion => {
-        accordion.addEventListener("click", function () {
-            this.classList.toggle("active");
-            const panel = this.nextElementSibling;
-
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-                // Show the content with crumpled paper effect on the right side
-                contentArea.innerHTML = panel.innerHTML;
-                contentArea.style.display = "block";
+    function toggleCollapse(sectionId) {
+        const sections = document.querySelectorAll('.content');
+        sections.forEach(section => {
+            if (section.id !== sectionId) {
+                section.classList.remove('open');
             }
         });
-    });
+
+        const currentSection = document.getElementById(sectionId);
+        currentSection.classList.toggle('open');
+    }
 </script>
 
 </body>
