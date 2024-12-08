@@ -30,15 +30,6 @@
         }
 
         .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            width: 80%;
-            height: 500px;
-        }
-
-        .circle-container {
             position: relative;
             width: 300px;
             height: 300px;
@@ -49,40 +40,40 @@
             position: relative;
         }
 
-        .circle {
-            width: 70px;
-            height: 70px;
+        .donut-chart {
+            position: relative;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            background-color: #007bff;
-            color: #fff;
-            text-align: center;
-            line-height: 70px;
-            font-size: 1.2em;
+            background: conic-gradient(
+                #007bff 0deg 45deg,
+                #28a745 45deg 90deg,
+                #ffc107 90deg 135deg,
+                #dc3545 135deg 180deg,
+                #17a2b8 180deg 225deg,
+                #fd7e14 225deg 270deg,
+                #6f42c1 270deg 315deg,
+                #6610f2 315deg 360deg
+            );
             cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin: 10px;
+        }
+
+        .donut-chart span {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em;
+            z-index: 1;
         }
-
-        .circle:hover {
-            background-color: #0056b3;
-        }
-
-        .circle + .circle {
-            position: absolute;
-        }
-
-        .circle1 { top: 0; left: 50%; transform: translateX(-50%); }
-        .circle2 { top: 10%; left: 10%; }
-        .circle3 { top: 10%; right: 10%; }
-        .circle4 { bottom: 10%; left: 10%; }
-        .circle5 { bottom: 10%; right: 10%; }
-        .circle6 { top: 50%; left: 0%; transform: translateY(-50%); }
-        .circle7 { top: 50%; right: 0%; transform: translateY(-50%); }
-        .circle8 { top: 80%; left: 50%; transform: translateX(-50%); }
 
         .content {
             display: none;
@@ -92,6 +83,7 @@
             border: 1px solid #ddd;
             margin-top: 20px;
             width: 80%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         ul {
@@ -107,25 +99,6 @@
         li strong {
             color: #007bff;
         }
-
-        /* Add responsive design */
-        @media screen and (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .circle-container {
-                width: 200px;
-                height: 200px;
-            }
-
-            .circle {
-                width: 50px;
-                height: 50px;
-                font-size: 1em;
-                line-height: 50px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -134,17 +107,31 @@
     Business Continuity Planning (BCP) Policy and Procedures
 </header>
 
+<!-- Donut Chart -->
 <div class="container">
-    <!-- Circular Graph Layout -->
-    <div class="circle-container">
-        <div class="circle circle1" onclick="toggleCollapse('section1')">1</div>
-        <div class="circle circle2" onclick="toggleCollapse('section2')">2</div>
-        <div class="circle circle3" onclick="toggleCollapse('section3')">3</div>
-        <div class="circle circle4" onclick="toggleCollapse('section4')">4</div>
-        <div class="circle circle5" onclick="toggleCollapse('section5')">5</div>
-        <div class="circle circle6" onclick="toggleCollapse('section6')">6</div>
-        <div class="circle circle7" onclick="toggleCollapse('section7')">7</div>
-        <div class="circle circle8" onclick="toggleCollapse('section8')">8</div>
+    <div class="donut-chart" onclick="toggleCollapse('section1')">
+        <span>1</span>
+    </div>
+    <div class="donut-chart" onclick="toggleCollapse('section2')">
+        <span>2</span>
+    </div>
+    <div class="donut-chart" onclick="toggleCollapse('section3')">
+        <span>3</span>
+    </div>
+    <div class="donut-chart" onclick="toggleCollapse('section4')">
+        <span>4</span>
+    </div>
+    <div class="donut-chart" onclick="toggleCollapse('section5')">
+        <span>5</span>
+    </div>
+    <div class="donut-chart" onclick="toggleCollapse('section6')">
+        <span>6</span>
+    </div>
+    <div class="donut-chart" onclick="toggleCollapse('section7')">
+        <span>7</span>
+    </div>
+    <div class="donut-chart" onclick="toggleCollapse('section8')">
+        <span>8</span>
     </div>
 </div>
 
