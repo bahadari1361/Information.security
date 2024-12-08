@@ -25,6 +25,14 @@
         h2 {
             color: #2c3e50;
             cursor: pointer;
+            background-color: #f1f1f1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        h2:hover {
+            background-color: #ddd;
         }
         ul {
             list-style-type: none;
@@ -36,7 +44,6 @@
         }
         section {
             margin-bottom: 40px;
-            display: none; /* Initially hide the sections */
         }
         .btn {
             background-color: #333;
@@ -49,6 +56,14 @@
         }
         .btn:hover {
             background-color: #555;
+        }
+        .content {
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            display: none;
+            margin-top: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -63,8 +78,8 @@
     <a href="index.html" class="btn">Back to Home</a>
 
     <section>
-        <h2 onclick="toggleSection(1)">1. Policy Framework</h2>
-        <div id="section1">
+        <h2 onclick="toggleCollapse('section1')">1. Policy Framework</h2>
+        <div id="section1" class="content">
             <ul>
                 <li><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</li>
                 <li><strong>Leadership and Responsibility:</strong> Identify the leadership team, including the Business Continuity Manager and other key personnel responsible for planning, implementation, and maintenance.</li>
@@ -74,8 +89,8 @@
     </section>
 
     <section>
-        <h2 onclick="toggleSection(2)">2. Risk Assessment and Business Impact Analysis (BIA)</h2>
-        <div id="section2">
+        <h2 onclick="toggleCollapse('section2')">2. Risk Assessment and Business Impact Analysis (BIA)</h2>
+        <div id="section2" class="content">
             <ul>
                 <li><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</li>
                 <li><strong>Business Impact Analysis (BIA):</strong> Identify critical business functions and processes. Determine the potential impact of disruptions on these functions, including financial, operational, and reputational effects.</li>
@@ -84,8 +99,8 @@
     </section>
 
     <section>
-        <h2 onclick="toggleSection(3)">3. Recovery Objectives and Strategies</h2>
-        <div id="section3">
+        <h2 onclick="toggleCollapse('section3')">3. Recovery Objectives and Strategies</h2>
+        <div id="section3" class="content">
             <ul>
                 <li><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</li>
                 <li><strong>Recovery Point Objectives (RPO):</strong> Define the maximum acceptable data loss in terms of time (how much data can be lost before the business operation is significantly impacted).</li>
@@ -95,8 +110,8 @@
     </section>
 
     <section>
-        <h2 onclick="toggleSection(4)">4. Communication Plan</h2>
-        <div id="section4">
+        <h2 onclick="toggleCollapse('section4')">4. Communication Plan</h2>
+        <div id="section4" class="content">
             <ul>
                 <li><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</li>
                 <li><strong>External Communication:</strong> Define how the organization will communicate with external stakeholders (e.g., customers, suppliers, regulators) in the event of a disruption.</li>
@@ -105,8 +120,8 @@
     </section>
 
     <section>
-        <h2 onclick="toggleSection(5)">5. Incident Response and Recovery Procedures</h2>
-        <div id="section5">
+        <h2 onclick="toggleCollapse('section5')">5. Incident Response and Recovery Procedures</h2>
+        <div id="section5" class="content">
             <ul>
                 <li><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</li>
                 <li><strong>Response Procedures:</strong> Define the steps to take immediately after an incident is detected, such as activating the BCP, notifying relevant stakeholders, and containing the impact.</li>
@@ -116,8 +131,8 @@
     </section>
 
     <section>
-        <h2 onclick="toggleSection(6)">6. Training and Awareness</h2>
-        <div id="section6">
+        <h2 onclick="toggleCollapse('section6')">6. Training and Awareness</h2>
+        <div id="section6" class="content">
             <ul>
                 <li><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</li>
                 <li><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</li>
@@ -126,8 +141,8 @@
     </section>
 
     <section>
-        <h2 onclick="toggleSection(7)">7. Testing, Maintenance, and Continuous Improvement</h2>
-        <div id="section7">
+        <h2 onclick="toggleCollapse('section7')">7. Testing, Maintenance, and Continuous Improvement</h2>
+        <div id="section7" class="content">
             <ul>
                 <li><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</li>
                 <li><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</li>
@@ -137,8 +152,8 @@
     </section>
 
     <section>
-        <h2 onclick="toggleSection(8)">8. Documentation and Reporting</h2>
-        <div id="section8">
+        <h2 onclick="toggleCollapse('section8')">8. Documentation and Reporting</h2>
+        <div id="section8" class="content">
             <ul>
                 <li><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</li>
                 <li><strong>Reporting:</strong> Establish reporting requirements for both internal and external stakeholders. This may include regular reports on BCP readiness, issues encountered during tests, and post-incident evaluations.</li>
@@ -148,23 +163,14 @@
 </div>
 
 <script>
-    function toggleSection(sectionId) {
-        const section = document.getElementById(`section${sectionId}`);
-        const allSections = document.querySelectorAll('section div');
-        
-        // Toggle the visibility of the clicked section
-        if (section.style.display === "none" || section.style.display === "") {
-            section.style.display = "block"; // Show the section
+    function toggleCollapse(sectionId) {
+        const content = document.getElementById(sectionId);
+        // Toggle visibility of the clicked section
+        if (content.style.display === "none" || content.style.display === "") {
+            content.style.display = "block";  // Show the content
         } else {
-            section.style.display = "none"; // Hide the section
+            content.style.display = "none";  // Hide the content
         }
-
-        // Optionally hide all other sections
-        allSections.forEach(s => {
-            if (s !== section) {
-                s.style.display = "none";
-            }
-        });
     }
 </script>
 
