@@ -6,164 +6,239 @@
     <meta name="description" content="Portfolio Project: Information Security Management at the Central Bank of Afghanistan">
     <title>Information Security Management - Central Bank of Afghanistan</title>
     <style>
+        /* General Styles */
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            color: #333;
+            scroll-behavior: smooth;
         }
+
         header {
             background-color: #333;
-            color: #fff;
+            color: white;
             padding: 20px 0;
             text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
+
         header h1 {
             margin: 0;
             font-size: 2.5em;
         }
+
+        nav {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 15px;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            background-color: #555;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #888;
+        }
+
+        /* Section Styles */
         section {
-            padding: 20px;
+            padding: 80px 20px;
+            margin-top: 60px;
             max-width: 1200px;
             margin: 0 auto;
-            background-color: #fff;
-            margin-bottom: 20px;
+            background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
-        h2 {
-            font-size: 1.8em;
-            margin-top: 0;
+
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
             color: #333;
         }
+
         ul {
             list-style-type: none;
             padding-left: 0;
         }
-        li {
+
+        ul li {
             margin-bottom: 10px;
+            font-size: 1.1em;
         }
-        footer {
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
             text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1.2em;
+            margin-top: 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        /* Footer Styles */
+        footer {
             background-color: #333;
             color: #fff;
-            padding: 10px;
-            position: fixed;
+            text-align: center;
+            padding: 20px;
+            position: relative;
             bottom: 0;
             width: 100%;
         }
-        .content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .content div {
-            padding: 10px;
-            background-color: #fafafa;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .tools, .compliance {
-            margin-top: 30px;
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin: 10px;
+            }
+
+            section {
+                padding: 40px 15px;
+            }
+
+            section h2 {
+                font-size: 1.6em;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Information Security Management - Central Bank of Afghanistan</h1>
+        <h1>Information Security Management at the Central Bank of Afghanistan</h1>
+        <nav>
+            <a href="#overview">Overview</a>
+            <a href="#policy">Policy Development</a>
+            <a href="#bcp">Business Continuity</a>
+            <a href="#irp">Incident Response</a>
+            <a href="#audits">IT Audits</a>
+            <a href="#testing">Penetration Testing</a>
+            <a href="#tools">Tools & Technologies</a>
+            <a href="#compliance">Compliance Frameworks</a>
+            <a href="#conclusion">Conclusion</a>
+        </nav>
     </header>
 
-    <section>
+    <!-- Overview Section -->
+    <section id="overview">
         <h2>Overview</h2>
         <p>As the Information Security Manager at the Central Bank of Afghanistan, I was responsible for designing, implementing, and managing a comprehensive set of security measures to protect the bank’s sensitive data, networks, and IT infrastructure. This portfolio outlines my work in developing security policies, business continuity plans, incident response strategies, conducting IT audits, penetration testing, and security assessments to ensure the organization’s resilience against evolving cyber threats. Additionally, I played a key role in the deployment of ISO 27001 to align the bank's security framework with international best practices.</p>
+        <a href="#policy" class="button">Learn More</a>
     </section>
 
-    <section>
-        <h2>1. Information Security Policy Development</h2>
+    <!-- Policy Development Section -->
+    <section id="policy">
+        <h2>Information Security Policy Development</h2>
         <ul>
-            <li><strong>Network Security Policy</strong>: Designed guidelines for firewalls, VPNs, and network segmentation.</li>
-            <li><strong>Email Security Policy</strong>: Established encryption and anti-phishing protocols.</li>
-            <li><strong>User Management and Password Policy</strong>: Implemented multi-factor authentication (MFA) and password management guidelines.</li>
-            <li><strong>Data Disposal Policy</strong>: Defined secure methods for data destruction.</li>
-            <li><strong>Internet Usage Policy</strong>: Instituted controls to block malicious sites.</li>
-            <li><strong>FTP Server Policy</strong>: Established secure file transfer protocols.</li>
-            <li><strong>Patch Management Policy</strong>: Developed a patch management framework for system updates.</li>
-            <li><strong>Remote Desktop Policy</strong>: Defined secure access through VPNs and strong authentication.</li>
+            <li><strong>Network Security Policy:</strong> Designed guidelines for firewalls, VPNs, and network segmentation.</li>
+            <li><strong>Email Security Policy:</strong> Established encryption and anti-phishing protocols.</li>
+            <li><strong>User Management and Password Policy:</strong> Implemented multi-factor authentication (MFA) and password management guidelines.</li>
+            <li><strong>Data Disposal Policy:</strong> Defined secure methods for data destruction.</li>
+            <li><strong>Internet Usage Policy:</strong> Instituted controls to block malicious sites.</li>
+            <li><strong>FTP Server Policy:</strong> Established secure file transfer protocols.</li>
+            <li><strong>Patch Management Policy:</strong> Developed a patch management framework for system updates.</li>
+            <li><strong>Remote Desktop Policy:</strong> Defined secure access through VPNs and strong authentication.</li>
         </ul>
+        <a href="#bcp" class="button">Next Section</a>
     </section>
 
-    <section>
-        <h2>2. Business Continuity Planning (BCP) Development</h2>
-        <p>I led the creation of the Business Continuity Plan (BCP), ensuring the bank could maintain operations during and after disruptions:</p>
+    <!-- Business Continuity Planning Section -->
+    <section id="bcp">
+        <h2>Business Continuity Planning (BCP) Development</h2>
         <ul>
-            <li><strong>Risk Assessments</strong>: Prioritized critical business functions for disaster recovery.</li>
-            <li><strong>Disaster Recovery Strategies</strong>: Developed backup solutions, including off-site and cloud backups.</li>
-            <li><strong>Crisis Management Procedures</strong>: Established communication strategies for stakeholders.</li>
+            <li><strong>Risk Assessments:</strong> Prioritized critical business functions for disaster recovery.</li>
+            <li><strong>Disaster Recovery Strategies:</strong> Developed backup solutions, including off-site and cloud backups.</li>
+            <li><strong>Crisis Management Procedures:</strong> Established communication strategies for stakeholders.</li>
         </ul>
+        <a href="#irp" class="button">Next Section</a>
     </section>
 
-    <section>
-        <h2>3. Incident Response Plan (IRP) Development</h2>
-        <p>I developed a structured Incident Response Plan (IRP) to manage and recover from security incidents:</p>
+    <!-- Incident Response Plan Section -->
+    <section id="irp">
+        <h2>Incident Response Plan (IRP) Development</h2>
         <ul>
-            <li><strong>Incident Classification</strong>: Defined processes for identifying and classifying incidents.</li>
-            <li><strong>Roles and Responsibilities</strong>: Created clear roles for the response team.</li>
-            <li><strong>Communication Protocols</strong>: Developed communication strategies for internal and external reporting.</li>
-            <li><strong>Post-Incident Analysis</strong>: Implemented procedures for post-mortem analysis and future improvements.</li>
+            <li><strong>Incident Classification:</strong> Defined processes for identifying and classifying incidents.</li>
+            <li><strong>Roles and Responsibilities:</strong> Created clear roles for the response team.</li>
+            <li><strong>Communication Protocols:</strong> Developed communication strategies for internal and external reporting.</li>
+            <li><strong>Post-Incident Analysis:</strong> Implemented procedures for post-mortem analysis and future improvements.</li>
         </ul>
+        <a href="#audits" class="button">Next Section</a>
     </section>
 
-    <section class="content">
-        <div>
-            <h2>4. IT Audits</h2>
-            <ul>
-                <li><strong>System Log Reviews</strong>: Identified security weaknesses through log reviews.</li>
-                <li><strong>Regulatory Compliance</strong>: Ensured compliance with local and international standards like GDPR and ISO 27001.</li>
-                <li><strong>Security Recommendations</strong>: Provided actionable improvements to enhance security posture.</li>
-            </ul>
-        </div>
-
-        <div>
-            <h2>5. Penetration Testing</h2>
-            <ul>
-                <li><strong>External and Internal Penetration Testing</strong>: Simulated attacks to find network vulnerabilities.</li>
-                <li><strong>Web Application Security Testing</strong>: Conducted assessments for SQL injection and XSS vulnerabilities using tools like Acunetix and OWASP ZAP.</li>
-                <li><strong>Reporting and Remediation</strong>: Collaborated with teams to address and patch identified vulnerabilities.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section>
-        <h2>6. Security Assessments</h2>
+    <!-- IT Audits Section -->
+    <section id="audits">
+        <h2>IT Audits</h2>
         <ul>
-            <li><strong>Vulnerability Scanning</strong>: Used tools like Nessus and Zenmap to identify system weaknesses.</li>
-            <li><strong>Network Traffic Analysis</strong>: Analyzed network traffic with Wireshark to detect malicious activities.</li>
-            <li><strong>Web Application Security</strong>: Assessed web applications with Acunetix and OWASP ZAP.</li>
-            <li><strong>Social Engineering Tests</strong>: Ran phishing simulations and provided training to improve employee awareness.</li>
+            <li><strong>System Log Reviews:</strong> Identified security weaknesses through log reviews.</li>
+            <li><strong>Regulatory Compliance:</strong> Ensured compliance with local and international standards like GDPR and ISO 27001.</li>
+            <li><strong>Security Recommendations:</strong> Provided actionable improvements to enhance security posture.</li>
         </ul>
+        <a href="#testing" class="button">Next Section</a>
     </section>
 
-    <section class="tools">
-        <h2>7. Tools and Technologies Used</h2>
+    <!-- Penetration Testing Section -->
+    <section id="testing">
+        <h2>Penetration Testing</h2>
         <ul>
-            <li><strong>Penetration Testing Tools</strong>: Kali Linux, Nessus, Nmap, Metasploit, Zenmap.</li>
-            <li><strong>Security Monitoring Tools</strong>: ntopng, Wireshark.</li>
-            <li><strong>Vulnerability Scanning Tools</strong>: Acunetix, OWASP ZAP.</li>
-            <li><strong>Threat Intelligence Tools</strong>: Maltego.</li>
+            <li><strong>External and Internal Penetration Testing:</strong> Simulated attacks to find network vulnerabilities.</li>
+            <li><strong>Web Application Security Testing:</strong> Conducted assessments for SQL injection and XSS vulnerabilities using tools like Acunetix and OWASP ZAP.</li>
+            <li><strong>Reporting and Remediation:</strong> Collaborated with teams to address and patch identified vulnerabilities.</li>
         </ul>
+        <a href="#tools" class="button">Next Section</a>
     </section>
 
-    <section class="compliance">
-        <h2>8. Compliance Frameworks</h2>
+    <!-- Tools & Technologies Section -->
+    <section id="tools">
+        <h2>Tools and Technologies Used</h2>
         <ul>
-            <li><strong>ISO 27001 Implementation</strong>: Established a structured ISMS to ensure confidentiality, integrity, and availability of sensitive information.</li>
-            <li><strong>Continuous Improvement</strong>: Led regular reviews and audits to maintain the ISO 27001 certification and improve security measures.</li>
+            <li><strong>Penetration Testing Tools:</strong> Kali Linux, Nessus, Nmap, Metasploit, Zenmap.</li>
+            <li><strong>Security Monitoring Tools:</strong> ntopng, Wireshark.</li>
+            <li><strong>Vulnerability Scanning Tools:</strong> Acunetix, OWASP ZAP.</li>
+            <li><strong>Threat Intelligence Tools:</strong> Maltego.</li>
         </ul>
+        <a href="#compliance" class="button">Next Section</a>
     </section>
 
-    <section>
+    <!-- Compliance Frameworks Section -->
+    <section id="compliance">
+        <h2>Compliance Frameworks</h2>
+        <ul>
+            <li><strong>ISO 27001 Implementation:</strong> Established a structured ISMS to ensure confidentiality, integrity, and availability of sensitive information.</li>
+            <li><strong>Continuous Improvement:</strong> Led regular reviews and audits to maintain the ISO 27001 certification and improve security measures.</li>
+        </ul>
+        <a href="#conclusion" class="button">Next Section</a>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section id="conclusion">
         <h2>Conclusion</h2>
         <p>As the Information Security Manager at the Central Bank of Afghanistan, I led the development and implementation of security strategies to protect the bank’s critical IT assets. From creating robust security policies to hands-on tasks like penetration testing and incident response planning, my work helped safeguard the bank against evolving cyber threats. The successful deployment of ISO 27001 further demonstrated my ability to align the bank’s security framework with global best practices, ensuring long-term resilience.</p>
     </section>
