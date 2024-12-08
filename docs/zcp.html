@@ -3,251 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Business Continuity Planning (BCP)</title>
+    <title>BCP Portfolio</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
-            background-color: #f4f7fa;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-            height: 100%;
         }
 
-        /* Header Style - Crumpled Paper Color */
-        header {
-            background-color: #f1e3d3; /* Crumpled paper color */
-            color: #333;
-            padding: 1em;
-            text-align: center;
-            font-size: 2.5em;
-            font-weight: bold;
+        .accordion {
+            background: #e3e3e3;
+            cursor: pointer;
+            padding: 15px;
             width: 100%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-
-        /* Back to Home Button - Positioned below the Header */
-        .back-btn {
-            background-color: #4a4a4a; /* Dark gray button color */
-            color: white;
-            padding: 12px 25px;
             border: none;
-            border-radius: 12px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s;
-            position: fixed;
-            top: 120px; /* Positioned below the header */
-            left: 20px;
-            z-index: 11;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-btn:hover {
-            background-color: #6c6c6c; /* Lighter gray */
-            transform: translateY(-3px);
-        }
-
-        .back-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Container for the buttons */
-        .sections-container {
-            width: 80%;
-            max-width: 900px;
-            margin-top: 200px; /* Adjusted for header and back button space */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Section Buttons (Dark Gray Mixed) */
-        .section-btn {
-            background-color: #666666; /* Dark gray mixed color */
-            color: white;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            margin: 10px 0;
-            width: auto; /* Fit to text size */
-            text-align: center;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .section-btn:hover {
-            background-color: #565656;
-            transform: translateY(-3px);
-        }
-
-        .section-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Paper collapse with crumpled effect */
-        .content {
-            display: none;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            margin-top: 20px;
-            width: 50%;
-            position: absolute;
-            top: 100px; /* Keep content below the header */
-            right: 10%;
-            max-height: 0;
-            overflow: hidden;
-            transform-origin: top;
-            opacity: 0;
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.5s ease-out;
-            font-family: 'Georgia', serif;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: background 0.3s;
+            margin-bottom: 5px;
         }
 
-        .content.open {
-            display: block;
-            opacity: 1;
-            max-height: 1000px;
-            transform: scaleY(1);
-            animation: crumpledPaper 1s ease-out forwards;
+        .accordion:hover {
+            background: #d6d6d6;
         }
 
-        @keyframes crumpledPaper {
-            0% {
-                transform: scaleY(0.3) rotate(10deg);
+        .active {
+            background: #ccc;
+        }
+
+        .panel {
+            padding: 0 15px;
+            display: none;
+            background-color: #fff;
+            overflow: hidden;
+            border-left: 4px solid #d6d6d6;
+            margin-bottom: 10px;
+            animation: crumpled-paper 0.6s ease-out;
+        }
+
+        @keyframes crumpled-paper {
+            from {
+                transform: translateY(-50px) scaleY(0.8);
                 opacity: 0;
             }
-            50% {
-                transform: scaleY(1.2) rotate(-5deg);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scaleY(1) rotate(0deg);
+            to {
+                transform: translateY(0) scaleY(1);
                 opacity: 1;
             }
-        }
-
-        /* Crumpled Paper Design */
-        .content p {
-            background-color: #f7f7f7;
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: 1.1em;
-            margin: 10px 0;
-            line-height: 1.6;
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
-            transform: rotate(3deg);
-        }
-
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
-        }
-
-        li {
-            font-size: 1.1em;
-            margin: 10px 0;
-        }
-
-        li strong {
-            color: #007bff;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
 
-<!-- Back to Home Button -->
-<a href="index.html"><button class="back-btn">Back to Home</button></a>
+<h1 style="text-align:center; margin:20px;">Business Continuity Planning Portfolio</h1>
 
-<header>
-    Business Continuity Planning (BCP) Policy and Procedures
-</header>
+<button class="accordion">Introduction</button>
+<div class="panel">
+    <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions. My proficiency spans policy formulation, risk assessment, recovery strategy design, and incident management, ensuring critical business functions remain operational under adverse conditions. This portfolio highlights my structured approach to BCP, illustrating my ability to safeguard organizational integrity and uphold stakeholder trust.</p>
+</div>
 
-<!-- Container for Buttons -->
-<div class="sections-container">
-    <button class="section-btn" onclick="toggleCollapse('section1')">Policy Framework</button>
-    <div id="section1" class="content">
-        <p><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</p>
-        <p><strong>Leadership and Responsibility:</strong> Identify the leadership team, including the Business Continuity Manager and other key personnel responsible for planning, implementation, and maintenance.</p>
-        <p><strong>Governance Structure:</strong> Outline the organizational structure that will support the BCP, including departments, roles, and responsibilities.</p>
-    </div>
+<button class="accordion">Policy Development and Governance</button>
+<div class="panel">
+    <ul>
+        <li><strong>Policy Framework Creation:</strong> Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301).</li>
+        <li><strong>Leadership Engagement:</strong> Collaborated with executive leadership to secure buy-in for BCP initiatives.</li>
+        <li><strong>Documentation:</strong> Authored detailed policies outlining objectives, scope, and implementation protocols for BCP.</li>
+    </ul>
+</div>
 
-    <button class="section-btn" onclick="toggleCollapse('section2')">Risk Assessment</button>
-    <div id="section2" class="content">
-        <p><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</p>
-        <p><strong>Business Impact Analysis (BIA):</strong> Identify critical business functions and processes. Determine the potential impact of disruptions on these functions, including financial, operational, and reputational effects.</p>
-    </div>
+<button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
+<div class="panel">
+    <ul>
+        <li><strong>Threat Identification:</strong> Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures.</li>
+        <li><strong>Critical Asset Analysis:</strong> Evaluated business functions and assets to determine their criticality and interdependencies.</li>
+        <li><strong>Impact Assessment:</strong> Performed BIAs to quantify the financial, operational, and reputational impact of potential disruptions.</li>
+    </ul>
+</div>
 
-    <button class="section-btn" onclick="toggleCollapse('section3')">Recovery Objectives</button>
-    <div id="section3" class="content">
-        <p><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</p>
-        <p><strong>Recovery Point Objectives (RPO):</strong> Define the maximum acceptable data loss in terms of time (how much data can be lost before the business operation is significantly impacted).</p>
-        <p><strong>Business Continuity Strategies:</strong> Develop strategies for maintaining or quickly restoring critical functions. This may include cloud backups, disaster recovery sites, or manual processes.</p>
-    </div>
+<button class="accordion">Recovery Objectives and Strategies</button>
+<div class="panel">
+    <ul>
+        <li><strong>Recovery Objectives:</strong> Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems.</li>
+        <li><strong>Strategic Planning:</strong> Developed and implemented recovery strategies such as failover systems, disaster recovery sites, and cloud backups.</li>
+        <li><strong>Process Optimization:</strong> Ensured alignment of recovery plans with organizational priorities and operational workflows.</li>
+    </ul>
+</div>
 
-    <button class="section-btn" onclick="toggleCollapse('section4')">Communication Plan</button>
-    <div id="section4" class="content">
-        <p><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</p>
-        <p><strong>External Communication:</strong> Define how the organization will communicate with external stakeholders (e.g., customers, suppliers, regulators) in the event of a disruption.</p>
-    </div>
+<button class="accordion">Incident Management and Response</button>
+<div class="panel">
+    <ul>
+        <li><strong>Incident Identification:</strong> Established protocols for detecting and reporting incidents promptly.</li>
+        <li><strong>Response Procedures:</strong> Designed response frameworks to contain, mitigate, and recover from disruptions efficiently.</li>
+        <li><strong>Continuous Monitoring:</strong> Implemented monitoring tools to ensure real-time tracking of critical operations.</li>
+    </ul>
+</div>
 
-    <button class="section-btn" onclick="toggleCollapse('section5')">Incident Response</button>
-    <div id="section5" class="content">
-        <p><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</p>
-        <p><strong>Response Procedures:</strong> Define the steps to take immediately after an incident is detected, such as activating the BCP, notifying relevant stakeholders, and containing the impact.</p>
-        <p><strong>Recovery Procedures:</strong> Outline how the business will recover from the incident, including restoring systems, processes, and communications.</p>
-    </div>
+<button class="accordion">Training and Awareness</button>
+<div class="panel">
+    <ul>
+        <li><strong>Employee Training:</strong> Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols.</li>
+        <li><strong>Simulation Exercises:</strong> Orchestrated tabletop exercises and live drills to validate the efficacy of continuity plans.</li>
+        <li><strong>Awareness Campaigns:</strong> Fostered a culture of preparedness through targeted communication initiatives.</li>
+    </ul>
+</div>
 
-    <button class="section-btn" onclick="toggleCollapse('section6')">Training & Awareness</button>
-    <div id="section6" class="content">
-        <p><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</p>
-        <p><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</p>
-    </div>
+<button class="accordion">BCP Testing and Maintenance</button>
+<div class="panel">
+    <ul>
+        <li><strong>Plan Validation:</strong> Conducted regular testing of BCP components to ensure they remain effective and up-to-date.</li>
+        <li><strong>Feedback Integration:</strong> Incorporated lessons learned from drills and real incidents to enhance BCP strategies.</li>
+        <li><strong>Continuous Improvement:</strong> Reviewed and updated BCP documentation in response to organizational changes, technological advancements, and evolving threats.</li>
+    </ul>
+</div>
 
-    <button class="section-btn" onclick="toggleCollapse('section7')">Testing & Maintenance</button>
-    <div id="section7" class="content">
-        <p><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</p>
-        <p><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</p>
-        <p><strong>Lessons Learned and Continuous Improvement:</strong> After each test or real incident, conduct a post-mortem analysis to identify areas for improvement and implement changes as necessary.</p>
-    </div>
+<button class="accordion">RTO and RPO Table</button>
+<div class="panel">
+    <table border="1" style="width:100%; text-align:left; border-collapse:collapse;">
+        <tr>
+            <th>Critical System</th>
+            <th>Recovery Time Objective (RTO)</th>
+            <th>Recovery Point Objective (RPO)</th>
+        </tr>
+        <tr>
+            <td>System 1</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>System 2</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>System 3</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
 
-    <button class="section-btn" onclick="toggleCollapse('section8')">Documentation & Reporting</button>
-    <div id="section8" class="content">
-        <p><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</p>
-        <p><strong>Reporting:</strong> Establish reporting requirements for both internal and external stakeholders. This may include regular reports on BCP readiness, issues encountered during tests, and post-incident evaluations.</p>
-    </div>
+<button class="accordion">Conclusion</button>
+<div class="panel">
+    <p>My comprehensive approach to Business Continuity Planning ensures organizational resilience, enabling continued operations and safeguarding stakeholder interests during disruptions. Through meticulous planning, risk mitigation, and proactive training, I deliver robust continuity strategies tailored to organizational needs. This portfolio demonstrates my commitment to excellence and my ability to navigate complex challenges to achieve sustainable business resilience.</p>
 </div>
 
 <script>
-    function toggleCollapse(sectionId) {
-        const sections = document.querySelectorAll('.content');
-        sections.forEach(section => {
-            if (section.id !== sectionId) {
-                section.classList.remove('open');
+    const accordions = document.querySelectorAll(".accordion");
+
+    accordions.forEach(accordion => {
+        accordion.addEventListener("click", function() {
+            this.classList.toggle("active");
+            const panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
             }
         });
-
-        const currentSection = document.getElementById(sectionId);
-        currentSection.classList.toggle('open');
-    }
+    });
 </script>
 
 </body>
