@@ -185,7 +185,7 @@
 <div class="sections-container">
     <button class="section-btn" onclick="toggleCollapse('section1')">Project Overview</button>
     <div id="section1" class="content">
-        <p>The Incident Response Plan (IRP) Portfolio Project demonstrates my approach to handling cybersecurity incidents, outlining the methodology and steps involved in developing, executing, and refining a comprehensive plan.</p>
+        <p>The Incident Response Plan (IRP) Portfolio Project demonstrates my approach to handling cybersecurity incidents, outlining the methodology and steps involved in developing, executing, and refining a comprehensive plan. The objective is to ensure that organizations are prepared to effectively detect, respond, and recover from security incidents while minimizing business disruption.</p>
         <p>This project serves as a showcase of my ability to establish effective incident response frameworks, incorporating proactive measures, response protocols, and recovery strategies to safeguard business continuity.</p>
     </div>
 
@@ -198,6 +198,7 @@
             <li><strong>Recovery and post-incident analysis</strong></li>
             <li><strong>Testing and refining the plan through simulations and drills</strong></li>
         </ul>
+        <p>By showcasing this plan, I aim to illustrate my expertise in leading incident response efforts and improving organizational resilience against cybersecurity threats.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section3')">Incident Response Phases</button>
@@ -213,7 +214,7 @@
         </ul>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section4')">Incident Response Team</button>
+    <button class="section-btn" onclick="toggleCollapse('section4')">Incident Response Team (IRT)</button>
     <div id="section4" class="content">
         <p>An effective IRP requires a dedicated team with defined roles:</p>
         <ul>
@@ -222,6 +223,7 @@
             <li><strong>Legal Advisors</strong></li>
             <li><strong>Communication Leads</strong></li>
         </ul>
+        <p>Each role is responsible for specific tasks to ensure a coordinated and timely response to the incident.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section5')">Incident Detection and Reporting</button>
@@ -260,44 +262,46 @@
 
     <button class="section-btn" onclick="toggleCollapse('section10')">Technologies and Tools Used</button>
     <div id="section10" class="content">
-        <p>SIEM Systems (e.g., Splunk, ELK Stack), Endpoint Protection (e.g., CrowdStrike, Carbon Black), Forensics Tools (e.g., FTK Imager, Autopsy), Collaboration Tools (e.g., Slack, Microsoft Teams), Version Control (GitHub).</p>
+        <p><strong>SIEM Systems:</strong> Splunk, ELK Stack</p>
+        <p><strong>Endpoint Protection:</strong> CrowdStrike, Carbon Black</p>
+        <p><strong>Forensics Tools:</strong> FTK Imager, Autopsy</p>
+        <p><strong>Collaboration Tools:</strong> Slack, Microsoft Teams</p>
+        <p><strong>Version Control:</strong> GitHub for maintaining documentation and process flow</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section11')">Project Impact</button>
     <div id="section11" class="content">
-        <p>This project demonstrates my ability to create an effective, comprehensive IRP that enhances organizational resilience against cybersecurity threats.</p>
+        <p>By developing and implementing a robust Incident Response Plan, I ensure that organizations can:</p>
+        <ul>
+            <li>Detect and respond to incidents quickly, minimizing damage.</li>
+            <li>Recover systems and data in a controlled, structured manner.</li>
+            <li>Continuously improve the incident response processes through post-incident analysis and feedback.</li>
+        </ul>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section12')">Lessons Learned & Future Improvements</button>
     <div id="section12" class="content">
-        <p><strong>Improved Detection:</strong> Implementing machine learning and advanced analytics to identify threats earlier in the incident lifecycle.</p>
+        <p><strong>Improved Detection:</strong> Implementing machine learning and advanced analytics will help identify threats earlier in the incident lifecycle.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section13')">Conclusion</button>
     <div id="section13" class="content">
-        <p>This Incident Response Plan Portfolio Project showcases my expertise in preparing for and handling cybersecurity incidents.</p>
+        <p>This Incident Response Plan Portfolio Project showcases my expertise in preparing for and handling cybersecurity incidents. By using structured processes and continually testing and refining the plan, organizations can effectively handle security incidents and minimize disruption to business operations.</p>
+        <p>Through this project, I demonstrate my commitment to organizational resilience and my ability to navigate complex challenges to ensure business continuity.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section14')">Contact</button>
     <div id="section14" class="content">
-        <p>Email: hashmat.bahadari@iclould.com</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/bahadari">https://www.linkedin.com/in/bahadari</a></p>
-        <p>GitHub: <a href="https://bahadari1361.github.io/information-security-project/index.html">https://bahadari1361.github.io/information-security-project/index.html</a></p>
+        <p><strong>Email:</strong> hashmat.bahadari@icloud.com</p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bahadari" target="_blank">LinkedIn Profile</a></p>
+        <p><strong>GitHub:</strong> <a href="https://bahadari1361.github.io/information-security-project/index.html" target="_blank">GitHub Portfolio</a></p>
     </div>
-
 </div>
 
 <script>
-    function toggleCollapse(sectionId) {
-        const sections = document.querySelectorAll('.content');
-        sections.forEach(section => {
-            if (section.id !== sectionId) {
-                section.classList.remove('open');
-            }
-        });
-
-        const currentSection = document.getElementById(sectionId);
-        currentSection.classList.toggle('open');
+    function toggleCollapse(id) {
+        const content = document.getElementById(id);
+        content.classList.toggle('open');
     }
 </script>
 
