@@ -27,7 +27,7 @@
             width: 100%;
         }
 
-        /* Back to home button */
+        /* Back to Home Button */
         .back-btn {
             background-color: #28a745;
             color: white;
@@ -62,10 +62,10 @@
 
         /* Button styles */
         .section-btn {
-            background-color: #007bff;
+            background-color: #f39c12;
             color: white;
-            font-size: 1.2em;
-            padding: 15px;
+            font-size: 1.3em;
+            padding: 20px;
             margin: 10px 0;
             width: 100%;
             text-align: left;
@@ -73,10 +73,11 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
         }
 
         .section-btn:hover {
-            background-color: #0056b3;
+            background-color: #e67e22;
             transform: translateY(-3px);
         }
 
@@ -84,7 +85,7 @@
             transform: translateY(0);
         }
 
-        /* The content sections with the notebook folding effect */
+        /* Old Paper Collapse effect */
         .content {
             display: none;
             padding: 20px;
@@ -93,20 +94,36 @@
             border: 1px solid #ddd;
             margin-top: 20px;
             width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-height: 0;
             overflow: hidden;
             transform-origin: top;
-            transition: transform 0.5s ease-out, max-height 0.3s ease-out;
             opacity: 0;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.5s ease-out;
         }
 
         .content.open {
             display: block;
-            max-height: 1000px;
             opacity: 1;
+            max-height: 1000px;
             transform: scaleY(1);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Adding the paper unfold effect */
+        .content.open {
+            transform-origin: top;
+            animation: unfoldPaper 0.6s ease-out forwards;
+        }
+
+        @keyframes unfoldPaper {
+            0% {
+                transform: scaleY(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
         }
 
         ul {
@@ -123,7 +140,6 @@
             color: #007bff;
         }
 
-        /* Smooth scroll for "Back to Home" button */
         html {
             scroll-behavior: smooth;
         }
