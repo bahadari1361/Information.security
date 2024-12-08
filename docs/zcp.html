@@ -17,6 +17,7 @@
             height: 100%;
         }
 
+        /* Header Style - Crumpled Paper Color */
         header {
             background-color: #f1e3d3; /* Crumpled paper color */
             color: #333;
@@ -33,6 +34,7 @@
             z-index: 10;
         }
 
+        /* Back to Home Button - Positioned below the Header */
         .back-btn {
             background-color: #4a4a4a; /* Dark gray button color */
             color: white;
@@ -58,6 +60,7 @@
             transform: translateY(0);
         }
 
+        /* Container for the buttons */
         .sections-container {
             width: 80%;
             max-width: 900px;
@@ -67,6 +70,7 @@
             align-items: center;
         }
 
+        /* Section Buttons (Dark Gray Mixed) */
         .section-btn {
             background-color: #666666; /* Dark gray mixed color */
             color: white;
@@ -91,6 +95,7 @@
             transform: translateY(0);
         }
 
+        /* Paper collapse with crumpled effect */
         .content {
             display: none;
             padding: 20px;
@@ -117,26 +122,66 @@
             opacity: 1;
             max-height: 1000px;
             transform: scaleY(1);
+            animation: crumpledPaper 1s ease-out forwards;
+        }
+
+        @keyframes crumpledPaper {
+            0% {
+                transform: scaleY(0.3) rotate(10deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scaleY(1.2) rotate(-5deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scaleY(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Crumpled Paper Design */
+        .content p {
+            background-color: #f7f7f7;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1.1em;
+            margin: 10px 0;
+            line-height: 1.6;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transform: rotate(3deg);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        li strong {
+            color: #007bff;
         }
 
         table {
-            width: 100%;
+            width: 80%;
             border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
+            margin: 20px auto;
         }
 
         th, td {
-            padding: 12px;
-            text-align: left;
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
         }
 
         th {
             background-color: #f2f2f2;
-            font-weight: bold;
+            color: #333;
         }
 
         html {
@@ -146,76 +191,37 @@
 </head>
 <body>
 
+<!-- Back to Home Button -->
 <a href="index.html"><button class="back-btn">Back to Home</button></a>
 
 <header>
     Business Continuity Planning (BCP) Policy and Procedures
 </header>
 
+<!-- Container for Buttons -->
 <div class="sections-container">
     <button class="section-btn" onclick="toggleCollapse('section1')">Policy Framework</button>
     <div id="section1" class="content">
-        <p><strong>Purpose and Scope:</strong> The BCP aims to mitigate risks and ensure rapid recovery of business functions in the event of disruptions, including natural disasters, cyberattacks, and more. The scope includes critical business processes, infrastructure, and personnel responsibilities.</p>
-        <p><strong>Governance:</strong> A dedicated Business Continuity Management Team is established to oversee policy implementation, training, and continual improvement processes.</p>
+        <p><strong>Purpose and Scope:</strong> Clearly define the objectives and scope of the BCP, outlining the critical functions, assets, and stakeholders it encompasses.</p>
+        <p><strong>Leadership Commitment:</strong> Highlight the commitment from leadership in fostering a resilient culture and supporting continuity initiatives.</p>
+        <p><strong>Governance and Structure:</strong> Detail the governance structure, including the roles and responsibilities of the Business Continuity Manager and other key personnel.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section2')">Risk Assessment</button>
     <div id="section2" class="content">
-        <p><strong>Assessment Overview:</strong> Comprehensive risk assessments identify potential threats, vulnerabilities, and impacts on critical business operations. Identified risks are prioritized for mitigation strategies.</p>
-        <p><strong>Business Impact Analysis (BIA):</strong> The BIA ensures understanding of dependencies and establishes critical recovery objectives, prioritizing functions essential for organizational survival.</p>
+        <p><strong>Risk Identification:</strong> Assess potential risks, such as natural disasters, cyberattacks, and supply chain disruptions, that could impact operations.</p>
+        <p><strong>Business Impact Analysis:</strong> Identify and prioritize critical functions, evaluating the operational, financial, and reputational impact of disruptions.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('section3')">Recovery Objectives</button>
     <div id="section3" class="content">
-        <p><strong>Objectives:</strong> Recovery objectives are defined to limit downtime and prevent excessive data loss. These objectives are tailored to organizational needs to maintain stakeholder trust and operational integrity.</p>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>System/Function</th>
-                    <th>RTO (Recovery Time Objective)</th>
-                    <th>RPO (Recovery Point Objective)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Core Banking System</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Customer Support Services</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Network Infrastructure</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+        <p><strong>Strategic Goals:</strong> Outline recovery strategies and define key objectives to ensure rapid and effective restoration of services.</p>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section4')">Communication Plan</button>
+    <button class="section-btn" onclick="toggleCollapse('section4')">Communication Strategies</button>
     <div id="section4" class="content">
-        <p><strong>Communication Strategy:</strong> A structured internal and external communication plan ensures accurate information dissemination during crises to maintain trust and transparency.</p>
+        <p><strong>Internal Communication:</strong> Develop protocols for efficient communication among internal stakeholders during a crisis.</p>
+        <p><strong>External Communication:</strong> Establish guidelines for communicating with external parties, including clients, suppliers, and regulatory bodies.</p>
     </div>
 
-    <button class="section-btn" onclick="toggleCollapse('section5')">Incident Response</button>
-    <div id="section5" class="content">
-        <p><strong>Response Process:</strong> Incident identification, immediate mitigation, and activation of recovery protocols are detailed within the response framework to ensure swift and coordinated efforts.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section6')">Testing & Maintenance</button>
-    <div id="section6" class="content">
-        <p><strong>Program Integrity:</strong> Regular drills, testing, and updates to the BCP ensure alignment with current operational and regulatory requirements.</p>
-    </div>
-</div>
-
-<script>
-    function toggleCollapse(sectionId) {
-        const sections = document.querySelectorAll('.content');
-        sections.forEach(section => {
-            if (section.id !== sectionId) {
-                section.classList.remove('open
+    <button class="section-btn" onclick="
