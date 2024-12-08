@@ -10,41 +10,48 @@
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: row;
         }
 
-        .accordion {
-            background: #e3e3e3;
-            cursor: pointer;
-            padding: 10px 20px;
-            width: auto;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 16px;
-            transition: background 0.3s;
-            margin-bottom: 5px;
+        /* Styling for crumpled paper button */
+        .crumpled-button {
+            background: linear-gradient(135deg, #f3f3f3 25%, #ddd 75%);
+            border: 1px solid #bbb;
             border-radius: 5px;
-        }
-
-        .accordion:hover {
-            background: #d6d6d6;
-        }
-
-        .active {
-            background: #ccc;
-        }
-
-        .panel {
-            padding: 0 15px;
-            display: none;
-            background-color: #fff;
-            overflow: hidden;
-            border-left: 4px solid #d6d6d6;
+            padding: 10px 20px;
+            box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
             margin-bottom: 10px;
+        }
+
+        .crumpled-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .crumpled-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Paper-like content panel */
+        .crumpled-paper {
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             animation: crumpled-paper 0.6s ease-out;
-            width: 80%;
-            margin: auto;
-            max-width: 210mm;
+            overflow: hidden;
+            max-height: 85vh;
+            margin: 10px;
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+            background-color: #fafafa;
+            opacity: 0;
         }
 
         @keyframes crumpled-paper {
@@ -58,26 +65,16 @@
             }
         }
 
-        @keyframes waterfall-effect {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .panel-waterfall {
-            animation: waterfall-effect 1s ease-out;
+        /* Content container styles */
+        .container {
+            width: 50%;
+            margin-left: 20px;
         }
 
         .back-to-home {
-            display: inline-block;
             background-color: #007bff;
             color: white;
-            padding: 10px 15px;
+            padding: 10px 20px;
             font-size: 16px;
             text-decoration: none;
             border-radius: 5px;
@@ -88,204 +85,131 @@
             background-color: #0056b3;
         }
 
-        table {
+        /* Accordion button styles */
+        .accordion {
+            background: #e3e3e3;
+            cursor: pointer;
+            padding: 15px;
             width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-
-        th, td {
-            padding: 8px 12px;
-            border: 1px solid #ddd;
+            border: none;
             text-align: left;
+            outline: none;
+            font-size: 18px;
+            margin-bottom: 5px;
+            transition: background 0.3s;
         }
 
-        th {
-            background-color: #f2f2f2;
+        .accordion:hover {
+            background: #d6d6d6;
         }
+
+        .active {
+            background: #ccc;
+        }
+
+        .panel {
+            display: none;
+        }
+
+        /* Ensuring layout is responsive */
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            .crumpled-paper {
+                width: 100%;
+                margin: 0;
+                margin-top: 10px;
+            }
+        }
+
     </style>
 </head>
 <body>
 
-<a href="#" class="back-to-home">Back to Home</a>
+<div class="container">
+    <a href="index.html" class="back-to-home">Back to Home</a>
+    <h1 style="text-align:center;">Business Continuity Planning (BCP) Portfolio</h1>
 
-<h1 style="text-align:center; margin:20px;">Business Continuity Planning (BCP) Portfolio</h1>
+    <!-- Accordion buttons for each section -->
+    <button class="accordion">Introduction</button>
+    <div class="panel">
+        <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions...</p>
+    </div>
 
-<button class="accordion">Introduction</button>
-<div class="panel">
-    <p class="panel-waterfall">As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions. My proficiency spans policy formulation, risk assessment, recovery strategy design, and incident management, ensuring critical business functions remain operational under adverse conditions. This portfolio highlights my structured approach to BCP, illustrating my ability to safeguard organizational integrity and uphold stakeholder trust.</p>
+    <button class="accordion">Policy Development and Governance</button>
+    <div class="panel">
+        <p>Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301)...</p>
+    </div>
+
+    <button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
+    <div class="panel">
+        <p>Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures...</p>
+    </div>
+
+    <button class="accordion">Recovery Objectives and Strategies</button>
+    <div class="panel">
+        <p>Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems...</p>
+    </div>
+
+    <button class="accordion">Incident Management and Response</button>
+    <div class="panel">
+        <p>Established protocols for detecting and reporting incidents promptly...</p>
+    </div>
+
+    <button class="accordion">Training and Awareness</button>
+    <div class="panel">
+        <p>Designed and conducted regular training sessions for employees...</p>
+    </div>
+
+    <button class="accordion">BCP Testing and Maintenance</button>
+    <div class="panel">
+        <p>Conducted regular testing of BCP components to ensure they remain effective...</p>
+    </div>
+
+    <button class="accordion">RTO and RPO Table</button>
+    <div class="panel">
+        <table>
+            <tr>
+                <th>Critical System</th>
+                <th>Recovery Time Objective (RTO)</th>
+                <th>Recovery Point Objective (RPO)</th>
+            </tr>
+            <tr>
+                <td>System 1</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+    <button class="accordion">Conclusion</button>
+    <div class="panel">
+        <p>My comprehensive approach to Business Continuity Planning ensures organizational resilience...</p>
+    </div>
 </div>
 
-<button class="accordion">Policy Development and Governance</button>
-<div class="panel">
-    <ul class="panel-waterfall">
-        <li><strong>Policy Framework Creation:</strong>
-            <ul>
-                <li>Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301).</li>
-                <li>Defined governance structures, roles, and responsibilities for effective plan execution.</li>
-            </ul>
-        </li>
-        <li><strong>Leadership Engagement:</strong>
-            <ul>
-                <li>Collaborated with executive leadership to secure buy-in for BCP initiatives.</li>
-                <li>Established a governance model assigning clear accountability to cross-functional teams.</li>
-            </ul>
-        </li>
-        <li><strong>Documentation:</strong>
-            <ul>
-                <li>Authored detailed policies outlining objectives, scope, and implementation protocols for BCP.</li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
-<div class="panel">
-    <ul class="panel-waterfall">
-        <li><strong>Threat Identification:</strong>
-            <ul>
-                <li>Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures.</li>
-            </ul>
-        </li>
-        <li><strong>Critical Asset Analysis:</strong>
-            <ul>
-                <li>Evaluated business functions and assets to determine their criticality and interdependencies.</li>
-            </ul>
-        </li>
-        <li><strong>Impact Assessment:</strong>
-            <ul>
-                <li>Performed BIAs to quantify the financial, operational, and reputational impact of potential disruptions.</li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<button class="accordion">Recovery Objectives and Strategies</button>
-<div class="panel">
-    <ul class="panel-waterfall">
-        <li><strong>Recovery Objectives:</strong>
-            <ul>
-                <li>Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems.</li>
-            </ul>
-        </li>
-        <li><strong>Strategic Planning:</strong>
-            <ul>
-                <li>Developed and implemented recovery strategies such as failover systems, disaster recovery sites, and cloud backups.</li>
-            </ul>
-        </li>
-        <li><strong>Process Optimization:</strong>
-            <ul>
-                <li>Ensured alignment of recovery plans with organizational priorities and operational workflows.</li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<button class="accordion">Incident Management and Response</button>
-<div class="panel">
-    <ul class="panel-waterfall">
-        <li><strong>Incident Identification:</strong>
-            <ul>
-                <li>Established protocols for detecting and reporting incidents promptly.</li>
-            </ul>
-        </li>
-        <li><strong>Response Procedures:</strong>
-            <ul>
-                <li>Designed response frameworks to contain, mitigate, and recover from disruptions efficiently.</li>
-            </ul>
-        </li>
-        <li><strong>Continuous Monitoring:</strong>
-            <ul>
-                <li>Implemented monitoring tools to ensure real-time tracking of critical operations.</li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<button class="accordion">Training and Awareness</button>
-<div class="panel">
-    <ul class="panel-waterfall">
-        <li><strong>Employee Training:</strong>
-            <ul>
-                <li>Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols.</li>
-            </ul>
-        </li>
-        <li><strong>Simulation Exercises:</strong>
-            <ul>
-                <li>Orchestrated tabletop exercises and live drills to validate the efficacy of continuity plans.</li>
-            </ul>
-        </li>
-        <li><strong>Awareness Campaigns:</strong>
-            <ul>
-                <li>Fostered a culture of preparedness through targeted communication initiatives.</li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<button class="accordion">BCP Testing and Maintenance</button>
-<div class="panel">
-    <ul class="panel-waterfall">
-        <li><strong>Plan Validation:</strong>
-            <ul>
-                <li>Conducted regular testing of BCP components to ensure they remain effective and up-to-date.</li>
-            </ul>
-        </li>
-        <li><strong>Feedback Integration:</strong>
-            <ul>
-                <li>Incorporated lessons learned from drills and real incidents to enhance BCP strategies.</li>
-            </ul>
-        </li>
-        <li><strong>Continuous Improvement:</strong>
-            <ul>
-                <li>Reviewed and updated BCP documentation in response to organizational changes, technological advancements, and evolving threats.</li>
-            </ul>
-        </li>
-    </ul>
-</div>
-
-<button class="accordion">RTO and RPO Table</button>
-<div class="panel">
-    <table class="panel-waterfall">
-        <tr>
-            <th>Critical System</th>
-            <th>Recovery Time Objective (RTO)</th>
-            <th>Recovery Point Objective (RPO)</th>
-        </tr>
-        <tr>
-            <td>System 1</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>System 2</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>System 3</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-</div>
-
-<button class="accordion">Conclusion</button>
-<div class="panel">
-    <p class="panel-waterfall">My comprehensive approach to Business Continuity Planning ensures organizational resilience, enabling continued operations and safeguarding stakeholder interests during disruptions. Through meticulous planning, risk mitigation, and proactive training, I deliver robust continuity strategies tailored to organizational needs. This portfolio demonstrates my commitment to excellence and my ability to navigate complex challenges to achieve sustainable business resilience.</p>
-</div>
+<!-- Content area where crumpled paper effects are displayed -->
+<div class="crumpled-paper" id="content-area"></div>
 
 <script>
     const accordions = document.querySelectorAll(".accordion");
+    const contentArea = document.getElementById("content-area");
 
     accordions.forEach(accordion => {
-        accordion.addEventListener("click", function() {
+        accordion.addEventListener("click", function () {
             this.classList.toggle("active");
             const panel = this.nextElementSibling;
+
             if (panel.style.display === "block") {
                 panel.style.display = "none";
             } else {
                 panel.style.display = "block";
+                // Show the content with crumpled paper effect on the right side
+                contentArea.innerHTML = panel.innerHTML;
+                contentArea.style.display = "block";
             }
         });
     });
