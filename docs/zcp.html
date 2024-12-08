@@ -12,8 +12,9 @@
             background-color: #f4f7fa;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             flex-direction: column;
+            height: 100%;
         }
 
         /* Header with Mixed Color Gradient */
@@ -31,7 +32,6 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 10;
-            margin-top: 0;
         }
 
         /* Back to Home Button */
@@ -44,7 +44,11 @@
             font-size: 1.2em;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s;
-            margin-top: 120px;
+            position: fixed;
+            top: 90px; /* Adjusting position to be below the header */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 11;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         }
 
@@ -61,7 +65,7 @@
         .sections-container {
             width: 80%;
             max-width: 900px;
-            margin-top: 120px; /* Adjusting for header space */
+            margin-top: 140px; /* Adjusting for header and back button space */
             display: flex;
             flex-direction: column;
             align-items: center;
