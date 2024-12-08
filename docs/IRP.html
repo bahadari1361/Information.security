@@ -11,6 +11,9 @@
             padding: 0;
             background-color: #f4f7fa;
             display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
             height: 100%;
         }
 
@@ -24,6 +27,11 @@
             font-weight: bold;
             width: 100%;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
         }
 
         /* Back to Home Button - Positioned below the Header */
@@ -39,7 +47,8 @@
             position: fixed;
             top: 120px; /* Positioned below the header */
             left: 20px;
-            z-index: 10;
+            z-index: 11;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .back-btn:hover {
@@ -51,45 +60,42 @@
             transform: translateY(0);
         }
 
-        /* Sidebar Style */
-        .sidebar {
-            width: 250px;
-            background-color: #333;
-            color: white;
-            padding-top: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            overflow-y: auto;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        /* Container for the buttons */
+        .sections-container {
+            width: 80%;
+            max-width: 900px;
+            margin-top: 200px; /* Adjusted for header and back button space */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .sidebar button {
-            background-color: #444;
+        /* Section Buttons (Dark Gray Mixed) */
+        .section-btn {
+            background-color: #666666; /* Dark gray mixed color */
             color: white;
-            font-size: 1.1em;
-            padding: 12px 20px;
-            width: 100%;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            margin: 10px 0;
+            width: auto; /* Fit to text size */
+            text-align: center;
             border: none;
-            text-align: left;
+            border-radius: 8px;
             cursor: pointer;
-            transition: background 0.3s ease;
-            margin: 5px 0;
+            transition: background 0.3s ease, transform 0.3s;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .sidebar button:hover {
-            background-color: #666;
+        .section-btn:hover {
+            background-color: #565656;
+            transform: translateY(-3px);
         }
 
-        /* Main Content Area */
-        .main-content {
-            margin-left: 250px; /* Space for sidebar */
-            padding: 20px;
-            width: 100%;
-            overflow: hidden;
+        .section-btn:active {
+            transform: translateY(0);
         }
 
+        /* Paper collapse with crumpled effect */
         .content {
             display: none;
             padding: 20px;
@@ -97,15 +103,44 @@
             border-radius: 8px;
             border: 1px solid #ddd;
             margin-top: 20px;
-            text-align: left;
+            width: 50%;
+            position: absolute;
+            top: 100px; /* Keep content below the header */
+            right: 10%;
+            max-height: 0;
+            overflow: hidden;
+            transform-origin: top;
+            opacity: 0;
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.5s ease-out;
             font-family: 'Georgia', serif;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
         }
 
         .content.open {
             display: block;
+            opacity: 1;
+            max-height: 1000px;
+            transform: scaleY(1);
+            animation: crumpledPaper 1s ease-out forwards;
         }
 
+        @keyframes crumpledPaper {
+            0% {
+                transform: scaleY(0.3) rotate(10deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scaleY(1.2) rotate(-5deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scaleY(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        /* Crumpled Paper Design */
         .content p {
             background-color: #f7f7f7;
             padding: 20px;
@@ -114,6 +149,8 @@
             font-size: 1.1em;
             margin: 10px 0;
             line-height: 1.6;
+            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+            transform: rotate(3deg);
         }
 
         ul {
@@ -144,89 +181,116 @@
     Incident Response Plan (IRP) Portfolio
 </header>
 
-<!-- Sidebar with Section Buttons -->
-<div class="sidebar">
-    <button onclick="toggleCollapse('section1')">Project Overview</button>
-    <button onclick="toggleCollapse('section2')">Project Objectives</button>
-    <button onclick="toggleCollapse('section3')">Incident Response Phases</button>
-    <button onclick="toggleCollapse('section4')">Incident Response Team</button>
-    <button onclick="toggleCollapse('section5')">Incident Detection & Reporting</button>
-    <button onclick="toggleCollapse('section6')">Containment & Mitigation</button>
-    <button onclick="toggleCollapse('section7')">Eradication & Recovery</button>
-    <button onclick="toggleCollapse('section8')">Post-Incident Review</button>
-    <button onclick="toggleCollapse('section9')">Testing & Drills</button>
-    <button onclick="toggleCollapse('section10')">Technologies & Tools</button>
-    <button onclick="toggleCollapse('section11')">Project Impact</button>
-    <button onclick="toggleCollapse('section12')">Lessons Learned</button>
-    <button onclick="toggleCollapse('section13')">Conclusion</button>
-    <button onclick="toggleCollapse('section14')">Contact</button>
-</div>
-
-<!-- Main Content Area -->
-<div class="main-content">
+<!-- Container for Buttons -->
+<div class="sections-container">
+    <button class="section-btn" onclick="toggleCollapse('section1')">Project Overview</button>
     <div id="section1" class="content">
-        <p>The Incident Response Plan (IRP) Portfolio Project demonstrates my approach to handling cybersecurity incidents...</p>
+        <p>The Incident Response Plan (IRP) Portfolio Project demonstrates my approach to handling cybersecurity incidents, outlining the methodology and steps involved in developing, executing, and refining a comprehensive plan. The objective is to ensure that organizations are prepared to effectively detect, respond, and recover from security incidents while minimizing business disruption.</p>
+        <p>This project serves as a showcase of my ability to establish effective incident response frameworks, incorporating proactive measures, response protocols, and recovery strategies to safeguard business continuity.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section2')">Project Objectives</button>
     <div id="section2" class="content">
-        <p>The objective of this portfolio is to display my capability in creating and executing an Incident Response Plan...</p>
+        <p>The objective of this portfolio is to display my capability in creating and executing an Incident Response Plan. This plan includes several key components:</p>
+        <ul>
+            <li><strong>Structured incident response phases</strong></li>
+            <li><strong>Detection, containment, and eradication strategies</strong></li>
+            <li><strong>Recovery and post-incident analysis</strong></li>
+            <li><strong>Testing and refining the plan through simulations and drills</strong></li>
+        </ul>
+        <p>By showcasing this plan, I aim to illustrate my expertise in leading incident response efforts and improving organizational resilience against cybersecurity threats.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section3')">Incident Response Phases</button>
     <div id="section3" class="content">
-        <p>The IRP consists of several clearly defined phases to ensure a structured and efficient response to security incidents...</p>
+        <p>The IRP consists of several clearly defined phases to ensure a structured and efficient response to security incidents:</p>
+        <ul>
+            <li><strong>Preparation:</strong> Establishing the incident response team, tools, and documentation.</li>
+            <li><strong>Identification:</strong> Detecting and analyzing security incidents using monitoring tools.</li>
+            <li><strong>Containment:</strong> Implementing short-term and long-term containment measures.</li>
+            <li><strong>Eradication:</strong> Removing the threat from the environment.</li>
+            <li><strong>Recovery:</strong> Restoring affected systems and ensuring normal operations.</li>
+            <li><strong>Lessons Learned:</strong> Analyzing the incident to identify improvements for future response efforts.</li>
+        </ul>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section4')">Incident Response Team (IRT)</button>
     <div id="section4" class="content">
         <p>An effective IRP requires a dedicated team with defined roles:</p>
         <ul>
-            <li><strong>Incident Response Manager</strong></li>
+            <li><strong>Incident Response Manager (IRM)</strong></li>
             <li><strong>Technical Leads</strong></li>
             <li><strong>Legal Advisors</strong></li>
             <li><strong>Communication Leads</strong></li>
         </ul>
+        <p>Each role is responsible for specific tasks to ensure a coordinated and timely response to the incident.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section5')">Incident Detection and Reporting</button>
     <div id="section5" class="content">
-        <p><strong>Security Monitoring:</strong> Leveraging SIEM (Security Information and Event Management) systems...</p>
+        <p><strong>Security Monitoring:</strong> Leveraging SIEM (Security Information and Event Management) systems, intrusion detection systems (IDS), and endpoint protection to detect incidents in real-time.</p>
+        <p><strong>Incident Reporting:</strong> A system for staff to report incidents or anomalies quickly and efficiently, ensuring rapid escalation.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section6')">Containment and Mitigation Strategies</button>
     <div id="section6" class="content">
-        <p><strong>Short-Term Containment:</strong> Isolating affected systems to prevent further damage...</p>
+        <p><strong>Short-Term Containment:</strong> Isolating affected systems to prevent further damage.</p>
+        <p><strong>Long-Term Containment:</strong> Implementing long-term fixes to prevent the incident from reoccurring.</p>
+        <p><strong>Data Protection:</strong> Ensuring that evidence and data integrity are maintained throughout the response.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section7')">Eradication and Recovery</button>
     <div id="section7" class="content">
-        <p><strong>Eradication:</strong> Identifying the root cause of the incident and eliminating all traces of the threat...</p>
+        <p><strong>Eradication:</strong> Identifying the root cause of the incident and eliminating all traces of the threat.</p>
+        <p><strong>System Recovery:</strong> Restoring systems to a secure, operational state while ensuring no vulnerabilities remain.</p>
+        <p><strong>Post-Incident Monitoring:</strong> After recovery, continuous monitoring is essential to ensure no residual threat persists.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section8')">Post-Incident Review</button>
     <div id="section8" class="content">
-        <p><strong>Root Cause Analysis:</strong> Examining the underlying cause of the incident...</p>
+        <p><strong>Root Cause Analysis:</strong> Examining the underlying cause of the incident and determining what went wrong.</p>
+        <p><strong>Lessons Learned:</strong> Documenting lessons learned from the incident and improving future responses.</p>
+        <p><strong>Continuous Improvement:</strong> Using feedback and results from incidents to enhance the IRP and strengthen overall security posture.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section9')">Incident Response Testing and Drills</button>
     <div id="section9" class="content">
-        <p><strong>Tabletop Exercises:</strong> Conducting simulated incident scenarios...</p>
+        <p><strong>Tabletop Exercises:</strong> Conducting simulated incident scenarios to ensure the team is familiar with the procedures.</p>
+        <p><strong>Full-Scale Drills:</strong> Live drills to test response capabilities in a realistic environment.</p>
+        <p><strong>Red Teaming:</strong> Simulated attacks to assess the effectiveness of the IRP.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section10')">Technologies and Tools Used</button>
     <div id="section10" class="content">
-        <p><strong>SIEM Systems:</strong> Splunk, ELK Stack...</p>
+        <p><strong>SIEM Systems:</strong> Splunk, ELK Stack</p>
+        <p><strong>Endpoint Protection:</strong> CrowdStrike, Carbon Black</p>
+        <p><strong>Forensics Tools:</strong> FTK Imager, Autopsy</p>
+        <p><strong>Collaboration Tools:</strong> Slack, Microsoft Teams</p>
+        <p><strong>Version Control:</strong> GitHub for maintaining documentation and process flow</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section11')">Project Impact</button>
     <div id="section11" class="content">
         <p>By developing and implementing a robust Incident Response Plan, I ensure that organizations can:</p>
         <ul>
             <li>Detect and respond to incidents quickly, minimizing damage.</li>
             <li>Recover systems and data in a controlled, structured manner.</li>
-            <li>Continuously improve the incident response processes...</li>
+            <li>Continuously improve the incident response processes through post-incident analysis and feedback.</li>
         </ul>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section12')">Lessons Learned & Future Improvements</button>
     <div id="section12" class="content">
-        <p><strong>Improved Detection:</strong> Implementing machine learning and advanced analytics will help identify threats...</p>
+        <p><strong>Improved Detection:</strong> Implementing machine learning and advanced analytics will help identify threats earlier in the incident lifecycle.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section13')">Conclusion</button>
     <div id="section13" class="content">
-        <p>This Incident Response Plan Portfolio Project showcases my expertise in preparing for and handling cybersecurity incidents...</p>
+        <p>This Incident Response Plan Portfolio Project showcases my expertise in preparing for and handling cybersecurity incidents. By using structured processes and continually testing and refining the plan, organizations can effectively handle security incidents and minimize disruption to business operations.</p>
+        <p>Through this project, I demonstrate my commitment to organizational resilience and my ability to navigate complex challenges to ensure business continuity.</p>
     </div>
 
+    <button class="section-btn" onclick="toggleCollapse('section14')">Contact</button>
     <div id="section14" class="content">
         <p><strong>Email:</strong> hashmat.bahadari@icloud.com</p>
         <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bahadari" target="_blank">LinkedIn Profile</a></p>
