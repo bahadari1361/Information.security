@@ -17,23 +17,22 @@
             flex-direction: column;
         }
 
-        /* Header with mixed color and 3D effect */
+        /* Simple, bold header */
         header {
-            background: linear-gradient(135deg, #ff7e5f, #feb47b, #6a11cb, #2575fc);
+            background-color: #003366; /* Dark blue */
             color: white;
             padding: 1.5em 0;
             text-align: center;
             font-size: 3em;
             font-weight: bold;
             width: 100%;
-            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-            transform: perspective(200px) rotateX(10deg);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         /* Back to Home Button */
         .back-btn {
-            background: linear-gradient(45deg, #ff6b6b, #f7b731, #1e3799);
+            background-color: #003366; /* Dark blue to match header */
             color: white;
             padding: 15px 30px;
             border: none;
@@ -46,7 +45,7 @@
         }
 
         .back-btn:hover {
-            background: linear-gradient(45deg, #f7b731, #ff6b6b, #1e3799);
+            background-color: #00509e; /* Lighter blue */
             transform: translateY(-3px);
         }
 
@@ -236,10 +235,10 @@
 </div>
 
 <script>
-    // Function to toggle the collapse and only allow one section to be open at a time
+    // Toggle the content sections
     function toggleCollapse(sectionId) {
-        const allSections = document.querySelectorAll('.content');
-        allSections.forEach(section => {
+        const sections = document.querySelectorAll('.content');
+        sections.forEach(section => {
             if (section.id !== sectionId) {
                 section.classList.remove('open');
             }
@@ -249,7 +248,7 @@
         currentSection.classList.toggle('open');
     }
 
-    // Function to scroll back to the top (Back to Home)
+    // Scroll back to the top (Home)
     function scrollToTop() {
         window.scrollTo({
             top: 0,
