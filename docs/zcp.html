@@ -17,13 +17,13 @@
             height: 100%;
         }
 
-        /* Header with Mixed Color Gradient */
+        /* Simple Header */
         header {
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            background-color: #4CAF50; /* Simple green color */
             color: white;
-            padding: 1.5em 0;
+            padding: 1em;
             text-align: center;
-            font-size: 3em;
+            font-size: 2.5em;
             font-weight: bold;
             width: 100%;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -71,24 +71,24 @@
             align-items: center;
         }
 
-        /* Section Buttons (smaller size) */
+        /* Section Buttons (text size) */
         .section-btn {
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            background-color: #4CAF50;
             color: white;
-            font-size: 1.1em;
-            padding: 12px;
+            font-size: 1.2em;
+            padding: 10px 20px;
             margin: 10px 0;
-            width: 100%;
-            text-align: left;
+            width: auto; /* Fit to text size */
+            text-align: center;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .section-btn:hover {
-            background: linear-gradient(45deg, #2575fc, #6a11cb);
+            background-color: #45a049;
             transform: translateY(-3px);
         }
 
@@ -96,7 +96,7 @@
             transform: translateY(0);
         }
 
-        /* Paper collapse with crumpled effect (on the right side of the page) */
+        /* Paper collapse with crumpled effect */
         .content {
             display: none;
             padding: 20px;
@@ -238,7 +238,6 @@
 </div>
 
 <script>
-    // Toggle the content sections
     function toggleCollapse(sectionId) {
         const sections = document.querySelectorAll('.content');
         sections.forEach(section => {
@@ -251,7 +250,6 @@
         currentSection.classList.toggle('open');
     }
 
-    // Scroll back to the top (Home)
     function scrollToTop() {
         window.scrollTo({
             top: 0,
