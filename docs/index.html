@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio: Information Security Management</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        * {
+        /* Reset default styles */
+        body, h1, h2, h3, p, ul {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -15,162 +16,193 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f5f7fa;
             color: #333;
-            line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Global styles */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Cool gradient background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, #5f8bff, #4a6a9e);
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        /* Header section */
         header {
-            background-color: #2c3e50;
+            padding: 100px 0;
+            background-color: #1f1f1f;
             color: #fff;
-            padding: 20px;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 123, 255, 0.7);
+            animation: textSlideIn 1s ease-out;
         }
 
-        .container {
-            width: 80%;
-            margin: 40px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .portfolio-sections {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .section-card {
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-radius: 8px;
-            flex: 1 1 calc(33.333% - 20px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .section-card:hover {
-            transform: scale(1.05);
-            background-color: #e1e8eb;
-        }
-
-        .section-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-
-        .section-card p {
-            font-size: 1rem;
-            color: #7f8c8d;
-            margin-bottom: 10px;
-        }
-
-        .section-card a {
-            text-decoration: none;
-            color: #3498db;
-            font-weight: 500;
-            display: inline-block;
+        header p {
+            font-size: 1.2rem;
+            font-weight: 400;
             margin-top: 10px;
+            opacity: 0.85;
+            animation: fadeIn 2s ease-out;
         }
 
-        .section-card a:hover {
-            color: #2980b9;
+        /* Animation for header text */
+        @keyframes textSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Content Section */
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            padding: 50px 0;
+        }
+
+        .portfolio-section {
+            margin-bottom: 40px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-section h2 {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-section ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .portfolio-section ul li {
+            font-size: 1.1rem;
+            margin: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        .portfolio-section ul li:hover {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        /* Footer Section */
         footer {
-            background-color: #2c3e50;
+            background-color: #1f1f1f;
             color: #fff;
             text-align: center;
-            padding: 15px;
-            margin-top: 30px;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
         }
 
         footer p {
             font-size: 1rem;
+            font-weight: 400;
+            opacity: 0.7;
         }
 
-        /* Responsive Styling */
+        /* Mobile responsiveness */
         @media (max-width: 768px) {
-            .portfolio-sections {
-                flex-direction: column;
-                align-items: center;
+            header h1 {
+                font-size: 2.5rem;
             }
 
-            .section-card {
-                flex: 1 1 100%;
-                margin-bottom: 20px;
+            header p {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .portfolio-section h2 {
+                font-size: 1.8rem;
             }
         }
+
     </style>
 </head>
 
 <body>
 
+    <!-- Background -->
+    <div class="background"></div>
+
+    <!-- Header Section -->
     <header>
-        <h1>Portfolio: Information Security Management</h1>
-        <p>Central Bank of Afghanistan</p>
+        <h1>Information Security Management</h1>
+        <p>Portfolio - Central Bank of Afghanistan</p>
     </header>
 
+    <!-- Main Content -->
     <div class="container">
-        <section>
+        <div class="portfolio-section">
             <h2>Overview</h2>
-            <p>This portfolio showcases my work as the Information Security Manager at the Central Bank of Afghanistan. It includes policies, plans, audits, assessments, and tools used to safeguard the bank's critical infrastructure.</p>
-        </section>
+            <p>This portfolio highlights my experience and contributions as the Information Security Manager at the Central Bank of Afghanistan, where I led efforts to secure critical financial systems, conduct audits, and develop robust incident response plans.</p>
+        </div>
 
-        <section class="portfolio-sections">
-            <div class="section-card">
-                <h3>Information Security Policies</h3>
-                <p>Developed and implemented security policies to protect sensitive information.</p>
-                <a href="policies.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <h3>Business Continuity Planning</h3>
-                <p>Created a comprehensive business continuity plan for disaster recovery and operational continuity.</p>
-                <a href="bcp.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <h3>Incident Response Plan</h3>
-                <p>Developed a robust incident response plan to address security breaches and minimize impact.</p>
-                <a href="irp.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <h3>IT Audits</h3>
-                <p>Conducted thorough IT security audits to ensure compliance with security standards.</p>
-                <a href="audits.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <h3>Penetration Testing</h3>
-                <p>Performed penetration testing to identify vulnerabilities and strengthen security defenses.</p>
-                <a href="pentesting.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <h3>Security Assessments</h3>
-                <p>Conducted security assessments to evaluate the risk posture of the bank’s IT systems.</p>
-                <a href="security-assessments.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <h3>Compliance Frameworks</h3>
-                <p>Aligned security practices with industry standards like ISO 27001 for enhanced compliance.</p>
-                <a href="compliance.html">View Details</a>
-            </div>
-        </section>
+        <div class="portfolio-section">
+            <h2>Key Projects</h2>
+            <ul>
+                <li><a href="policies.html" style="color: #007bff; text-decoration: none;">Information Security Policies</a></li>
+                <li><a href="bcp.html" style="color: #007bff; text-decoration: none;">Business Continuity Planning</a></li>
+                <li><a href="irp.html" style="color: #007bff; text-decoration: none;">Incident Response Plan</a></li>
+                <li><a href="audits.html" style="color: #007bff; text-decoration: none;">IT Audits</a></li>
+                <li><a href="pentesting.html" style="color: #007bff; text-decoration: none;">Penetration Testing</a></li>
+                <li><a href="security-assessments.html" style="color: #007bff; text-decoration: none;">Security Assessments</a></li>
+                <li><a href="compliance.html" style="color: #007bff; text-decoration: none;">Compliance Frameworks</a></li>
+            </ul>
+        </div>
     </div>
 
+    <!-- Footer Section -->
     <footer>
         <p>&copy; 2024 Hashmatullah Bahadari</p>
     </footer>
