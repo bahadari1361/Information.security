@@ -12,11 +12,6 @@
             padding: 0;
         }
 
-        h1 {
-            text-align: center;
-            margin: 20px;
-        }
-
         .accordion {
             background: #e3e3e3;
             cursor: pointer;
@@ -28,6 +23,8 @@
             font-size: 18px;
             transition: background 0.3s;
             margin-bottom: 5px;
+            display: block;
+            box-sizing: border-box;
         }
 
         .accordion:hover {
@@ -39,139 +36,128 @@
         }
 
         .panel {
-            padding: 15px;
+            padding: 20px;
             display: none;
             background-color: #fff;
             overflow: hidden;
             border-left: 4px solid #d6d6d6;
             margin-bottom: 10px;
-            width: 50%; /* Half of A4 size in width */
-            animation: crumpled-paper 0.6s ease-out;
-            background: url('https://www.transparenttextures.com/patterns/crumpled-paper-1.png'); /* Crumpled paper texture */
-            background-size: cover;
-            color: #333;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            animation: crumpled-paper 1s ease-out;
+            max-width: 100%;
         }
 
         @keyframes crumpled-paper {
-            from {
-                transform: translateY(-50px) scaleY(0.8);
+            0% {
+                transform: scale(0.7) rotate(10deg);
                 opacity: 0;
             }
-            to {
-                transform: translateY(0) scaleY(1);
+            100% {
+                transform: scale(1) rotate(0);
                 opacity: 1;
             }
         }
 
-        table {
-            width: 100%;
-            text-align: left;
-            border-collapse: collapse;
+        .home-button {
+            display: block;
+            width: 200px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            margin: 20px auto;
+            cursor: pointer;
+            border-radius: 5px;
+            text-decoration: none;
         }
 
-        table, th, td {
-            border: 1px solid #ddd;
+        .home-button:hover {
+            background-color: #45a049;
         }
 
-        th, td {
-            padding: 8px;
-            text-align: left;
+        /* Adding some spacing around the entire page */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
 
-<h1>Business Continuity Planning Portfolio</h1>
+<div class="container">
+    <h1 style="text-align:center; margin:20px;">Business Continuity Planning Portfolio</h1>
 
-<button class="accordion">Introduction</button>
-<div class="panel">
-    <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions. My proficiency spans policy formulation, risk assessment, recovery strategy design, and incident management, ensuring critical business functions remain operational under adverse conditions. This portfolio highlights my structured approach to BCP, illustrating my ability to safeguard organizational integrity and uphold stakeholder trust.</p>
-</div>
+    <button class="accordion">Introduction</button>
+    <div class="panel">
+        <p>As an accomplished Information Security Manager with extensive expertise in Business Continuity Planning (BCP), I specialize in ensuring organizational resilience against disruptions...</p>
+    </div>
 
-<button class="accordion">Policy Development and Governance</button>
-<div class="panel">
-    <ul>
-        <li><strong>Policy Framework Creation:</strong> Designed comprehensive BCP frameworks tailored to organizational objectives, ensuring compliance with industry standards and regulatory requirements (e.g., ISO 22301).</li>
-        <li><strong>Leadership Engagement:</strong> Collaborated with executive leadership to secure buy-in for BCP initiatives.</li>
-        <li><strong>Documentation:</strong> Authored detailed policies outlining objectives, scope, and implementation protocols for BCP.</li>
-    </ul>
-</div>
+    <button class="accordion">Policy Development and Governance</button>
+    <div class="panel">
+        <ul>
+            <li><strong>Policy Framework Creation:</strong> Designed comprehensive BCP frameworks tailored to organizational objectives...</li>
+        </ul>
+    </div>
 
-<button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
-<div class="panel">
-    <ul>
-        <li><strong>Threat Identification:</strong> Conducted risk assessments to identify potential disruptions, including cyberattacks, natural disasters, and operational failures.</li>
-        <li><strong>Critical Asset Analysis:</strong> Evaluated business functions and assets to determine their criticality and interdependencies.</li>
-        <li><strong>Impact Assessment:</strong> Performed BIAs to quantify the financial, operational, and reputational impact of potential disruptions.</li>
-    </ul>
-</div>
+    <button class="accordion">Risk Assessment and Business Impact Analysis (BIA)</button>
+    <div class="panel">
+        <ul>
+            <li><strong>Threat Identification:</strong> Conducted risk assessments to identify potential disruptions...</li>
+        </ul>
+    </div>
 
-<button class="accordion">Recovery Objectives and Strategies</button>
-<div class="panel">
-    <ul>
-        <li><strong>Recovery Objectives:</strong> Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems.</li>
-        <li><strong>Strategic Planning:</strong> Developed and implemented recovery strategies such as failover systems, disaster recovery sites, and cloud backups.</li>
-        <li><strong>Process Optimization:</strong> Ensured alignment of recovery plans with organizational priorities and operational workflows.</li>
-    </ul>
-</div>
+    <button class="accordion">Recovery Objectives and Strategies</button>
+    <div class="panel">
+        <ul>
+            <li><strong>Recovery Objectives:</strong> Defined Recovery Time Objectives (RTOs) and Recovery Point Objectives (RPOs) for critical systems...</li>
+        </ul>
+    </div>
 
-<button class="accordion">Incident Management and Response</button>
-<div class="panel">
-    <ul>
-        <li><strong>Incident Identification:</strong> Established protocols for detecting and reporting incidents promptly.</li>
-        <li><strong>Response Procedures:</strong> Designed response frameworks to contain, mitigate, and recover from disruptions efficiently.</li>
-        <li><strong>Continuous Monitoring:</strong> Implemented monitoring tools to ensure real-time tracking of critical operations.</li>
-    </ul>
-</div>
+    <button class="accordion">Incident Management and Response</button>
+    <div class="panel">
+        <ul>
+            <li><strong>Incident Identification:</strong> Established protocols for detecting and reporting incidents...</li>
+        </ul>
+    </div>
 
-<button class="accordion">Training and Awareness</button>
-<div class="panel">
-    <ul>
-        <li><strong>Employee Training:</strong> Designed and conducted regular training sessions for employees, emphasizing their roles in executing BCP protocols.</li>
-        <li><strong>Simulation Exercises:</strong> Orchestrated tabletop exercises and live drills to validate the efficacy of continuity plans.</li>
-        <li><strong>Awareness Campaigns:</strong> Fostered a culture of preparedness through targeted communication initiatives.</li>
-    </ul>
-</div>
+    <button class="accordion">Training and Awareness</button>
+    <div class="panel">
+        <ul>
+            <li><strong>Employee Training:</strong> Designed and conducted regular training sessions for employees...</li>
+        </ul>
+    </div>
 
-<button class="accordion">BCP Testing and Maintenance</button>
-<div class="panel">
-    <ul>
-        <li><strong>Plan Validation:</strong> Conducted regular testing of BCP components to ensure they remain effective and up-to-date.</li>
-        <li><strong>Feedback Integration:</strong> Incorporated lessons learned from drills and real incidents to enhance BCP strategies.</li>
-        <li><strong>Continuous Improvement:</strong> Reviewed and updated BCP documentation in response to organizational changes, technological advancements, and evolving threats.</li>
-    </ul>
-</div>
+    <button class="accordion">BCP Testing and Maintenance</button>
+    <div class="panel">
+        <ul>
+            <li><strong>Plan Validation:</strong> Conducted regular testing of BCP components...</li>
+        </ul>
+    </div>
 
-<button class="accordion">RTO and RPO Table</button>
-<div class="panel">
-    <table>
-        <tr>
-            <th>Critical System</th>
-            <th>Recovery Time Objective (RTO)</th>
-            <th>Recovery Point Objective (RPO)</th>
-        </tr>
-        <tr>
-            <td>System 1</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>System 2</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>System 3</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-</div>
+    <button class="accordion">RTO and RPO Table</button>
+    <div class="panel">
+        <table border="1" style="width:100%; text-align:left; border-collapse:collapse;">
+            <tr>
+                <th>Critical System</th>
+                <th>Recovery Time Objective (RTO)</th>
+                <th>Recovery Point Objective (RPO)</th>
+            </tr>
+            <tr>
+                <td>System 1</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
 
-<button class="accordion">Conclusion</button>
-<div class="panel">
-    <p>My comprehensive approach to Business Continuity Planning ensures organizational resilience, enabling continued operations and safeguarding stakeholder interests during disruptions. Through meticulous planning, risk mitigation, and proactive training, I deliver robust continuity strategies tailored to organizational needs. This portfolio demonstrates my commitment to excellence and my ability to navigate complex challenges to achieve sustainable business resilience.</p>
+    <button class="accordion">Conclusion</button>
+    <div class="panel">
+        <p>My comprehensive approach to Business Continuity Planning ensures organizational resilience, enabling continued operations...</p>
+    </div>
+
+    <a href="#" class="home-button">Back to Home</a>
 </div>
 
 <script>
