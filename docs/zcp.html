@@ -167,6 +167,23 @@
             color: #007bff;
         }
 
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f1f1f1;
+            font-weight: bold;
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -198,8 +215,27 @@
 
     <button class="section-btn" onclick="toggleCollapse('section3')">Recovery Objectives</button>
     <div id="section3" class="content">
-        <p><strong>Recovery Time Objectives (RTO):</strong> The RTO is the maximum amount of time that an application, system, or business process can be unavailable before it causes significant damage to the organization. The RTO defines the time window in which recovery efforts must occur.</p>
-        <p><strong>Recovery Point Objectives (RPO):</strong> The RPO defines the maximum allowable amount of data loss, measured in time, during a disaster. The RPO indicates how frequently backups and replication should occur to minimize data loss.</p>
+        <p><strong>Recovery Time Objectives (RTO) and Recovery Point Objectives (RPO):</strong> RTO defines the maximum time allowed for restoring a business process after a disruption, while RPO indicates the maximum data loss (in time) that is acceptable. Below is a table summarizing both:</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Recovery Time Objective (RTO)</th>
+                    <th>Recovery Point Objective (RPO)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Defines the maximum allowable time for the recovery of a business function or process.</td>
+                    <td>Defines the maximum allowable amount of data loss before it affects business continuity.</td>
+                </tr>
+                <tr>
+                    <td>Sets a time frame within which business operations must be restored to avoid unacceptable consequences.</td>
+                    <td>Helps determine how frequently data backups or replication should occur to meet the business continuity requirements.</td>
+                </tr>
+            </tbody>
+        </table>
+
         <p><strong>Business Continuity Strategies:</strong> Strategies include the use of cloud backups, disaster recovery sites, or manual procedures to maintain or restore critical functions within the RTO and RPO parameters.</p>
     </div>
 
