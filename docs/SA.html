@@ -77,7 +77,7 @@
             font-size: 1.2em;
             padding: 10px 20px;
             margin: 5px 0; /* Reduced space between buttons */
-            width: 100%; /* Ensure all buttons are the same size */
+            width: 100%; /* Make buttons the same size */
             text-align: center;
             border: none;
             border-radius: 8px;
@@ -172,23 +172,17 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-        }
-
-        table, th, td {
             border: 1px solid #ddd;
         }
 
-        th, td {
+        table th, table td {
             padding: 12px;
             text-align: left;
+            border: 1px solid #ddd;
         }
 
-        th {
-            background-color: #f4f7fa;
-        }
-
-        td {
-            background-color: #f9f9f9;
+        table th {
+            background-color: #f4f4f4;
         }
 
         html {
@@ -261,36 +255,35 @@
     <button class="section-btn" onclick="toggleCollapse('vulnerabilities')">Vulnerabilities Identified</button>
     <div id="vulnerabilities" class="content">
         <table>
-            <tr>
-                <th>Vulnerability</th>
-                <th>Severity</th>
-                <th>Impact</th>
-                <th>Recommendation</th>
-            </tr>
-            <tr>
-                <td>SQL Injection in Login Form</td>
-                <td>High</td>
-                <td>Data theft or manipulation</td>
-                <td>Implement input validation and prepared statements</td>
-            </tr>
-            <tr>
-                <td>Weak Password Policy</td>
-                <td>Medium</td>
-                <td>Potential unauthorized access</td>
-                <td>Enforce strong password policies and two-factor authentication</td>
-            </tr>
-            <tr>
-                <td>Unpatched Web Application</td>
-                <td>High</td>
-                <td>Exploitation by attackers</td>
-                <td>Apply security patches and updates regularly</td>
-            </tr>
-            <tr>
-                <td>Open Ports on Firewall</td>
-                <td>Medium</td>
-                <td>Unauthorized access or data leakage</td>
-                <td>Close unnecessary ports and restrict access</td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Vulnerability</th>
+                    <th>Risk Level</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SQL Injection</td>
+                    <td>High</td>
+                    <td>Potential for attackers to execute arbitrary SQL queries through input fields.</td>
+                </tr>
+                <tr>
+                    <td>Cross-Site Scripting (XSS)</td>
+                    <td>Medium</td>
+                    <td>Allowing injection of malicious scripts in web pages viewed by other users.</td>
+                </tr>
+                <tr>
+                    <td>Weak Passwords</td>
+                    <td>High</td>
+                    <td>Passwords not meeting minimum complexity requirements, leading to easy brute-force attacks.</td>
+                </tr>
+                <tr>
+                    <td>Outdated Software</td>
+                    <td>High</td>
+                    <td>Running outdated versions of software that may have known vulnerabilities.</td>
+                </tr>
+            </tbody>
         </table>
     </div>
 
