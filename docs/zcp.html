@@ -11,6 +11,11 @@
             color: #333;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
         }
 
         header {
@@ -21,90 +26,104 @@
             font-size: 2em;
             font-weight: bold;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
 
         .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 30px;
-        }
-
-        .btn {
-            background-color: #333;
-            color: #fff;
-            padding: 12px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-            margin-bottom: 20px;
-            font-size: 1em;
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #555;
-        }
-
-        section {
-            margin-bottom: 20px;
             display: flex;
+            justify-content: center;
             align-items: center;
-            margin-left: 5%;
+            position: relative;
+            width: 80%;
+            height: 500px;
+        }
+
+        .circle-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
             position: relative;
         }
 
-        h2 {
+        .circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
             background-color: #007bff;
             color: #fff;
-            padding: 20px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.5em;
-            width: 60px;
-            height: 60px;
             text-align: center;
-            line-height: 20px;
+            line-height: 70px;
+            font-size: 1.2em;
+            cursor: pointer;
             transition: background-color 0.3s ease;
-            text-transform: uppercase;
-            margin-right: 20px;
+            margin: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        h2:hover {
+        .circle:hover {
             background-color: #0056b3;
         }
 
-        .content {
-            padding: 15px;
-            background-color: #f9f9f9;
-            border-left: 3px solid #007bff;
-            border-right: 3px solid #007bff;
-            border-bottom: 1px solid #ddd;
-            border-radius: 5px;
-            width: 80%;
-            display: none;
-            transition: max-height 0.3s ease-in-out;
+        .circle + .circle {
+            position: absolute;
         }
 
-        .content ul {
+        .circle1 { top: 0; left: 50%; transform: translateX(-50%); }
+        .circle2 { top: 10%; left: 10%; }
+        .circle3 { top: 10%; right: 10%; }
+        .circle4 { bottom: 10%; left: 10%; }
+        .circle5 { bottom: 10%; right: 10%; }
+        .circle6 { top: 50%; left: 0%; transform: translateY(-50%); }
+        .circle7 { top: 50%; right: 0%; transform: translateY(-50%); }
+        .circle8 { top: 80%; left: 50%; transform: translateX(-50%); }
+
+        .content {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-top: 20px;
+            width: 80%;
+        }
+
+        ul {
             list-style-type: none;
             padding-left: 20px;
         }
 
-        .content li {
-            margin: 10px 0;
+        li {
             font-size: 1.1em;
+            margin: 10px 0;
         }
 
-        .content li strong {
-            font-weight: bold;
+        li strong {
             color: #007bff;
         }
 
         /* Add responsive design */
         @media screen and (max-width: 768px) {
             .container {
-                width: 90%;
+                flex-direction: column;
+            }
+
+            .circle-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .circle {
+                width: 50px;
+                height: 50px;
+                font-size: 1em;
+                line-height: 50px;
             }
         }
     </style>
@@ -116,102 +135,87 @@
 </header>
 
 <div class="container">
-    <!-- Back/Home Button -->
-    <a href="index.html" class="btn">Back to Home</a>
+    <!-- Circular Graph Layout -->
+    <div class="circle-container">
+        <div class="circle circle1" onclick="toggleCollapse('section1')">1</div>
+        <div class="circle circle2" onclick="toggleCollapse('section2')">2</div>
+        <div class="circle circle3" onclick="toggleCollapse('section3')">3</div>
+        <div class="circle circle4" onclick="toggleCollapse('section4')">4</div>
+        <div class="circle circle5" onclick="toggleCollapse('section5')">5</div>
+        <div class="circle circle6" onclick="toggleCollapse('section6')">6</div>
+        <div class="circle circle7" onclick="toggleCollapse('section7')">7</div>
+        <div class="circle circle8" onclick="toggleCollapse('section8')">8</div>
+    </div>
+</div>
 
-    <section>
-        <h2 onclick="toggleCollapse('section1')">1</h2>
-        <div id="section1" class="content">
-            <ul>
-                <li><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</li>
-                <li><strong>Leadership and Responsibility:</strong> Identify the leadership team, including the Business Continuity Manager and other key personnel responsible for planning, implementation, and maintenance.</li>
-                <li><strong>Governance Structure:</strong> Outline the organizational structure that will support the BCP, including departments, roles, and responsibilities.</li>
-            </ul>
-        </div>
-    </section>
+<!-- Content for each section -->
+<div id="section1" class="content">
+    <ul>
+        <li><strong>Purpose and Scope:</strong> Define the purpose of the BCP, its objectives, and the scope of the policy. Explain what the BCP covers, such as critical functions, assets, and stakeholders.</li>
+        <li><strong>Leadership and Responsibility:</strong> Identify the leadership team, including the Business Continuity Manager and other key personnel responsible for planning, implementation, and maintenance.</li>
+        <li><strong>Governance Structure:</strong> Outline the organizational structure that will support the BCP, including departments, roles, and responsibilities.</li>
+    </ul>
+</div>
 
-    <section>
-        <h2 onclick="toggleCollapse('section2')">2</h2>
-        <div id="section2" class="content">
-            <ul>
-                <li><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</li>
-                <li><strong>Business Impact Analysis (BIA):</strong> Identify critical business functions and processes. Determine the potential impact of disruptions on these functions, including financial, operational, and reputational effects.</li>
-            </ul>
-        </div>
-    </section>
+<div id="section2" class="content">
+    <ul>
+        <li><strong>Risk Assessment:</strong> Identify potential threats (e.g., natural disasters, cyberattacks, power failures) and vulnerabilities that could impact business operations.</li>
+        <li><strong>Business Impact Analysis (BIA):</strong> Identify critical business functions and processes. Determine the potential impact of disruptions on these functions, including financial, operational, and reputational effects.</li>
+    </ul>
+</div>
 
-    <section>
-        <h2 onclick="toggleCollapse('section3')">3</h2>
-        <div id="section3" class="content">
-            <ul>
-                <li><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</li>
-                <li><strong>Recovery Point Objectives (RPO):</strong> Define the maximum acceptable data loss in terms of time (how much data can be lost before the business operation is significantly impacted).</li>
-                <li><strong>Business Continuity Strategies:</strong> Develop strategies for maintaining or quickly restoring critical functions. This may include cloud backups, disaster recovery sites, or manual processes.</li>
-            </ul>
-        </div>
-    </section>
+<div id="section3" class="content">
+    <ul>
+        <li><strong>Recovery Time Objectives (RTO):</strong> Define the maximum acceptable downtime for critical systems and processes.</li>
+        <li><strong>Recovery Point Objectives (RPO):</strong> Define the maximum acceptable data loss in terms of time (how much data can be lost before the business operation is significantly impacted).</li>
+        <li><strong>Business Continuity Strategies:</strong> Develop strategies for maintaining or quickly restoring critical functions. This may include cloud backups, disaster recovery sites, or manual processes.</li>
+    </ul>
+</div>
 
-    <section>
-        <h2 onclick="toggleCollapse('section4')">4</h2>
-        <div id="section4" class="content">
-            <ul>
-                <li><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</li>
-                <li><strong>External Communication:</strong> Define how the organization will communicate with external stakeholders (e.g., customers, suppliers, regulators) in the event of a disruption.</li>
-            </ul>
-        </div>
-    </section>
+<div id="section4" class="content">
+    <ul>
+        <li><strong>Internal Communication:</strong> Outline how information will be communicated within the organization during an emergency, including escalation procedures.</li>
+        <li><strong>External Communication:</strong> Define how the organization will communicate with external stakeholders (e.g., customers, suppliers, regulators) in the event of a disruption.</li>
+    </ul>
+</div>
 
-    <section>
-        <h2 onclick="toggleCollapse('section5')">5</h2>
-        <div id="section5" class="content">
-            <ul>
-                <li><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</li>
-                <li><strong>Response Procedures:</strong> Define the steps to take immediately after an incident is detected, such as activating the BCP, notifying relevant stakeholders, and containing the impact.</li>
-                <li><strong>Recovery Procedures:</strong> Outline how the business will recover from the incident, including restoring systems, processes, and communications.</li>
-            </ul>
-        </div>
-    </section>
+<div id="section5" class="content">
+    <ul>
+        <li><strong>Incident Identification and Notification:</strong> Establish clear procedures for identifying and reporting incidents.</li>
+        <li><strong>Response Procedures:</strong> Define the steps to take immediately after an incident is detected, such as activating the BCP, notifying relevant stakeholders, and containing the impact.</li>
+        <li><strong>Recovery Procedures:</strong> Outline how the business will recover from the incident, including restoring systems, processes, and communications.</li>
+    </ul>
+</div>
 
-    <section>
-        <h2 onclick="toggleCollapse('section6')">6</h2>
-        <div id="section6" class="content">
-            <ul>
-                <li><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</li>
-                <li><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</li>
-            </ul>
-        </div>
-    </section>
+<div id="section6" class="content">
+    <ul>
+        <li><strong>Staff Training:</strong> Develop a training program for employees at all levels to ensure they understand their roles in the BCP and know what to do during an incident.</li>
+        <li><strong>Simulations and Drills:</strong> Regularly conduct simulations and testing of the BCP to ensure its effectiveness. This could involve tabletop exercises or full-scale drills.</li>
+    </ul>
+</div>
 
-    <section>
-        <h2 onclick="toggleCollapse('section7')">7</h2>
-        <div id="section7" class="content">
-            <ul>
-                <li><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</li>
-                <li><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</li>
-                <li><strong>Lessons Learned and Continuous Improvement:</strong> After each test or real incident, conduct a post-mortem analysis to identify areas for improvement and implement changes as necessary.</li>
-            </ul>
-        </div>
-    </section>
+<div id="section7" class="content">
+    <ul>
+        <li><strong>Testing the BCP:</strong> Regularly test the BCP through exercises, such as disaster recovery testing, to validate the effectiveness of recovery procedures.</li>
+        <li><strong>Updating the BCP:</strong> Periodically review and update the policy to ensure it reflects changes in the business environment, technology, and regulatory requirements.</li>
+        <li><strong>Lessons Learned and Continuous Improvement:</strong> After each test or real incident, conduct a post-mortem analysis to identify areas for improvement and implement changes as necessary.</li>
+    </ul>
+</div>
 
-    <section>
-        <h2 onclick="toggleCollapse('section8')">8</h2>
-        <div id="section8" class="content">
-            <ul>
-                <li><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</li>
-                <li><strong>Reporting:</strong> Establish reporting requirements for both internal and external stakeholders. This may include regular reports on BCP readiness, issues encountered during tests, and post-incident evaluations.</li>
-            </ul>
-        </div>
-    </section>
+<div id="section8" class="content">
+    <ul>
+        <li><strong>BCP Documentation:</strong> Keep detailed and up-to-date records of all BCP procedures, recovery plans, and contact lists.</li>
+        <li><strong>Reporting:</strong> Establish reporting requirements for both internal and external stakeholders. This may include regular reports on BCP readiness, issues encountered during tests, and post-incident evaluations.</li>
+    </ul>
 </div>
 
 <script>
     function toggleCollapse(sectionId) {
         const content = document.getElementById(sectionId);
-        // Toggle visibility of the clicked section
         if (content.style.display === "none" || content.style.display === "") {
-            content.style.display = "block";  // Show the content
+            content.style.display = "block";  // Show content
         } else {
-            content.style.display = "none";  // Hide the content
+            content.style.display = "none";  // Hide content
         }
     }
 </script>
