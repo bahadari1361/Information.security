@@ -74,16 +74,16 @@
         .section-btn {
             background-color: #666666; /* Dark gray mixed color */
             color: white;
-            font-size: 1.3em; /* Same font size as 'Vulnerabilities Identified' button */
-            padding: 12px 25px; /* Padding adjusted for consistency */
+            font-size: 1.2em;
+            padding: 10px 20px;
             margin: 5px 0; /* Reduced space between buttons */
+            width: auto; /* Fit to text size */
             text-align: center;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            width: 45px; /* Set the button width to 45px */
         }
 
         .section-btn:hover {
@@ -167,25 +167,6 @@
             color: #007bff;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-        }
-
-        th, td {
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f1e3d3;
-        }
-
         html {
             scroll-behavior: smooth;
         }
@@ -255,38 +236,7 @@
 
     <button class="section-btn" onclick="toggleCollapse('vulnerabilities')">Vulnerabilities Identified</button>
     <div id="vulnerabilities" class="content">
-        <table>
-            <tr>
-                <th>Vulnerability</th>
-                <th>Description</th>
-                <th>Risk Level</th>
-                <th>Impact</th>
-            </tr>
-            <tr>
-                <td>SQL Injection</td>
-                <td>Insecure input validation in web applications.</td>
-                <td>High</td>
-                <td>Potential data breach or unauthorized access to databases.</td>
-            </tr>
-            <tr>
-                <td>Cross-Site Scripting (XSS)</td>
-                <td>Failure to sanitize user input in web applications.</td>
-                <td>Medium</td>
-                <td>Exploitation of vulnerabilities to inject malicious scripts.</td>
-            </tr>
-            <tr>
-                <td>Weak Passwords</td>
-                <td>Users using simple, guessable passwords.</td>
-                <td>High</td>
-                <td>Account compromise through brute force or dictionary attacks.</td>
-            </tr>
-            <tr>
-                <td>Unpatched Systems</td>
-                <td>Failure to apply security patches in a timely manner.</td>
-                <td>High</td>
-                <td>Exploitation of known vulnerabilities in outdated software.</td>
-            </tr>
-        </table>
+        <p>Vulnerabilities were identified across several systems. The risks were assessed based on their severity and impact on the bank's operations.</p>
     </div>
 
     <button class="section-btn" onclick="toggleCollapse('outcome')">Outcome</button>
