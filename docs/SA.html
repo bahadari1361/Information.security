@@ -83,7 +83,8 @@
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            width: auto; /* Auto width to keep button size in line with text content */
+            width: 100%; /* Ensure buttons take full width for consistent size */
+            max-width: 600px; /* Make the max-width the same as the 'Vulnerabilities Identified' section button */
         }
 
         .section-btn:hover {
