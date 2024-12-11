@@ -1,232 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cybersecurity System & Network Diagram</title>
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'base',
-            themeVariables: {
-                primaryColor: '#2c3e50',
-                secondaryColor: '#ecf0f1',
-                lineColor: '#3498db',
-                edgeLabelBackground: '#ecf0f1'
-            },
-            flowchart: {
-                curve: 'linear',
-                useMaxWidth: true
-            }
-        });
-    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
             color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 20px;
             text-align: center;
         }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-
-        .container {
-            width: 80%;
-            margin: 40px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .mermaid {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #ecf0f1;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        footer {
-            background-color: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            margin-top: 30px;
-        }
-
-        footer p {
-            font-size: 1rem;
-        }
-
-        .explanation {
-            background-color: #3498db;
-            color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-            width: 50%;
-            margin-left: auto;
-            margin-right: auto;
-            transition: all 0.5s ease-in-out;
-            height: auto;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .explanation.active {
-            display: block;
-        }
-
-        .explanation h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .explanation p {
-            font-size: 1rem;
+        .diagram {
+            margin: 20px auto;
+            border: 2px solid #007bff;
+            padding: 10px;
+            background-color: #ffffff;
         }
     </style>
 </head>
-
 <body>
-
-    <header>
-        <h1>Cybersecurity System & Network Diagram</h1>
-        <p>System Overview for Central Bank of Afghanistan</p>
-    </header>
-
-    <div class="container">
-        <section>
-            <h2>Cybersecurity System & Network</h2>
-            <div class="mermaid">
-                %%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2c3e50', 'secondaryColor': '#ecf0f1', 'lineColor': '#3498db', 'edgeLabelBackground': '#ecf0f1'}}}%%
-                graph TD
-                    A[Firewall] --> B[Router]
-                    B --> C[Web Server]
-                    B --> D[Database Server]
-                    D --> E[Backup Server]
-                    C --> F[Load Balancer]
-                    F --> G[Client Devices]
-                    C --> H[Intrusion Detection System (IDS)]
-                    A --> I[Admin Monitoring]
-                    G --> I
-                    I --> J[Security Dashboard]
-                    J --> K[Security Analysts]
-                    H --> L[Alerts]
-                    L --> K
-                    A --> M[Azure Cloud]
-                    M --> N[Active Directory (AD)]
-                    M --> O[Cloud Firewall]
-                    N --> P[Domain Controller]
-            </div>
-        </section>
-
-        <!-- Explanation Content for Each System -->
-        <div id="A" class="explanation">
-            <h3>Firewall</h3>
-            <p>The firewall is the first line of defense against external threats. It monitors and controls incoming and outgoing network traffic based on predetermined security rules.</p>
-        </div>
-        <div id="B" class="explanation">
-            <h3>Router</h3>
-            <p>The router directs traffic between the firewall and other internal network components, ensuring secure routing for both external and internal data.</p>
-        </div>
-        <div id="C" class="explanation">
-            <h3>Web Server</h3>
-            <p>The web server hosts the organization's web applications and services, making them accessible over the internet, while ensuring proper security protocols are followed.</p>
-        </div>
-        <div id="D" class="explanation">
-            <h3>Database Server</h3>
-            <p>The database server stores and manages critical data. Proper security measures like encryption and access control are used to protect the stored data.</p>
-        </div>
-        <div id="E" class="explanation">
-            <h3>Backup Server</h3>
-            <p>The backup server stores backups of critical data, allowing recovery in the event of system failures, ransomware attacks, or natural disasters.</p>
-        </div>
-        <div id="F" class="explanation">
-            <h3>Load Balancer</h3>
-            <p>The load balancer distributes incoming traffic across multiple servers to ensure no single server is overwhelmed, providing better scalability and redundancy.</p>
-        </div>
-        <div id="G" class="explanation">
-            <h3>Client Devices</h3>
-            <p>Client devices are the end-user devices, such as computers and mobile phones, that access the web and internal applications securely through firewalls and other security layers.</p>
-        </div>
-        <div id="H" class="explanation">
-            <h3>Intrusion Detection System (IDS)</h3>
-            <p>The IDS monitors network traffic for suspicious activity and known threats, alerting administrators about potential intrusions or security breaches.</p>
-        </div>
-        <div id="I" class="explanation">
-            <h3>Admin Monitoring</h3>
-            <p>Admin monitoring provides a centralized system for system administrators to track and manage security logs, configurations, and alerts in real time.</p>
-        </div>
-        <div id="J" class="explanation">
-            <h3>Security Dashboard</h3>
-            <p>The security dashboard provides an overview of system health, security incidents, and alerts, giving security teams real-time insights into the organization's security posture.</p>
-        </div>
-        <div id="K" class="explanation">
-            <h3>Security Analysts</h3>
-            <p>Security analysts review alerts and data from monitoring systems, conducting threat analysis and responding to security incidents.</p>
-        </div>
-        <div id="L" class="explanation">
-            <h3>Alerts</h3>
-            <p>Alerts notify the security team of potential threats, breaches, or suspicious activity, enabling them to respond promptly to mitigate risks.</p>
-        </div>
-        <div id="M" class="explanation">
-            <h3>Azure Cloud</h3>
-            <p>Azure Cloud provides scalable cloud infrastructure, security services, and tools for deploying and managing applications securely.</p>
-        </div>
-        <div id="N" class="explanation">
-            <h3>Active Directory (AD)</h3>
-            <p>Active Directory manages users, devices, and services, allowing centralized authentication and authorization across the network.</p>
-        </div>
-        <div id="O" class="explanation">
-            <h3>Cloud Firewall</h3>
-            <p>The cloud firewall provides an additional layer of security for cloud-based services, filtering malicious traffic and ensuring secure access to cloud applications.</p>
-        </div>
-        <div id="P" class="explanation">
-            <h3>Domain Controller</h3>
-            <p>The domain controller is responsible for managing access to network resources, authenticating users, and ensuring secure communication between network devices.</p>
-        </div>
-
+    <h1>Cybersecurity System & Network Diagram</h1>
+    <div class="diagram">
+        <p>Network Elements:</p>
+        <ul>
+            <li>Firewall</li>
+            <li>Router</li>
+            <li>Intrusion Detection System (IDS)</li>
+            <li>Server</li>
+            <li>Client Workstations</li>
+        </ul>
+        <p>Security Measures:</p>
+        <ul>
+            <li>Encryption</li>
+            <li>Access Control</li>
+            <li>Regular Updates</li>
+            <li>Network Monitoring</li>
+        </ul>
     </div>
-
-    <footer>
-        <p>&copy; 2024 Hashmatullah Bahadari</p>
-    </footer>
-
-    <script>
-        // Add click event listeners to each element for explanation
-        const elements = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P'];
-
-        elements.forEach(function (id) {
-            document.getElementById(id).addEventListener('click', function () {
-                document.querySelectorAll('.explanation').forEach(function (el) {
-                    el.classList.remove('active');
-                });
-                document.getElementById(id).classList.add('active');
-            });
-        });
-    </script>
-
 </body>
-
 </html>
