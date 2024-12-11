@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,8 +68,29 @@
         footer p {
             font-size: 1rem;
         }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            color: #2c3e50;
+        }
+
+        ul {
+            margin-top: 20px;
+            list-style-type: none;
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        li strong {
+            font-weight: bold;
+        }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -77,7 +99,7 @@
 
     <div class="container">
         <section>
-            <h2>IT Audit Process Diagram</h2>
+            <h2>ISO/IEC 27001 IT Audit Process Diagram</h2>
             <div class="mermaid">
                 %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
                 graph TD
@@ -88,20 +110,32 @@
                     E --> F[Audit Closing Meeting]
                     F --> G[Audit Report]
                     G --> H[Follow-Up Audit]
+
+                    %% Adding icons to steps
+                    classDef step fill:#3498db,stroke:#fff,stroke-width:2px;
+                    class A,B,C,D,E,F,G,H step;
+                    class A fill:#16a085;
+                    class B fill:#1abc9c;
+                    class C fill:#f39c12;
+                    class D fill:#e74c3c;
+                    class E fill:#8e44ad;
+                    class F fill:#2980b9;
+                    class G fill:#27ae60;
+                    class H fill:#2ecc71;
             </div>
         </section>
 
         <section>
             <h2>Audit Process Details</h2>
             <ul>
-                <li><strong>Audit Planning:</strong> Define the scope, objectives, and timelines for the audit.</li>
-                <li><strong>Pre-Audit Documentation Review:</strong> Review of existing documentation, policies, and records.</li>
-                <li><strong>Fieldwork/On-Site Audit:</strong> Conduct interviews, document reviews, and observe practices on-site.</li>
-                <li><strong>Risk Assessment & Control Evaluation:</strong> Evaluate risk management and control effectiveness.</li>
-                <li><strong>Non-Conformity Reporting:</strong> Identify any non-conformities and report them.</li>
-                <li><strong>Audit Closing Meeting:</strong> Discuss findings and corrective actions with the management team.</li>
-                <li><strong>Audit Report:</strong> Prepare a detailed report documenting findings, corrective actions, and recommendations.</li>
-                <li><strong>Follow-Up Audit:</strong> Re-assess the corrective actions taken after the initial audit.</li>
+                <li><strong>Audit Planning:</strong> Define the scope, objectives, and timelines for the audit. This phase helps set clear expectations for the audit process.</li>
+                <li><strong>Pre-Audit Documentation Review:</strong> Review of existing documentation, policies, and records, ensuring that all necessary documents are available before the fieldwork phase.</li>
+                <li><strong>Fieldwork/On-Site Audit:</strong> Conduct interviews, document reviews, and observe practices on-site to assess the implementation of the ISO/IEC 27001 controls.</li>
+                <li><strong>Risk Assessment & Control Evaluation:</strong> Evaluate risk management practices and the effectiveness of the controls in mitigating risks according to the ISO/IEC 27001 standard.</li>
+                <li><strong>Non-Conformity Reporting:</strong> Identify any non-conformities with the ISO/IEC 27001 standard and report them with possible impacts on the organization's information security posture.</li>
+                <li><strong>Audit Closing Meeting:</strong> Discuss findings with the organization's management and recommend corrective actions. This is a collaborative step to ensure that all findings are addressed.</li>
+                <li><strong>Audit Report:</strong> Prepare a detailed report documenting findings, corrective actions, and recommendations for improvement based on the audit process.</li>
+                <li><strong>Follow-Up Audit:</strong> Conduct a follow-up audit to reassess corrective actions and ensure that the non-conformities identified earlier have been adequately addressed.</li>
             </ul>
         </section>
 
@@ -112,4 +146,5 @@
     </footer>
 
 </body>
+
 </html>
