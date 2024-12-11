@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISO/IEC 27001 IT Audit Process</title>
+    <title>ISO/IEC 27001 IT Audit</title>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({
             startOnLoad: true,
-            theme: 'base',
+            theme: 'forest',
             themeVariables: {
-                primaryColor: '#2980b9',
+                primaryColor: '#2c3e50',
                 edgeLabelBackground: '#ecf0f1',
-                lineColor: '#16a085',
-                nodeBorderRadius: '8px',
-                nodePadding: '12px'
+                lineColor: '#3498db'
             },
             flowchart: {
                 curve: 'linear'
@@ -22,124 +20,157 @@
         });
     </script>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #f4f6f7;
-            color: #2c3e50;
+            background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
         }
+
         header {
             background-color: #2c3e50;
-            color: white;
+            color: #fff;
             padding: 20px;
             text-align: center;
         }
-        .container {
-            width: 85%;
-            margin: 50px auto;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
         }
-        .mermaid {
-            background-color: #ecf0f1;
-            padding: 20px;
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        footer {
-            text-align: center;
+
+        .mermaid {
+            margin-top: 20px;
             padding: 20px;
-            background-color: #34495e;
-            color: white;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
         footer p {
             font-size: 1rem;
         }
+
+        .explanation {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.5s ease-in-out;
+            height: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .explanation.active {
+            display: block;
+        }
+
+        .explanation h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .explanation p {
+            font-size: 1rem;
+        }
+
     </style>
 </head>
 <body>
 
     <header>
         <h1>ISO/IEC 27001 IT Audit Process</h1>
-        <p>A Comprehensive and Professional Diagram for IT Audit Aligned with ISO/IEC 27001</p>
+        <p>Comprehensive Audit for Information Security Management</p>
     </header>
 
     <div class="container">
         <section>
-            <h2>IT Audit Process Diagram (ISO/IEC 27001)</h2>
+            <h2>ISO/IEC 27001 Audit Process</h2>
             <div class="mermaid">
-                %%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#2980b9', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#16a085', 'nodeBorderRadius': '8px', 'nodePadding': '12px'}}}%%
+                %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
                 graph TD
-                    A[Management Commitment] --> B[Audit Planning]
-                    B --> C[Risk Assessment]
-                    C --> D[Audit Execution]
-                    D --> E[Audit Reporting]
-                    E --> F[Corrective Actions]
-                    F --> G[Continuous Monitoring]
-
-                    A --> H[Policy & Governance Framework]
-                    B --> I[Audit Scope and Objectives]
-                    C --> J[Risk Identification and Analysis]
-                    D --> K[Control Testing and Evaluation]
-                    E --> L[Findings and Non-Conformities]
-                    F --> M[Remediation Actions]
-                    G --> N[Review & Continuous Improvement]
-
-                    %% Adding Clickable Links to Provide Further Explanations
-                    click A href "#A"
-                    click B href "#B"
-                    click C href "#C"
-                    click D href "#D"
-                    click E href "#E"
-                    click F href "#F"
-                    click G href "#G"
-                    click H href "#H"
-                    click I href "#I"
-                    click J href "#J"
-                    click K href "#K"
-                    click L href "#L"
-                    click M href "#M"
-                    click N href "#N"
+                    A[Context of the Organization] --> B[Leadership]
+                    B --> C[Planning]
+                    C --> D[Support]
+                    D --> E[Operation]
+                    E --> F[Performance Evaluation]
+                    F --> G[Improvement]
+                    A --> H[Internal Audit]
+                    F --> I[Management Review]
+                    G --> J[Corrective Actions]
             </div>
         </section>
 
         <!-- Explanation Content for Each Component -->
         <div id="A" class="explanation">
-            <h3>Management Commitment</h3>
-            <p>Management commitment ensures that there is support for the audit process and the necessary resources are allocated. It sets the foundation for the entire audit process by aligning security objectives with the organization's strategic goals.</p>
+            <h3>Context of the Organization</h3>
+            <p>This phase involves understanding the internal and external factors affecting the organization, its stakeholders, and the scope of the ISMS.</p>
         </div>
         <div id="B" class="explanation">
-            <h3>Audit Planning</h3>
-            <p>Audit planning involves defining the audit scope, objectives, and approach to ensure that the audit process aligns with the requirements of ISO/IEC 27001. It includes determining the systems, processes, and areas that need to be reviewed.</p>
+            <h3>Leadership</h3>
+            <p>Leadership's commitment to the ISMS is critical. The senior management team defines the information security policy, objectives, and assigns resources.</p>
         </div>
         <div id="C" class="explanation">
-            <h3>Risk Assessment</h3>
-            <p>The risk assessment identifies and evaluates potential threats and vulnerabilities that could impact the security of the information assets. It is a crucial step to prioritize areas of concern during the audit process.</p>
+            <h3>Planning</h3>
+            <p>This phase involves identifying risks, determining objectives, and creating a risk treatment plan. As a lead auditor, you ensure that the planning is comprehensive and aligned with ISO/IEC 27001 requirements.</p>
         </div>
         <div id="D" class="explanation">
-            <h3>Audit Execution</h3>
-            <p>Audit execution involves the collection of evidence, testing controls, and assessing the effectiveness of security measures in place. This phase also includes evaluating how well the organization’s information security management system (ISMS) aligns with ISO/IEC 27001 standards.</p>
+            <h3>Support</h3>
+            <p>Ensure that the organization has the necessary resources, training, and awareness to maintain the ISMS.</p>
         </div>
         <div id="E" class="explanation">
-            <h3>Audit Reporting</h3>
-            <p>Audit reporting documents the findings, including any non-conformities or gaps in security. It provides actionable insights and recommendations for corrective measures and areas that need improvement.</p>
+            <h3>Operation</h3>
+            <p>This section focuses on the operational processes for implementing the ISMS. You ensure these processes align with the planned security controls.</p>
         </div>
         <div id="F" class="explanation">
-            <h3>Corrective Actions</h3>
-            <p>Corrective actions are implemented to address the audit findings, non-conformities, and weaknesses in the information security management system (ISMS). These actions aim to strengthen the security posture of the organization.</p>
+            <h3>Performance Evaluation</h3>
+            <p>Monitor, measure, and evaluate the ISMS performance to ensure compliance. This includes auditing the internal processes and reviewing outcomes.</p>
         </div>
         <div id="G" class="explanation">
-            <h3>Continuous Monitoring</h3>
-            <p>Continuous monitoring ensures that the improvements made after the audit are effective and that security measures remain aligned with ISO/IEC 27001 requirements. It also involves tracking performance metrics and key indicators of security health.</p>
+            <h3>Improvement</h3>
+            <p>Identify opportunities for improvement based on audit findings, and non-conformities, and implement corrective actions.</p>
+        </div>
+        <div id="H" class="explanation">
+            <h3>Internal Audit</h3>
+            <p>Internal audits assess the compliance of the ISMS against ISO/IEC 27001 standards. You perform regular internal audits to ensure continued adherence.</p>
+        </div>
+        <div id="I" class="explanation">
+            <h3>Management Review</h3>
+            <p>Management reviews ensure that the ISMS is effective, meets objectives, and supports the overall strategic goals of the organization.</p>
+        </div>
+        <div id="J" class="explanation">
+            <h3>Corrective Actions</h3>
+            <p>Corrective actions are taken to address any issues identified during audits or performance evaluations. These actions help in continual improvement of the ISMS.</p>
         </div>
 
     </div>
 
-    <footer>
-        <p>&copy; 2024 IT Audit Design Aligned with ISO/IEC 27001 by Hashmatullah Bahadari</p>
-    </footer>
-
-</body>
-</html>
