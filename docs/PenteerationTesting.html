@@ -74,6 +74,19 @@
         footer p {
             font-size: 1rem;
         }
+
+        .explanation {
+            background-color: #3498db;
+            color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .explanation.active {
+            display: block;
+        }
     </style>
 </head>
 
@@ -90,27 +103,63 @@
             <div class="mermaid">
                 %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
                 graph TD
-                    A[Reconnaissance] --> B[Scanning]
-                    B --> C[Exploitation]
-                    C --> D[Post-Exploitation]
-                    D --> E[Reporting]
-                    A --> F[Passive Recon]
-                    A --> G[Active Recon]
-                    B --> H[Vulnerability Scanning]
-                    B --> I[Network Mapping]
-                    C --> J[Gain Access]
-                    C --> K[Privilege Escalation]
-                    D --> L[Data Exfiltration]
-                    D --> M[Cleanup]
-                    E --> N[Generate Reports]
-                    E --> O[Provide Recommendations]
+                    A[Reconnaissance🔍] --> B[Scanning🔎]
+                    B --> C[Exploitation💥]
+                    C --> D[Post-Exploitation🔒]
+                    D --> E[Reporting📊]
+                    A --> F[Passive Recon👀]
+                    A --> G[Active Recon⚡]
+                    B --> H[Vulnerability Scanning🔧]
+                    B --> I[Network Mapping🗺️]
+                    C --> J[Gain Access🔓]
+                    C --> K[Privilege Escalation🚀]
+                    D --> L[Data Exfiltration📤]
+                    D --> M[Cleanup🧹]
+                    E --> N[Generate Reports📝]
+                    E --> O[Provide Recommendations💡]
             </div>
         </section>
+        <div id="A" class="explanation">
+            <h3>Reconnaissance (🔍)</h3>
+            <p>Reconnaissance involves gathering information about the target system, such as domain names, IP addresses, and network infrastructure. It is divided into two parts: Active and Passive Reconnaissance.</p>
+        </div>
+        <div id="B" class="explanation">
+            <h3>Scanning (🔎)</h3>
+            <p>Scanning involves identifying vulnerabilities in the target system using tools like Nessus, Nmap, and others to find weaknesses.</p>
+        </div>
+        <div id="C" class="explanation">
+            <h3>Exploitation (💥)</h3>
+            <p>In this phase, the attacker attempts to exploit vulnerabilities to gain unauthorized access to the system.</p>
+        </div>
+        <div id="D" class="explanation">
+            <h3>Post-Exploitation (🔒)</h3>
+            <p>After gaining access, the attacker escalates privileges and maintains access. This phase may involve lateral movement within the network.</p>
+        </div>
+        <div id="E" class="explanation">
+            <h3>Reporting (📊)</h3>
+            <p>At the end of the test, a report is generated detailing vulnerabilities, exploitation methods, and recommendations for improvement.</p>
+        </div>
+        <!-- Add more explanations for other elements as needed -->
+
     </div>
 
     <footer>
         <p>&copy; 2024 Hashmatullah Bahadari</p>
     </footer>
+
+    <script>
+        // Add click event listeners to each element for explanation
+        const elements = ['A', 'B', 'C', 'D', 'E'];
+
+        elements.forEach(function (id) {
+            document.getElementById(id).addEventListener('click', function () {
+                document.querySelectorAll('.explanation').forEach(function (el) {
+                    el.classList.remove('active');
+                });
+                document.getElementById(id).classList.add('active');
+            });
+        });
+    </script>
 
 </body>
 
