@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISO/IEC 27001 IT Audit</title>
+    <title>ISO/IEC 27001 IT Audit Diagram</title>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({
@@ -20,29 +20,23 @@
         });
     </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+            padding: 20px;
         }
 
         header {
             background-color: #2c3e50;
             color: #fff;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
 
         header h1 {
             font-size: 2.5rem;
-            font-weight: 700;
         }
 
         .container {
@@ -73,104 +67,49 @@
         footer p {
             font-size: 1rem;
         }
-
-        .explanation {
-            background-color: #3498db;
-            color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-            width: 50%;
-            margin-left: auto;
-            margin-right: auto;
-            transition: all 0.5s ease-in-out;
-            height: auto;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .explanation.active {
-            display: block;
-        }
-
-        .explanation h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .explanation p {
-            font-size: 1rem;
-        }
-
     </style>
 </head>
 <body>
 
     <header>
         <h1>ISO/IEC 27001 IT Audit Process</h1>
-        <p>Comprehensive Audit for Information Security Management</p>
     </header>
 
     <div class="container">
         <section>
-            <h2>ISO/IEC 27001 Audit Process</h2>
+            <h2>IT Audit Process Diagram</h2>
             <div class="mermaid">
                 %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
                 graph TD
-                    A[Context of the Organization] --> B[Leadership]
-                    B --> C[Planning]
-                    C --> D[Support]
-                    D --> E[Operation]
-                    E --> F[Performance Evaluation]
-                    F --> G[Improvement]
-                    A --> H[Internal Audit]
-                    F --> I[Management Review]
-                    G --> J[Corrective Actions]
+                    A[Audit Planning] --> B[Pre-Audit Documentation Review]
+                    B --> C[Fieldwork/On-Site Audit]
+                    C --> D[Risk Assessment & Control Evaluation]
+                    D --> E[Non-Conformity Reporting]
+                    E --> F[Audit Closing Meeting]
+                    F --> G[Audit Report]
+                    G --> H[Follow-Up Audit]
             </div>
         </section>
 
-        <!-- Explanation Content for Each Component -->
-        <div id="A" class="explanation">
-            <h3>Context of the Organization</h3>
-            <p>This phase involves understanding the internal and external factors affecting the organization, its stakeholders, and the scope of the ISMS.</p>
-        </div>
-        <div id="B" class="explanation">
-            <h3>Leadership</h3>
-            <p>Leadership's commitment to the ISMS is critical. The senior management team defines the information security policy, objectives, and assigns resources.</p>
-        </div>
-        <div id="C" class="explanation">
-            <h3>Planning</h3>
-            <p>This phase involves identifying risks, determining objectives, and creating a risk treatment plan. As a lead auditor, you ensure that the planning is comprehensive and aligned with ISO/IEC 27001 requirements.</p>
-        </div>
-        <div id="D" class="explanation">
-            <h3>Support</h3>
-            <p>Ensure that the organization has the necessary resources, training, and awareness to maintain the ISMS.</p>
-        </div>
-        <div id="E" class="explanation">
-            <h3>Operation</h3>
-            <p>This section focuses on the operational processes for implementing the ISMS. You ensure these processes align with the planned security controls.</p>
-        </div>
-        <div id="F" class="explanation">
-            <h3>Performance Evaluation</h3>
-            <p>Monitor, measure, and evaluate the ISMS performance to ensure compliance. This includes auditing the internal processes and reviewing outcomes.</p>
-        </div>
-        <div id="G" class="explanation">
-            <h3>Improvement</h3>
-            <p>Identify opportunities for improvement based on audit findings, and non-conformities, and implement corrective actions.</p>
-        </div>
-        <div id="H" class="explanation">
-            <h3>Internal Audit</h3>
-            <p>Internal audits assess the compliance of the ISMS against ISO/IEC 27001 standards. You perform regular internal audits to ensure continued adherence.</p>
-        </div>
-        <div id="I" class="explanation">
-            <h3>Management Review</h3>
-            <p>Management reviews ensure that the ISMS is effective, meets objectives, and supports the overall strategic goals of the organization.</p>
-        </div>
-        <div id="J" class="explanation">
-            <h3>Corrective Actions</h3>
-            <p>Corrective actions are taken to address any issues identified during audits or performance evaluations. These actions help in continual improvement of the ISMS.</p>
-        </div>
+        <section>
+            <h2>Audit Process Details</h2>
+            <ul>
+                <li><strong>Audit Planning:</strong> Define the scope, objectives, and timelines for the audit.</li>
+                <li><strong>Pre-Audit Documentation Review:</strong> Review of existing documentation, policies, and records.</li>
+                <li><strong>Fieldwork/On-Site Audit:</strong> Conduct interviews, document reviews, and observe practices on-site.</li>
+                <li><strong>Risk Assessment & Control Evaluation:</strong> Evaluate risk management and control effectiveness.</li>
+                <li><strong>Non-Conformity Reporting:</strong> Identify any non-conformities and report them.</li>
+                <li><strong>Audit Closing Meeting:</strong> Discuss findings and corrective actions with the management team.</li>
+                <li><strong>Audit Report:</strong> Prepare a detailed report documenting findings, corrective actions, and recommendations.</li>
+                <li><strong>Follow-Up Audit:</strong> Re-assess the corrective actions taken after the initial audit.</li>
+            </ul>
+        </section>
 
     </div>
 
+    <footer>
+        <p>&copy; 2024 Hashmatullah Bahadari</p>
+    </footer>
+
+</body>
+</html>
