@@ -204,15 +204,19 @@
     </footer>
 
     <script>
-        // Add click event listeners to each element for explanation
-        const elements = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O'];
+        // Wait for mermaid to finish rendering the diagram, then add event listeners
+        mermaid.contentLoaded();
 
-        elements.forEach(function (id) {
-            document.getElementById(id).addEventListener('click', function () {
+        // Add event listeners to clickable elements for explanation
+        const phases = document.querySelectorAll('.mermaid div');
+
+        phases.forEach(phase => {
+            phase.addEventListener('click', function () {
+                const phaseId = phase.id; // Get the clicked phase's ID
                 document.querySelectorAll('.explanation').forEach(function (el) {
-                    el.classList.remove('active');
+                    el.classList.remove('active'); // Hide all explanations
                 });
-                document.getElementById(id).classList.add('active');
+                document.getElementById(phaseId).classList.add('active'); // Show the corresponding explanation
             });
         });
     </script>
