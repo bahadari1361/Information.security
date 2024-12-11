@@ -78,14 +78,30 @@
         .explanation {
             background-color: #3498db;
             color: #fff;
-            padding: 15px;
+            padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
             display: none;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.5s ease-in-out;
+            height: auto;
+            max-height: 300px;
+            overflow-y: auto;
         }
 
         .explanation.active {
             display: block;
+        }
+
+        .explanation h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .explanation p {
+            font-size: 1rem;
         }
     </style>
 </head>
@@ -120,7 +136,7 @@
             </div>
         </section>
 
-        <!-- Explanations for each phase -->
+        <!-- Explanation Content for Each Phase -->
         <div id="A" class="explanation">
             <h3>Reconnaissance (🔍)</h3>
             <p>Reconnaissance involves gathering information about the target system, such as domain names, IP addresses, and network infrastructure. It is divided into two parts: Active and Passive Reconnaissance.</p>
@@ -142,6 +158,7 @@
             <p>At the end of the test, a report is generated detailing vulnerabilities, exploitation methods, and recommendations for improvement.</p>
         </div>
         <!-- Add more explanations for other elements as needed -->
+
     </div>
 
     <footer>
