@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red and Blue Team Exercises Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #2980b9;
+        }
+
+        .section p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #7f8c8d;
+        }
+
+        .section ul {
+            list-style: none;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .section ul li {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .section img {
+            max-width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Red and Blue Team Exercises Portfolio</h1>
+        <p>Enhancing Organizational Cybersecurity Through Collaborative Defense and Offense</p>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <h2>Introduction</h2>
+            <p>Red and Blue Team exercises are crucial in testing and enhancing the security defenses of an organization. As an Information Security Manager, I coordinated and facilitated multiple Red and Blue Team exercises to simulate realistic cyber-attacks and improve our security posture. These exercises focused on identifying weaknesses, testing our incident response capabilities, and improving threat detection techniques.</p>
+        </section>
+
+        <section class="section">
+            <h2>Objective and Goals</h2>
+            <h3>Red Team</h3>
+            <p>The goal of the Red Team was to emulate real-world attackers using a variety of techniques and tools to breach our defenses. The objectives included:</p>
+            <ul>
+                <li>Penetrating the network using external and internal attack vectors</li>
+                <li>Escalating privileges to gain unauthorized access</li>
+                <li>Simulating social engineering attacks, including phishing campaigns</li>
+                <li>Exfiltrating sensitive data or compromising critical systems</li>
+            </ul>
+
+            <h3>Blue Team</h3>
+            <p>The Blue Team's mission was to defend against the attacks initiated by the Red Team, including:</p>
+            <ul>
+                <li>Detecting and responding to real-time attacks using monitoring tools</li>
+                <li>Implementing incident response procedures and containment strategies</li>
+                <li>Mitigating threats through security controls such as firewalls, IDS/IPS, and endpoint protection</li>
+                <li>Improving overall detection and response capabilities</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Tools and Technologies Used</h2>
+            <h3>Red Team Tools</h3>
+            <ul>
+                <li>Metasploit Framework</li>
+                <li>Cobalt Strike</li>
+                <li>Burp Suite</li>
+                <li>Social Engineering (Phishing)</li>
+            </ul>
+
+            <h3>Blue Team Tools</h3>
+            <ul>
+                <li>SIEM (Splunk, ELK)</li>
+                <li>Intrusion Detection Systems (Suricata, Snort)</li>
+                <li>Endpoint Detection and Response (EDR)</li>
+                <li>Firewall (Palo Alto, Fortinet)</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Exercise Details</h2>
+            <h3>Red Team Scenarios</h3>
+            <p>The Red Team executed a variety of tactics to test the defenses:</p>
+            <ul>
+                <li>External network penetration using SQL Injection vulnerabilities</li>
+                <li>Privilege escalation on internal systems using misconfigured user privileges</li>
+                <li>Phishing emails to target internal employees and collect sensitive information</li>
+            </ul>
+
+            <h3>Blue Team Response</h3>
+            <p>The Blue Team responded to these attacks with the following countermeasures:</p>
+            <ul>
+                <li>Detected unauthorized access via SIEM and triggered automated alerts</li>
+                <li>Blocked phishing emails using email filtering tools and user training</li>
+                <li>Isolated compromised systems and initiated incident response protocols</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Key Findings and Results</h2>
+            <p>Several vulnerabilities were uncovered during the exercise, including:</p>
+            <ul>
+                <li>Inadequate monitoring of critical infrastructure</li>
+                <li>Lack of multi-factor authentication in several key systems</li>
+                <li>Slow response times in identifying compromised accounts</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Post-Exercise Improvements</h2>
+            <p>Based on the results, the following improvements were implemented:</p>
+            <ul>
+                <li>Upgraded SIEM system to improve real-time monitoring and detection</li>
+                <li>Enhanced endpoint security through EDR and more frequent patching</li>
+                <li>Developed a comprehensive incident response playbook for faster containment</li>
+                <li>Implemented mandatory multi-factor authentication for all systems</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>Visuals</h2>
+            <p>Below are some visuals that demonstrate the exercise:</p>
+            <img src="red_blue_team_exercise_flow.png" alt="Red and Blue Team Exercise Flow">
+        </section>
+
+        <section class="section">
+            <h2>Lessons Learned and Conclusion</h2>
+            <p>The Red and Blue Team exercises highlighted the need for continuous improvement in both offensive and defensive strategies. The collaboration between teams allowed for a better understanding of our strengths and weaknesses, and the lessons learned have driven significant security improvements across the organization. These exercises are a critical part of a proactive security strategy, ensuring that we stay ahead of evolving cyber threats.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Hashmatullah Bahadari</p>
+    </footer>
+</body>
+</html>
