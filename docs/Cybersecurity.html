@@ -110,13 +110,13 @@
 <body>
 
     <header>
-        <h1>Cybersecurity System & Network Diagram</h1>
-        <p>Professional Design for Network and Security Systems</p>
+        <h1>Cybersecurity System & Network Architecture</h1>
+        <p>Comprehensive Professional Design with Cybersecurity Components</p>
     </header>
 
     <div class="container">
         <section>
-            <h2>Cybersecurity System Architecture</h2>
+            <h2>Cybersecurity System & Network Architecture</h2>
             <div class="mermaid">
                 %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
                 graph TD
@@ -129,17 +129,21 @@
                     B --> H[IDS/IPS]
                     H --> I[SIEM]
                     I --> J[Incident Response Team]
-                    F --> K[Authentication Server]
-                    G --> L[Backup System]
-                    E --> M[DMZ]
-                    M --> N[Public Web Server]
-                    M --> O[Public Services]
-                    G --> P[Internal Network]
-                    P --> Q[Database]
-                    P --> R[Private Web Servers]
-                    P --> S[Internal Applications]
-                    R --> T[Internal Firewall]
-                    S --> U[Admin Access]
+                    I --> K[Monitoring Dashboard]
+                    F --> L[Authentication Server]
+                    G --> M[Backup System]
+                    M --> N[Cloud Backup]
+                    E --> O[DMZ]
+                    O --> P[Public Web Server]
+                    O --> Q[Public Services]
+                    G --> R[Internal Network]
+                    R --> S[Database]
+                    R --> T[Private Web Servers]
+                    R --> U[Internal Applications]
+                    T --> V[Internal Firewall]
+                    U --> W[Admin Access]
+                    B --> X[Proxy Server]
+                    F --> Y[Endpoint Protection]
 
                     %% Custom styling
                     classDef firewall fill:#ffcc00,stroke:#333,stroke-width:2px;
@@ -149,7 +153,7 @@
                     classDef loadBalancer fill:#2ecc71,stroke:#333,stroke-width:2px;
                     class D loadBalancer;
                     classDef server fill:#e74c3c,stroke:#333,stroke-width:2px;
-                    class E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U server;
+                    class E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W server;
                     %% Adding clickable links to nodes
                     click B href "#B"
                     click C href "#C"
@@ -171,102 +175,120 @@
                     click S href "#S"
                     click T href "#T"
                     click U href "#U"
+                    click V href "#V"
+                    click W href "#W"
+                    click X href "#X"
+                    click Y href "#Y"
                 </div>
         </section>
 
-        <!-- Explanation Content for Each Phase -->
+        <!-- Explanation Content for Each Component -->
         <div id="B" class="explanation">
             <h3>Firewall</h3>
-            <p>The firewall acts as a barrier between the internal network and external threats, filtering incoming and outgoing traffic based on security rules.</p>
+            <p>The firewall monitors incoming and outgoing network traffic and enforces security policies to protect the network from external threats.</p>
         </div>
         <div id="C" class="explanation">
             <h3>VPN Gateway</h3>
-            <p>VPN Gateway allows remote users to securely access the internal network by encrypting data and ensuring safe communication channels.</p>
+            <p>Allows remote access to the network through secure encrypted connections, protecting sensitive data from external threats.</p>
         </div>
         <div id="D" class="explanation">
             <h3>Load Balancer</h3>
-            <p>Distributes traffic across multiple servers to ensure reliability and optimal resource usage. It also prevents server overload.</p>
+            <p>Distributes incoming network traffic across multiple servers, ensuring optimal resource usage and reliability.</p>
         </div>
         <div id="E" class="explanation">
             <h3>Web Servers</h3>
-            <p>Hosts web applications and services, providing access to users via browsers. Web servers are an essential component of web infrastructure.</p>
+            <p>Hosts public-facing web applications, ensuring availability and scalability for users accessing the services from the internet.</p>
         </div>
         <div id="F" class="explanation">
             <h3>Application Servers</h3>
-            <p>Manages business logic and application processes. These servers run the backend of your web and mobile applications.</p>
+            <p>Manages and runs the backend of applications, processing client requests and interacting with databases.</p>
         </div>
         <div id="G" class="explanation">
             <h3>Database Servers</h3>
-            <p>Stores and manages all the data of the organization. It ensures data integrity, security, and availability.</p>
+            <p>Stores all critical business data, managing access, ensuring data integrity, and providing fault tolerance and backup.</p>
         </div>
         <div id="H" class="explanation">
             <h3>IDS/IPS</h3>
-            <p>Intrusion Detection and Prevention Systems monitor network traffic for suspicious activities and protect the system from attacks.</p>
+            <p>Intrusion Detection and Prevention System (IDS/IPS) monitors network traffic for suspicious activity and prevents potential attacks.</p>
         </div>
         <div id="I" class="explanation">
-            <h3>SIEM</h3>
-            <p>Security Information and Event Management system collects and analyzes logs from different network devices to detect security threats.</p>
+            <h3>SIEM (Security Information and Event Management)</h3>
+            <p>Collects and analyzes logs from network devices to identify and respond to security incidents in real-time.</p>
         </div>
         <div id="J" class="explanation">
             <h3>Incident Response Team</h3>
-            <p>Handles security incidents, investigates breaches, and implements corrective actions to mitigate risks.</p>
+            <p>Responsible for investigating, responding to, and mitigating cybersecurity incidents to minimize damage and restore normal operations.</p>
         </div>
         <div id="K" class="explanation">
-            <h3>Authentication Server</h3>
-            <p>Manages user authentication processes, often integrated with multi-factor authentication to increase security.</p>
+            <h3>Monitoring Dashboard</h3>
+            <p>Provides real-time monitoring and analytics of network security, alerting teams to potential security incidents.</p>
         </div>
         <div id="L" class="explanation">
-            <h3>Backup System</h3>
-            <p>Ensures critical data is backed up periodically and can be restored in case of system failures or disasters.</p>
+            <h3>Authentication Server</h3>
+            <p>Manages authentication requests and ensures users have proper credentials to access protected resources.</p>
         </div>
         <div id="M" class="explanation">
-            <h3>DMZ (Demilitarized Zone)</h3>
-            <p>Hosts externally facing services while keeping internal network components secure. It isolates the public-facing services from internal assets.</p>
+            <h3>Backup System</h3>
+            <p>Regularly backs up critical data, ensuring that it can be recovered in case of system failures or cyber-attacks.</p>
         </div>
         <div id="N" class="explanation">
-            <h3>Public Web Server</h3>
-            <p>Hosts public-facing websites and web services that users can access from outside the network.</p>
+            <h3>Cloud Backup</h3>
+            <p>Cloud-based backup solutions provide off-site data protection, ensuring business continuity in case of disaster.</p>
         </div>
         <div id="O" class="explanation">
-            <h3>Public Services</h3>
-            <p>Represents publicly available services like email, DNS, and HTTP servers that are exposed to the internet.</p>
+            <h3>DMZ (Demilitarized Zone)</h3>
+            <p>Separates the internal network from the external network, providing an additional layer of security for public-facing servers.</p>
         </div>
         <div id="P" class="explanation">
-            <h3>Internal Network</h3>
-            <p>The network that is dedicated to internal services and applications. It is protected from the external network by various security measures.</p>
+            <h3>Public Web Server</h3>
+            <p>Hosts public-facing websites or applications that are accessible by users over the internet.</p>
         </div>
         <div id="Q" class="explanation">
-            <h3>Database</h3>
-            <p>Stores and secures organizational data, ensuring it is protected from unauthorized access and available when needed.</p>
+            <h3>Public Services</h3>
+            <p>Other public services such as email, DNS, or file sharing that are accessed from the internet.</p>
         </div>
         <div id="R" class="explanation">
-            <h3>Private Web Servers</h3>
-            <p>Hosts internal applications and services that are not directly accessible from the outside.</p>
+            <h3>Internal Network</h3>
+            <p>Represents the private network where internal communication and operations are performed, isolated from external threats.</p>
         </div>
         <div id="S" class="explanation">
-            <h3>Internal Applications</h3>
-            <p>Refers to applications used by internal employees, such as HR software, email, and internal communication tools.</p>
+            <h3>Database</h3>
+            <p>The core data storage system for internal applications, secured to prevent unauthorized access.</p>
         </div>
         <div id="T" class="explanation">
-            <h3>Internal Firewall</h3>
-            <p>Provides additional security within the internal network, filtering traffic between different network segments.</p>
+            <h3>Private Web Servers</h3>
+            <p>Hosts internal web applications, accessible only within the organization's private network.</p>
         </div>
         <div id="U" class="explanation">
-            <h3>Admin Access</h3>
-            <p>Access for network administrators to manage and configure servers, firewalls, and other critical infrastructure components.</p>
+            <h3>Internal Applications</h3>
+            <p>Applications used internally within the organization to manage resources, databases, and workflow.</p>
         </div>
-
+        <div id="V" class="explanation">
+            <h3>Internal Firewall</h3>
+            <p>Monitors and controls internal traffic to prevent unauthorized access or data breaches within the organization's network.</p>
+        </div>
+        <div id="W" class="explanation">
+            <h3>Admin Access</h3>
+            <p>Dedicated access controls for system administrators to securely manage servers and network infrastructure.</p>
+        </div>
+        <div id="X" class="explanation">
+            <h3>Proxy Server</h3>
+            <p>Acts as an intermediary between client devices and the internet, offering additional security, privacy, and content filtering.</p>
+        </div>
+        <div id="Y" class="explanation">
+            <h3>Endpoint Protection</h3>
+            <p>Protects all devices connected to the network (e.g., laptops, desktops) from malware, ransomware, and other malicious threats.</p>
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Hashmatullah Bahadari</p>
+        <p>Cybersecurity System & Network Architecture - Designed by Hashmatullah Bahadari</p>
     </footer>
 
     <script>
-        // JavaScript for toggling the explanation panels
         document.querySelectorAll('.mermaid a').forEach(link => {
             link.addEventListener('click', function () {
-                const id = this.getAttribute('href').substring(1); // Get the ID from href
+                const id = this.getAttribute('href').substring(1);
                 const explanation = document.getElementById(id);
                 if (explanation) {
                     explanation.classList.toggle('active');
