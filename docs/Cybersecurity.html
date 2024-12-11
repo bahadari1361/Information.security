@@ -89,54 +89,26 @@
             <h2>Cybersecurity System & Network</h2>
             <div class="mermaid">
                 graph LR
-                    %% Infrastructure
+                    %% Discovery
                     A[Firewall] --> B[Router]
                     B --> C[Web Server]
                     B --> D[Database Server]
                     D --> E[Backup Server]
                     C --> F[Load Balancer]
                     F --> G[Client Devices]
-                    G --> H[Security Operations Center (SOC)]
-                    C --> I[Web Application Firewall]
-                    B --> J[Intrusion Detection System]
-                    J --> K[Security Dashboard]
-
-                    %% Cloud Integration
-                    B --> L[Azure Cloud]
-                    L --> M[Azure Security Center]
-                    M --> N[Identity Protection]
-                    N --> O[Azure Active Directory]
-                    O --> P[Security Admins]
-                    P --> K
-
-                    %% CDN Integration
-                    G --> Q[CDN (Content Delivery Network)]
-                    Q --> C
-                    Q --> G
-                    C --> R[Web Server Cache]
-
-                    %% Movement of Packets
-                    A -- "Inspect packets" --> B
-                    G -- "Request" --> C
-                    C -- "Return data" --> G
-                    F -- "Load balancing" --> C
-                    J -- "Alerting" --> K
-
-                    %% Active Directory & Authentication
-                    O --> S[AD Servers]
-                    S --> T[User Authentication]
-                    T --> U[Group Policy Management]
-                    U --> V[Admin Access]
-
-                    %% Backup & Recovery
-                    E --> W[Backup Management]
-                    W --> X[Disaster Recovery Plan]
-
-                    %% Monitoring and Alerts
-                    I --> Y[Security Alerts]
-                    Y --> Z[Security Analysts]
-                    H --> AA[Threat Intelligence]
-                    AA --> Z
+                    C --> H[Intrusion Detection System]
+                    A --> I[Admin Monitoring]
+                    G --> I
+                    I --> J[Security Dashboard]
+                    J --> K[Security Analysts]
+                    H --> L[Alerts]
+                    L --> K
+                    %% Additional components
+                    B --> M[Content Delivery Network (CDN)]
+                    M --> N[Security Operations Center (SOC)]
+                    N --> O[Live Traffic Monitoring]
+                    C --> P[Web Application Firewall (WAF)]
+                    P --> Q[Monitor Malicious Traffic]
             </div>
         </section>
     </div>
