@@ -7,9 +7,9 @@
     <title>Portfolio: Cybersecurity System & Network Diagram</title>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ 
+        mermaid.initialize({
             startOnLoad: true,
-            theme: 'forest', 
+            theme: 'forest',
             themeVariables: {
                 primaryColor: '#2c3e50',
                 edgeLabelBackground: '#ecf0f1',
@@ -88,8 +88,8 @@
         <section>
             <h2>Cybersecurity System & Network</h2>
             <div class="mermaid">
-                graph LR
-                    %% Discovery
+                %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
+                graph TD
                     A[Firewall] --> B[Router]
                     B --> C[Web Server]
                     B --> D[Database Server]
@@ -103,7 +103,6 @@
                     J --> K[Security Analysts]
                     H --> L[Alerts]
                     L --> K
-                    %% Additional components
                     B --> M[Content Delivery Network (CDN)]
                     M --> N[Security Operations Center (SOC)]
                     N --> O[Live Traffic Monitoring]
