@@ -144,6 +144,7 @@
                     U --> W[Admin Access]
                     B --> X[Proxy Server]
                     F --> Y[Endpoint Protection]
+                    R --> Z[Active Directory]
 
                     %% Custom styling
                     classDef firewall fill:#ffcc00,stroke:#333,stroke-width:2px;
@@ -153,7 +154,7 @@
                     classDef loadBalancer fill:#2ecc71,stroke:#333,stroke-width:2px;
                     class D loadBalancer;
                     classDef server fill:#e74c3c,stroke:#333,stroke-width:2px;
-                    class E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W server;
+                    class E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V server;
                     %% Adding clickable links to nodes
                     click B href "#B"
                     click C href "#C"
@@ -179,6 +180,7 @@
                     click W href "#W"
                     click X href "#X"
                     click Y href "#Y"
+                    click Z href "#Z"
                 </div>
         </section>
 
@@ -233,51 +235,55 @@
         </div>
         <div id="N" class="explanation">
             <h3>Cloud Backup</h3>
-            <p>Cloud-based backup solutions provide off-site data protection, ensuring business continuity in case of disaster.</p>
+            <p>Cloud-based solution that stores backup data in secure data centers, providing remote accessibility and disaster recovery options.</p>
         </div>
         <div id="O" class="explanation">
-            <h3>DMZ (Demilitarized Zone)</h3>
-            <p>Separates the internal network from the external network, providing an additional layer of security for public-facing servers.</p>
+            <h3>DMZ</h3>
+            <p>A buffer zone between the external and internal network, providing an additional layer of security for web and email servers.</p>
         </div>
         <div id="P" class="explanation">
             <h3>Public Web Server</h3>
-            <p>Hosts public-facing websites or applications that are accessible by users over the internet.</p>
+            <p>Hosts websites or public-facing applications, typically in the DMZ, accessible from the internet.</p>
         </div>
         <div id="Q" class="explanation">
             <h3>Public Services</h3>
-            <p>Other public services such as email, DNS, or file sharing that are accessed from the internet.</p>
+            <p>Public-facing services such as DNS or email servers, protected by a firewall in the DMZ.</p>
         </div>
         <div id="R" class="explanation">
             <h3>Internal Network</h3>
-            <p>Represents the private network where internal communication and operations are performed, isolated from external threats.</p>
+            <p>Represents the internal network, containing core services like databases and internal applications, isolated from external threats.</p>
         </div>
         <div id="S" class="explanation">
             <h3>Database</h3>
-            <p>The core data storage system for internal applications, secured to prevent unauthorized access.</p>
+            <p>Centralized data storage used for critical business applications, secured with encryption and access controls.</p>
         </div>
         <div id="T" class="explanation">
             <h3>Private Web Servers</h3>
-            <p>Hosts internal web applications, accessible only within the organization's private network.</p>
+            <p>Hosts internal applications, accessible only within the private network, ensuring that sensitive data remains secure.</p>
         </div>
         <div id="U" class="explanation">
             <h3>Internal Applications</h3>
-            <p>Applications used internally within the organization to manage resources, databases, and workflow.</p>
+            <p>Critical business applications used within the organization to manage resources, workflows, and services.</p>
         </div>
         <div id="V" class="explanation">
             <h3>Internal Firewall</h3>
-            <p>Monitors and controls internal traffic to prevent unauthorized access or data breaches within the organization's network.</p>
+            <p>Monitors internal network traffic to prevent lateral movement and unauthorized access between systems.</p>
         </div>
         <div id="W" class="explanation">
             <h3>Admin Access</h3>
-            <p>Dedicated access controls for system administrators to securely manage servers and network infrastructure.</p>
+            <p>Secure access for system administrators to manage the network, servers, and internal systems.</p>
         </div>
         <div id="X" class="explanation">
             <h3>Proxy Server</h3>
-            <p>Acts as an intermediary between client devices and the internet, offering additional security, privacy, and content filtering.</p>
+            <p>Acts as an intermediary for web requests, enhancing security by hiding user IP addresses and filtering malicious content.</p>
         </div>
         <div id="Y" class="explanation">
             <h3>Endpoint Protection</h3>
-            <p>Protects all devices connected to the network (e.g., laptops, desktops) from malware, ransomware, and other malicious threats.</p>
+            <p>Protects all endpoint devices (e.g., workstations, laptops) against malware, viruses, and other security threats.</p>
+        </div>
+        <div id="Z" class="explanation">
+            <h3>Active Directory (AD)</h3>
+            <p>Manages users, groups, and security policies, ensuring secure access control and centralized authentication across the network.</p>
         </div>
     </div>
 
