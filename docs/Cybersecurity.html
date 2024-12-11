@@ -109,6 +109,12 @@
                     O --> P[Security Admins]
                     P --> K
 
+                    %% CDN Integration
+                    G --> Q[CDN (Content Delivery Network)]
+                    Q --> C
+                    Q --> G
+                    C --> R[Web Server Cache]
+
                     %% Movement of Packets
                     A -- "Inspect packets" --> B
                     G -- "Request" --> C
@@ -117,20 +123,20 @@
                     J -- "Alerting" --> K
 
                     %% Active Directory & Authentication
-                    O --> Q[AD Servers]
-                    Q --> R[User Authentication]
-                    R --> S[Group Policy Management]
-                    S --> T[Admin Access]
+                    O --> S[AD Servers]
+                    S --> T[User Authentication]
+                    T --> U[Group Policy Management]
+                    U --> V[Admin Access]
 
                     %% Backup & Recovery
-                    E --> U[Backup Management]
-                    U --> V[Disaster Recovery Plan]
+                    E --> W[Backup Management]
+                    W --> X[Disaster Recovery Plan]
 
                     %% Monitoring and Alerts
-                    I --> W[Security Alerts]
-                    W --> X[Security Analysts]
-                    H --> Y[Threat Intelligence]
-                    Y --> X
+                    I --> Y[Security Alerts]
+                    Y --> Z[Security Analysts]
+                    H --> AA[Threat Intelligence]
+                    AA --> Z
             </div>
         </section>
     </div>
