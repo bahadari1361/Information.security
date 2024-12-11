@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Response Team (IRT) Diagram</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'forest',
+            themeVariables: {
+                primaryColor: '#2c3e50',
+                edgeLabelBackground: '#ecf0f1',
+                lineColor: '#3498db'
+            },
+            flowchart: {
+                curve: 'linear'
+            }
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .explanation {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.5s ease-in-out;
+            height: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .explanation.active {
+            display: block;
+        }
+
+        .explanation h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .explanation p {
+            font-size: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Incident Response Team (IRT) Diagram</h1>
+        <p>Interactive Structure of the Incident Response Team</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Incident Response Team (IRT) Structure</h2>
+            <div class="mermaid">
+                %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
+                graph TD
+                    A[Incident Response Manager] --> B[Incident Handler]
+                    A --> C[Forensic Expert]
+                    A --> D[Malware Analyst]
+                    A --> E[Security Analyst]
+                    A --> F[Communications Specialist]
+                    A --> G[Legal Advisor]
+                    A --> H[Recovery Specialist]
+                    A --> I[IT Support]
+                    B --> J[Incident Triage]
+                    C --> K[Data Collection]
+                    D --> L[Malware Analysis]
+                    E --> M[Threat Analysis]
+                    F --> N[Internal/External Communication]
+                    G --> O[Legal Compliance]
+                    H --> P[System Restoration]
+                    I --> Q[System Recovery]
+                    
+                    %% Adding clickable links to nodes
+                    click A href "#A"
+                    click B href "#B"
+                    click C href "#C"
+                    click D href "#D"
+                    click E href "#E"
+                    click F href "#F"
+                    click G href "#G"
+                    click H href "#H"
+                    click I href "#I"
+                    click J href "#J"
+                    click K href "#K"
+                    click L href "#L"
+                    click M href "#M"
+                    click N href "#N"
+                    click O href "#O"
+                    click P href "#P"
+                    click Q href "#Q"
+            </div>
+        </section>
+
+        <!-- Explanation Content for Each Component -->
+        <div id="A" class="explanation">
+            <h3>Incident Response Manager</h3>
+            <p>The Incident Response Manager oversees the entire incident response process, coordinating the team and ensuring effective communication and decision-making during incidents.</p>
+        </div>
+        <div id="B" class="explanation">
+            <h3>Incident Handler</h3>
+            <p>Incident Handlers are responsible for leading the response to security incidents, identifying the scope, managing containment, and collaborating with other teams for resolution.</p>
+        </div>
+        <div id="C" class="explanation">
+            <h3>Forensic Expert</h3>
+            <p>The Forensic Expert analyzes evidence related to incidents, identifies the cause and extent of the breach, and supports investigations with digital evidence.</p>
+        </div>
+        <div id="D" class="explanation">
+            <h3>Malware Analyst</h3>
+            <p>Malware Analysts examine malicious code, identifying how it spreads, its impact, and how to defend against future attacks. They often collaborate with forensic experts.</p>
+        </div>
+        <div id="E" class="explanation">
+            <h3>Security Analyst</h3>
+            <p>Security Analysts evaluate the network and systems for vulnerabilities, analyzing threats and incidents to protect against future breaches and enhance security posture.</p>
+        </div>
+        <div id="F" class="explanation">
+            <h3>Communications Specialist</h3>
+            <p>Responsible for internal and external communication, managing the flow of information between teams, stakeholders, and the public, including media handling and crisis communication.</p>
+        </div>
+        <div id="G" class="explanation">
+            <h3>Legal Advisor</h3>
+            <p>The Legal Advisor ensures that incident response actions comply with laws and regulations, especially in terms of data breaches, privacy laws, and regulatory requirements.</p>
+        </div>
+        <div id="H" class="explanation">
+            <h3>Recovery Specialist</h3>
+            <p>Recovery Specialists lead the process of restoring systems and data, ensuring continuity of services and minimizing downtime after an incident.</p>
+        </div>
+        <div id="I" class="explanation">
+            <h3>IT Support</h3>
+            <p>IT Support is responsible for ensuring technical systems are operational, assisting with remediation efforts, and helping to restore systems back to normal after an incident.</p>
+        </div>
+
+        <!-- Additional Explanations for Other Nodes -->
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Incident Response Team Design by Hashmatullah Bahadari</p>
+    </footer>
+
+    <script>
+        // Toggle explanation display on click
+        document.querySelectorAll('.mermaid a').forEach(link => {
+            link.addEventListener('click', function () {
+                const id = this.getAttribute('href').substring(1);
+                const explanation = document.getElementById(id);
+                if (explanation) {
+                    explanation.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
