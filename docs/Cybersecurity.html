@@ -9,14 +9,16 @@
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({
             startOnLoad: true,
-            theme: 'forest',
+            theme: 'base',
             themeVariables: {
                 primaryColor: '#2c3e50',
-                edgeLabelBackground: '#ecf0f1',
-                lineColor: '#3498db'
+                secondaryColor: '#ecf0f1',
+                lineColor: '#3498db',
+                edgeLabelBackground: '#ecf0f1'
             },
             flowchart: {
-                curve: 'linear'
+                curve: 'linear',
+                useMaxWidth: true
             }
         });
     </script>
@@ -88,8 +90,7 @@
         <section>
             <h2>Cybersecurity System & Network</h2>
             <div class="mermaid">
-                %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
-                graph TD
+                graph LR
                     A[Firewall] --> B[Router]
                     B --> C[Web Server]
                     B --> D[Database Server]
@@ -103,11 +104,10 @@
                     J --> K[Security Analysts]
                     H --> L[Alerts]
                     L --> K
-                    B --> M[Content Delivery Network (CDN)]
-                    M --> N[Security Operations Center (SOC)]
-                    N --> O[Live Traffic Monitoring]
-                    C --> P[Web Application Firewall (WAF)]
-                    P --> Q[Monitor Malicious Traffic]
+                    A --> M[Azure Cloud]
+                    M --> N[Active Directory (AD)]
+                    M --> O[Cloud Firewall]
+                    N --> P[Domain Controller]
             </div>
         </section>
     </div>
