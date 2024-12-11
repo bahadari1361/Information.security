@@ -7,7 +7,18 @@
     <title>Portfolio: Cybersecurity System & Network Diagram</title>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({startOnLoad:true});
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'forest', 
+            themeVariables: {
+                primaryColor: '#2c3e50',
+                edgeLabelBackground: '#ecf0f1',
+                lineColor: '#3498db'
+            },
+            flowchart: {
+                curve: 'linear'
+            }
+        });
     </script>
     <style>
         * {
@@ -78,19 +89,48 @@
             <h2>Cybersecurity System & Network</h2>
             <div class="mermaid">
                 graph LR
+                    %% Infrastructure
                     A[Firewall] --> B[Router]
                     B --> C[Web Server]
                     B --> D[Database Server]
                     D --> E[Backup Server]
                     C --> F[Load Balancer]
                     F --> G[Client Devices]
-                    C --> H[Intrusion Detection System]
-                    A --> I[Admin Monitoring]
-                    G --> I
-                    I --> J[Security Dashboard]
-                    J --> K[Security Analysts]
-                    H --> L[Alerts]
-                    L --> K
+                    G --> H[Security Operations Center (SOC)]
+                    C --> I[Web Application Firewall]
+                    B --> J[Intrusion Detection System]
+                    J --> K[Security Dashboard]
+
+                    %% Cloud Integration
+                    B --> L[Azure Cloud]
+                    L --> M[Azure Security Center]
+                    M --> N[Identity Protection]
+                    N --> O[Azure Active Directory]
+                    O --> P[Security Admins]
+                    P --> K
+
+                    %% Movement of Packets
+                    A -- "Inspect packets" --> B
+                    G -- "Request" --> C
+                    C -- "Return data" --> G
+                    F -- "Load balancing" --> C
+                    J -- "Alerting" --> K
+
+                    %% Active Directory & Authentication
+                    O --> Q[AD Servers]
+                    Q --> R[User Authentication]
+                    R --> S[Group Policy Management]
+                    S --> T[Admin Access]
+
+                    %% Backup & Recovery
+                    E --> U[Backup Management]
+                    U --> V[Disaster Recovery Plan]
+
+                    %% Monitoring and Alerts
+                    I --> W[Security Alerts]
+                    W --> X[Security Analysts]
+                    H --> Y[Threat Intelligence]
+                    Y --> X
             </div>
         </section>
     </div>
