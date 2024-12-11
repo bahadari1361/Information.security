@@ -7,9 +7,9 @@
     <title>Portfolio: Penetration Testing Diagram</title>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ 
+        mermaid.initialize({
             startOnLoad: true,
-            theme: 'forest', 
+            theme: 'forest',
             themeVariables: {
                 primaryColor: '#2c3e50',
                 edgeLabelBackground: '#ecf0f1',
@@ -80,54 +80,30 @@
 <body>
 
     <header>
-        <h1>Penetration Testing Diagram</h1>
-        <p>Standard Penetration Testing Workflow for Cybersecurity</p>
+        <h1>Penetration Testing Process</h1>
+        <p>Standard Process for Penetration Testing</p>
     </header>
 
     <div class="container">
         <section>
             <h2>Penetration Testing Phases</h2>
             <div class="mermaid">
-                graph LR
-                    %% Discovery
-                    A[Start Penetration Testing] --> B[Target Discovery]
-                    B --> C[Reconnaissance]
-                    C --> D[Network Scanning & Enumeration]
-                    D --> E[Web Application Discovery]
-                    
-                    %% Scanning and Vulnerability Assessment
-                    E --> F[Vulnerability Scanning]
-                    F --> G[Identify Weaknesses]
-                    G --> H[Exploit Frameworks]
-
-                    %% Exploitation & Post Exploitation
-                    H --> I[Exploitation]
-                    I --> J[Post-Exploitation (Escalate Privileges)]
-                    J --> K[Data Extraction (Sensitive Information)]
-
-                    %% Security Monitoring & CDN
-                    K --> L[Content Delivery Network (CDN)]
-                    L --> M[Firewalls, WAF]
-                    M --> N[Security Operations Center (SOC)]
-                    N --> O[Live Traffic Monitoring]
-
-                    %% Reporting & Remediation
-                    O --> P[Report Generation & Recommendations]
-                    P --> Q[Remediation]
-                    Q --> R[Close Testing & Cleanup]
-
-                    %% Testing Tools
-                    F -.-> T[Tools: Nessus, OpenVAS, Nikto]
-                    I -.-> U[Exploitation Tools: Metasploit, Burp Suite]
-                    J -.-> V[Post-Exploitation Tools: Empire, Mimikatz]
-
-                    %% Cloud and Azure Integration
-                    L --> W[Cloud Services (AWS/Azure)]
-                    W --> X[Azure Cloud Security (Advanced Protection)]
-
-                    %% Explanations
-                    A --> Y[Explains Testing Objective]
-                    Y --> Z[Confirm Scope & Limitations]
+                %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
+                graph TD
+                    A[Reconnaissance] --> B[Scanning]
+                    B --> C[Exploitation]
+                    C --> D[Post-Exploitation]
+                    D --> E[Reporting]
+                    A --> F[Passive Recon]
+                    A --> G[Active Recon]
+                    B --> H[Vulnerability Scanning]
+                    B --> I[Network Mapping]
+                    C --> J[Gain Access]
+                    C --> K[Privilege Escalation]
+                    D --> L[Data Exfiltration]
+                    D --> M[Cleanup]
+                    E --> N[Generate Reports]
+                    E --> O[Provide Recommendations]
             </div>
         </section>
     </div>
