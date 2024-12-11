@@ -3,40 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity System & Network Diagram</title>
+    <title>Cybersecurity System and Network Diagram</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         .diagram {
-            margin: 20px auto;
-            border: 2px solid #007bff;
-            padding: 10px;
-            background-color: #ffffff;
+            background-color: #fff;
+            padding: 20px;
+            border: 2px solid #007BFF;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            text-align: center;
+        }
+        .box {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        .arrow {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            margin: 0 5px;
+            border: solid #007BFF;
+            border-width: 0 2px 2px 0;
+            padding: 3px;
+            transform: rotate(45deg);
         }
     </style>
 </head>
 <body>
-    <h1>Cybersecurity System & Network Diagram</h1>
-    <div class="diagram">
-        <p>Network Elements:</p>
-        <ul>
-            <li>Firewall</li>
-            <li>Router</li>
-            <li>Intrusion Detection System (IDS)</li>
-            <li>Server</li>
-            <li>Client Workstations</li>
-        </ul>
-        <p>Security Measures:</p>
-        <ul>
-            <li>Encryption</li>
-            <li>Access Control</li>
-            <li>Regular Updates</li>
-            <li>Network Monitoring</li>
-        </ul>
-    </div>
+
+<div class="diagram">
+    <h1>Cybersecurity System and Network Diagram</h1>
+    <div class="box">User Device</div>
+    <div class="arrow"></div>
+    <div class="box">Firewall</div>
+    <div class="arrow"></div>
+    <div class="box">Intrusion Detection System</div>
+    <div class="arrow"></div>
+    <div class="box">Server</div>
+    <div class="arrow"></div>
+    <div class="box">Database</div>
+</div>
+
 </body>
 </html>
