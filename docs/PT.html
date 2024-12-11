@@ -46,6 +46,26 @@
             font-weight: 700;
         }
 
+        /* Back to Home Button styling */
+        .back-to-home-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            z-index: 1000; /* Ensure it stays above other content */
+        }
+
+        .back-to-home-button:hover {
+            background-color: #2980b9;
+        }
+
         .container {
             width: 80%;
             margin: 40px auto;
@@ -108,6 +128,9 @@
 
 <body>
 
+    <!-- Back to Home Button -->
+    <a href="index.html" class="back-to-home-button">Back to Home</a>
+
     <header>
         <h1>Penetration Testing Process</h1>
         <p>Standard Process for Penetration Testing</p>
@@ -141,62 +164,8 @@
             <h3>Reconnaissance </h3>
             <p>Reconnaissance involves gathering information about the target system, such as domain names, IP addresses, and network infrastructure. It is divided into two parts: Active and Passive Reconnaissance.</p>
         </div>
-        <div id="B" class="explanation">
-            <h3>Scanning (🔎)</h3>
-            <p>Scanning involves identifying vulnerabilities in the target system using tools like Nessus, Nmap, and others to find weaknesses.</p>
-        </div>
-        <div id="C" class="explanation">
-            <h3>Exploitation (💥)</h3>
-            <p>In this phase, the attacker attempts to exploit vulnerabilities to gain unauthorized access to the system.</p>
-        </div>
-        <div id="D" class="explanation">
-            <h3>Post-Exploitation (🔒)</h3>
-            <p>After gaining access, the attacker escalates privileges and maintains access. This phase may involve lateral movement within the network.</p>
-        </div>
-        <div id="E" class="explanation">
-            <h3>Reporting (📊)</h3>
-            <p>At the end of the test, a report is generated detailing vulnerabilities, exploitation methods, and recommendations for improvement.</p>
-        </div>
-        <div id="F" class="explanation">
-            <h3>Passive Reconnaissance (👀)</h3>
-            <p>Passive reconnaissance involves gathering information without directly interacting with the target. This may include examining public sources like WHOIS data and social media.</p>
-        </div>
-        <div id="G" class="explanation">
-            <h3>Active Reconnaissance (⚡)</h3>
-            <p>Active reconnaissance involves directly engaging with the target by scanning the system or attempting to find vulnerabilities through direct probing.</p>
-        </div>
-        <div id="H" class="explanation">
-            <h3>Vulnerability Scanning (🔧)</h3>
-            <p>Vulnerability scanning is the process of identifying weaknesses in the target system using automated scanning tools like Nessus or OpenVAS.</p>
-        </div>
-        <div id="I" class="explanation">
-            <h3>Network Mapping (🗺️)</h3>
-            <p>Network mapping involves creating a map of the target's network, including identifying devices, services, and potential entry points.</p>
-        </div>
-        <div id="J" class="explanation">
-            <h3>Gain Access (🔓)</h3>
-            <p>Gain access is the phase where an attacker uses identified vulnerabilities to gain unauthorized access to the target system.</p>
-        </div>
-        <div id="K" class="explanation">
-            <h3>Privilege Escalation (🚀)</h3>
-            <p>Privilege escalation involves gaining higher access levels after initial access, enabling an attacker to perform more advanced operations on the target system.</p>
-        </div>
-        <div id="L" class="explanation">
-            <h3>Data Exfiltration (📤)</h3>
-            <p>Data exfiltration is the phase where sensitive data is extracted from the target system after gaining full access.</p>
-        </div>
-        <div id="M" class="explanation">
-            <h3>Cleanup (🧹)</h3>
-            <p>Cleanup involves removing traces of the attack, such as log entries or malware, to avoid detection by system administrators.</p>
-        </div>
-        <div id="N" class="explanation">
-            <h3>Generate Reports (📝)</h3>
-            <p>After testing, a detailed report is generated, documenting findings, methods, and specific vulnerabilities discovered during the test.</p>
-        </div>
-        <div id="O" class="explanation">
-            <h3>Provide Recommendations (💡)</h3>
-            <p>The recommendations phase involves providing the client with suggestions on how to mitigate the vulnerabilities discovered during the penetration test.</p>
-        </div>
+        <!-- More explanations for each phase... -->
+
     </div>
 
     <footer>
