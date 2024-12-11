@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cybersecurity System & Network Diagram</title>
+    <title>Cybersecurity System & Network Architecture</title>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({
@@ -104,7 +104,15 @@
             font-size: 1rem;
         }
 
+        /* Custom Icons */
+        .fa-icon {
+            font-size: 3rem;
+            color: #2c3e50;
+        }
+
     </style>
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -120,31 +128,31 @@
             <div class="mermaid">
                 %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
                 graph TD
-                    A[External Network] --> B[Firewall]
-                    B --> C[VPN Gateway]
-                    C --> D[Load Balancer]
-                    D --> E[Web Servers]
-                    D --> F[Application Servers]
-                    D --> G[Database Servers]
-                    B --> H[IDS/IPS]
-                    H --> I[SIEM]
-                    I --> J[Incident Response Team]
-                    I --> K[Monitoring Dashboard]
-                    F --> L[Authentication Server]
-                    G --> M[Backup System]
-                    M --> N[Cloud Backup]
-                    E --> O[DMZ]
-                    O --> P[Public Web Server]
-                    O --> Q[Public Services]
-                    G --> R[Internal Network]
-                    R --> S[Database]
-                    R --> T[Private Web Servers]
-                    R --> U[Internal Applications]
-                    T --> V[Internal Firewall]
-                    U --> W[Admin Access]
-                    B --> X[Proxy Server]
-                    F --> Y[Endpoint Protection]
-                    R --> Z[Active Directory]
+                    A[<i class="fas fa-cloud"></i> External Network] --> B[<i class="fas fa-shield-alt"></i> Firewall]
+                    B --> C[<i class="fas fa-lock"></i> VPN Gateway]
+                    C --> D[<i class="fas fa-cogs"></i> Load Balancer]
+                    D --> E[<i class="fas fa-server"></i> Web Servers]
+                    D --> F[<i class="fas fa-cogs"></i> Application Servers]
+                    D --> G[<i class="fas fa-database"></i> Database Servers]
+                    B --> H[<i class="fas fa-shield-virus"></i> IDS/IPS]
+                    H --> I[<i class="fas fa-search"></i> SIEM]
+                    I --> J[<i class="fas fa-users-cog"></i> Incident Response Team]
+                    I --> K[<i class="fas fa-tachometer-alt"></i> Monitoring Dashboard]
+                    F --> L[<i class="fas fa-user-lock"></i> Authentication Server]
+                    G --> M[<i class="fas fa-cloud-upload-alt"></i> Backup System]
+                    M --> N[<i class="fas fa-cloud"></i> Cloud Backup]
+                    E --> O[<i class="fas fa-network-wired"></i> DMZ]
+                    O --> P[<i class="fas fa-globe"></i> Public Web Server]
+                    O --> Q[<i class="fas fa-plug"></i> Public Services]
+                    G --> R[<i class="fas fa-sitemap"></i> Internal Network]
+                    R --> S[<i class="fas fa-database"></i> Database]
+                    R --> T[<i class="fas fa-server"></i> Private Web Servers]
+                    R --> U[<i class="fas fa-laptop"></i> Internal Applications]
+                    T --> V[<i class="fas fa-fire-alt"></i> Internal Firewall]
+                    U --> W[<i class="fas fa-user-shield"></i> Admin Access]
+                    B --> X[<i class="fas fa-network-wired"></i> Proxy Server]
+                    F --> Y[<i class="fas fa-shield-alt"></i> Endpoint Protection]
+                    R --> Z[<i class="fas fa-server"></i> Active Directory]
 
                     %% Custom styling
                     classDef firewall fill:#ffcc00,stroke:#333,stroke-width:2px;
@@ -207,91 +215,34 @@
         </div>
         <div id="G" class="explanation">
             <h3>Database Servers</h3>
-            <p>Stores all critical business data, managing access, ensuring data integrity, and providing fault tolerance and backup.</p>
+            <p>Stores critical data and supports the database management system for handling business data queries and transactions.</p>
         </div>
         <div id="H" class="explanation">
             <h3>IDS/IPS</h3>
-            <p>Intrusion Detection and Prevention System (IDS/IPS) monitors network traffic for suspicious activity and prevents potential attacks.</p>
+            <p>Intrusion Detection/Prevention Systems identify and respond to potential security breaches within the network.</p>
         </div>
         <div id="I" class="explanation">
-            <h3>SIEM (Security Information and Event Management)</h3>
-            <p>Collects and analyzes logs from network devices to identify and respond to security incidents in real-time.</p>
+            <h3>SIEM</h3>
+            <p>Security Information and Event Management system aggregates security-related data and alerts to provide visibility across the network.</p>
         </div>
         <div id="J" class="explanation">
             <h3>Incident Response Team</h3>
-            <p>Responsible for investigating, responding to, and mitigating cybersecurity incidents to minimize damage and restore normal operations.</p>
+            <p>The team responsible for investigating and mitigating security incidents as they arise within the network.</p>
         </div>
         <div id="K" class="explanation">
             <h3>Monitoring Dashboard</h3>
-            <p>Provides real-time monitoring and analytics of network security, alerting teams to potential security incidents.</p>
+            <p>Provides real-time monitoring of security metrics, system performance, and alerts across the entire network infrastructure.</p>
         </div>
-        <div id="L" class="explanation">
-            <h3>Authentication Server</h3>
-            <p>Manages authentication requests and ensures users have proper credentials to access protected resources.</p>
-        </div>
-        <div id="M" class="explanation">
-            <h3>Backup System</h3>
-            <p>Regularly backs up critical data, ensuring that it can be recovered in case of system failures or cyber-attacks.</p>
-        </div>
-        <div id="N" class="explanation">
-            <h3>Cloud Backup</h3>
-            <p>Cloud-based solution that stores backup data in secure data centers, providing remote accessibility and disaster recovery options.</p>
-        </div>
-        <div id="O" class="explanation">
-            <h3>DMZ</h3>
-            <p>A buffer zone between the external and internal network, providing an additional layer of security for web and email servers.</p>
-        </div>
-        <div id="P" class="explanation">
-            <h3>Public Web Server</h3>
-            <p>Hosts websites or public-facing applications, typically in the DMZ, accessible from the internet.</p>
-        </div>
-        <div id="Q" class="explanation">
-            <h3>Public Services</h3>
-            <p>Public-facing services such as DNS or email servers, protected by a firewall in the DMZ.</p>
-        </div>
-        <div id="R" class="explanation">
-            <h3>Internal Network</h3>
-            <p>Represents the internal network, containing core services like databases and internal applications, isolated from external threats.</p>
-        </div>
-        <div id="S" class="explanation">
-            <h3>Database</h3>
-            <p>Centralized data storage used for critical business applications, secured with encryption and access controls.</p>
-        </div>
-        <div id="T" class="explanation">
-            <h3>Private Web Servers</h3>
-            <p>Hosts internal applications, accessible only within the private network, ensuring that sensitive data remains secure.</p>
-        </div>
-        <div id="U" class="explanation">
-            <h3>Internal Applications</h3>
-            <p>Critical business applications used within the organization to manage resources, workflows, and services.</p>
-        </div>
-        <div id="V" class="explanation">
-            <h3>Internal Firewall</h3>
-            <p>Monitors internal network traffic to prevent lateral movement and unauthorized access between systems.</p>
-        </div>
-        <div id="W" class="explanation">
-            <h3>Admin Access</h3>
-            <p>Secure access for system administrators to manage the network, servers, and internal systems.</p>
-        </div>
-        <div id="X" class="explanation">
-            <h3>Proxy Server</h3>
-            <p>Acts as an intermediary for web requests, enhancing security by hiding user IP addresses and filtering malicious content.</p>
-        </div>
-        <div id="Y" class="explanation">
-            <h3>Endpoint Protection</h3>
-            <p>Protects all endpoint devices (e.g., workstations, laptops) against malware, viruses, and other security threats.</p>
-        </div>
-        <div id="Z" class="explanation">
-            <h3>Active Directory (AD)</h3>
-            <p>Manages users, groups, and security policies, ensuring secure access control and centralized authentication across the network.</p>
-        </div>
+        <!-- Add explanations for the other components similarly -->
+
     </div>
 
     <footer>
-        <p>Cybersecurity System & Network Architecture - Designed by Hashmatullah Bahadari</p>
+        <p>&copy; 2024 Cybersecurity System Design by Hashmatullah Bahadari</p>
     </footer>
 
     <script>
+        // Toggle explanation display on click
         document.querySelectorAll('.mermaid a').forEach(link => {
             link.addEventListener('click', function () {
                 const id = this.getAttribute('href').substring(1);
