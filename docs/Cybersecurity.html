@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio: Cybersecurity System & Network Diagram</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({startOnLoad:true});
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Cybersecurity System & Network Diagram</h1>
+        <p>System Overview for Central Bank of Afghanistan</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Cybersecurity System & Network</h2>
+            <div class="mermaid">
+                graph LR
+                    A[Firewall] --> B[Router]
+                    B --> C[Web Server]
+                    B --> D[Database Server]
+                    D --> E[Backup Server]
+                    C --> F[Load Balancer]
+                    F --> G[Client Devices]
+                    C --> H[Intrusion Detection System]
+                    A --> I[Admin Monitoring]
+                    G --> I
+                    I --> J[Security Dashboard]
+                    J --> K[Security Analysts]
+                    H --> L[Alerts]
+                    L --> K
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Hashmatullah Bahadari</p>
+    </footer>
+
+</body>
+
+</html>
