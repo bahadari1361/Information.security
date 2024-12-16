@@ -29,7 +29,7 @@
         .diagram {
             position: relative;
             width: 100%;
-            height: 600px;
+            height: 700px;
             margin: 40px 0;
         }
 
@@ -60,22 +60,55 @@
             z-index: -1;
         }
 
-        .tooltip {
-            display: none;
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #333;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.75em;
-            white-space: nowrap;
+        .line.horizontal {
+            height: 2px;
         }
 
-        .node:hover .tooltip {
-            display: block;
+        .line.vertical {
+            width: 2px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+        .modal h2 {
+            margin-top: 0;
+        }
+
+        .modal p {
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
     </style>
 </head>
@@ -84,50 +117,100 @@
         <h1>Enterprise Cybersecurity Architecture Diagram</h1>
         <div class="diagram">
             <!-- Nodes -->
-            <div class="node" style="top: 50px; left: 40%;">
-                <div class="tooltip">Protects the network perimeter by filtering traffic</div>
+            <div class="node" style="top: 50px; left: 40%;" onclick="showModal('firewall')">
                 Firewall
                 <span>Perimeter Security</span>
             </div>
 
-            <div class="node" style="top: 200px; left: 20%;">
-                <div class="tooltip">Detects and prevents intrusions</div>
+            <div class="node" style="top: 200px; left: 20%;" onclick="showModal('ids_ips')">
                 IDS/IPS
                 <span>Threat Detection</span>
             </div>
 
-            <div class="node" style="top: 200px; left: 60%;">
-                <div class="tooltip">Mirrors traffic for monitoring</div>
+            <div class="node" style="top: 200px; left: 60%;" onclick="showModal('span_port')">
                 SPAN Port
                 <span>Network Monitoring</span>
             </div>
 
-            <div class="node" style="top: 350px; left: 20%;">
-                <div class="tooltip">Provides secure, encrypted remote access</div>
+            <div class="node" style="top: 350px; left: 20%;" onclick="showModal('vpn')">
                 VPN
                 <span>Remote Access</span>
             </div>
 
-            <div class="node" style="top: 350px; left: 60%;">
-                <div class="tooltip">Segregates network traffic</div>
+            <div class="node" style="top: 350px; left: 60%;" onclick="showModal('vlan')">
                 VLAN
                 <span>Network Segmentation</span>
             </div>
 
-            <div class="node" style="top: 500px; left: 40%;">
-                <div class="tooltip">Secures sensitive data</div>
+            <div class="node" style="top: 500px; left: 40%;" onclick="showModal('encryption')">
                 Encryption
                 <span>Data Protection</span>
             </div>
 
             <!-- Lines -->
-            <div class="line" style="top: 100px; left: 45%; width: 2px; height: 100px;"></div>
-            <div class="line" style="top: 250px; left: 25%; width: 2px; height: 100px;"></div>
-            <div class="line" style="top: 250px; left: 65%; width: 2px; height: 100px;"></div>
-            <div class="line" style="top: 400px; left: 45%; width: 2px; height: 100px;"></div>
-
-            <div class="line" style="top: 250px; left: 27%; width: 250px; height: 2px;"></div>
+            <div class="line vertical" style="top: 100px; left: 45%; height: 100px;"></div>
+            <div class="line vertical" style="top: 250px; left: 25%; height: 100px;"></div>
+            <div class="line vertical" style="top: 250px; left: 65%; height: 100px;"></div>
+            <div class="line vertical" style="top: 400px; left: 45%; height: 100px;"></div>
+            <div class="line horizontal" style="top: 250px; left: 27%; width: 250px;"></div>
         </div>
     </div>
+
+    <!-- Modal and Overlay -->
+    <div class="overlay" onclick="closeModal()"></div>
+    <div class="modal" id="modal">
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+        <h2 id="modal-title">Title</h2>
+        <p id="modal-content">Content</p>
+    </div>
+
+    <script>
+        const explanations = {
+            firewall: {
+                title: 'Firewall',
+                content: 'A firewall protects the network perimeter by filtering incoming and outgoing traffic based on security rules.'
+            },
+            ids_ips: {
+                title: 'IDS/IPS',
+                content: 'Intrusion Detection and Prevention Systems monitor network traffic to detect and prevent malicious activities.'
+            },
+            span_port: {
+                title: 'SPAN Port',
+                content: 'SPAN (Switched Port Analyzer) port mirrors network traffic for analysis and monitoring by security tools.'
+            },
+            vpn: {
+                title: 'VPN',
+                content: 'A Virtual Private Network provides secure, encrypted remote access to the enterprise network.'
+            },
+            vlan: {
+                title: 'VLAN',
+                content: 'Virtual LANs segregate network traffic to enhance security and manageability.'
+            },
+            encryption: {
+                title: 'Encryption',
+                content: 'Encryption secures sensitive data by converting it into unreadable formats for unauthorized users.'
+            }
+        };
+
+        function showModal(key) {
+            const modal = document.getElementById('modal');
+            const overlay = document.querySelector('.overlay');
+            const { title, content } = explanations[key];
+
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-content').textContent = content;
+
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            const overlay = document.querySelector('.overlay');
+
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
 </body>
 </html>
