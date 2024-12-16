@@ -1,18 +1,15 @@
-graph TD;
-    A[Firewall] -->|Protects| B[Router]
-    A -->|Monitors| C[Intrusion Detection System]
-    B -->|Routes Traffic| D[Web Application Server]
-    C -->|Alerts| D
-    D -->|Hosts| E[Database Server]
-    E -->|Stores Data| F[Backup System]
-    F -->|Maintains| G[Disaster Recovery Plan]
-    C -->|Logs| H[Security Information and Event Management (SIEM)]
-    
-    style A fill:#ff9999,stroke:#333,stroke-width:2px;
-    style B fill:#99ccff,stroke:#333,stroke-width:2px;
-    style C fill:#ffcc99,stroke:#333,stroke-width:2px;
-    style D fill:#c2f0c2,stroke:#333,stroke-width:2px;
-    style E fill:#ffccff,stroke:#333,stroke-width:2px;
-    style F fill:#ffff99,stroke:#333,stroke-width:2px;
-    style G fill:#ffb3e6,stroke:#333,stroke-width:2px;
-    style H fill:#d9d9d9,stroke:#333,stroke-width:2px;
+graph TD
+    A[User] -->|Accesses| B[Web Application]
+    B --> C[Firewall]
+    C --> D[Intrusion Detection System]
+    D --> E[Database]
+    B --> F[Load Balancer]
+    F --> G[Web Server]
+    G --> D
+    style A fill:#f9f,stroke:#333,stroke-width:2px
+    style B fill:#bbf,stroke:#333,stroke-width:2px
+    style C fill:#fbf,stroke:#333,stroke-width:2px
+    style D fill:#ffb,stroke:#333,stroke-width:2px
+    style E fill:#bfb,stroke:#333,stroke-width:2px
+    style F fill:#ff9,stroke:#333,stroke-width:2px
+    style G fill:#b9f,stroke:#333,stroke-width:2px
