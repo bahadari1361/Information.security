@@ -7,172 +7,129 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 20px;
-        }
-
-        .section {
-            border: 2px solid #007BFF;
-            border-radius: 10px;
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
-            margin: 20px;
-            width: 80%;
-            background-color: #f9f9f9;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .section h2 {
+        h1 {
             text-align: center;
             color: #007BFF;
         }
 
         .diagram {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            justify-items: center;
+            align-items: center;
         }
 
         .component {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 10px;
             text-align: center;
+            position: relative;
         }
 
-        .component img {
-            width: 60px;
-            height: 60px;
+        .component svg {
+            width: 80px;
+            height: 80px;
         }
 
-        .component span {
-            margin-top: 10px;
+        .tooltip {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .component:hover .tooltip {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
             font-size: 0.9em;
-            font-weight: bold;
-        }
-
-        .line {
-            width: 100%;
-            height: 2px;
-            background-color: #007BFF;
-            margin: 10px 0;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="section">
-            <h2>Perimeter Security</h2>
-            <div class="diagram">
-                <div class="component">
-                    <img src="firewall.png" alt="Firewall">
-                    <span>Firewall</span>
-                </div>
-                <div class="component">
-                    <img src="ids.png" alt="IDS/IPS">
-                    <span>IDS/IPS</span>
-                </div>
+        <h1>Enterprise Cybersecurity Architecture</h1>
+        <div class="diagram">
+            <!-- Perimeter Security -->
+            <div class="component">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l4-4m0 0l4-4m-4 4H4m16 4v1a2 2 0 01-2 2H6a2 2 0 01-2-2v-1m16-10V5a2 2 0 00-2-2H6a2 2 0 00-2 2v1m16 0H4" />
+                </svg>
+                <span>Firewall</span>
+                <div class="tooltip">Protects the network perimeter by filtering traffic.</div>
+            </div>
+            <div class="component">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16l4-4m0 0l4-4m-4 4H4m16 4v1a2 2 0 01-2 2H6a2 2 0 01-2-2v-1m16-10V5a2 2 0 00-2-2H6a2 2 0 00-2 2v1m16 0H4" />
+                </svg>
+                <span>IDS/IPS</span>
+                <div class="tooltip">Detects and prevents intrusions within the network.</div>
+            </div>
+            <!-- Network Security -->
+            <div class="component">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 20l9-5-9-5-9 5 9 5zm0-10l9-5-9-5-9 5 9 5z" />
+                </svg>
+                <span>VLAN</span>
+                <div class="tooltip">Segregates network traffic for enhanced security.</div>
+            </div>
+            <div class="component">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M9 21V3M17 16l4-4m0 0l-4-4m4 4H9" />
+                </svg>
+                <span>VPN</span>
+                <div class="tooltip">Provides secure, encrypted access for remote users.</div>
+            </div>
+            <div class="component">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-4-4m0 0l4-4m-4 4h16" />
+                </svg>
+                <span>SPAN Port</span>
+                <div class="tooltip">Mirrors traffic for monitoring by security tools.</div>
+            </div>
+            <!-- Data Protection -->
+            <div class="component">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12m-9 0a9 9 0 0118 0 9 9 0 01-18 0z" />
+                </svg>
+                <span>Encryption</span>
+                <div class="tooltip">Secures data at rest and in transit.</div>
+            </div>
+            <div class="component">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 12m-9 0a9 9 0 0118 0 9 9 0 01-18 0z" />
+                </svg>
+                <span>DLP</span>
+                <div class="tooltip">Prevents data leakage and monitors sensitive information.</div>
             </div>
         </div>
-
-        <div class="section">
-            <h2>Network Security</h2>
-            <div class="diagram">
-                <div class="component">
-                    <img src="vlan.png" alt="VLANs">
-                    <span>VLANs</span>
-                </div>
-                <div class="component">
-                    <img src="vpn.png" alt="Secure VPN">
-                    <span>Secure VPN</span>
-                </div>
-                <div class="component">
-                    <img src="span-port.png" alt="SPAN Port">
-                    <span>SPAN Port</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Endpoint Security</h2>
-            <div class="diagram">
-                <div class="component">
-                    <img src="antivirus.png" alt="Antivirus">
-                    <span>Antivirus</span>
-                </div>
-                <div class="component">
-                    <img src="edr.png" alt="EDR">
-                    <span>EDR</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Identity and Access Management</h2>
-            <div class="diagram">
-                <div class="component">
-                    <img src="mfa.png" alt="MFA">
-                    <span>MFA</span>
-                </div>
-                <div class="component">
-                    <img src="rbac.png" alt="RBAC">
-                    <span>RBAC</span>
-                </div>
-                <div class="component">
-                    <img src="ad-monitoring.png" alt="AD Monitoring">
-                    <span>AD Monitoring</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Data Protection</h2>
-            <div class="diagram">
-                <div class="component">
-                    <img src="encryption.png" alt="Encryption">
-                    <span>Encryption</span>
-                </div>
-                <div class="component">
-                    <img src="dlp.png" alt="DLP">
-                    <span>DLP</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Monitoring and Incident Response</h2>
-            <div class="diagram">
-                <div class="component">
-                    <img src="siem.png" alt="SIEM">
-                    <span>SIEM</span>
-                </div>
-                <div class="component">
-                    <img src="incident-response.png" alt="Incident Response">
-                    <span>Incident Response</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Governance, Risk, and Compliance</h2>
-            <div class="diagram">
-                <div class="component">
-                    <img src="policies.png" alt="Policies">
-                    <span>Policies</span>
-                </div>
-                <div class="component">
-                    <img src="audit.png" alt="Audits">
-                    <span>Regular Audits</span>
-                </div>
-            </div>
-        </div>
-
     </div>
+    <footer>
+        &copy; 2024 | Designed by Hashmatullah Bahadari | Enterprise Cybersecurity Architecture
+    </footer>
 </body>
 </html>
