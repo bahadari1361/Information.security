@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professional Cybersecurity System & Network Architecture</title>
     <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.esm.min.mjs';
         mermaid.initialize({
             startOnLoad: true,
             theme: 'forest',
@@ -104,13 +104,6 @@
             font-size: 1rem;
         }
 
-        /* Custom Icons */
-        .fa-icon {
-            font-size: 3rem;
-            color: #2c3e50;
-            cursor: pointer;
-        }
-
     </style>
     <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
@@ -127,33 +120,32 @@
         <section>
             <h2>Cybersecurity System & Network Architecture</h2>
             <div class="mermaid">
-                %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
                 graph TD
-                    A[<i class="fas fa-cloud fa-icon" onmouseover="showExplanation('B')" onmouseout="hideExplanation('B')"></i> External Network] --> B[<i class="fas fa-shield-alt fa-icon" onmouseover="showExplanation('B')" onmouseout="hideExplanation('B')"></i> Firewall]
-                    B --> C[<i class="fas fa-lock fa-icon" onmouseover="showExplanation('C')" onmouseout="hideExplanation('C')"></i> VPN Gateway]
-                    C --> D[<i class="fas fa-cogs fa-icon" onmouseover="showExplanation('D')" onmouseout="hideExplanation('D')"></i> Load Balancer]
-                    D --> E[<i class="fas fa-server fa-icon" onmouseover="showExplanation('E')" onmouseout="hideExplanation('E')"></i> Web Servers]
-                    D --> F[<i class="fas fa-cogs fa-icon" onmouseover="showExplanation('F')" onmouseout="hideExplanation('F')"></i> Application Servers]
-                    D --> G[<i class="fas fa-database fa-icon" onmouseover="showExplanation('G')" onmouseout="hideExplanation('G')"></i> Database Servers]
-                    B --> H[<i class="fas fa-shield-virus fa-icon" onmouseover="showExplanation('H')" onmouseout="hideExplanation('H')"></i> IDS/IPS]
-                    H --> I[<i class="fas fa-search fa-icon" onmouseover="showExplanation('I')" onmouseout="hideExplanation('I')"></i> SIEM]
-                    I --> J[<i class="fas fa-users-cog fa-icon" onmouseover="showExplanation('J')" onmouseout="hideExplanation('J')"></i> Incident Response Team]
-                    I --> K[<i class="fas fa-tachometer-alt fa-icon" onmouseover="showExplanation('K')" onmouseout="hideExplanation('K')"></i> Monitoring Dashboard]
-                    F --> L[<i class="fas fa-user-lock fa-icon" onmouseover="showExplanation('L')" onmouseout="hideExplanation('L')"></i> Authentication Server]
-                    G --> M[<i class="fas fa-cloud-upload-alt fa-icon" onmouseover="showExplanation('M')" onmouseout="hideExplanation('M')"></i> Backup System]
-                    M --> N[<i class="fas fa-cloud fa-icon" onmouseover="showExplanation('N')" onmouseout="hideExplanation('N')"></i> Cloud Backup]
-                    E --> O[<i class="fas fa-network-wired fa-icon" onmouseover="showExplanation('O')" onmouseout="hideExplanation('O')"></i> DMZ]
-                    O --> P[<i class="fas fa-globe fa-icon" onmouseover="showExplanation('P')" onmouseout="hideExplanation('P')"></i> Public Web Server]
-                    O --> Q[<i class="fas fa-plug fa-icon" onmouseover="showExplanation('Q')" onmouseout="hideExplanation('Q')"></i> Public Services]
-                    G --> R[<i class="fas fa-sitemap fa-icon" onmouseover="showExplanation('R')" onmouseout="hideExplanation('R')"></i> Internal Network]
-                    R --> S[<i class="fas fa-database fa-icon" onmouseover="showExplanation('S')" onmouseout="hideExplanation('S')"></i> Database]
-                    R --> T[<i class="fas fa-server fa-icon" onmouseover="showExplanation('T')" onmouseout="hideExplanation('T')"></i> Private Web Servers]
-                    R --> U[<i class="fas fa-laptop fa-icon" onmouseover="showExplanation('U')" onmouseout="hideExplanation('U')"></i> Internal Applications]
-                    T --> V[<i class="fas fa-fire-alt fa-icon" onmouseover="showExplanation('V')" onmouseout="hideExplanation('V')"></i> Internal Firewall]
-                    U --> W[<i class="fas fa-user-shield fa-icon" onmouseover="showExplanation('W')" onmouseout="hideExplanation('W')"></i> Admin Access]
-                    B --> X[<i class="fas fa-network-wired fa-icon" onmouseover="showExplanation('X')" onmouseout="hideExplanation('X')"></i> Proxy Server]
-                    F --> Y[<i class="fas fa-shield-alt fa-icon" onmouseover="showExplanation('Y')" onmouseout="hideExplanation('Y')"></i> Endpoint Protection]
-                    R --> Z[<i class="fas fa-server fa-icon" onmouseover="showExplanation('Z')" onmouseout="hideExplanation('Z')"></i> Active Directory]
+                    A[<i class="fas fa-cloud"></i> External Network] --> B[<i class="fas fa-shield-alt"></i> Firewall]
+                    B --> C[<i class="fas fa-lock"></i> VPN Gateway]
+                    C --> D[<i class="fas fa-cogs"></i> Load Balancer]
+                    D --> E[<i class="fas fa-server"></i> Web Servers]
+                    D --> F[<i class="fas fa-cogs"></i> Application Servers]
+                    D --> G[<i class="fas fa-database"></i> Database Servers]
+                    B --> H[<i class="fas fa-shield-virus"></i> IDS/IPS]
+                    H --> I[<i class="fas fa-search"></i> SIEM]
+                    I --> J[<i class="fas fa-users-cog"></i> Incident Response Team]
+                    I --> K[<i class="fas fa-tachometer-alt"></i> Monitoring Dashboard]
+                    F --> L[<i class="fas fa-user-lock"></i> Authentication Server]
+                    G --> M[<i class="fas fa-cloud-upload-alt"></i> Backup System]
+                    M --> N[<i class="fas fa-cloud"></i> Cloud Backup]
+                    E --> O[<i class="fas fa-network-wired"></i> DMZ]
+                    O --> P[<i class="fas fa-globe"></i> Public Web Server]
+                    O --> Q[<i class="fas fa-plug"></i> Public Services]
+                    G --> R[<i class="fas fa-sitemap"></i> Internal Network]
+                    R --> S[<i class="fas fa-database"></i> Database]
+                    R --> T[<i class="fas fa-server"></i> Private Web Servers]
+                    R --> U[<i class="fas fa-laptop"></i> Internal Applications]
+                    T --> V[<i class="fas fa-fire-alt"></i> Internal Firewall]
+                    U --> W[<i class="fas fa-user-shield"></i> Admin Access]
+                    B --> X[<i class="fas fa-network-wired"></i> Proxy Server]
+                    F --> Y[<i class="fas fa-shield-alt"></i> Endpoint Protection]
+                    R --> Z[<i class="fas fa-server"></i> Active Directory]
 
                     %% Custom styling
                     classDef firewall fill:#ffcc00,stroke:#333,stroke-width:2px;
@@ -190,7 +182,7 @@
                     click X href "#X"
                     click Y href "#Y"
                     click Z href "#Z"
-                </div>
+            </div>
         </section>
 
         <!-- Explanation Content for Each Component -->
@@ -198,38 +190,8 @@
             <h3>Firewall</h3>
             <p>The firewall serves as a barrier between internal networks and external threats, controlling inbound and outbound traffic to enforce security policies and mitigate attacks.</p>
         </div>
-        <div id="C" class="explanation">
-            <h3>VPN Gateway</h3>
-            <p>A VPN gateway enables secure remote access to the network, encrypting data and protecting sensitive information during transmission across public networks.</p>
-        </div>
-        <div id="D" class="explanation">
-            <h3>Load Balancer</h3>
-            <p>Load balancers optimize resource distribution by evenly spreading traffic across multiple servers, enhancing scalability, performance, and fault tolerance.</p>
-        </div>
-        <div id="E" class="explanation">
-            <h3>Web Servers</h3>
-            <p>Web servers host web applications, ensuring availability and performance by managing user requests and serving the necessary data and content.</p>
-        </div>
-        <div id="F" class="explanation">
-            <h3>Application Servers</h3>
-            <p>Application servers handle backend processing, ensuring efficient data processing and secure communication between clients and databases or services.</p>
-        </div>
-        <div id="G" class="explanation">
-            <h3>Database Servers</h3>
-            <p>Database servers manage critical data storage, supporting operations like retrieval, updates, and secure access to business data.</p>
-        </div>
-        <div id="H" class="explanation">
-            <h3>IDS/IPS</h3>
-            <p>Intrusion Detection/Prevention Systems are responsible for detecting potential security breaches and responding by blocking malicious activity to ensure network safety.</p>
-        </div>
-        <div id="I" class="explanation">
-            <h3>SIEM</h3>
-            <p>Security Information and Event Management solutions collect and analyze logs, providing real-time security monitoring and proactive incident management across the network.</p>
-        </div>
-        <div id="J" class="explanation">
-            <h3>Incident Response Team</h3>
-            <p>This specialized team investigates security incidents, analyzes data for threats, and deploys measures to mitigate risks and restore security.</p>
-        </div>
+        <!-- Additional Explanations for Other Devices -->
+
     </div>
 
     <footer>
@@ -237,21 +199,16 @@
     </footer>
 
     <script>
-        // Show explanation on mouse over
-        function showExplanation(id) {
-            const explanation = document.getElementById(id);
-            if (explanation) {
-                explanation.classList.add('active');
-            }
-        }
-
-        // Hide explanation on mouse out
-        function hideExplanation(id) {
-            const explanation = document.getElementById(id);
-            if (explanation) {
-                explanation.classList.remove('active');
-            }
-        }
+        // Toggle explanation display on click
+        document.querySelectorAll('.mermaid a').forEach(link => {
+            link.addEventListener('click', function () {
+                const id = this.getAttribute('href').substring(1);
+                const explanation = document.getElementById(id);
+                if (explanation) {
+                    explanation.classList.toggle('active');
+                }
+            });
+        });
     </script>
 
 </body>
