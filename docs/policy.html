@@ -16,15 +16,20 @@
             font-family: Arial, sans-serif;
             background-color: #ecf0f1;
             padding: 20px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Main Container */
+        /* Main Container to Center Everything */
         .main-container {
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             gap: 20px;
+            width: 100%;
         }
 
         /* Central Title Circle */
@@ -42,15 +47,18 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 10;
         }
 
-        /* Section Boxes on the sides */
+        /* Section Boxes around the central circle */
         .side-box {
             display: flex;
             justify-content: space-between;
             gap: 30px;
             width: 100%;
             max-width: 1200px;
+            margin-top: -60px; /* Adjusts the space to overlap the circle */
+            z-index: 5;
         }
 
         .section-box {
@@ -89,6 +97,12 @@
             .section-box {
                 width: 100%;
                 margin-bottom: 20px;
+            }
+
+            .central-title {
+                width: 200px;
+                height: 200px;
+                font-size: 1.6rem;
             }
         }
     </style>
