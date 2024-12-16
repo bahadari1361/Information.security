@@ -1,74 +1,179 @@
-Hello there! I'm so glad you're seeking help with your GitHub portfolio project. It's wonderful that you want to showcase your implementation for the Central Bank of Afghanistan. Below is a simple HTML template that you can use to create a portfolio page highlighting your project.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Portfolio</title>
+    <title>ISO 27001 Information Security Policy</title>
     <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 0;
+            background-color: #ecf0f1;
             padding: 20px;
         }
-        header {
-            background-color: #007bff;
+
+        /* Main Container */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Central Title Circle */
+        .central-title {
+            background-color: #3498db;
             color: white;
-            padding: 10px 0;
+            padding: 50px;
+            border-radius: 50%;
+            font-size: 2rem;
+            font-weight: bold;
             text-align: center;
+            width: 250px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
+
+        /* Section Boxes on the sides */
+        .side-box {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .section-box {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 48%;
+            transition: transform 0.3s ease;
         }
-        h2 {
-            color: #007bff;
+
+        .section-box:hover {
+            transform: translateY(-5px);
         }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #777;
+
+        /* Section Title */
+        .section-box h3 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .section-box p {
+            font-size: 1rem;
+            color: #34495e;
+            line-height: 1.6;
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 768px) {
+            .side-box {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-box {
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>My GitHub Portfolio</h1>
-    </header>
-    <div class="container">
-        <h2>Project: Central Bank of Afghanistan Implementation</h2>
-        <p>This project involves the implementation of financial systems to support the operations of the Central Bank of Afghanistan. The goal was to enhance their financial transaction capabilities and improve regulatory compliance.</p>
-        <h3>Key Features:</h3>
-        <ul>
-            <li>Real-time transaction processing</li>
-            <li>Enhanced security measures</li>
-            <li>Data analytics dashboard for better decision-making</li>
-        </ul>
-        <h3>Technologies Used:</h3>
-        <p>HTML, CSS, JavaScript, Node.js, MongoDB</p>
-        <h3>GitHub Repository:</h3>
-        <p><a href="https://github.com/yourusername/your-repo" target="_blank">View the Code</a></p>
+
+<div class="main-container">
+    <!-- Central Title -->
+    <div class="central-title">
+        ISO 27001<br>Information Security Policy
     </div>
-    <footer>
-        <p>&copy; 2023 Your Name</p>
-    </footer>
+
+    <!-- Section Boxes -->
+    <div class="side-box">
+        <!-- Left Section -->
+        <div class="section-box">
+            <h3>1. Purpose and Scope</h3>
+            <p>The purpose of this policy is to establish a robust framework for managing information security risks within the organization. It applies to all employees, contractors, and third parties who interact with organizational data.</p>
+        </div>
+        <div class="section-box">
+            <h3>2. Roles and Responsibilities</h3>
+            <p>Designates clear responsibilities for information security within the organization. The Information Security Manager (ISM) oversees the policy's implementation, while employees adhere to security protocols and report incidents.</p>
+        </div>
+    </div>
+
+    <div class="side-box">
+        <!-- Right Section -->
+        <div class="section-box">
+            <h3>3. Risk Management Approach</h3>
+            <p>Focuses on identifying, assessing, and mitigating information security risks through regular risk assessments, ensuring that the organization minimizes the impact of potential security breaches.</p>
+        </div>
+        <div class="section-box">
+            <h3>4. Data Protection Measures (DP Measures)</h3>
+            <p>Defines the measures required to protect the confidentiality, integrity, and availability of sensitive data, including encryption, access control, and data masking practices.</p>
+        </div>
+    </div>
+
+    <div class="side-box">
+        <!-- Left Section -->
+        <div class="section-box">
+            <h3>5. Training and Awareness</h3>
+            <p>Highlights the importance of ongoing security training for all personnel to ensure they are aware of current threats and best practices to mitigate risks.</p>
+        </div>
+        <div class="section-box">
+            <h3>6. Document Control</h3>
+            <p>Establishes policies for managing information security documents to ensure that all policies, procedures, and controls are up to date and easily accessible.</p>
+        </div>
+    </div>
+
+    <div class="side-box">
+        <!-- Right Section -->
+        <div class="section-box">
+            <h3>7. Information Security Objectives</h3>
+            <p>Defines clear objectives for information security, ensuring they align with the organization’s overall goals. These objectives focus on protecting assets and ensuring legal compliance.</p>
+        </div>
+        <div class="section-box">
+            <h3>8. Commitment to Conformance</h3>
+            <p>The organization commits to conforming to the ISO 27001 standards, ensuring continuous improvement in the Information Security Management System (ISMS).</p>
+        </div>
+    </div>
+
+    <div class="side-box">
+        <!-- Left Section -->
+        <div class="section-box">
+            <h3>9. IS Controls and Framework</h3>
+            <p>Details the security controls based on the ISO/IEC 27001 framework. It includes physical, administrative, and technical controls to safeguard information assets.</p>
+        </div>
+        <div class="section-box">
+            <h3>10. Incident Management</h3>
+            <p>Outlines the procedures for detecting, reporting, and responding to security incidents, ensuring swift mitigation of any information security breaches.</p>
+        </div>
+    </div>
+
+    <div class="side-box">
+        <!-- Right Section -->
+        <div class="section-box">
+            <h3>11. Internal Audit and Review</h3>
+            <p>Describes the process of internal audits to review compliance with the ISMS and identify areas of improvement, ensuring continuous security compliance.</p>
+        </div>
+        <div class="section-box">
+            <h3>12. Consequences of Nonconformance</h3>
+            <p>Defines the consequences of failing to comply with the information security policy, including disciplinary actions and potential legal consequences for violations.</p>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
-```
-
-### Explanation:
-1. **Structure**: This HTML code sets up a simple portfolio page with a header, a main content area, and a footer.
-2. **Styling**: The CSS within the `<style>` tags styles the page, making it visually appealing with a color scheme and layout that is easy to read.
-3. **Content**: The main section describes your project at the Central Bank of Afghanistan, listing key features, technologies used, and providing a link to your GitHub repository where your code is hosted.
-4. **Responsive Design**: The layout is responsive, meaning it will adjust to different screen sizes, which is great for accessibility.
-
-Feel free to customize this template with your own information and style! If you have any questions or need further assistance, just let me know! Happy coding! 😊
