@@ -3,191 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISO 27001 Information Security Policy</title>
+    <title>Information Security Policy</title>
     <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            background-color: #ecf0f1;
-            padding: 20px;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Main Container to Center Everything */
-        .main-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-        }
-
-        /* Central Title Circle */
-        .central-title {
-            background-color: #3498db;
-            color: white;
-            padding: 50px;
-            border-radius: 50%;
-            font-size: 2rem;
-            font-weight: bold;
-            text-align: center;
-            width: 250px;
-            height: 250px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 10;
-        }
-
-        /* Section Boxes around the central circle */
-        .side-box {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            width: 100%;
-            max-width: 1200px;
-            margin-top: -60px; /* Adjusts the space to overlap the circle */
-            z-index: 5;
-        }
-
-        .section-box {
-            background-color: #ffffff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            padding: 20px;
-            width: 48%;
-            transition: transform 0.3s ease;
-        }
-
-        .section-box:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Section Title */
-        .section-box h3 {
-            font-size: 1.6rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .section-box p {
-            font-size: 1rem;
-            color: #34495e;
+            background-color: #0e1a25;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
         }
-
-        /* Responsive Layout */
-        @media (max-width: 768px) {
-            .side-box {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section-box {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .central-title {
-                width: 200px;
-                height: 200px;
-                font-size: 1.6rem;
-            }
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 20px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .box {
+            background-color: #1a2b3c;
+            border: 2px solid #00c6ff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 8px rgba(0, 198, 255, 0.5);
+        }
+        .box h2 {
+            color: #00c6ff;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .box p {
+            font-size: 1rem;
+            margin: 0;
+        }
+        .center-circle {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .center-circle h3 {
+            background-color: #00c6ff;
+            color: #0e1a25;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 15px rgba(0, 198, 255, 0.8);
         }
     </style>
 </head>
 <body>
+    <h1>Key Components of an Information Security Policy</h1>
+    <div class="container">
+        <!-- Top Row -->
+        <div class="box">
+            <h2>Purpose and Scope</h2>
+            <p>Clearly state the purpose of the policy. Define the scope of the ISMS - which assets, departments, or processes are covered.</p>
+        </div>
+        <div class="box">
+            <h2>Information Security Objectives</h2>
+            <p>List measurable objectives aligned with business goals, including protecting information and ensuring business continuity.</p>
+        </div>
+        
+        <!-- Roles -->
+        <div class="box">
+            <h2>Roles and Responsibilities</h2>
+            <p>Define key ISMS roles, including IT personnel, security managers, and management responsibilities.</p>
+        </div>
+        <div class="box">
+            <h2>Commitment to Conformance</h2>
+            <p>State the organisation's pledge to meet ISO 27001 requirements and continually improve ISMS compliance.</p>
+        </div>
 
-<div class="main-container">
-    <!-- Central Title -->
-    <div class="central-title">
-        ISO 27001<br>Information Security Policy
-    </div>
+        <!-- Center Circle -->
+        <div class="center-circle">
+            <h3>ISO 27001 <br> Information Security Policy</h3>
+        </div>
 
-    <!-- Section Boxes -->
-    <div class="side-box">
-        <!-- Left Section -->
-        <div class="section-box">
-            <h3>1. Purpose and Scope</h3>
-            <p>The purpose of this policy is to establish a robust framework for managing information security risks within the organization. It applies to all employees, contractors, and third parties who interact with organizational data.</p>
+        <!-- Risk -->
+        <div class="box">
+            <h2>Risk Management Approach</h2>
+            <p>Describe the organisation's process for identifying, assessing, and mitigating information security risks.</p>
         </div>
-        <div class="section-box">
-            <h3>2. Roles and Responsibilities</h3>
-            <p>Designates clear responsibilities for information security within the organization. The Information Security Manager (ISM) oversees the policy's implementation, while employees adhere to security protocols and report incidents.</p>
+        <div class="box">
+            <h2>IS Controls and Framework</h2>
+            <p>Summarise the controls, including access control, cryptography, and physical security measures.</p>
         </div>
-    </div>
 
-    <div class="side-box">
-        <!-- Right Section -->
-        <div class="section-box">
-            <h3>3. Risk Management Approach</h3>
-            <p>Focuses on identifying, assessing, and mitigating information security risks through regular risk assessments, ensuring that the organization minimizes the impact of potential security breaches.</p>
+        <!-- Data Protection -->
+        <div class="box">
+            <h2>DP Measures</h2>
+            <p>Include provisions for protecting personal data and complying with data protection regulations.</p>
         </div>
-        <div class="section-box">
-            <h3>4. Data Protection Measures (DP Measures)</h3>
-            <p>Defines the measures required to protect the confidentiality, integrity, and availability of sensitive data, including encryption, access control, and data masking practices.</p>
+        <div class="box">
+            <h2>Incident Management</h2>
+            <p>Explain the process for detecting, responding to, and reporting information security incidents.</p>
         </div>
-    </div>
 
-    <div class="side-box">
-        <!-- Left Section -->
-        <div class="section-box">
-            <h3>5. Training and Awareness</h3>
-            <p>Highlights the importance of ongoing security training for all personnel to ensure they are aware of current threats and best practices to mitigate risks.</p>
+        <!-- Training -->
+        <div class="box">
+            <h2>Training and Awareness</h2>
+            <p>Emphasise the importance of regular awareness training for employees and stakeholders.</p>
         </div>
-        <div class="section-box">
-            <h3>6. Document Control</h3>
-            <p>Establishes policies for managing information security documents to ensure that all policies, procedures, and controls are up to date and easily accessible.</p>
+        <div class="box">
+            <h2>Internal Audit and Review</h2>
+            <p>Outline the commitment to conducting regular audits to evaluate ISMS effectiveness.</p>
         </div>
-    </div>
 
-    <div class="side-box">
-        <!-- Right Section -->
-        <div class="section-box">
-            <h3>7. Information Security Objectives</h3>
-            <p>Defines clear objectives for information security, ensuring they align with the organization’s overall goals. These objectives focus on protecting assets and ensuring legal compliance.</p>
+        <!-- Document Control -->
+        <div class="box">
+            <h2>Document Control</h2>
+            <p>Outline the process for maintaining, controlling, and reviewing the policy to ensure relevance.</p>
         </div>
-        <div class="section-box">
-            <h3>8. Commitment to Conformance</h3>
-            <p>The organization commits to conforming to the ISO 27001 standards, ensuring continuous improvement in the Information Security Management System (ISMS).</p>
-        </div>
-    </div>
-
-    <div class="side-box">
-        <!-- Left Section -->
-        <div class="section-box">
-            <h3>9. IS Controls and Framework</h3>
-            <p>Details the security controls based on the ISO/IEC 27001 framework. It includes physical, administrative, and technical controls to safeguard information assets.</p>
-        </div>
-        <div class="section-box">
-            <h3>10. Incident Management</h3>
-            <p>Outlines the procedures for detecting, reporting, and responding to security incidents, ensuring swift mitigation of any information security breaches.</p>
-        </div>
-    </div>
-
-    <div class="side-box">
-        <!-- Right Section -->
-        <div class="section-box">
-            <h3>11. Internal Audit and Review</h3>
-            <p>Describes the process of internal audits to review compliance with the ISMS and identify areas of improvement, ensuring continuous security compliance.</p>
-        </div>
-        <div class="section-box">
-            <h3>12. Consequences of Nonconformance</h3>
-            <p>Defines the consequences of failing to comply with the information security policy, including disciplinary actions and potential legal consequences for violations.</p>
+        <div class="box">
+            <h2>Consequences of Nonconformance</h2>
+            <p>State the potential disciplinary actions for failure to adhere to the information security policy.</p>
         </div>
     </div>
-</div>
-
 </body>
 </html>
