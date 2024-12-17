@@ -3,153 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISO 27001 Business Continuity Planning</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Business Continuity Planning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
-        header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-        nav {
-            background-color: #34495e;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        .content {
+
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
             padding: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .back-button {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .back-button a {
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        .back-button a:hover {
-            background-color: #2980b9;
-        }
-        .diagram-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .diagram-step {
-            background-color: #ecf0f1;
-            margin: 10px;
-            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
             text-align: center;
-            transition: all 0.3s ease;
-        }
-        .diagram-step:hover {
-            background-color: #3498db;
-            color: white;
-        }
-        .diagram-step .material-icons {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-        .diagram-step h3 {
-            margin: 10px 0;
-            font-size: 18px;
-        }
-        .bcp-section h2 {
+            font-size: 2rem;
             color: #2c3e50;
         }
-        .bcp-section p {
-            line-height: 1.6;
-            color: #34495e;
+
+        .bcp-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .bcp-step {
+            text-align: center;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .bcp-step:hover {
+            transform: scale(1.05);
+            background-color: #e1e8eb;
+        }
+
+        .bcp-step i {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .bcp-step h3 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .bcp-step p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .bcp-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .bcp-step {
+                width: 80%;
+            }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>ISO 27001 Business Continuity Planning</h1>
-</header>
+    <div class="container">
+        <h2>Business Continuity Planning (BCP)</h2>
+        <div class="bcp-container">
+            <div class="bcp-step">
+                <i class="fas fa-clipboard-check"></i>
+                <h3>Risk Assessment</h3>
+                <p>Identify potential threats to the business and evaluate risks associated with business operations.</p>
+            </div>
 
-<nav>
-    <a href="index.html">Home</a>
-</nav>
+            <div class="bcp-step">
+                <i class="fas fa-cogs"></i>
+                <h3>Business Impact Analysis</h3>
+                <p>Analyze the critical functions of the business and the impact of disruptions on them.</p>
+            </div>
 
-<div class="content">
-    <section class="bcp-section">
-        <h2>What is Business Continuity Planning (BCP)?</h2>
-        <p>Business Continuity Planning (BCP) is a crucial part of the ISO 27001 standard. It ensures that an organization can continue operating during and after a disruptive event. The key components of BCP involve risk management, recovery strategies, and continuous improvement.</p>
+            <div class="bcp-step">
+                <i class="fas fa-users-cog"></i>
+                <h3>Strategy Development</h3>
+                <p>Develop strategies to ensure business continuity, including disaster recovery and emergency plans.</p>
+            </div>
 
-        <h3>Key Elements of BCP</h3>
-        <ul>
-            <li>Risk Assessment and Business Impact Analysis (BIA)</li>
-            <li>Recovery Strategies</li>
-            <li>Plan Development and Testing</li>
-            <li>Training and Awareness</li>
-            <li>Regular Review and Updates</li>
-        </ul>
-    </section>
+            <div class="bcp-step">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Plan Implementation</h3>
+                <p>Implement the BCP strategies and ensure resources, tools, and personnel are ready for deployment.</p>
+            </div>
 
-    <div class="diagram-container">
-        <a href="bia.html" class="diagram-step">
-            <span class="material-icons">warning</span>
-            <h3>Risk Assessment</h3>
-            <p>Identify and assess risks that may disrupt operations.</p>
-        </a>
-        <a href="BIA.html" class="diagram-step">
-            <span class="material-icons">assessment</span>
-            <h3>Business Impact Analysis</h3>
-            <p>Analyze how risks impact business processes.</p>
-        </a>
-        <a href="bia.html" class="diagram-step">
-            <span class="material-icons">build</span>
-            <h3>Recovery Strategies</h3>
-            <p>Develop strategies to recover from disruptions.</p>
-        </a>
-        <a href="bia.html" class="diagram-step">
-            <span class="material-icons">check_circle</span>
-            <h3>Testing & Validation</h3>
-            <p>Test the plan and validate recovery strategies.</p>
-        </a>
-        <a href="bia.html" class="diagram-step">
-            <span class="material-icons">people</span>
-            <h3>Training & Awareness</h3>
-            <p>Train staff and raise awareness of the BCP.</p>
-        </a>
-        <a href="bia.html" class="diagram-step">
-            <span class="material-icons">autorenew</span>
-            <h3>Review & Update</h3>
-            <p>Regularly review and update the plan.</p>
-        </a>
+            <div class="bcp-step">
+                <i class="fas fa-sync-alt"></i>
+                <h3>Testing & Drills</h3>
+                <p>Test the BCP through simulations and drills to ensure readiness in case of actual disruption.</p>
+            </div>
+
+            <div class="bcp-step">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>Plan Maintenance</h3>
+                <p>Regularly update and maintain the BCP to address new risks and ensure it remains effective.</p>
+            </div>
+        </div>
     </div>
-
-    <section class="back-button">
-        <a href="bcp.html">Back to Business Continuity Planning</a>
-    </section>
-</div>
 
 </body>
 </html>
