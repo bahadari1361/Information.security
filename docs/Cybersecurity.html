@@ -104,15 +104,14 @@
             font-size: 1rem;
         }
 
-        /* Custom Icons */
         .fa-icon {
             font-size: 3rem;
             color: #2c3e50;
         }
 
-         /* Back to Home Button - Positioned on the right side */
+        /* Back to Home Button */
         .back-btn {
-            background-color: #4a4a4a; /* Dark gray button color */
+            background-color: #4a4a4a;
             color: white;
             padding: 12px 25px;
             border: none;
@@ -121,19 +120,18 @@
             cursor: pointer;
             transition: background 0.3s ease, transform 0.3s;
             position: fixed;
-            top: 120px; /* Positioned below the header */
-            right: 20px; /* Moved to the right side */
+            top: 20px;
+            left: 20px;
             z-index: 11;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .back-btn:hover {
-            background-color: #6c6c6c; /* Lighter gray */
+            background-color: #6c6c6c;
             transform: translateY(-3px);
         }
 
     </style>
-    <!-- Font Awesome for icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -143,6 +141,11 @@
         <h1>Cybersecurity System & Network Architecture</h1>
         <p>Comprehensive Professional Design with Cybersecurity Components</p>
     </header>
+
+    <!-- Back to Home Button -->
+    <a href="index.html">
+        <button class="back-btn">Back to Home</button>
+    </a>
 
     <div class="container">
         <section>
@@ -175,7 +178,6 @@
                     B --> X[<i class="fas fa-network-wired"></i> Proxy Server]
                     F --> Y[<i class="fas fa-shield-alt"></i> Endpoint Protection]
                     R --> Z[<i class="fas fa-server"></i> Active Directory]
-
                     %% Custom styling
                     classDef firewall fill:#ffcc00,stroke:#333,stroke-width:2px;
                     class B firewall;
@@ -219,41 +221,7 @@
             <h3>Firewall</h3>
             <p>The firewall serves as a barrier between internal networks and external threats, controlling inbound and outbound traffic to enforce security policies and mitigate attacks.</p>
         </div>
-        <div id="C" class="explanation">
-            <h3>VPN Gateway</h3>
-            <p>A VPN gateway enables secure remote access to the network, encrypting data and protecting sensitive information during transmission across public networks.</p>
-        </div>
-        <div id="D" class="explanation">
-            <h3>Load Balancer</h3>
-            <p>Load balancers optimize resource distribution by evenly spreading traffic across multiple servers, enhancing scalability, performance, and fault tolerance.</p>
-        </div>
-        <div id="E" class="explanation">
-            <h3>Web Servers</h3>
-            <p>Web servers host web applications, ensuring availability and performance by managing user requests and serving the necessary data and content.</p>
-        </div>
-        <div id="F" class="explanation">
-            <h3>Application Servers</h3>
-            <p>Application servers handle backend processing, ensuring efficient data processing and secure communication between clients and databases or services.</p>
-        </div>
-        <div id="G" class="explanation">
-            <h3>Database Servers</h3>
-            <p>Database servers manage critical data storage, supporting operations like retrieval, updates, and secure access to business data.</p>
-        </div>
-        <div id="H" class="explanation">
-            <h3>IDS/IPS</h3>
-            <p>Intrusion Detection/Prevention Systems are responsible for detecting potential security breaches and responding by blocking malicious activity to ensure network safety.</p>
-        </div>
-        <div id="I" class="explanation">
-            <h3>SIEM</h3>
-            <p>Security Information and Event Management solutions collect and analyze logs, providing real-time security monitoring and proactive incident management across the network.</p>
-        </div>
-        <div id="J" class="explanation">
-            <h3>Incident Response Team</h3>
-            <p>This specialized team investigates security incidents, analyzes data for threats, and deploys measures to mitigate risks and restore security.</p>
-        </div>
-
-        <!-- Additional Explanations for Other Devices -->
-
+        <!-- Additional Explanations... -->
     </div>
 
     <footer>
