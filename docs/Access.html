@@ -1,18 +1,236 @@
-<section id="access-control">
-    <h2>Access Control</h2>
-    <p>At the <strong>Central Bank of Afghanistan</strong>, ensuring the security and integrity of critical financial infrastructure was my top priority. One of the key areas I focused on was <strong>Access Control</strong>, where I implemented robust systems to safeguard sensitive data and applications.</p>
+<!DOCTYPE html>
+<html lang="en">
 
-    <h3>Key Practices Implemented:</h3>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ISO 27001 Access Control Security Diagram</title>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'forest',
+            themeVariables: {
+                primaryColor: '#2c3e50',
+                edgeLabelBackground: '#ecf0f1',
+                lineColor: '#3498db'
+            },
+            flowchart: {
+                curve: 'linear'
+            }
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <h4>Multi-Factor Authentication (MFA):</h4>
-    <p>During my tenure, I spearheaded the implementation of <strong>Multi-Factor Authentication (MFA)</strong> across all systems, applications, and critical financial platforms. By integrating MFA, I ensured that access was not solely dependent on passwords, thereby mitigating the risk of unauthorized access even if credentials were compromised. This approach added an extra layer of security, particularly in a high-stakes environment like banking, where the threat of cyber-attacks is constant.</p>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    <h4>Principle of Least Privilege (PoLP):</h4>
-    <p>I introduced the <strong>Principle of Least Privilege (PoLP)</strong> within the bank’s access management framework, which restricted user permissions to only what was necessary for their specific roles. This policy minimized the attack surface by reducing the number of privileged accounts and access to sensitive systems. Regular audits were conducted to ensure that users’ permissions were always aligned with their roles, and unnecessary access was revoked immediately.</p>
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
 
-    <h4>Access Auditing and Monitoring:</h4>
-    <p>To ensure ongoing security, I implemented comprehensive <strong>access auditing</strong> and <strong>monitoring</strong> procedures. By continuously tracking who accessed what resources, I was able to detect and respond to suspicious activity in real-time. The ability to review access logs helped maintain strict accountability and ensured compliance with both internal policies and external regulations.</p>
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
 
-    <h3>Why It Matters:</h3>
-    <p>At the <strong>Central Bank of Afghanistan</strong>, where safeguarding financial assets is crucial, implementing strong access control mechanisms was essential to protect against both internal and external threats. <strong>MFA</strong> and <strong>PoLP</strong> have been instrumental in mitigating risks such as credential theft, insider threats, and privilege escalation attacks, helping maintain the bank’s operational integrity and compliance with global security standards.</p>
-</section>
+        .container {
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mermaid {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+
+        .explanation {
+            background-color: #3498db;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: none;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: all 0.5s ease-in-out;
+            height: auto;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .explanation.active {
+            display: block;
+        }
+
+        .explanation h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .explanation p {
+            font-size: 1rem;
+        }
+
+        .back-btn {
+            background-color: #4a4a4a;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 11;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-btn:hover {
+            background-color: #6c6c6c;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>ISO 27001 Access Control Security Diagram</h1>
+        <p>Access Control Management and Implementation within an ISO 27001 framework</p>
+    </header>
+
+    <!-- Back to Home Button -->
+    <a href="index.html">
+        <button class="back-btn">Back to Home</button>
+    </a>
+
+    <div class="container">
+        <section>
+            <h2>Access Control Security Diagram</h2>
+            <div class="mermaid">
+                %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
+                graph TD
+                    A[<i class="fas fa-users-cog"></i> Access Control Management] --> B[<i class="fas fa-lock"></i> User Authentication]
+                    B --> C[<i class="fas fa-id-card"></i> Identity Verification]
+                    C --> D[<i class="fas fa-key"></i> Password Policies]
+                    C --> E[<i class="fas fa-fingerprint"></i> Multi-Factor Authentication]
+                    B --> F[<i class="fas fa-user-check"></i> Access Granting]
+                    F --> G[<i class="fas fa-user-slash"></i> Access Denied]
+                    F --> H[<i class="fas fa-user-tie"></i> Role-Based Access Control]
+                    H --> I[<i class="fas fa-server"></i> System Access Level]
+                    H --> J[<i class="fas fa-cogs"></i> Administrative Access Control]
+                    F --> K[<i class="fas fa-calendar-alt"></i> Time-Based Access]
+                    G --> L[<i class="fas fa-ban"></i> Account Lockout Policy]
+                    G --> M[<i class="fas fa-bug"></i> Intrusion Detection]
+                    %% Custom styling
+                    classDef accessControl fill:#ffcc00,stroke:#333,stroke-width:2px;
+                    class A accessControl;
+                    classDef auth fill:#3498db,stroke:#333,stroke-width:2px;
+                    class B,C fill:#3498db,stroke:#333,stroke-width:2px;
+                    classDef policies fill:#2ecc71,stroke:#333,stroke-width:2px;
+                    class D,E,F fill:#2ecc71,stroke:#333,stroke-width:2px;
+                    classDef roleAccess fill:#e74c3c,stroke:#333,stroke-width:2px;
+                    class H,I,J fill:#e74c3c,stroke:#333,stroke-width:2px;
+                    classDef denial fill:#f39c12,stroke:#333,stroke-width:2px;
+                    class G,L,M fill:#f39c12,stroke:#333,stroke-width:2px;
+                </div>
+        </section>
+
+        <!-- Explanation Content -->
+        <div id="A" class="explanation">
+            <h3>Access Control Management</h3>
+            <p>This system governs the rules and policies that determine who can access information and resources in an organization. It involves creating and managing user accounts, ensuring only authorized access.</p>
+        </div>
+        <div id="B" class="explanation">
+            <h3>User Authentication</h3>
+            <p>User authentication ensures that only legitimate users can access the system by verifying their identity through credentials like passwords, biometric data, etc.</p>
+        </div>
+        <div id="C" class="explanation">
+            <h3>Identity Verification</h3>
+            <p>Identity verification is the process of confirming the identity of a user based on predefined factors, such as username and password or biometric verification.</p>
+        </div>
+        <div id="D" class="explanation">
+            <h3>Password Policies</h3>
+            <p>Password policies enforce rules for creating strong passwords, such as length, complexity, and expiration, to reduce the risk of unauthorized access.</p>
+        </div>
+        <div id="E" class="explanation">
+            <h3>Multi-Factor Authentication</h3>
+            <p>Multi-Factor Authentication (MFA) adds an extra layer of security by requiring users to provide multiple forms of verification before accessing systems.</p>
+        </div>
+        <div id="F" class="explanation">
+            <h3>Access Granting</h3>
+            <p>Access granting refers to the process of allowing users to access certain systems or resources based on their role and the level of authorization they possess.</p>
+        </div>
+        <div id="H" class="explanation">
+            <h3>Role-Based Access Control</h3>
+            <p>Role-Based Access Control (RBAC) assigns permissions based on the user’s role within the organization, ensuring users only access the resources necessary for their duties.</p>
+        </div>
+        <div id="I" class="explanation">
+            <h3>System Access Level</h3>
+            <p>System access levels define what different roles within an organization are allowed to do in terms of system access, such as read, write, or administrative access.</p>
+        </div>
+        <div id="L" class="explanation">
+            <h3>Account Lockout Policy</h3>
+            <p>Account lockout policies define actions taken after multiple failed login attempts, such as locking the account to prevent brute force attacks.</p>
+        </div>
+        <div id="M" class="explanation">
+            <h3>Intrusion Detection</h3>
+            <p>Intrusion detection systems monitor access logs and behavior to identify and respond to unauthorized attempts to access systems or networks.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ISO 27001 Access Control Design by Hashmatullah Bahadari</p>
+    </footer>
+
+    <script>
+        // Toggle explanation display on click
+        document.querySelectorAll('.mermaid a').forEach(link => {
+            link.addEventListener('click', function () {
+                const id = this.getAttribute('href').substring(1);
+                const explanation = document.getElementById(id);
+                if (explanation) {
+                    explanation.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
