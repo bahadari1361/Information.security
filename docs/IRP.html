@@ -3,294 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incident Response Plan (IRP) Portfolio</title>
+    <title>Incident Response Plan (IRP)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
             margin: 0;
             padding: 0;
-            background-color: #f4f7fa;
-            display: flex;
-            justify-content: flex-start;
-            align-items: flex-start;
-            height: 100%;
         }
 
-        /* Header Style - Crumpled Paper Color */
-        header {
-            background-color: #f1e3d3; /* Crumpled paper color */
-            color: #333;
-            padding: 1em;
-            text-align: center;
-            font-size: 2.5em;
-            font-weight: bold;
-            width: 100%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 10;
-        }
-
-        /* Back to Home Button - Positioned top the Header */
-        .back-btn {
-            background-color: #4a4a4a; /* Dark gray button color */
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s;
-            position: fixed;
-            top: 120px; /* Positioned top the header */
-            right: 20px;
-            z-index: 11;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-btn:hover {
-            background-color: #6c6c6c; /* Lighter gray */
-            transform: translateY(-3px);
-        }
-
-        .back-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Container for the buttons */
-        .sections-container {
-            margin-top: 150px; /* Adjusted for header and back button space */
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-left: 20px;
-        }
-
-        /* Section Buttons (Dark Gray Mixed) */
-        .section-btn {
-            background-color: #666666; /* Dark gray mixed color */
-            color: white;
-            font-size: 1em; /* Smaller button text */
-            padding: 8px 15px; /* Smaller padding */
-            margin: 5px 0;
-            width: auto; /* Fit to text size */
-            text-align: center;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .section-btn:hover {
-            background-color: #565656;
-            transform: translateY(-3px);
-        }
-
-        .section-btn:active {
-            transform: translateY(0);
-        }
-
-        /* Paper collapse with crumpled effect */
-        .content {
-            display: none;
-            padding: 20px;
+        .container {
+            width: 80%;
+            margin: 40px auto;
             background-color: #fff;
-            border-radius: 8px;
-            border: 1px solid #ddd;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: #2c3e50;
+        }
+
+        .irp-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
             margin-top: 20px;
-            width: 50%;
-            position: absolute;
-            top: 100px; /* Keep content below the header */
-            right: 10%;
-            max-height: 0;
-            overflow: hidden;
-            transform-origin: top;
-            opacity: 0;
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out, max-height 0.5s ease-out;
-            font-family: 'Georgia', serif;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: left;
         }
 
-        .content.open {
-            display: block;
-            opacity: 1;
-            max-height: 1000px;
-            transform: scaleY(1);
-            animation: crumpledPaper 1s ease-out forwards;
-        }
-
-        @keyframes crumpledPaper {
-            0% {
-                transform: scaleY(0.3) rotate(10deg);
-                opacity: 0;
-            }
-            50% {
-                transform: scaleY(1.2) rotate(-5deg);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scaleY(1) rotate(0deg);
-                opacity: 1;
-            }
-        }
-
-        /* Crumpled Paper Design */
-        .content p {
-            background-color: #f7f7f7;
+        .irp-step {
+            text-align: center;
             padding: 20px;
+            background-color: #ecf0f1;
             border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: 1.1em;
-            margin: 10px 0;
-            line-height: 1.6;
-            box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
-            transform: rotate(3deg);
+            width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            transition: all 0.3s ease;
         }
 
-        ul {
-            list-style-type: none;
-            padding-left: 20px;
+        .irp-step:hover {
+            transform: scale(1.05);
+            background-color: #e1e8eb;
         }
 
-        li {
-            font-size: 1.1em;
-            margin: 10px 0;
+        .irp-step i {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 10px;
         }
 
-        li strong {
-            color: #007bff;
+        .irp-step h3 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
         }
 
-        html {
-            scroll-behavior: smooth;
+        .irp-step p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .team-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .team-section h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .team-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+            background-color: #e1e8eb;
+        }
+
+        .team-member i {
+            font-size: 3rem;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .back-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .irp-container, .team-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .irp-step, .team-member {
+                width: 80%;
+            }
         }
     </style>
 </head>
 <body>
 
-<!-- Back to Home Button -->
-<a href="index.html"><button class="back-btn">Back to Home</button></a>
+    <div class="container">
+        <h2>Incident Response Plan (IRP)</h2>
+        <div class="irp-container">
+            <div class="irp-step">
+                <i class="fas fa-bell"></i>
+                <h3>Identification</h3>
+                <p>Detect and identify potential security incidents or breaches in systems or networks.</p>
+            </div>
 
-<header>
-    Incident Response Plan (IRP) Portfolio
-</header>
+            <div class="irp-step">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>Containment</h3>
+                <p>Contain the incident to prevent further damage or impact to systems or data.</p>
+            </div>
 
-<!-- Container for Buttons -->
-<div class="sections-container">
-    <button class="section-btn" onclick="toggleCollapse('section1')">Project Overview</button>
-    <div id="section1" class="content">
-        <p>The Incident Response Plan (IRP) Portfolio Project demonstrates my approach to handling cybersecurity incidents, outlining the methodology and steps involved in developing, executing, and refining a comprehensive plan. The objective is to ensure that organizations are prepared to effectively detect, respond, and recover from security incidents while minimizing business disruption.</p>
-        <p>This project serves as a showcase of my ability to establish effective incident response frameworks, incorporating proactive measures, response protocols, and recovery strategies to safeguard business continuity.</p>
+            <div class="irp-step">
+                <i class="fas fa-user-shield"></i>
+                <h3>Eradication</h3>
+                <p>Remove the cause of the incident, such as malware, and prevent further occurrence.</p>
+            </div>
+
+            <div class="irp-step">
+                <i class="fas fa-redo-alt"></i>
+                <h3>Recovery</h3>
+                <p>Restore affected systems and data, and ensure systems are back to normal operation.</p>
+            </div>
+
+            <div class="irp-step">
+                <i class="fas fa-history"></i>
+                <h3>Lessons Learned</h3>
+                <p>Review and document the incident, determine lessons learned, and adjust policies and procedures.</p>
+            </div>
+        </div>
+
+        <!-- IRP Team Section -->
+        <div class="team-section">
+            <h3>IRP Team</h3>
+            <div class="team-container">
+                <div class="team-member">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>Incident Response Manager</h4>
+                    <p>Leads the incident response process and ensures the team follows the established protocols.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-shield-virus"></i>
+                    <h4>Security Analyst</h4>
+                    <p>Analyzes incidents, investigates the scope, and works to mitigate the impact.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>IT Specialist</h4>
+                    <p>Supports the containment and eradication of incidents through technical means.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-users-cog"></i>
+                    <h4>Business Continuity Planner</h4>
+                    <p>Ensures recovery processes are in place and works with business units to maintain operations.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h4>Communication Lead</h4>
+                    <p>Manages internal and external communication during the incident response process.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Home Button -->
+        <a href="index.html" class="back-button">Back to Home</a>
     </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section2')">Project Objectives</button>
-    <div id="section2" class="content">
-        <p>The objective of this portfolio is to display my capability in creating and executing an Incident Response Plan. This plan includes several key components:</p>
-        <ul>
-            <li><strong>Structured incident response phases.</strong></li>
-            <li><strong>Detection, containment, and eradication strategies.</strong></li>
-            <li><strong>Recovery and post-incident analysis.</strong></li>
-            <li><strong>Testing and refining the plan through simulations and drills.</strong></li>
-        </ul>
-        <p>By showcasing this plan, I aim to illustrate my expertise in leading incident response efforts and improving organizational resilience against cybersecurity threats.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section3')">Incident Response Phases</button>
-    <div id="section3" class="content">
-        <p>The IRP consists of several clearly defined phases to ensure a structured and efficient response to security incidents:</p>
-        <ul>
-            <li><strong>Preparation:</strong> Establishing the incident response team, tools, and documentation.</li>
-            <li><strong>Identification:</strong> Detecting and analyzing security incidents using monitoring tools.</li>
-            <li><strong>Containment:</strong> Implementing short-term and long-term containment measures.</li>
-            <li><strong>Eradication:</strong> Removing the threat from the environment.</li>
-            <li><strong>Recovery:</strong> Restoring affected systems and ensuring normal operations.</li>
-           
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section4')">Incident Response Team (IRT)</button>
-    <div id="section4" class="content">
-        <p>An effective IRP requires a dedicated team with defined roles:</p>
-        <ul>
-            <li><strong>Incident Response Manager (IRM)</strong></li>
-            <li><strong>Technical Leads</strong></li>
-            <li><strong>Legal Advisors</strong></li>
-            <li><strong>Communication Leads</strong></li>
-        </ul>
-        <p>Each role is responsible for specific tasks to ensure a coordinated and timely response to the incident.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section5')">Incident Detection and Reporting</button>
-    <div id="section5" class="content">
-        <p><strong>Security Monitoring:</strong> Leveraging SIEM systems, intrusion detection systems (IDS), and endpoint protection to detect incidents in real-time.</p>
-        <p><strong>Incident Reporting:</strong> A system for staff to report incidents or anomalies quickly and efficiently, ensuring rapid escalation.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section6')">Containment and Mitigation Strategies</button>
-    <div id="section6" class="content">
-        <p><strong>Short-Term Containment:</strong> Isolating affected systems to prevent further damage.</p>
-        <p><strong>Long-Term Containment:</strong> Implementing long-term fixes to prevent the incident from reoccurring.</p>
-        <p><strong>Data Protection:</strong> Ensuring that evidence and data integrity are maintained throughout the response.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section7')">Eradication and Recovery</button>
-    <div id="section7" class="content">
-        <p><strong>Eradication:</strong> Identifying the root cause of the incident and eliminating all traces of the threat.</p>
-        <p><strong>System Recovery:</strong> Restoring systems to a secure, operational state while ensuring no vulnerabilities remain.</p>
-        <p><strong>Post-Incident Monitoring:</strong> After recovery, continuous monitoring is essential to ensure no residual threat persists.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section8')">Post-Incident Review</button>
-    <div id="section8" class="content">
-        <p><strong>Root Cause Analysis:</strong> Examining the underlying cause of the incident and determining what went wrong.</p>
-        <p><strong>Continuous Improvement:</strong> Using feedback and results from incidents to enhance the IRP and strengthen overall security posture.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section9')">Incident Response Testing and Drills</button>
-    <div id="section9" class="content">
-        <p><strong>Tabletop Exercises:</strong> Conducting simulated incident scenarios to ensure the team is familiar with the procedures.</p>
-        <p><strong>Full-Scale Drills:</strong> Live drills to test response capabilities in a realistic environment.</p>
-        <p><strong>Red Teaming:</strong> Simulated attacks to assess the effectiveness of the IRP.</p>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section10')">Technologies and Tools Used</button>
-    <div id="section10" class="content">
-        <ul>
-            <li>SIEM Systems (Splunk, PRTG Event log management and PRTG Network Monitoring, Microsoft Events log Management, Sophos iview)</li>
-            <li>Endpoint Protection (Snort, OSSEC, Kaspersky Endpoint Security, Microsoft Defender for Endpoint)</li>
-            <li>Forensics Tools (FTK Imager, Autopsy)</li>
-            <li>Collaboration Tools (Microsoft Teams)</li>
-            
-        </ul>
-    </div>
-
-    <button class="section-btn" onclick="toggleCollapse('section11')">Project Impact</button>
-    <div id="section11" class="content">
-        <p>By developing and implementing a robust Incident Response Plan, I ensure that organizations can:</p>
-        <ul>
-            <li>Detect and respond to incidents quickly, minimizing damage.</li>
-            <li>Recover systems and data in a controlled, structured manner.</li>
-            <li>Continuously improve the incident response processes through post-incident analysis and feedback.</li>
-        </ul>
-    </div>
-
-
-    <button class="section-btn" onclick="toggleCollapse('section13')">Conclusion</button>
-    <div id="section13" class="content">
-        <p>This Incident Response Plan Portfolio Project showcases my expertise in preparing for and handling cybersecurity incidents. By using structured processes and continually testing and refining the plan, organizations can effectively handle security incidents and minimize disruption to business operations.</p>
-        <p>Through this project, I demonstrate my ability to lead an organization in protecting its data, reputation, and business continuity during a security crisis.</p>
-    </div>
-</div>
-
-<script>
-    function toggleCollapse(sectionId) {
-        var content = document.getElementById(sectionId);
-        content.classList.toggle("open");
-    }
-</script>
 
 </body>
 </html>
