@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patch Management - Diagram</title>
+    <title>Patch Management - Diagram with Tooltips</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body {
@@ -36,6 +36,7 @@
             width: 180px;
             margin: 0 20px;
             text-align: center;
+            position: relative;
         }
 
         .step h3 {
@@ -43,11 +44,39 @@
             margin: 10px 0;
         }
 
+        .step:hover {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
         .arrow {
             font-size: 30px;
             margin-top: 30px;
             margin-bottom: 30px;
             color: #3498db;
+        }
+
+        .tooltip {
+            visibility: hidden;
+            width: 220px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the step */
+            left: 50%;
+            margin-left: -110px; /* Center the tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .step:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         .back-button {
@@ -72,7 +101,7 @@
 <body>
 
 <header>
-    <h1>Patch Management - Diagram</h1>
+    <h1>Patch Management - Diagram with Tooltips</h1>
 </header>
 
 <div class="diagram-container">
@@ -80,6 +109,9 @@
     <div class="step">
         <span class="material-icons">search</span>
         <h3>Identify Vulnerabilities</h3>
+        <div class="tooltip">
+            <p>In this step, vulnerabilities in the system are identified using various vulnerability scanning tools, such as Nessus or OpenVAS, to ensure that no security loopholes remain.</p>
+        </div>
     </div>
     <div class="arrow">→</div>
 
@@ -87,6 +119,9 @@
     <div class="step">
         <span class="material-icons">priority_high</span>
         <h3>Prioritize Patches</h3>
+        <div class="tooltip">
+            <p>Here, patches are prioritized based on the severity of vulnerabilities discovered. Critical patches are applied first to protect the system from high-risk threats.</p>
+        </div>
     </div>
     <div class="arrow">→</div>
 
@@ -94,6 +129,9 @@
     <div class="step">
         <span class="material-icons">assessment</span>
         <h3>Test Patches</h3>
+        <div class="tooltip">
+            <p>Before applying patches to the live environment, they are tested in a controlled environment to ensure compatibility and avoid disruptions.</p>
+        </div>
     </div>
     <div class="arrow">→</div>
 
@@ -101,6 +139,9 @@
     <div class="step">
         <span class="material-icons">system_update_alt</span>
         <h3>Deploy Patches</h3>
+        <div class="tooltip">
+            <p>Once tested, patches are deployed across the production environment, ensuring minimal downtime and keeping the system secure.</p>
+        </div>
     </div>
     <div class="arrow">→</div>
 
@@ -108,6 +149,9 @@
     <div class="step">
         <span class="material-icons">check_circle</span>
         <h3>Verify & Validate</h3>
+        <div class="tooltip">
+            <p>After deployment, patches are verified to ensure they were successfully applied. Systems are checked for any anomalies to confirm security measures are intact.</p>
+        </div>
     </div>
     <div class="arrow">→</div>
 
@@ -115,6 +159,9 @@
     <div class="step">
         <span class="material-icons">description</span>
         <h3>Document & Report</h3>
+        <div class="tooltip">
+            <p>All applied patches are documented for compliance and auditing purposes. Reports are created to track patching activities and review the system's security status.</p>
+        </div>
     </div>
 </div>
 
