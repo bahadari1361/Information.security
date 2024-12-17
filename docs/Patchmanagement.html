@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patch Management - ISO/IEC 27001</title>
+    <title>Patch Management - Diagram</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f4f4f4;
             color: #333;
         }
 
@@ -21,64 +21,38 @@
             padding: 20px;
         }
 
-        nav {
-            background-color: #34495e;
-            padding: 10px;
-            text-align: center;
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 30px 0;
         }
 
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .content {
+        .step {
+            background-color: #ecf0f1;
             padding: 20px;
-            max-width: 1000px;
-            margin: 20px auto;
-            background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        h1, h2 {
+            width: 180px;
+            margin: 0 20px;
             text-align: center;
         }
 
-        .section-icon {
-            display: block;
-            text-align: center;
-            font-size: 70px;
+        .step h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .arrow {
+            font-size: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
             color: #3498db;
-            margin-bottom: 20px;
-        }
-
-        .section-content {
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul li {
-            padding: 8px 0;
-        }
-
-        ul li::before {
-            content: '✓';
-            color: #27ae60;
-            font-weight: bold;
-            margin-right: 10px;
         }
 
         .back-button {
             text-align: center;
-            margin: 30px 0;
+            margin-top: 30px;
         }
 
         .back-button a {
@@ -98,50 +72,54 @@
 <body>
 
 <header>
-    <h1>Patch Management - ISO/IEC 27001</h1>
+    <h1>Patch Management - Diagram</h1>
 </header>
 
-<nav>
-    <a href="endpoint.html">Back to Home</a>
-</nav>
+<div class="diagram-container">
+    <!-- Step 1: Identify Vulnerabilities -->
+    <div class="step">
+        <span class="material-icons">search</span>
+        <h3>Identify Vulnerabilities</h3>
+    </div>
+    <div class="arrow">→</div>
 
-<div class="content">
-    <div class="section-icon">
+    <!-- Step 2: Prioritize Patches -->
+    <div class="step">
+        <span class="material-icons">priority_high</span>
+        <h3>Prioritize Patches</h3>
+    </div>
+    <div class="arrow">→</div>
+
+    <!-- Step 3: Test Patches -->
+    <div class="step">
+        <span class="material-icons">assessment</span>
+        <h3>Test Patches</h3>
+    </div>
+    <div class="arrow">→</div>
+
+    <!-- Step 4: Deploy Patches -->
+    <div class="step">
         <span class="material-icons">system_update_alt</span>
+        <h3>Deploy Patches</h3>
     </div>
+    <div class="arrow">→</div>
 
-    <h2>Patch Management Overview</h2>
-    <div class="section-content">
-        <p>
-            **Patch Management** is a crucial process in ensuring that software systems, applications, and devices remain secure and resilient against known vulnerabilities. Within the framework of <strong>ISO/IEC 27001</strong>, Patch Management supports the principles of information security, ensuring confidentiality, integrity, and availability.
-        </p>
-
-        <h3>Key Objectives</h3>
-        <ul>
-            <li>Identify and prioritize vulnerabilities in software and systems.</li>
-            <li>Apply critical updates and security patches promptly.</li>
-            <li>Test patches to ensure compatibility and minimize system disruptions.</li>
-            <li>Maintain a well-documented patch management policy.</li>
-        </ul>
-
-        <h3>Why Patch Management Matters</h3>
-        <p>
-            Unpatched software can expose organizations to significant risks, including unauthorized access, malware infections, and data breaches. A structured patch management process helps mitigate these risks while ensuring systems comply with industry standards.
-        </p>
-
-        <h3>Patch Management Best Practices</h3>
-        <ul>
-            <li>Conduct regular vulnerability assessments to identify weak points.</li>
-            <li>Maintain an inventory of software, systems, and patch statuses.</li>
-            <li>Deploy automated tools for patch distribution and monitoring.</li>
-            <li>Establish a schedule for periodic updates and patch reviews.</li>
-            <li>Ensure emergency patch procedures are in place for critical threats.</li>
-        </ul>
+    <!-- Step 5: Verify & Validate -->
+    <div class="step">
+        <span class="material-icons">check_circle</span>
+        <h3>Verify & Validate</h3>
     </div>
+    <div class="arrow">→</div>
 
-    <div class="back-button">
-        <a href="endpoint.html">Back to Home</a>
+    <!-- Step 6: Document & Report -->
+    <div class="step">
+        <span class="material-icons">description</span>
+        <h3>Document & Report</h3>
     </div>
+</div>
+
+<div class="back-button">
+    <a href="endpoint.html">Back to Home</a>
 </div>
 
 </body>
