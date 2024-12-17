@@ -60,6 +60,22 @@
         .content ul {
             padding-left: 1.5rem;
         }
+        .back-to-home {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .back-to-home a {
+            text-decoration: none;
+            color: white;
+            background-color: #2c3e50;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .back-to-home a:hover {
+            background-color: #34495e;
+        }
         footer {
             text-align: center;
             padding: 1rem;
@@ -141,24 +157,9 @@
             </div>
         </div>
 
-        <!-- Section 5: Documentation and Reporting -->
-        <div class="section">
-            <h2 onclick="toggleContent('content5')">
-                <i class="fas fa-file-alt"></i> Documentation and Reporting
-            </h2>
-            <div id="content5" class="content">
-                <p>All risk assessments, controls, and treatment measures were documented and reported to senior management for transparency and alignment with ISO/IEC 27001 requirements.</p>
-            </div>
-        </div>
-
-        <!-- Section 6: Continuous Improvement -->
-        <div class="section">
-            <h2 onclick="toggleContent('content6')">
-                <i class="fas fa-sync-alt"></i> Continuous Improvement
-            </h2>
-            <div id="content6" class="content">
-                <p>Following the Plan-Do-Check-Act (PDCA) model, the risk management process was continuously refined to adapt to new challenges and ensure ongoing improvement.</p>
-            </div>
+        <!-- Back to Home Button -->
+        <div class="back-to-home">
+            <a href="s.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
         </div>
     </div>
 
