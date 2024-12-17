@@ -11,11 +11,13 @@
             padding: 0;
             background-color: #f4f6f9;
             color: #333;
+            display: flex;
         }
         header {
             background-color: #002855;
             color: #ffffff;
             padding: 20px;
+            width: 100%;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
@@ -31,52 +33,95 @@
             flex-wrap: wrap;
             gap: 20px;
         }
-        .box {
-            flex: 1 1 calc(50% - 20px);
-            background: #ffffff;
+        .menu {
+            flex: 1 1 200px;
+            background-color: #ffffff;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            max-height: 600px;
         }
-        .box h2 {
-            margin-top: 0;
+        .menu h2 {
             color: #002855;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
+            cursor: pointer;
+            margin: 10px 0;
             border-bottom: 2px solid #00a6ff;
             padding-bottom: 10px;
         }
-        .box p {
-            margin: 10px 0 0;
-            font-size: 1rem;
-            line-height: 1.5;
+        .menu h2:hover {
+            color: #00a6ff;
+        }
+        .content-container {
+            flex: 2 1 700px;
+            padding: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .content {
+            display: none;
+            margin-top: 20px;
         }
         footer {
             background-color: #002855;
             color: #ffffff;
             text-align: center;
             padding: 15px;
-            margin-top: 20px;
             font-size: 0.9rem;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
         }
     </style>
+    <script>
+        function toggleContent(sectionId) {
+            var content = document.getElementById(sectionId);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <h1>ISO/IEC 27001 Information Security Policy</h1>
-        <p>Cybersecurity Standards Based on My Experience as an Information Security Manager</p>
-    </header>
 
-    <div class="container">
-        <!-- Purpose and Scope -->
-        <div class="box">
-            <h2>Purpose and Scope</h2>
+<header>
+    <h1>ISO/IEC 27001 Information Security Policy</h1>
+    <p>Cybersecurity Standards Based on My Experience as an Information Security Manager</p>
+</header>
+
+<div class="container">
+    <!-- Menu for clickable sections -->
+    <div class="menu">
+        <h2 onclick="toggleContent('purpose')">Purpose and Scope</h2>
+        <h2 onclick="toggleContent('objectives')">Information Security Objectives</h2>
+        <h2 onclick="toggleContent('roles')">Roles and Responsibilities</h2>
+        <h2 onclick="toggleContent('risk')">Risk Management Approach</h2>
+        <h2 onclick="toggleContent('controls')">Information Security Controls</h2>
+        <h2 onclick="toggleContent('incident')">Incident Management</h2>
+        <h2 onclick="toggleContent('audit')">Internal Audit and Review</h2>
+        <h2 onclick="toggleContent('document')">Document Control</h2>
+        <h2 onclick="toggleContent('consequence')">Consequences of Nonconformance</h2>
+    </div>
+
+    <!-- Content area on the right -->
+    <div class="content-container">
+        <!-- Purpose and Scope Content -->
+        <div id="purpose" class="content">
+            <h3>Purpose and Scope</h3>
             <p>This Information Security Policy establishes the guidelines I followed while working as an Information Security Manager at the Central Bank of Afghanistan, ensuring the protection of sensitive data across all systems and processes. The scope of the policy covers all IT systems, employees, departments, and physical infrastructure that handle or store organizational data.</p>
         </div>
-        
-        <!-- Information Security Objectives -->
-        <div class="box">
-            <h2>Information Security Objectives</h2>
+
+        <!-- Information Security Objectives Content -->
+        <div id="objectives" class="content">
+            <h3>Information Security Objectives</h3>
             <p>During my tenure, I set measurable information security objectives aligned with organizational goals, including:
                 <ul>
                     <li>Protecting critical data from unauthorized access, ensuring confidentiality and integrity.</li>
@@ -86,10 +131,10 @@
                 </ul>
             </p>
         </div>
-        
-        <!-- Roles and Responsibilities -->
-        <div class="box">
-            <h2>Roles and Responsibilities</h2>
+
+        <!-- Roles and Responsibilities Content -->
+        <div id="roles" class="content">
+            <h3>Roles and Responsibilities</h3>
             <p>As the Information Security Manager, my roles and responsibilities included:
                 <ul>
                     <li>Designing, implementing, and managing the ISMS in line with ISO 27001 standards.</li>
@@ -100,10 +145,10 @@
                 </ul>
             </p>
         </div>
-        
-        <!-- Risk Management Approach -->
-        <div class="box">
-            <h2>Risk Management Approach</h2>
+
+        <!-- Risk Management Approach Content -->
+        <div id="risk" class="content">
+            <h3>Risk Management Approach</h3>
             <p>My approach to risk management involved:
                 <ul>
                     <li>Conducting regular risk assessments using industry-standard tools like Nessus and Nmap to identify vulnerabilities and threats.</li>
@@ -113,10 +158,10 @@
                 </ul>
             </p>
         </div>
-        
-        <!-- Information Security Controls -->
-        <div class="box">
-            <h2>Information Security Controls</h2>
+
+        <!-- Information Security Controls Content -->
+        <div id="controls" class="content">
+            <h3>Information Security Controls</h3>
             <p>The security controls I implemented to protect the organization's information assets included:
                 <ul>
                     <li>**Access Control**: Ensured that only authorized users had access to sensitive systems and data.</li>
@@ -126,10 +171,10 @@
                 </ul>
             </p>
         </div>
-        
-        <!-- Incident Management -->
-        <div class="box">
-            <h2>Incident Management</h2>
+
+        <!-- Incident Management Content -->
+        <div id="incident" class="content">
+            <h3>Incident Management</h3>
             <p>My role involved establishing an incident management process to respond effectively to security incidents:
                 <ul>
                     <li>Defining incident classification and response procedures.</li>
@@ -139,28 +184,30 @@
                 </ul>
             </p>
         </div>
-        
-        <!-- Internal Audit and Review -->
-        <div class="box">
-            <h2>Internal Audit and Review</h2>
+
+        <!-- Internal Audit and Review Content -->
+        <div id="audit" class="content">
+            <h3>Internal Audit and Review</h3>
             <p>As part of continuous improvement, I led internal audits to assess the ISMS’s performance, identifying areas for improvement and ensuring compliance with ISO 27001 standards. Audits also helped in reviewing incident handling processes, risk assessments, and security controls.</p>
         </div>
-        
-        <!-- Document Control -->
-        <div class="box">
-            <h2>Document Control</h2>
+
+        <!-- Document Control Content -->
+        <div id="document" class="content">
+            <h3>Document Control</h3>
             <p>To ensure the effectiveness and relevance of the Information Security Policy, I implemented document control procedures. These included regular reviews and updates to policies and guidelines based on evolving cybersecurity threats and organizational changes.</p>
         </div>
-        
-        <!-- Consequences of Nonconformance -->
-        <div class="box">
-            <h2>Consequences of Nonconformance</h2>
+
+        <!-- Consequences of Nonconformance Content -->
+        <div id="consequence" class="content">
+            <h3>Consequences of Nonconformance</h3>
             <p>Failure to adhere to information security policies resulted in disciplinary actions, ranging from formal warnings to termination of access to systems. The policy emphasized the importance of compliance to maintain organizational security and protect valuable assets.</p>
         </div>
     </div>
+</div>
 
-    <footer>
-        <p>© 2024 Hashmatullah Bahadari - ISO/IEC 27001 Information Security Policy | All Rights Reserved</p>
-    </footer>
+<footer>
+    <p>© 2024 Hashmatullah Bahadari - ISO/IEC 27001 Information Security Policy | All Rights Reserved</p>
+</footer>
+
 </body>
 </html>
