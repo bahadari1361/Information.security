@@ -3,168 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISO 27001 Information Security Policy</title>
+    <title>Information Security Policy - Portfolio</title>
     <style>
         /* General Styles */
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f7f9;
+            background-color: #f4f6f9;
             color: #333;
-            line-height: 1.6;
         }
-
-        h1 {
-            text-align: center;
-            color: #004466;
-            margin: 30px 0;
-            font-size: 2.5rem;
-            text-transform: uppercase;
-        }
-
-        /* Container */
-        .container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+        header {
+            background-color: #002855;
+            color: #ffffff;
             padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
-
-        /* Boxes */
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
         .box {
+            flex: 1 1 calc(50% - 20px);
             background: #ffffff;
-            border: 2px solid #0088cc;
+            border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
-
         .box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0, 136, 204, 0.3);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
         }
-
         .box h2 {
-            color: #004466;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
+            margin-top: 0;
+            color: #002855;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #00a6ff;
+            padding-bottom: 10px;
         }
-
         .box p {
+            margin: 10px 0 0;
             font-size: 1rem;
-            color: #555;
+            line-height: 1.5;
         }
-
-        /* Center Circle */
-        .center-circle {
-            grid-column: span 2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .center-circle h3 {
-            background: #0088cc;
-            color: #ffffff;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 5px 15px rgba(0, 136, 204, 0.5);
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            padding: 15px;
-        }
-
-        /* Footer */
         footer {
+            background-color: #002855;
+            color: #ffffff;
             text-align: center;
-            margin: 20px 0;
+            padding: 15px;
+            margin-top: 20px;
             font-size: 0.9rem;
-            color: #777;
         }
     </style>
 </head>
 <body>
-    <h1>ISO 27001 Information Security Policy</h1>
+    <!-- Header Section -->
+    <header>
+        <h1>Cybersecurity Project Portfolio</h1>
+        <p>Hashmatullah Bahadari | Cybersecurity Specialist | ISO/IEC 27001 Lead Auditor</p>
+    </header>
+
+    <!-- Content Section -->
     <div class="container">
-        <!-- Top Row -->
         <div class="box">
             <h2>Purpose and Scope</h2>
-            <p>Clearly state the purpose of the policy. Define the scope of the ISMS (Information Security Management System) – which assets, departments, locations, or processes are covered.</p>
+            <p>This project outlines the **Information Security Management System (ISMS)** designed to secure systems, networks, and data assets. The scope includes penetration testing, risk management, and IT audits for critical infrastructure.</p>
         </div>
         <div class="box">
             <h2>Information Security Objectives</h2>
-            <p>List measurable objectives aligned with the business's broader goals. Define a framework for setting these. Objectives include protecting information, ensuring business continuity, and complying with legal requirements.</p>
+            <p>Ensured the confidentiality, integrity, and availability of data through the implementation of **Multi-Factor Authentication (MFA)**, secure network design, and rigorous **penetration testing** using tools like Kali Linux and Nessus.</p>
         </div>
-
-        <!-- Roles and Commitment -->
         <div class="box">
             <h2>Roles and Responsibilities</h2>
-            <p>Define key ISMS roles, responsibilities, and authorities, including the information security manager, IT personnel, and department heads. Describe management's responsibility.</p>
+            <p>As an **Information Security Manager**, I was responsible for policy writing, system hardening, IT auditing, penetration testing, and guiding IT teams to improve security measures and meet compliance standards.</p>
         </div>
         <div class="box">
             <h2>Commitment to Conformance</h2>
-            <p>State the organisation's commitment to meeting ISO 27001 requirements. Pledge to continually improve the ISMS and comply with legal and regulatory requirements.</p>
+            <p>Implemented ISO/IEC 27001 standards and **BCP** (Business Continuity Plans) to ensure business operations were secure and compliant with international regulatory requirements.</p>
         </div>
-
-        <!-- Center Circle -->
-        <div class="center-circle">
-            <h3>ISO 27001 <br> Information Security Policy</h3>
-        </div>
-
-        <!-- Risk and Controls -->
         <div class="box">
             <h2>Risk Management Approach</h2>
-            <p>Describe the organisation's approach to identifying, assessing, and treating information security risks.</p>
+            <p>Conducted regular **risk assessments** to identify vulnerabilities, assess potential threats, and recommend mitigation strategies to prevent unauthorized access or disruptions.</p>
         </div>
         <div class="box">
-            <h2>IS Controls and Framework</h2>
-            <p>Provide a summary of the information security controls adopted. Mention areas such as access control, cryptography, physical security, and supplier relationships.</p>
+            <h2>Information Security Controls</h2>
+            <p>Applied **access control policies**, cryptographic tools, and system security protocols to strengthen organizational cybersecurity posture. Tools included **Nmap**, **Wireshark**, and **OWASP methodologies**.</p>
         </div>
-
-        <!-- Data Protection -->
         <div class="box">
-            <h2>DP Measures</h2>
-            <p>Include provisions for protecting personal data and complying with relevant data protection regulations, ensuring privacy for employees and customers.</p>
+            <h2>Data Protection Measures</h2>
+            <p>Developed a **Data Protection Framework** compliant with GDPR regulations, ensuring the privacy of customer and employee data through encryption, anonymization, and access control measures.</p>
         </div>
         <div class="box">
             <h2>Incident Management</h2>
-            <p>Describe the organisation's approach to detecting, responding to, and reporting information security incidents.</p>
+            <p>Created and deployed an **Incident Response Plan (IRP)** for detecting, responding to, and reporting security incidents. Utilized monitoring tools like **ntopng** for real-time network traffic analysis.</p>
         </div>
-
-        <!-- Training and Audit -->
         <div class="box">
             <h2>Training and Awareness</h2>
-            <p>Emphasise the importance of training and awareness for all employees and stakeholders. Commit to regular security awareness training.</p>
+            <p>Led regular **security awareness training** for employees and stakeholders to ensure compliance with policies and mitigate risks caused by human errors or negligence.</p>
         </div>
         <div class="box">
             <h2>Internal Audit and Review</h2>
-            <p>Explain the organisation's commitment to regular internal audits to assess conformance to ISO 27001 and evaluate ISMS effectiveness.</p>
+            <p>Performed **IT audits** to evaluate the effectiveness of controls, ensuring ongoing conformance with ISO/IEC 27001. Continuous improvement plans were implemented based on findings.</p>
         </div>
-
-        <!-- Document Control -->
         <div class="box">
             <h2>Document Control</h2>
-            <p>Outline the process for maintaining, controlling, and regularly reviewing the policy to ensure it remains relevant and up to date.</p>
+            <p>Maintained proper **document control** for policies, plans, and audit reports to ensure relevance and timely updates as the organization evolved and technologies advanced.</p>
         </div>
         <div class="box">
             <h2>Consequences of Nonconformance</h2>
-            <p>State that failure to adhere to the information security policy may result in disciplinary actions. Highlight the importance of conformance to protect organisational assets.</p>
+            <p>Ensured that failure to adhere to the information security policy would result in disciplinary measures, emphasizing the critical role of compliance in securing organizational assets.</p>
         </div>
     </div>
 
+    <!-- Footer Section -->
     <footer>
-        &copy; 2024 Hashmatullah Bahadari | ISO 27001 Information Security Policy
+        <p>© 2024 Hashmatullah Bahadari | All Rights Reserved | Cybersecurity Project Portfolio</p>
     </footer>
 </body>
 </html>
