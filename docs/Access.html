@@ -75,54 +75,37 @@
             font-size: 1rem;
         }
 
-        .explanation {
-            background-color: #3498db;
+        /* Tooltip Styling */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 160px;
+            background-color: #333;
             color: #fff;
-            padding: 20px;
+            text-align: center;
             border-radius: 5px;
-            margin-top: 20px;
-            display: none;
-            width: 50%;
-            margin-left: auto;
-            margin-right: auto;
-            transition: all 0.5s ease-in-out;
-            height: auto;
-            max-height: 300px;
-            overflow-y: auto;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the icon */
+            left: 50%;
+            margin-left: -80px;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
 
-        .explanation.active {
-            display: block;
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
 
-        .explanation h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .explanation p {
-            font-size: 1rem;
-        }
-
-        .back-btn {
-            background-color: #4a4a4a;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.2em;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.3s;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 11;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-btn:hover {
-            background-color: #6c6c6c;
-            transform: translateY(-3px);
+        /* Mermaid Chart Styling */
+        .mermaid {
+            background-color: #f5f5f5;
         }
     </style>
 </head>
@@ -134,30 +117,25 @@
         <p>Access Control Management and Implementation within an ISO 27001 framework</p>
     </header>
 
-    <!-- Back to Home Button -->
-    <a href="diagram.html">
-        <button class="back-btn">Back to Home</button>
-    </a>
-
     <div class="container">
         <section>
             <h2>Access Control Security Diagram</h2>
             <div class="mermaid">
                 %%{init: {'theme': 'forest', 'themeVariables': {'primaryColor': '#2c3e50', 'edgeLabelBackground': '#ecf0f1', 'lineColor': '#3498db'}}}%%
                 graph TD
-                    A[<i class="fas fa-users-cog"></i> Access Control Management] --> B[<i class="fas fa-lock"></i> User Authentication]
-                    B --> C[<i class="fas fa-id-card"></i> Identity Verification]
-                    C --> D[<i class="fas fa-key"></i> Password Policies]
-                    C --> E[<i class="fas fa-fingerprint"></i> Multi-Factor Authentication]
-                    B --> F[<i class="fas fa-user-check"></i> Access Granting]
-                    F --> G[<i class="fas fa-user-slash"></i> Access Denied]
-                    F --> H[<i class="fas fa-user-tie"></i> Role-Based Access Control]
-                    H --> I[<i class="fas fa-server"></i> System Access Level]
-                    H --> J[<i class="fas fa-cogs"></i> Administrative Access Control]
-                    F --> K[<i class="fas fa-calendar-alt"></i> Time-Based Access]
-                    G --> L[<i class="fas fa-ban"></i> Account Lockout Policy]
-                    G --> M[<i class="fas fa-bug"></i> Intrusion Detection]
-                    %% Custom styling
+                    A[<div class="tooltip"><i class="fas fa-users-cog"></i><span class="tooltiptext">Access Control Management</span></div>] --> B[<div class="tooltip"><i class="fas fa-lock"></i><span class="tooltiptext">User Authentication</span></div>]
+                    B --> C[<div class="tooltip"><i class="fas fa-id-card"></i><span class="tooltiptext">Identity Verification</span></div>]
+                    C --> D[<div class="tooltip"><i class="fas fa-key"></i><span class="tooltiptext">Password Policies</span></div>]
+                    C --> E[<div class="tooltip"><i class="fas fa-fingerprint"></i><span class="tooltiptext">Multi-Factor Authentication</span></div>]
+                    B --> F[<div class="tooltip"><i class="fas fa-user-check"></i><span class="tooltiptext">Access Granting</span></div>]
+                    F --> G[<div class="tooltip"><i class="fas fa-user-slash"></i><span class="tooltiptext">Access Denied</span></div>]
+                    F --> H[<div class="tooltip"><i class="fas fa-user-tie"></i><span class="tooltiptext">Role-Based Access Control</span></div>]
+                    H --> I[<div class="tooltip"><i class="fas fa-server"></i><span class="tooltiptext">System Access Level</span></div>]
+                    H --> J[<div class="tooltip"><i class="fas fa-cogs"></i><span class="tooltiptext">Administrative Access Control</span></div>]
+                    F --> K[<div class="tooltip"><i class="fas fa-calendar-alt"></i><span class="tooltiptext">Time-Based Access</span></div>]
+                    G --> L[<div class="tooltip"><i class="fas fa-ban"></i><span class="tooltiptext">Account Lockout Policy</span></div>]
+                    G --> M[<div class="tooltip"><i class="fas fa-bug"></i><span class="tooltiptext">Intrusion Detection</span></div>]
+                %% Custom styling
                     classDef accessControl fill:#ffcc00,stroke:#333,stroke-width:2px;
                     class A accessControl;
                     classDef auth fill:#3498db,stroke:#333,stroke-width:2px;
@@ -170,66 +148,11 @@
                     class G,L,M fill:#f39c12,stroke:#333,stroke-width:2px;
                 </div>
         </section>
-
-        <!-- Explanation Content -->
-        <div id="A" class="explanation">
-            <h3>Access Control Management</h3>
-            <p>This system governs the rules and policies that determine who can access information and resources in an organization. It involves creating and managing user accounts, ensuring only authorized access.</p>
-        </div>
-        <div id="B" class="explanation">
-            <h3>User Authentication</h3>
-            <p>User authentication ensures that only legitimate users can access the system by verifying their identity through credentials like passwords, biometric data, etc.</p>
-        </div>
-        <div id="C" class="explanation">
-            <h3>Identity Verification</h3>
-            <p>Identity verification is the process of confirming the identity of a user based on predefined factors, such as username and password or biometric verification.</p>
-        </div>
-        <div id="D" class="explanation">
-            <h3>Password Policies</h3>
-            <p>Password policies enforce rules for creating strong passwords, such as length, complexity, and expiration, to reduce the risk of unauthorized access.</p>
-        </div>
-        <div id="E" class="explanation">
-            <h3>Multi-Factor Authentication</h3>
-            <p>Multi-Factor Authentication (MFA) adds an extra layer of security by requiring users to provide multiple forms of verification before accessing systems.</p>
-        </div>
-        <div id="F" class="explanation">
-            <h3>Access Granting</h3>
-            <p>Access granting refers to the process of allowing users to access certain systems or resources based on their role and the level of authorization they possess.</p>
-        </div>
-        <div id="H" class="explanation">
-            <h3>Role-Based Access Control</h3>
-            <p>Role-Based Access Control (RBAC) assigns permissions based on the user’s role within the organization, ensuring users only access the resources necessary for their duties.</p>
-        </div>
-        <div id="I" class="explanation">
-            <h3>System Access Level</h3>
-            <p>System access levels define what different roles within an organization are allowed to do in terms of system access, such as read, write, or administrative access.</p>
-        </div>
-        <div id="L" class="explanation">
-            <h3>Account Lockout Policy</h3>
-            <p>Account lockout policies define actions taken after multiple failed login attempts, such as locking the account to prevent brute force attacks.</p>
-        </div>
-        <div id="M" class="explanation">
-            <h3>Intrusion Detection</h3>
-            <p>Intrusion detection systems monitor access logs and behavior to identify and respond to unauthorized attempts to access systems or networks.</p>
-        </div>
     </div>
 
     <footer>
         <p>&copy; 2024 ISO 27001 Access Control Design by Hashmatullah Bahadari</p>
     </footer>
-
-    <script>
-        // Toggle explanation display on click
-        document.querySelectorAll('.mermaid a').forEach(link => {
-            link.addEventListener('click', function () {
-                const id = this.getAttribute('href').substring(1);
-                const explanation = document.getElementById(id);
-                if (explanation) {
-                    explanation.classList.toggle('active');
-                }
-            });
-        });
-    </script>
 
 </body>
 
