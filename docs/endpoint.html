@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISO/IEC 27001-Compliant Endpoint Security Framework</title>
+    <title>ISO/IEC 27001 Endpoint Security Diagram</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,81 +11,76 @@
             margin: 0;
             padding: 20px;
         }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #023047;
+        }
         .diagram {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
-            margin-bottom: 30px;
+            position: relative;
+            margin-top: 40px;
         }
         .circle {
             border-radius: 50%;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            font-size: 14px;
             font-weight: bold;
+            color: #fff;
         }
-        .outer {
+        .outer-circle {
             width: 700px;
             height: 700px;
             background: #8ecae6;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 3px solid #023047;
+            border: 5px solid #023047;
         }
-        .middle {
+        .middle-circle {
             width: 500px;
             height: 500px;
             background: #219ebc;
-            color: #fff;
             position: absolute;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 3px solid #023047;
+            border: 5px solid #023047;
         }
-        .inner {
+        .inner-circle {
             width: 300px;
             height: 300px;
             background: #023047;
-            color: #fff;
             position: absolute;
+            border: 5px solid #ffb703;
+        }
+        .circle p {
+            margin: 0;
+            padding: 10px;
+            font-size: 18px;
+        }
+        .labels {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 3px solid #ffb703;
+            justify-content: space-around;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
         .label {
-            margin: 10px;
-            padding: 5px 10px;
+            padding: 10px 20px;
             background: #ffb703;
             color: #000;
             border-radius: 5px;
-        }
-        .info {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-        }
-        h1, h2 {
-            color: #023047;
-        }
-        ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 5px;
+            margin: 10px;
         }
         .back-home {
-            display: block;
-            margin: 20px auto;
             text-align: center;
+            margin-top: 40px;
         }
         .back-home a {
             text-decoration: none;
@@ -100,69 +95,37 @@
     </style>
 </head>
 <body>
-    <h1>ISO/IEC 27001-Compliant Endpoint Security Framework</h1>
-    <div class="diagram">
-        <div class="circle outer">
-            <p>Governance and Risk Management</p>
-            <div class="circle middle">
-                <p>Systems, Network Devices, and Servers</p>
-                <div class="circle inner">
-                    <p>Endpoint Security</p>
+    <div class="container">
+        <h1>ISO/IEC 27001 Endpoint Security Framework</h1>
+
+        <div class="diagram">
+            <div class="circle outer-circle">
+                <p>Governance and Risk Management</p>
+                <div class="circle middle-circle">
+                    <p>Systems, Network Devices, and Servers</p>
+                    <div class="circle inner-circle">
+                        <p>Endpoint Security</p>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="label">Training and Awareness</div>
-        <div class="label">Compliance Monitoring</div>
-    </div>
 
-    <div class="info">
-        <h2>Key Sections:</h2>
-        <h3>Governance and Risk Management</h3>
-        <ul>
-            <li>Develop and enforce information security policies based on ISO/IEC 27001.</li>
-            <li>Perform regular risk assessments and implement risk treatment plans.</li>
-            <li>Define roles and responsibilities for information security management.</li>
-        </ul>
+        <div class="labels">
+            <div class="label">Access Control</div>
+            <div class="label">Secure Configuration</div>
+            <div class="label">Patch and Vulnerability Management</div>
+            <div class="label">Malware Protection</div>
+            <div class="label">Encryption</div>
+            <div class="label">Mobile Device Management</div>
+            <div class="label">Monitoring and Logging</div>
+            <div class="label">Incident Response</div>
+            <div class="label">Training and Awareness</div>
+            <div class="label">Compliance Monitoring</div>
+        </div>
 
-        <h3>Systems, Network Devices, and Servers</h3>
-        <ul>
-            <li>Protect systems with firewalls, IDS/IPS, and secure configurations.</li>
-            <li>Ensure regular updates and patch management across all systems.</li>
-            <li>Enforce network segmentation to protect critical assets.</li>
-            <li>Implement backup and disaster recovery solutions.</li>
-        </ul>
-
-        <h3>Endpoint Security</h3>
-        <ul>
-            <li>Deploy endpoint detection and response (EDR) solutions.</li>
-            <li>Enforce encryption for endpoint devices and sensitive data.</li>
-            <li>Restrict application usage with whitelisting and group policies.</li>
-            <li>Ensure multi-factor authentication (MFA) for all user access points.</li>
-        </ul>
-
-        <h3>Supporting Processes</h3>
-        <ul>
-            <li>Implement centralized logging and Security Information and Event Management (SIEM).</li>
-            <li>Maintain an incident response plan with predefined playbooks.</li>
-            <li>Conduct regular vulnerability scanning and penetration testing.</li>
-        </ul>
-
-        <h3>Training and Awareness</h3>
-        <ul>
-            <li>Provide ongoing security training for employees at all levels.</li>
-            <li>Simulate phishing attacks to test awareness and response.</li>
-        </ul>
-
-        <h3>Compliance Monitoring</h3>
-        <ul>
-            <li>Conduct periodic internal and external audits.</li>
-            <li>Monitor compliance with regulatory and contractual obligations.</li>
-            <li>Continuously improve the security framework using the Plan-Do-Check-Act cycle.</li>
-        </ul>
-    </div>
-
-    <div class="back-home">
-        <a href="s.html">Back to Home</a>
+        <div class="back-home">
+            <a href="s.html">Back to Home</a>
+        </div>
     </div>
 </body>
 </html>
