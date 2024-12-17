@@ -3,129 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISO/IEC 27001 Endpoint Security Diagram</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #023047;
-        }
-        .diagram {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            margin-top: 40px;
-        }
-        .circle {
-            border-radius: 50%;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-weight: bold;
-            color: #fff;
-        }
-        .outer-circle {
-            width: 700px;
-            height: 700px;
-            background: #8ecae6;
-            border: 5px solid #023047;
-        }
-        .middle-circle {
-            width: 500px;
-            height: 500px;
-            background: #219ebc;
-            position: absolute;
-            border: 5px solid #023047;
-        }
-        .inner-circle {
-            width: 300px;
-            height: 300px;
-            background: #023047;
-            position: absolute;
-            border: 5px solid #ffb703;
-        }
-        .circle p {
-            margin: 0;
-            padding: 10px;
-            font-size: 18px;
-        }
-        .labels {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-        .label {
-            padding: 10px 20px;
-            background: #ffb703;
-            color: #000;
-            border-radius: 5px;
-            margin: 10px;
-        }
-        .back-home {
-            text-align: center;
-            margin-top: 40px;
-        }
-        .back-home a {
-            text-decoration: none;
-            padding: 10px 20px;
-            background: #023047;
-            color: #fff;
-            border-radius: 5px;
-        }
-        .back-home a:hover {
-            background: #219ebc;
-        }
-    </style>
+    <title>Endpoint Security - ISO/IEC 27001</title>
 </head>
 <body>
-    <div class="container">
-        <h1>ISO/IEC 27001 Endpoint Security Framework</h1>
+    <h1>Endpoint Security under ISO/IEC 27001</h1>
+    <p>In the context of ISO/IEC 27001, endpoint security refers to the protection of devices that serve as access points to an organization's network. These devices, commonly referred to as endpoints, include workstations, laptops, servers, mobile devices, IoT devices, and other systems directly connected to the network. Endpoint security involves implementing technical and procedural safeguards to ensure that these devices do not become vectors for cyber threats.</p>
 
-        <div class="diagram">
-            <div class="circle outer-circle">
-                <p>Governance and Risk Management</p>
-                <div class="circle middle-circle">
-                    <p>Systems, Network Devices, and Servers</p>
-                    <div class="circle inner-circle">
-                        <p>Endpoint Security</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <h2>Explanation of Endpoint Security under ISO/IEC 27001:</h2>
+    <h3>1. Alignment with ISO/IEC 27001 Controls</h3>
+    <p>Endpoint security is aligned with several Annex A controls from ISO/IEC 27001. The standard requires organizations to identify, implement, and continuously monitor security controls for endpoints to ensure the confidentiality, integrity, and availability of information.</p>
 
-        <div class="labels">
-            <div class="label">Access Control</div>
-            <div class="label">Secure Configuration</div>
-            <div class="label">Patch and Vulnerability Management</div>
-            <div class="label">Malware Protection</div>
-            <div class="label">Encryption</div>
-            <div class="label">Mobile Device Management</div>
-            <div class="label">Monitoring and Logging</div>
-            <div class="label">Incident Response</div>
-            <div class="label">Training and Awareness</div>
-            <div class="label">Compliance Monitoring</div>
-        </div>
+    <h3>2. Key Components of Endpoint Security</h3>
+    <ul>
+        <li><strong>A. Risk Assessment and Asset Management (Clause 6.1 & Annex A.5):</strong>
+            <ul>
+                <li>Identify endpoints as critical assets in the organization's inventory.</li>
+                <li>Assess the risks associated with endpoint devices and implement mitigation measures.</li>
+            </ul>
+        </li>
+        <li><strong>B. Access Control (Annex A.9):</strong>
+            <ul>
+                <li>Restrict access to endpoint devices using role-based access control (RBAC).</li>
+                <li>Implement strong authentication mechanisms like multi-factor authentication (MFA).</li>
+            </ul>
+        </li>
+        <li><strong>C. Secure Configuration (Annex A.12.1.2):</strong>
+            <ul>
+                <li>Enforce baseline security configurations for all endpoints, including disabling unused services and applying least privilege.</li>
+            </ul>
+        </li>
+        <li><strong>D. Patch Management and Vulnerability Management (Annex A.12.6.1):</strong>
+            <ul>
+                <li>Regularly update software and operating systems on endpoints to mitigate vulnerabilities.</li>
+                <li>Conduct vulnerability assessments for endpoint devices.</li>
+            </ul>
+        </li>
+        <li><strong>E. Malware Protection (Annex A.12.2.1):</strong>
+            <ul>
+                <li>Install and maintain antivirus, anti-malware, and endpoint detection and response (EDR) solutions.</li>
+                <li>Monitor for suspicious activities on endpoint devices.</li>
+            </ul>
+        </li>
+        <li><strong>F. Encryption (Annex A.10.1.1):</strong>
+            <ul>
+                <li>Encrypt sensitive data stored on or transmitted through endpoints.</li>
+                <li>Enforce full-disk encryption for laptops and mobile devices.</li>
+            </ul>
+        </li>
+        <li><strong>G. Mobile Device Management (Annex A.6.2.1):</strong>
+            <ul>
+                <li>Implement controls to manage mobile endpoints, such as remote wipe and containerization for work applications.</li>
+            </ul>
+        </li>
+        <li><strong>H. Endpoint Monitoring and Logging (Annex A.12.4):</strong>
+            <ul>
+                <li>Use centralized logging and Security Information and Event Management (SIEM) systems to monitor endpoint activities.</li>
+                <li>Investigate and respond to endpoint security incidents.</li>
+            </ul>
+        </li>
+    </ul>
 
-        <div class="back-home">
-            <a href="s.html">Back to Home</a>
-        </div>
-    </div>
+    <h3>3. Endpoint Security Supporting Processes</h3>
+    <ul>
+        <li><strong>A. Incident Response (Annex A.16):</strong>
+            <ul>
+                <li>Develop playbooks for detecting and mitigating endpoint breaches.</li>
+                <li>Include steps for isolating compromised endpoints and restoring services.</li>
+            </ul>
+        </li>
+        <li><strong>B. Training and Awareness (Annex A.7.2.2):</strong>
+            <ul>
+                <li>Train users on endpoint security best practices, such as recognizing phishing attempts and securing devices.</li>
+                <li>Conduct periodic security awareness campaigns tailored to endpoint risks.</li>
+            </ul>
+        </li>
+        <li><strong>C. Compliance Monitoring (Annex A.18):</strong>
+            <ul>
+                <li>Regularly audit endpoint security measures to ensure compliance with ISO/IEC 27001 and other relevant standards.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Endpoint Security Diagram</h2>
+    <img src="A_professional_diagram_illustrating_the_key_compon.png" alt="Endpoint Security Diagram" />
+
+    <p><a href="s.html">Back to Home</a></p>
 </body>
 </html>
