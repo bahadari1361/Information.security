@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment - Central Bank of Afghanistan</title>
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .section {
+            margin-bottom: 1.5rem;
+        }
+        .section h2 {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 1rem;
+            margin: 0;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 5px;
+        }
+        .section h2 i {
+            margin-right: 0.75rem;
+        }
+        .content {
+            display: none;
+            padding: 1rem;
+            background-color: #ecf0f1;
+            border-left: 3px solid #2c3e50;
+            margin-top: 0.5rem;
+            border-radius: 5px;
+        }
+        .content p {
+            line-height: 1.6;
+            margin: 0.5rem 0;
+        }
+        .content ul {
+            padding-left: 1.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Risk Assessment - ISO/IEC 27001</h1>
+        <p>Central Bank of Afghanistan Project</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Section 1: Risk Identification -->
+        <div class="section">
+            <h2 onclick="toggleContent('content1')">
+                <i class="fas fa-search"></i> Risk Identification
+            </h2>
+            <div id="content1" class="content">
+                <p>In this phase, all potential risks and vulnerabilities are identified. This includes:</p>
+                <ul>
+                    <li>Cyber threats such as malware and ransomware</li>
+                    <li>Physical risks including theft and natural disasters</li>
+                    <li>Operational risks like system failures and human errors</li>
+                    <li>Regulatory risks impacting compliance</li>
+                </ul>
+                <p>Regular threat modeling sessions were conducted to identify risks for both technical infrastructure and operations.</p>
+            </div>
+        </div>
+
+        <!-- Section 2: Risk Evaluation -->
+        <div class="section">
+            <h2 onclick="toggleContent('content2')">
+                <i class="fas fa-chart-line"></i> Risk Evaluation
+            </h2>
+            <div id="content2" class="content">
+                <p>Risks were evaluated based on:</p>
+                <ul>
+                    <li><strong>Impact:</strong> The severity of disruption if the risk occurs</li>
+                    <li><strong>Likelihood:</strong> The probability of the risk occurring</li>
+                </ul>
+                <p>A risk matrix was developed to determine high, medium, and low risks, ensuring prioritization for mitigation.</p>
+            </div>
+        </div>
+
+        <!-- Section 3: Risk Treatment -->
+        <div class="section">
+            <h2 onclick="toggleContent('content3')">
+                <i class="fas fa-shield-alt"></i> Risk Treatment and Mitigation
+            </h2>
+            <div id="content3" class="content">
+                <p>Strategies were implemented to reduce, transfer, or accept risks. Key activities included:</p>
+                <ul>
+                    <li>Deployment of firewalls, encryption, and access control</li>
+                    <li>Design and testing of Disaster Recovery Plans</li>
+                    <li>Regular employee training and awareness programs</li>
+                    <li>Ensuring vendor compliance through third-party risk management</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 4: Risk Monitoring -->
+        <div class="section">
+            <h2 onclick="toggleContent('content4')">
+                <i class="fas fa-eye"></i> Risk Monitoring and Review
+            </h2>
+            <div id="content4" class="content">
+                <p>Continuous monitoring ensured that risk treatments remained effective. Activities included:</p>
+                <ul>
+                    <li>Regular audits and risk reviews</li>
+                    <li>Incident tracking and feedback loops</li>
+                    <li>Updating risk posture based on emerging threats</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Section 5: Documentation and Reporting -->
+        <div class="section">
+            <h2 onclick="toggleContent('content5')">
+                <i class="fas fa-file-alt"></i> Documentation and Reporting
+            </h2>
+            <div id="content5" class="content">
+                <p>All risk assessments, controls, and treatment measures were documented and reported to senior management for transparency and alignment with ISO/IEC 27001 requirements.</p>
+            </div>
+        </div>
+
+        <!-- Section 6: Continuous Improvement -->
+        <div class="section">
+            <h2 onclick="toggleContent('content6')">
+                <i class="fas fa-sync-alt"></i> Continuous Improvement
+            </h2>
+            <div id="content6" class="content">
+                <p>Following the Plan-Do-Check-Act (PDCA) model, the risk management process was continuously refined to adapt to new challenges and ensure ongoing improvement.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hashmatullah Bahadari | Risk Assessment - Portfolio Project</p>
+    </footer>
+
+    <!-- JavaScript for Toggle -->
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
