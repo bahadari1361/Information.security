@@ -30,6 +30,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: 3px solid #023047;
         }
         .middle {
             width: 400px;
@@ -40,6 +41,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: 3px solid #023047;
         }
         .inner {
             width: 200px;
@@ -50,6 +52,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            border: 3px solid #ffb703;
         }
         .label {
             margin: 10px;
@@ -76,13 +79,28 @@
         li {
             margin-bottom: 5px;
         }
+        .back-home {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .back-home a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #023047;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .back-home a:hover {
+            background: #219ebc;
+        }
     </style>
 </head>
 <body>
     <h1>ISO/IEC 27001-Compliant Endpoint Security Framework</h1>
     <div class="diagram">
         <div class="circle outer">
-            <p>Governance & Risk Management</p>
+            <p>Governance and Risk Management</p>
             <div class="circle middle">
                 <p>Security Controls</p>
                 <div class="circle inner">
@@ -90,51 +108,54 @@
                 </div>
             </div>
         </div>
-        <div class="label">Training & Awareness</div>
+        <div class="label">Training and Awareness</div>
         <div class="label">Compliance Monitoring</div>
     </div>
 
     <div class="info">
         <h2>Key Sections:</h2>
-        <h3>Governance & Risk Management</h3>
+        <h3>Governance and Risk Management</h3>
         <ul>
-            <li>ISO/IEC 27001 Control Domains (A.5, A.6, A.12, A.13)</li>
-            <li>Risk Assessment and Treatment</li>
+            <li>Develop and maintain information security policies.</li>
+            <li>Establish organizational structures for information security.</li>
+            <li>Perform regular risk assessments and treatment.</li>
         </ul>
 
         <h3>Endpoint Devices</h3>
         <ul>
-            <li>Workstations (e.g., laptops, desktops)</li>
-            <li>Mobile Devices (e.g., smartphones, tablets)</li>
-            <li>IoT Devices (e.g., printers, cameras)</li>
-            <li>Servers</li>
+            <li>Include desktop computers, laptops, and mobile devices.</li>
+            <li>Integrate Internet of Things (IoT) devices and servers.</li>
         </ul>
 
         <h3>Security Controls</h3>
         <ul>
-            <li><strong>Technical Controls:</strong> Antivirus, EDR, Device Encryption, Application Whitelisting</li>
-            <li><strong>Access Controls:</strong> MFA, RBAC, Principle of Least Privilege</li>
-            <li><strong>Network Controls:</strong> VPN, Network Segmentation, IDS/IPS</li>
+            <li>Implement antivirus, endpoint detection, and device encryption.</li>
+            <li>Use multi-factor authentication and role-based access controls.</li>
+            <li>Enforce network segmentation and intrusion detection systems.</li>
         </ul>
 
         <h3>Supporting Processes</h3>
         <ul>
-            <li><strong>Monitoring and Logging:</strong> Centralized Logging, SIEM</li>
-            <li><strong>Incident Response:</strong> Incident Detection, Response Playbooks</li>
-            <li><strong>Patch Management:</strong> Automated Patch Deployment, Vulnerability Scanning</li>
+            <li>Deploy centralized logging and SIEM systems for monitoring.</li>
+            <li>Establish incident response plans with actionable playbooks.</li>
+            <li>Automate patch management and conduct vulnerability scans.</li>
         </ul>
 
-        <h3>Training & Awareness</h3>
+        <h3>Training and Awareness</h3>
         <ul>
-            <li>Security Awareness Programs</li>
-            <li>Phishing Simulations</li>
+            <li>Provide security awareness programs to all employees.</li>
+            <li>Conduct regular phishing simulations and feedback sessions.</li>
         </ul>
 
         <h3>Compliance Monitoring</h3>
         <ul>
-            <li>Audits & Reviews</li>
-            <li>Continuous Improvement (Plan-Do-Check-Act)</li>
+            <li>Perform regular internal and external audits.</li>
+            <li>Ensure continuous improvement using the Plan-Do-Check-Act cycle.</li>
         </ul>
+    </div>
+
+    <div class="back-home">
+        <a href="s.html">Back to Home</a>
     </div>
 </body>
 </html>
