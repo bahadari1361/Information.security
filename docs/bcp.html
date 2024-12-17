@@ -70,6 +70,57 @@
             color: #7f8c8d;
         }
 
+        .team-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .team-section h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .team-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 20px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            width: 200px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.05);
+            background-color: #e1e8eb;
+        }
+
+        .team-member i {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
         .back-button {
             display: inline-block;
             background-color: #3498db;
@@ -89,12 +140,12 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .bcp-container {
+            .bcp-container, .team-container {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .bcp-step {
+            .bcp-step, .team-member {
                 width: 80%;
             }
         }
@@ -139,6 +190,38 @@
                 <i class="fas fa-clipboard-list"></i>
                 <h3>Plan Maintenance</h3>
                 <p>Regularly update and maintain the BCP to address new risks and ensure it remains effective.</p>
+            </div>
+        </div>
+
+        <!-- BCP Team Section -->
+        <div class="team-section">
+            <h3>BCP Team</h3>
+            <div class="team-container">
+                <div class="team-member">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>BCP Manager</h4>
+                    <p>Oversees the BCP process, ensuring all activities align with business goals and risks are mitigated.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-shield-virus"></i>
+                    <h4>Risk Management</h4>
+                    <p>Identifies and evaluates potential risks to the organization, helping to shape the BCP strategies.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-laptop-house"></i>
+                    <h4>IT/Technology</h4>
+                    <p>Ensures IT infrastructure and systems are protected and can be restored during disruptions.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-users-cog"></i>
+                    <h4>Business Unit Representatives</h4>
+                    <p>Provide insights into critical functions and help develop recovery strategies for each department.</p>
+                </div>
+                <div class="team-member">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h4>HR & Communication</h4>
+                    <p>Ensures employee well-being and communication, making sure everyone is informed during a crisis.</p>
+                </div>
             </div>
         </div>
 
