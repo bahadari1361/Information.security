@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Control - ISO/IEC 27001</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #34495e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        h1, h2, h3 {
+            text-align: center;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .diagram-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .diagram-step {
+            background-color: #ecf0f1;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .diagram-step:hover {
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+        }
+
+        .diagram-step .material-icons {
+            font-size: 48px;
+            margin-bottom: 10px;
+            color: #2980b9;
+            transition: color 0.3s ease;
+        }
+
+        .diagram-step:hover .material-icons {
+            color: white;
+        }
+
+        .diagram-step h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .back-button {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .back-button a {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-button a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Access Control - ISO/IEC 27001</h1>
+</header>
+
+<nav>
+    <a href="endpoint.html">Back to Endpoint Security</a>
+</nav>
+
+<div class="content">
+    <section>
+        <h2>Key Components of Access Control</h2>
+        <p>
+            Access control is a fundamental part of information security, ensuring that only authorized individuals can access specific resources in alignment with ISO/IEC 27001. 
+            Explore the key components of access control by clicking on each section below.
+        </p>
+    </section>
+
+    <div class="diagram-container">
+        <div class="diagram-step">
+            <span class="material-icons">person</span>
+            <h3>User Identification</h3>
+            <p>Ensures every user is uniquely identified before granting access.</p>
+        </div>
+        <div class="diagram-step">
+            <span class="material-icons">lock</span>
+            <h3>Authentication</h3>
+            <p>Validates a user's identity through passwords, MFA, or biometrics.</p>
+        </div>
+        <div class="diagram-step">
+            <span class="material-icons">admin_panel_settings</span>
+            <h3>Authorization</h3>
+            <p>Defines user permissions and ensures access aligns with roles.</p>
+        </div>
+        <div class="diagram-step">
+            <span class="material-icons">verified_user</span>
+            <h3>Access Monitoring</h3>
+            <p>Tracks access attempts and identifies potential security violations.</p>
+        </div>
+        <div class="diagram-step">
+            <span class="material-icons">policy</span>
+            <h3>Policy Enforcement</h3>
+            <p>Implements strict rules to manage and control access effectively.</p>
+        </div>
+        <div class="diagram-step">
+            <span class="material-icons">manage_accounts</span>
+            <h3>Account Management</h3>
+            <p>Ensures lifecycle management of user accounts and access rights.</p>
+        </div>
+    </div>
+
+    <div class="back-button">
+        <a href="endpoint.html">Back to Home</a>
+    </div>
+</div>
+
+</body>
+</html>
