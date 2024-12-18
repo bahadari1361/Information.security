@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitoring & Logging - Central Bank of Afghanistan</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Patch Management - Central Bank of Afghanistan</title>
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,14 +14,13 @@
             background-color: #f4f4f9;
             color: #333;
         }
-
         header {
             background-color: #2c3e50;
             color: white;
+            padding: 1rem 0;
             text-align: center;
-            padding: 20px;
+            font-size: 1.5rem;
         }
-
         .container {
             max-width: 1200px;
             margin: 2rem auto;
@@ -29,69 +29,23 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
-
-        .diagram-container {
+        .section {
+            margin-bottom: 1.5rem;
+        }
+        .section h2 {
             display: flex;
-            justify-content: space-between;
-            margin: 30px 0;
-        }
-
-        .step {
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 180px;
-            text-align: center;
-            position: relative;
+            align-items: center;
             cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        .step:hover {
-            background-color: #3498db;
+            padding: 1rem;
+            margin: 0;
+            background-color: #2c3e50;
             color: white;
-        }
-
-        .step h3 {
-            font-size: 18px;
-            margin: 10px 0;
-        }
-
-        .step span {
-            font-size: 30px;
-            margin-bottom: 10px;
-        }
-
-        .arrow {
-            font-size: 30px;
-            margin-top: 30px;
-            margin-bottom: 30px;
-            color: #3498db;
-        }
-
-        .tooltip {
-            visibility: hidden;
-            width: 220px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
             border-radius: 5px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -110px;
-            opacity: 0;
-            transition: opacity 0.3s;
         }
-
-        .step:hover .tooltip {
-            visibility: visible;
-            opacity: 1;
+        .section h2 i {
+            margin-right: 0.75rem;
+            font-size: 1.5rem;
         }
-
         .content {
             display: none;
             padding: 1rem;
@@ -100,24 +54,29 @@
             margin-top: 0.5rem;
             border-radius: 5px;
         }
-
-        .back-home {
+        .content p {
+            line-height: 1.6;
+            margin: 0.5rem 0;
+        }
+        .content ul {
+            padding-left: 1.5rem;
+        }
+        .back-to-home {
             text-align: center;
             margin-top: 2rem;
-            display: inline-block;
-            background-color: #2c3e50;
+        }
+        .back-to-home a {
+            text-decoration: none;
             color: white;
+            background-color: #2c3e50;
             padding: 0.75rem 1.5rem;
             border-radius: 5px;
-            text-decoration: none;
             font-size: 1rem;
             transition: background-color 0.3s ease;
         }
-
-        .back-home:hover {
+        .back-to-home a:hover {
             background-color: #34495e;
         }
-
         footer {
             text-align: center;
             padding: 1rem;
@@ -128,99 +87,83 @@
     </style>
 </head>
 <body>
-
     <!-- Header -->
     <header>
-        <h1>Monitoring & Logging - Central Bank of Afghanistan</h1>
-        <p>ISO/IEC 27001 Information Security Project</p>
+        <h1>Patch Management - ISO/IEC 27001</h1>
+        <p>Central Bank of Afghanistan Project</p>
     </header>
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Diagram Steps -->
-        <div class="diagram-container">
-            <!-- Step 1: Log Collection -->
-            <div class="step" onclick="toggleContent('content1')">
-                <span class="material-icons">storage</span>
-                <h3>Log Collection</h3>
-                <div class="tooltip">
-                    <p>Collect logs from all critical systems, including servers, firewalls, and applications, to ensure comprehensive monitoring.</p>
-                </div>
-            </div>
-
-            <div class="arrow">→</div>
-
-            <!-- Step 2: Real-Time Monitoring -->
-            <div class="step" onclick="toggleContent('content2')">
-                <span class="material-icons">watch_later</span>
-                <h3>Real-Time Monitoring</h3>
-                <div class="tooltip">
-                    <p>Monitor the logs in real-time to detect potential security incidents or system issues immediately.</p>
-                </div>
-            </div>
-
-            <div class="arrow">→</div>
-
-            <!-- Step 3: Incident Detection -->
-            <div class="step" onclick="toggleContent('content3')">
-                <span class="material-icons">warning</span>
-                <h3>Incident Detection</h3>
-                <div class="tooltip">
-                    <p>Identify potential security breaches or system anomalies using automated detection mechanisms and alerts.</p>
-                </div>
-            </div>
-
-            <div class="arrow">→</div>
-
-            <!-- Step 4: Incident Investigation -->
-            <div class="step" onclick="toggleContent('content4')">
-                <span class="material-icons">search</span>
-                <h3>Incident Investigation</h3>
-                <div class="tooltip">
-                    <p>Conduct thorough investigations into detected incidents to understand their cause, scope, and impact.</p>
-                </div>
-            </div>
-
-            <div class="arrow">→</div>
-
-            <!-- Step 5: Reporting -->
-            <div class="step" onclick="toggleContent('content5')">
-                <span class="material-icons">assignment</span>
-                <h3>Reporting</h3>
-                <div class="tooltip">
-                    <p>Generate detailed reports on the incidents, actions taken, and resolutions for compliance and analysis.</p>
-                </div>
+        <!-- Step 1: Identify Vulnerabilities -->
+        <div class="section">
+            <h2 onclick="toggleContent('content1')">
+                <i class="fas fa-search"></i> Identify Vulnerabilities
+            </h2>
+            <div id="content1" class="content">
+                <p>In this step, vulnerabilities in the system are identified using various vulnerability scanning tools, such as Nessus or OpenVAS, to ensure that no security loopholes remain.</p>
             </div>
         </div>
 
-        <!-- Content Sections -->
-        <div id="content1" class="content">
-            <p>In this phase, logs are collected from all systems in the network to provide a comprehensive view of system activity. This includes server logs, application logs, and network logs from various devices to capture every event that occurs in the infrastructure.</p>
+        <!-- Step 2: Prioritize Patches -->
+        <div class="section">
+            <h2 onclick="toggleContent('content2')">
+                <i class="fas fa-exclamation-circle"></i> Prioritize Patches
+            </h2>
+            <div id="content2" class="content">
+                <p>Here, patches are prioritized based on the severity of vulnerabilities discovered. Critical patches are applied first to protect the system from high-risk threats.</p>
+            </div>
         </div>
 
-        <div id="content2" class="content">
-            <p>Real-time monitoring allows for the continuous surveillance of logs to detect potential incidents promptly. Tools such as SIEM (Security Information and Event Management) systems are used to filter and monitor the logs to detect irregularities or suspicious behavior.</p>
+        <!-- Step 3: Test Patches -->
+        <div class="section">
+            <h2 onclick="toggleContent('content3')">
+                <i class="fas fa-clipboard-check"></i> Test Patches
+            </h2>
+            <div id="content3" class="content">
+                <p>Before applying patches to the live environment, they are tested in a controlled environment to ensure compatibility and avoid disruptions.</p>
+            </div>
         </div>
 
-        <div id="content3" class="content">
-            <p>Using advanced analysis techniques, potential security incidents are detected. This includes abnormal access patterns, failed login attempts, or any unusual network traffic that could indicate a breach.</p>
+        <!-- Step 4: Deploy Patches -->
+        <div class="section">
+            <h2 onclick="toggleContent('content4')">
+                <i class="fas fa-cogs"></i> Deploy Patches
+            </h2>
+            <div id="content4" class="content">
+                <p>Once tested, patches are deployed across the production environment, ensuring minimal downtime and keeping the system secure.</p>
+            </div>
         </div>
 
-        <div id="content4" class="content">
-            <p>Upon detection, each incident is investigated by reviewing the logs in-depth. This involves identifying the source of the threat, determining whether it is a true positive, and assessing the level of impact it could have on the organization.</p>
+        <!-- Step 5: Verify & Validate -->
+        <div class="section">
+            <h2 onclick="toggleContent('content5')">
+                <i class="fas fa-check-circle"></i> Verify & Validate
+            </h2>
+            <div id="content5" class="content">
+                <p>After deployment, patches are verified to ensure they were successfully applied. Systems are checked for any anomalies to confirm security measures are intact.</p>
+            </div>
         </div>
 
-        <div id="content5" class="content">
-            <p>After resolving the incident, a detailed report is generated for compliance purposes. These reports are essential for audits and reviewing security incidents to prevent similar occurrences in the future.</p>
+        <!-- Step 6: Document & Report -->
+        <div class="section">
+            <h2 onclick="toggleContent('content6')">
+                <i class="fas fa-file-alt"></i> Document & Report
+            </h2>
+            <div id="content6" class="content">
+                <p>All applied patches are documented for compliance and auditing purposes. Reports are created to track patching activities and review the system's security status.</p>
+            </div>
         </div>
 
         <!-- Back to Home Button -->
-        <a href="endpoint.html" class="back-home">Back to Home</a>
+        <div class="back-to-home">
+            <a href="endpoint.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
     </div>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Hashmatullah Bahadari | Monitoring & Logging - Central Bank of Afghanistan</p>
+        <p>&copy; 2024 Hashmatullah Bahadari | Patch Management - Portfolio Project</p>
     </footer>
 
     <!-- JavaScript for Toggle -->
