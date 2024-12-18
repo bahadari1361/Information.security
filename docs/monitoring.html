@@ -71,21 +71,23 @@
             color: white;
         }
 
-        .button {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            text-align: center;
-            margin-top: 30px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
+       .back-home {
+    position: fixed; /* Fixed position relative to the viewport */
+    bottom: 20px; /* Distance from the bottom of the page */
+    left: 20px; /* Distance from the left edge */
+    background-color: #3498db; /* Initial blue color */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1rem; /* Optional: Adjust font size */
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
 
-        .button:hover {
-            background-color: #2980b9;
+.back-home:hover {
+    background-color: #1a242f; /* Darker blue on hover */
         }
 
         .footer {
@@ -136,7 +138,7 @@
             <li><strong>Data Integrity & Availability:</strong> Ensured log integrity by utilizing cryptographic hashes and limiting access to the logs to authorized personnel only.</li>
         </ul>
 
-        <a href="Monitoring.html" class="button">Back to Monitoring & Logging Page</a>
+        <a href="Monitoring.html" class="back-home">Back to Home</a>
 
         <div class="footer">
             <p>&copy; 2024 Hashmatullah Bahadari | ISO/IEC 27001 Lead Auditor</p>
