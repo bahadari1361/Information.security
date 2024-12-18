@@ -22,44 +22,45 @@
             font-size: 1.5rem;
         }
         .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background-color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem;
         }
         .section {
-            margin-bottom: 1.5rem;
-        }
-        .section h2 {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            padding: 1rem;
-            margin: 0;
-            background-color: #2c3e50;
-            color: white;
-            border-radius: 5px;
-        }
-        .section h2 i {
-            margin-right: 0.75rem;
-            font-size: 1.5rem;
-        }
-        .content {
-            display: none;
-            padding: 1rem;
+            width: 220px;
+            margin: 1rem;
+            padding: 1.5rem;
             background-color: #ecf0f1;
-            border-left: 3px solid #2c3e50;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .section:hover {
+            transform: scale(1.05);
+        }
+        .section i {
+            font-size: 3rem;
+            color: #2c3e50;
+        }
+        .section h3 {
+            margin-top: 1rem;
+            color: #2c3e50;
+        }
+        .section p {
             margin-top: 0.5rem;
-            border-radius: 5px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #7f8c8d;
         }
-        .content p {
-            line-height: 1.6;
-            margin: 0.5rem 0;
-        }
-        .content ul {
-            padding-left: 1.5rem;
+        .section-detail {
+            display: none;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #2c3e50;
+            text-align: left;
         }
         .back-to-home {
             text-align: center;
@@ -95,73 +96,77 @@
 
     <!-- Main Content -->
     <div class="container">
-        <!-- Section 1: Risk Identification -->
-        <div class="section">
-            <h2 onclick="toggleContent('content1')">
-                <i class="fas fa-bullseye"></i> Risk Identification
-            </h2>
-            <div id="content1" class="content">
-                <p>As part of the risk identification phase at the Central Bank of Afghanistan, we conducted thorough assessments of potential risks to critical banking systems. Key activities included:</p>
+        <!-- Risk Identification Section -->
+        <div class="section" onclick="toggleDetail('detail1')">
+            <i class="fas fa-bullseye"></i>
+            <h3>Risk Identification</h3>
+            <p>Identifying potential risks that could affect the bank’s operations, infrastructure, and data.</p>
+            <div id="detail1" class="section-detail">
+                <p>In this phase, we focused on identifying all possible risks to the bank's systems and data, including cyber threats, physical risks, operational disruptions, and regulatory risks.</p>
                 <ul>
-                    <li>Identification of <strong>cyber threats</strong> such as malware, ransomware, and data breaches.</li>
-                    <li>Assessment of <strong>physical risks</strong> like theft, vandalism, and natural disasters affecting data centers.</li>
-                    <li>Evaluation of <strong>operational risks</strong>, such as system failures, human errors, and misconfigurations.</li>
-                    <li>Examination of <strong>regulatory risks</strong> concerning the compliance of the bank’s operations with national and international standards.</li>
+                    <li><strong>Cyber threats:</strong> Malware, ransomware, phishing, insider threats.</li>
+                    <li><strong>Physical risks:</strong> Theft, natural disasters, fire.</li>
+                    <li><strong>Operational risks:</strong> System failures, human error, external disruptions.</li>
+                    <li><strong>Regulatory risks:</strong> Non-compliance with financial and data protection regulations.</li>
                 </ul>
-                <p>Regular threat modeling sessions were conducted to proactively identify and address potential vulnerabilities in both technical and operational processes.</p>
+                <p>We conducted regular threat modeling sessions with stakeholders to ensure a comprehensive understanding of potential risks.</p>
             </div>
         </div>
 
-        <!-- Section 2: Risk Evaluation -->
-        <div class="section">
-            <h2 onclick="toggleContent('content2')">
-                <i class="fas fa-chart-pie"></i> Risk Evaluation
-            </h2>
-            <div id="content2" class="content">
-                <p>After identifying the risks, we evaluated their potential impact and likelihood. This step ensured a structured approach to mitigating risks that could harm the bank’s operations:</p>
+        <!-- Risk Evaluation Section -->
+        <div class="section" onclick="toggleDetail('detail2')">
+            <i class="fas fa-chart-pie"></i>
+            <h3>Risk Evaluation</h3>
+            <p>Evaluating identified risks based on their impact and likelihood to prioritize mitigation strategies.</p>
+            <div id="detail2" class="section-detail">
+                <p>We evaluated risks by assessing their potential impact on operations and their likelihood of occurring, ensuring that the most critical risks were addressed first.</p>
                 <ul>
-                    <li><strong>Impact:</strong> Determining the severity of disruption if a particular risk occurred, especially for critical banking systems.</li>
-                    <li><strong>Likelihood:</strong> Assessing how likely it was for each risk to materialize based on historical data and threat intelligence.</li>
+                    <li><strong>Impact assessment:</strong> Severity of disruption caused by the risk.</li>
+                    <li><strong>Likelihood assessment:</strong> Probability of the risk occurring.</li>
+                    <li><strong>Risk Matrix:</strong> Categorizing risks as high, medium, or low priority based on impact and likelihood.</li>
                 </ul>
-                <p>A risk matrix was created to classify risks as high, medium, or low based on their impact and likelihood, ensuring prioritized mitigation strategies.</p>
+                <p>This process helped us focus on the highest-priority risks and allocate resources accordingly.</p>
             </div>
         </div>
 
-        <!-- Section 3: Risk Treatment -->
-        <div class="section">
-            <h2 onclick="toggleContent('content3')">
-                <i class="fas fa-tools"></i> Risk Treatment and Mitigation
-            </h2>
-            <div id="content3" class="content">
-                <p>To treat identified risks, we implemented a variety of strategies aimed at reducing, transferring, or accepting those risks. Key initiatives included:</p>
+        <!-- Risk Treatment Section -->
+        <div class="section" onclick="toggleDetail('detail3')">
+            <i class="fas fa-tools"></i>
+            <h3>Risk Treatment</h3>
+            <p>Implementing strategies to mitigate or eliminate identified risks through control measures.</p>
+            <div id="detail3" class="section-detail">
+                <p>For each identified risk, we developed a treatment plan that included strategies for mitigation or avoidance. Key actions included:</p>
                 <ul>
-                    <li>Deployment of advanced <strong>firewalls</strong>, <strong>encryption</strong>, and <strong>access control measures</strong> to protect sensitive financial data.</li>
-                    <li>Design and testing of <strong>Disaster Recovery Plans</strong> to ensure business continuity in the event of a crisis.</li>
-                    <li>Regular <strong>employee training and awareness programs</strong> to minimize human errors and ensure secure practices.</li>
-                    <li>Ensuring compliance through <strong>third-party risk management</strong> for vendors, contractors, and partners.</li>
+                    <li><strong>Firewalls and encryption:</strong> Protecting systems from unauthorized access and ensuring data security.</li>
+                    <li><strong>Access controls:</strong> Enforcing least-privilege access and multi-factor authentication to secure sensitive data.</li>
+                    <li><strong>Disaster recovery planning:</strong> Developing plans to ensure business continuity in case of disruptions.</li>
+                    <li><strong>Employee training:</strong> Raising awareness through regular security awareness programs.</li>
                 </ul>
+                <p>We also worked closely with third-party vendors to ensure they followed the same security standards.</p>
             </div>
         </div>
 
-        <!-- Section 4: Risk Monitoring -->
-        <div class="section">
-            <h2 onclick="toggleContent('content4')">
-                <i class="fas fa-sync-alt"></i> Risk Monitoring and Review
-            </h2>
-            <div id="content4" class="content">
-                <p>Continuous monitoring and review were essential to ensure the effectiveness of risk treatment efforts. The following activities were carried out:</p>
+        <!-- Risk Monitoring Section -->
+        <div class="section" onclick="toggleDetail('detail4')">
+            <i class="fas fa-sync-alt"></i>
+            <h3>Risk Monitoring</h3>
+            <p>Continuously monitoring the effectiveness of risk treatments through audits, reviews, and incident tracking.</p>
+            <div id="detail4" class="section-detail">
+                <p>We established ongoing monitoring activities to evaluate the effectiveness of risk treatment plans. These activities included:</p>
                 <ul>
-                    <li>Regular <strong>audits and risk reviews</strong> to track risk levels and address emerging threats.</li>
-                    <li>Monitoring of <strong>incidents</strong> and establishing <strong>feedback loops</strong> to adapt to changing risks.</li>
-                    <li>Updating the bank’s overall risk posture based on new threats, vulnerabilities, and security developments.</li>
+                    <li><strong>Regular audits:</strong> Conducting IT and security audits to ensure control measures remain effective.</li>
+                    <li><strong>Incident tracking:</strong> Using a centralized system to track and analyze security incidents.</li>
+                    <li><strong>Risk reviews:</strong> Continuously reviewing the risk landscape and adjusting treatments based on emerging threats.</li>
+                    <li><strong>Risk posture updates:</strong> Ensuring that the organization’s risk posture evolves in response to changing circumstances.</li>
                 </ul>
+                <p>This approach allowed us to ensure the ongoing resilience of the bank’s infrastructure and data security practices.</p>
             </div>
         </div>
+    </div>
 
-        <!-- Back to Home Button -->
-        <div class="back-to-home">
-            <a href="endpoint.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
-        </div>
+    <!-- Back to Home Button -->
+    <div class="back-to-home">
+        <a href="endpoint.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
     </div>
 
     <!-- Footer -->
@@ -171,7 +176,7 @@
 
     <!-- JavaScript for Toggle -->
     <script>
-        function toggleContent(id) {
+        function toggleDetail(id) {
             var content = document.getElementById(id);
             content.style.display = content.style.display === "block" ? "none" : "block";
         }
