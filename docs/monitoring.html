@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring & Logging - Central Bank of Afghanistan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f7fa;
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            color: #34495e;
+        }
+
+        .tools, .steps, .implementation {
+            margin-top: 30px;
+        }
+
+        .tools ul, .steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tools ul li, .steps ul li {
+            background: #ecf0f1;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #fff;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Monitoring & Logging Project</h1>
+        <p class="section-title">Central Bank of Afghanistan | Information Security Management</p>
+
+        <p>As part of the Information Security Management program at the Central Bank of Afghanistan, I designed and implemented a comprehensive monitoring and logging system that adhered to the ISO/IEC 27001 standards. This system was designed to continuously monitor critical infrastructure and applications, collect log data, and ensure rapid detection and response to potential security incidents.</p>
+
+        <h2>Key Steps in Implementation</h2>
+        <div class="steps">
+            <ul>
+                <li><strong>Define Security Monitoring Objectives:</strong> Identified the systems and processes that required monitoring, based on risk assessments and organizational security objectives.</li>
+                <li><strong>Set up Logging Systems:</strong> Configured centralized logging for all systems using solutions like <a href="https://www.elastic.co/solutions/elk-stack" target="_blank">ELK Stack</a> for log aggregation and analysis.</li>
+                <li><strong>Develop Incident Response Plans:</strong> Created incident response procedures for handling and investigating security events identified through monitoring and logs.</li>
+                <li><strong>Configure Alerts & Notifications:</strong> Set up automated alerts for critical system events using <a href="https://www.splunk.com/" target="_blank">Splunk</a> and <a href="https://www.paloaltonetworks.com/" target="_blank">Palo Alto Networks</a> tools.</li>
+                <li><strong>Ensure Compliance with ISO/IEC 27001:</strong> Ensured that all monitoring and logging practices complied with ISO/IEC 27001 requirements for auditing and continuous improvement.</li>
+            </ul>
+        </div>
+
+        <h2>Tools Used</h2>
+        <div class="tools">
+            <ul>
+                <li><strong><a href="https://www.elastic.co/solutions/elk-stack" target="_blank">ELK Stack</a>:</strong> Used for centralized logging, real-time analysis, and visual representation of log data.</li>
+                <li><strong><a href="https://www.splunk.com/" target="_blank">Splunk</a>:</strong> Employed for security information and event management (SIEM) to monitor network activities and detect potential incidents.</li>
+                <li><strong><a href="https://www.paloaltonetworks.com/" target="_blank">Palo Alto Networks</a>:</strong> Configured for firewall monitoring, log management, and incident detection.</li>
+                <li><strong><a href="https://www.rsyslog.com/" target="_blank">Rsyslog:</a></strong> A logging tool used to forward logs from remote systems to a centralized server for analysis.</li>
+                <li><strong><a href="https://www.nagios.org/" target="_blank">Nagios:</a></strong> Deployed for network monitoring, ensuring uptime and tracking system health.</li>
+            </ul>
+        </div>
+
+        <h2>Detailed Security Logs Overview</h2>
+        <p>The log management system included categorization of logs into different categories such as system, application, security, and network logs. This allowed for efficient filtering and prioritization during incident investigations. The system also generated automated reports that complied with internal audit requirements and provided valuable insights into network behavior.</p>
+
+        <h2>Compliance & Best Practices</h2>
+        <ul>
+            <li><strong>ISO/IEC 27001 Compliance:</strong> The project adhered to the requirements for monitoring and logging as part of an Information Security Management System (ISMS), including proper log retention, encryption, and access controls.</li>
+            <li><strong>Continuous Monitoring:</strong> Ensured 24/7 monitoring of critical systems to detect abnormal activities, failed login attempts, and potential intrusion attempts.</li>
+            <li><strong>Data Integrity & Availability:</strong> Ensured log integrity by utilizing cryptographic hashes and limiting access to the logs to authorized personnel only.</li>
+        </ul>
+
+        <a href="Monitoring.html" class="button">Back to Monitoring & Logging Page</a>
+
+        <div class="footer">
+            <p>&copy; 2024 Hashmatullah Bahadari | ISO/IEC 27001 Lead Auditor</p>
+        </div>
+    </div>
+
+</body>
+</html>
