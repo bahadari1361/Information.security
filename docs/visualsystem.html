@@ -3,171 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Encryption System Design - Central Bank of Afghanistan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Encryption System Map - Central Bank of Afghanistan</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
-        }
-
-        .container {
-            width: 80%;
-            margin: 40px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #2c3e50;
-        }
-
-        .encryption-system {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-            position: relative;
+            height: 100vh;
         }
 
-        .encryption-system .component {
-            text-align: center;
+        .map-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            height: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            background-color: #ecf0f1;
-            border-radius: 8px;
-            width: 200px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            transition: all 0.3s ease;
-            position: relative;
         }
 
-        .encryption-system .component i {
-            font-size: 3rem;
-            color: #3498db;
-            margin-bottom: 10px;
-        }
-
-        .encryption-system .component h3 {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .component-description {
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
-
-        .connector {
+        .map-node {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background-image: linear-gradient(to bottom, #3498db, #3498db);
-            opacity: 0.3;
-        }
-
-        .connector::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 100%;
-            height: 2px;
             background-color: #3498db;
-        }
-
-        .back-home {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 500;
-            text-decoration: none;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            font-size: 1rem;
-            z-index: 1000;
+            width: 200px;
         }
 
-        .back-home:hover {
-            background-color: #1a242f;
+        .map-node h3 {
+            font-size: 1.1rem;
+            margin: 0;
         }
 
-        /* Responsive */
+        .map-node p {
+            font-size: 0.9rem;
+            margin: 5px 0 0;
+        }
+
+        /* Positions for nodes */
+        .data-input {
+            top: 50px;
+            left: 50px;
+        }
+
+        .encryption {
+            top: 150px;
+            left: 300px;
+        }
+
+        .storage {
+            top: 150px;
+            left: 550px;
+        }
+
+        .decryption {
+            top: 300px;
+            left: 300px;
+        }
+
+        .data-access {
+            top: 400px;
+            left: 300px;
+        }
+
+        /* Connecting lines */
+        .line {
+            position: absolute;
+            width: 2px;
+            background-color: #3498db;
+            z-index: -1;
+        }
+
+        .arrow {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #3498db;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            z-index: -1;
+        }
+
+        /* Arrows at the ends of the lines */
+        .arrow-right {
+            top: -6px;
+            left: 170px;
+            transform: rotate(90deg);
+        }
+
+        .arrow-left {
+            top: -6px;
+            left: 170px;
+            transform: rotate(-90deg);
+        }
+
+        /* Responsive Layout */
         @media (max-width: 768px) {
-            .encryption-system {
-                flex-direction: column;
-                align-items: center;
+            .map-container {
+                height: auto;
             }
-
-            .encryption-system .component {
-                width: 80%;
+            .map-node {
+                width: 150px;
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h2>Professional Encryption System Design</h2>
-
-        <p>This page provides a visual overview of the encryption system design for the Central Bank of Afghanistan. The components are interconnected to provide a secure and efficient system for protecting sensitive data.</p>
-
-        <div class="encryption-system">
-            <!-- Encryption Algorithm Component -->
-            <div class="component">
-                <i class="fas fa-lock"></i>
-                <h3>Encryption Algorithms</h3>
-                <p class="component-description">AES, RSA, ECC for securing data transmission and storage.</p>
-                <div class="connector"></div>
-            </div>
-
-            <!-- Key Management Component -->
-            <div class="component">
-                <i class="fas fa-key"></i>
-                <h3>Key Management</h3>
-                <p class="component-description">Secure key generation, storage, and rotation mechanisms.</p>
-            </div>
-
-            <!-- Data Storage Component -->
-            <div class="component">
-                <i class="fas fa-database"></i>
-                <h3>Data Storage</h3>
-                <p class="component-description">Encrypted data storage to ensure protection at rest.</p>
-            </div>
-
-            <!-- Monitoring and Detection Component -->
-            <div class="component">
-                <i class="fas fa-search"></i>
-                <h3>Monitoring and Detection</h3>
-                <p class="component-description">Real-time monitoring and anomaly detection to protect against attacks.</p>
-                <div class="connector"></div>
-            </div>
-
-            <!-- Access Control Component -->
-            <div class="component">
-                <i class="fas fa-user-shield"></i>
-                <h3>Access Control</h3>
-                <p class="component-description">Implementing the principle of least privilege and strong authentication.</p>
-            </div>
+    <div class="map-container">
+        <!-- Nodes representing different systems -->
+        <div class="map-node data-input">
+            <h3>Data Input</h3>
+            <p>Initial data is prepared for encryption.</p>
         </div>
 
-        <a href="index.html" class="back-home">Back to Project Overview</a>
+        <div class="map-node encryption">
+            <h3>Encryption</h3>
+            <p>Data is encrypted using AES-256 or RSA encryption methods.</p>
+        </div>
+
+        <div class="map-node storage">
+            <h3>Encrypted Data Storage</h3>
+            <p>The encrypted data is stored securely in databases.</p>
+        </div>
+
+        <div class="map-node decryption">
+            <h3>Decryption</h3>
+            <p>Only authorized personnel can decrypt data using keys.</p>
+        </div>
+
+        <div class="map-node data-access">
+            <h3>Data Access</h3>
+            <p>Data is accessed by authorized personnel after decryption.</p>
+        </div>
+
+        <!-- Connecting lines -->
+        <div class="line" style="top: 90px; left: 150px; height: 50px; width: 200px;"></div>
+        <div class="arrow-right"></div>
+
+        <div class="line" style="top: 190px; left: 450px; height: 50px; width: 100px;"></div>
+        <div class="arrow-left"></div>
+
+        <div class="line" style="top: 190px; left: 650px; height: 50px; width: 100px;"></div>
+        <div class="arrow-left"></div>
+
+        <div class="line" style="top: 340px; left: 300px; height: 50px; width: 200px;"></div>
+        <div class="arrow-right"></div>
+
+        <div class="line" style="top: 430px; left: 300px; height: 50px; width: 100px;"></div>
+        <div class="arrow-left"></div>
+
     </div>
 
 </body>
