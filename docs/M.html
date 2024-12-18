@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penetration Testing - Maintaining Access</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f7fa;
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .tools {
+            margin-top: 20px;
+        }
+
+        .tools ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tools ul li {
+            background: #ecf0f1;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #fff;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Maintaining Access</h1>
+        <p>The Maintaining Access phase focuses on ensuring persistent access to the compromised system or network. In this phase, the ethical hacker attempts to maintain their access over an extended period without being detected. This can involve installing backdoors, rootkits, or using other techniques that provide long-term access.</p>
+
+        <h2>Objectives</h2>
+        <p>Maintaining access involves several key goals:</p>
+        <ul>
+            <li>Ensure continued access to the target system even after reboots or system updates.</li>
+            <li>Install tools or create accounts that allow for repeated access to the system.</li>
+            <li>Expand control across the network by moving laterally to other systems.</li>
+            <li>Gather sensitive data and maintain covert operations to avoid detection.</li>
+        </ul>
+
+        <h2>Tools and Techniques</h2>
+        <div class="tools">
+            <ul>
+                <li><strong>Netcat:</strong> A versatile tool for creating backdoors and maintaining reverse shells.</li>
+                <li><strong>Metasploit:</strong> Used for exploiting vulnerabilities, maintaining access, and post-exploitation tasks.</li>
+                <li><strong>Mimikatz:</strong> A tool for extracting credentials and other sensitive data from the system.</li>
+                <li><strong>PowerShell Empire:</strong> A post-exploitation framework for lateral movement and persistence on Windows systems.</li>
+                <li><strong>Cobalt Strike:</strong> A tool for post-exploitation activities, including persistence and lateral movement in a target environment.</li>
+            </ul>
+        </div>
+
+        <h2>Common Techniques</h2>
+        <p>Some common techniques used during the Maintaining Access phase include:</p>
+        <ul>
+            <li><strong>Backdoors:</strong> Installing a backdoor allows the tester to bypass security controls and regain access to the system at a later time.</li>
+            <li><strong>Rootkits:</strong> A rootkit is used to hide malicious activities and maintain control over a system without being detected.</li>
+            <li><strong>Credential Dumping:</strong> Extracting credentials from the system to enable further access or lateral movement.</li>
+            <li><strong>Lateral Movement:</strong> Moving from one compromised system to another within the network to extend control and gather more data.</li>
+            <li><strong>Persistence Mechanisms:</strong> Setting up mechanisms that will ensure continued access even if the system is rebooted or patched.</li>
+        </ul>
+
+        <h2>Findings Table</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Finding</th>
+                        <th>Risk Level</th>
+                        <th>Details</th>
+                        <th>Mitigation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Backdoor Installed</td>
+                        <td>High</td>
+                        <td>Access maintained through a hidden backdoor, allowing repeated exploitation.</td>
+                        <td>Remove unauthorized access, change credentials, and enhance monitoring.</td>
+                    </tr>
+                    <tr>
+                        <td>Credential Dumping</td>
+                        <td>High</td>
+                        <td>Tested tools successfully dumped sensitive credentials.</td>
+                        <td>Change passwords, enforce multi-factor authentication, and use credential vaults.</td>
+                    </tr>
+                    <tr>
+                        <td>Lateral Movement</td>
+                        <td>Medium</td>
+                        <td>Tested tools allowed moving to other systems in the network.</td>
+                        <td>Segment networks, isolate critical systems, and use proper access controls.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="penetration-testing.html" class="back-button button">Back to Main Page</a>
+
+        <div class="footer">
+            <p>&copy; 2024 Hashmatullah Bahadari | CEH Certified</p>
+        </div>
+    </div>
+
+</body>
+</html>
