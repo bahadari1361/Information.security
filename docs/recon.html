@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reconnaissance - Penetration Testing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f7fa;
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Reconnaissance Phase</h1>
+        <p>In this phase, we gather initial information about the target systems, networks, and applications. This phase is critical to understanding the attack surface.</p>
+
+        <h2>Key Techniques</h2>
+        <ul>
+            <li>Passive Reconnaissance (e.g., Google Hacking, WHOIS lookup, Social Media Mining)</li>
+            <li>Active Reconnaissance (e.g., Ping Sweeps, Port Scanning)</li>
+        </ul>
+
+        <h2>Tools Used</h2>
+        <ul>
+            <li><strong>Nmap:</strong> For network discovery and scanning.</li>
+            <li><strong>Wireshark:</strong> For traffic analysis and protocol inspection.</li>
+            <li><strong>Maltego:</strong> For data mining and visualization.</li>
+            <li><strong>OSINT Framework:</strong> For open-source intelligence gathering.</li>
+        </ul>
+
+        <h2>Findings Table</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Finding</th>
+                    <th>Description</th>
+                    <th>Impact</th>
+                    <th>Recommendations</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Open Ports</td>
+                    <td>Port 22 and 443 were open and accessible.</td>
+                    <td>Potential entry points for unauthorized access.</td>
+                    <td>Restrict access using firewalls and monitor logs.</td>
+                </tr>
+                <tr>
+                    <td>Public Data Leakage</td>
+                    <td>Company emails and sensitive information found on public forums.</td>
+                    <td>Could lead to spear-phishing attacks.</td>
+                    <td>Ensure sensitive data is removed from public repositories.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="PenetrationTesting.html" class="button">Back to Main Page</a>
+
+        <div class="footer">
+            <p>&copy; 2024 Hashmatullah Bahadari | CEH Certified</p>
+        </div>
+    </div>
+
+</body>
+</html>
