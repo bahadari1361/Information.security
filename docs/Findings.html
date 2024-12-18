@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penetration Testing - Reporting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f7fa;
+        }
+
+        .container {
+            width: 85%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2c3e50;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #34495e;
+            margin-top: 30px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        .tools {
+            margin-top: 20px;
+        }
+
+        .tools ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .tools ul li {
+            background: #ecf0f1;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container {
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #fff;
+        }
+
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #2980b9;
+        }
+
+        .back-button {
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Reporting</h1>
+        <p>The Reporting phase involves documenting all findings, methodologies, and recommendations from the penetration testing engagement. This phase produces the final report, which will be used by stakeholders to understand the vulnerabilities discovered, the impact they might have, and the recommended actions for mitigation.</p>
+
+        <h2>Objectives</h2>
+        <p>The primary objective of this phase is to create a comprehensive and actionable report that summarizes the findings of the penetration test. Key goals include:</p>
+        <ul>
+            <li>Documenting vulnerabilities discovered and their risk level.</li>
+            <li>Describing the methods and tools used during the test.</li>
+            <li>Providing detailed evidence of vulnerabilities with screenshots, logs, or other artifacts.</li>
+            <li>Offering recommendations for mitigation and improvement.</li>
+            <li>Providing an executive summary for non-technical stakeholders.</li>
+        </ul>
+
+        <h2>Key Components of a Penetration Testing Report</h2>
+        <p>A penetration testing report typically includes the following components:</p>
+        <ul>
+            <li><strong>Executive Summary:</strong> An overview of the test, objectives, and high-level findings for non-technical stakeholders.</li>
+            <li><strong>Methodology:</strong> A detailed explanation of the testing methods, including tools used and testing phases.</li>
+            <li><strong>Findings:</strong> A list of vulnerabilities found, categorized by risk level, with evidence to support the findings.</li>
+            <li><strong>Exploitation and Impact:</strong> Description of how vulnerabilities were exploited and the potential impact they pose to the organization.</li>
+            <li><strong>Remediation Recommendations:</strong> Suggested actions for mitigating identified vulnerabilities.</li>
+            <li><strong>Conclusion:</strong> Final remarks summarizing the overall security posture of the target system.</li>
+        </ul>
+
+        <h2>Tools for Reporting</h2>
+        <div class="tools">
+            <ul>
+                <li><strong>Dradis:</strong> Collaboration and reporting tool that allows penetration testers to organize findings and produce reports.</li>
+                <li><strong>Faraday:</strong> A penetration testing platform that integrates with multiple tools and helps generate reports.</li>
+                <li><strong>Metasploit Pro:</strong> A version of Metasploit that includes report generation features, helping testers document vulnerabilities and exploits.</li>
+                <li><strong>Burp Suite:</strong> Includes options for exporting findings and generating reports based on the vulnerability scans conducted during the testing.</li>
+                <li><strong>Report Templates:</strong> Pre-built templates for organizing penetration testing reports that can be customized for specific clients or engagements.</li>
+            </ul>
+        </div>
+
+        <h2>Findings Table</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Finding</th>
+                        <th>Risk Level</th>
+                        <th>Details</th>
+                        <th>Recommendation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SQL Injection Vulnerability</td>
+                        <td>High</td>
+                        <td>Input field allows for SQL injection, potentially leading to data theft or system compromise.</td>
+                        <td>Implement input sanitization and prepared statements to prevent SQL injection.</td>
+                    </tr>
+                    <tr>
+                        <td>Unencrypted Communication</td>
+                        <td>Medium</td>
+                        <td>Sensitive data transmitted without encryption, vulnerable to interception.</td>
+                        <td>Enable TLS encryption for all sensitive communication.</td>
+                    </tr>
+                    <tr>
+                        <td>Weak Password Policy</td>
+                        <td>Medium</td>
+                        <td>Password policy does not enforce strong password requirements.</td>
+                        <td>Enforce complex passwords and implement multi-factor authentication.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="penetration-testing.html" class="back-button button">Back to Main Page</a>
+
+        <div class="footer">
+            <p>&copy; 2024 Hashmatullah Bahadari | CEH Certified</p>
+        </div>
+    </div>
+
+</body>
+</html>
