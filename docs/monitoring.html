@@ -84,15 +84,6 @@
 .back-home:hover {
     background-color: #1a242f; /* Darker blue on hover */
         }
-        
-        
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #2c3e50;
-            color: white;
-            margin-top: 2rem;
-        }
     </style>
 </head>
 <body>
@@ -177,7 +168,18 @@
     <!-- Back to Home Button -->
         <a href="endpoint.html" class="back-home">Back to Home</a>
     </div>
- 
- 
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hashmatullah Bahadari | Monitoring & Logging - Portfolio Project</p>
+    </footer>
+
+    <!-- JavaScript for Toggle -->
+    <script>
+        function toggleDetail(id) {
+            var content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+    </script>
 </body>
 </html>
