@@ -4,146 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monitoring & Logging - Central Bank of Afghanistan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f9;
             color: #333;
-            background-color: #f4f7fa;
         }
-
-        .container {
-            width: 85%;
-            margin: 40px auto;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 1.5rem;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem;
+        }
+        .section {
+            width: 220px;
+            margin: 1rem;
+            padding: 1.5rem;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .section:hover {
+            transform: scale(1.05);
+        }
+        .section i {
+            font-size: 3rem;
             color: #2c3e50;
         }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-top: 20px;
-            color: #34495e;
+        .section h3 {
+            margin-top: 1rem;
+            color: #2c3e50;
         }
-
-        .tools, .steps, .implementation {
-            margin-top: 30px;
-        }
-
-        .tools ul, .steps ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .tools ul li, .steps ul li {
-            background: #ecf0f1;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            background-color: #fff;
-        }
-
-        table th, table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        table th {
-            background-color: #3498db;
-            color: white;
-        }
-
-       .back-home {
-    position: fixed; /* Fixed position relative to the viewport */
-    bottom: 20px; /* Distance from the bottom of the page */
-    left: 20px; /* Distance from the left edge */
-    background-color: #3498db; /* Initial blue color */
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 500;
-    text-decoration: none;
-    text-align: center;
-    font-size: 1rem; /* Optional: Adjust font size */
-    z-index: 1000; /* Ensure it's on top of other elements */
-}
-
-.back-home:hover {
-    background-color: #1a242f; /* Darker blue on hover */
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 40px;
+        .section p {
+            margin-top: 0.5rem;
             font-size: 0.9rem;
+            line-height: 1.4;
             color: #7f8c8d;
+        }
+        .section-detail {
+            display: none;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #2c3e50;
+            text-align: left;
+        }
+        .back-to-home {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .back-to-home a {
+            text-decoration: none;
+            color: white;
+            background-color: #2c3e50;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .back-to-home a:hover {
+            background-color: #34495e;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #2c3e50;
+            color: white;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <h1>Monitoring & Logging - ISO/IEC 27001</h1>
+        <p>Central Bank of Afghanistan Project</p>
+    </header>
 
+    <!-- Main Content -->
     <div class="container">
-        <h1>Monitoring & Logging Project</h1>
-        <p class="section-title">Central Bank of Afghanistan | Information Security Management</p>
-
-        <p>As part of the Information Security Management program at the Central Bank of Afghanistan, I designed and implemented a comprehensive monitoring and logging system that adhered to the ISO/IEC 27001 standards. This system was designed to continuously monitor critical infrastructure and applications, collect log data, and ensure rapid detection and response to potential security incidents.</p>
-
-        <h2>Key Steps in Implementation</h2>
-        <div class="steps">
-            <ul>
-                <li><strong>Define Security Monitoring Objectives:</strong> Identified the systems and processes that required monitoring, based on risk assessments and organizational security objectives.</li>
-                <li><strong>Set up Logging Systems:</strong> Configured centralized logging for all systems using solutions like <a href="https://www.elastic.co/solutions/elk-stack" target="_blank">ELK Stack</a> for log aggregation and analysis.</li>
-                <li><strong>Develop Incident Response Plans:</strong> Created incident response procedures for handling and investigating security events identified through monitoring and logs.</li>
-                <li><strong>Configure Alerts & Notifications:</strong> Set up automated alerts for critical system events using <a href="https://www.splunk.com/" target="_blank">Splunk</a> and <a href="https://www.paloaltonetworks.com/" target="_blank">Palo Alto Networks</a> tools.</li>
-                <li><strong>Ensure Compliance with ISO/IEC 27001:</strong> Ensured that all monitoring and logging practices complied with ISO/IEC 27001 requirements for auditing and continuous improvement.</li>
-            </ul>
+        <!-- Monitoring and Logging Overview -->
+        <div class="section" onclick="toggleDetail('detail1')">
+            <i class="fas fa-eye"></i>
+            <h3>Monitoring and Logging Overview</h3>
+            <p>Comprehensive monitoring and logging strategies to detect, analyze, and respond to security incidents.</p>
+            <div id="detail1" class="section-detail">
+                <p>The Monitoring & Logging project was implemented to ensure continuous surveillance of the bank's IT infrastructure. It included the design, implementation, and management of monitoring systems that tracked network traffic, system health, and security events to enable proactive detection and response to potential security incidents.</p>
+                <ul>
+                    <li><strong>Centralized Logging:</strong> Implementation of a centralized logging system to aggregate logs from various systems, servers, and network devices.</li>
+                    <li><strong>Real-time Monitoring:</strong> 24/7 monitoring to detect unusual activities and provide quick responses to potential threats.</li>
+                    <li><strong>Incident Detection:</strong> Setup of automated alerting systems to notify security teams of potential incidents like unauthorized access or data breaches.</li>
+                    <li><strong>Compliance Tracking:</strong> Ensuring the logging practices comply with industry regulations like GDPR and ISO/IEC 27001.</li>
+                </ul>
+                <p>The project ensured that the bank had full visibility over its network and security posture, helping prevent and detect threats in real-time.</p>
+            </div>
         </div>
 
-        <h2>Tools Used</h2>
-        <div class="tools">
-            <ul>
-                <li><strong><a href="https://www.elastic.co/solutions/elk-stack" target="_blank">ELK Stack</a>:</strong> Used for centralized logging, real-time analysis, and visual representation of log data.</li>
-                <li><strong><a href="https://www.splunk.com/" target="_blank">Splunk</a>:</strong> Employed for security information and event management (SIEM) to monitor network activities and detect potential incidents.</li>
-                <li><strong><a href="https://www.paloaltonetworks.com/" target="_blank">Palo Alto Networks</a>:</strong> Configured for firewall monitoring, log management, and incident detection.</li>
-                <li><strong><a href="https://www.rsyslog.com/" target="_blank">Rsyslog:</a></strong> A logging tool used to forward logs from remote systems to a centralized server for analysis.</li>
-                <li><strong><a href="https://www.nagios.org/" target="_blank">Nagios:</a></strong> Deployed for network monitoring, ensuring uptime and tracking system health.</li>
-            </ul>
+        <!-- Incident Response and Investigation -->
+        <div class="section" onclick="toggleDetail('detail2')">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Incident Response and Investigation</h3>
+            <p>Key activities in detecting and responding to security incidents, supported by detailed logs and alerts.</p>
+            <div id="detail2" class="section-detail">
+                <p>Our monitoring system was integrated with the incident response framework to ensure immediate investigation and resolution of any detected anomalies. This involved:</p>
+                <ul>
+                    <li><strong>Alerting Mechanism:</strong> Automated alerts generated by the logging system were sent to the Security Operations Center (SOC) for investigation.</li>
+                    <li><strong>Log Correlation:</strong> Correlating logs from different sources to identify attack patterns or security breaches.</li>
+                    <li><strong>Forensic Investigation:</strong> Conducting forensic analysis to understand the scope of any detected incidents.</li>
+                    <li><strong>Incident Documentation:</strong> Maintaining thorough documentation for every incident, including actions taken and lessons learned.</li>
+                </ul>
+                <p>This allowed the team to quickly respond to potential security threats, reducing risk and minimizing the impact on operations.</p>
+            </div>
         </div>
 
-        <h2>Detailed Security Logs Overview</h2>
-        <p>The log management system included categorization of logs into different categories such as system, application, security, and network logs. This allowed for efficient filtering and prioritization during incident investigations. The system also generated automated reports that complied with internal audit requirements and provided valuable insights into network behavior.</p>
-
-        <h2>Compliance & Best Practices</h2>
-        <ul>
-            <li><strong>ISO/IEC 27001 Compliance:</strong> The project adhered to the requirements for monitoring and logging as part of an Information Security Management System (ISMS), including proper log retention, encryption, and access controls.</li>
-            <li><strong>Continuous Monitoring:</strong> Ensured 24/7 monitoring of critical systems to detect abnormal activities, failed login attempts, and potential intrusion attempts.</li>
-            <li><strong>Data Integrity & Availability:</strong> Ensured log integrity by utilizing cryptographic hashes and limiting access to the logs to authorized personnel only.</li>
-        </ul>
-
-        <a href="endpoint.html" class="back-home">Back to Home</a>
-
-        <div class="footer">
-            <p>&copy; 2024 Hashmatullah Bahadari | ISO/IEC 27001 Lead Auditor</p>
+        <!-- Reporting and Compliance -->
+        <div class="section" onclick="toggleDetail('detail3')">
+            <i class="fas fa-clipboard-list"></i>
+            <h3>Reporting and Compliance</h3>
+            <p>Generating detailed reports for internal and external audits to ensure compliance with regulations and industry standards.</p>
+            <div id="detail3" class="section-detail">
+                <p>The project involved the creation of reports for both internal stakeholders and external auditors. This reporting system provided detailed insights into the health of the bank’s IT infrastructure and security measures. Activities included:</p>
+                <ul>
+                    <li><strong>Audit Trails:</strong> Ensuring logs are maintained securely and are available for auditing at any time.</li>
+                    <li><strong>Compliance Reports:</strong> Generating reports to demonstrate adherence to industry standards like ISO/IEC 27001, GDPR, and other regulatory frameworks.</li>
+                    <li><strong>Regular Reviews:</strong> Ensuring the logs were reviewed periodically to identify vulnerabilities and risks.</li>
+                    <li><strong>Evidence of Risk Mitigation:</strong> Reports detailing how security incidents were managed and mitigated.</li>
+                </ul>
+                <p>These reports were essential for maintaining the trust of regulators and customers while demonstrating the bank's commitment to robust security practices.</p>
+            </div>
         </div>
+
+        <!-- Data Retention and Privacy -->
+        <div class="section" onclick="toggleDetail('detail4')">
+            <i class="fas fa-database"></i>
+            <h3>Data Retention and Privacy</h3>
+            <p>Ensuring secure storage and retention of logs in compliance with data protection laws.</p>
+            <div id="detail4" class="section-detail">
+                <p>Logs and monitoring data were retained according to data retention policies and industry best practices. Key aspects included:</p>
+                <ul>
+                    <li><strong>Secure Storage:</strong> Logs were securely stored in an encrypted format, ensuring confidentiality and integrity.</li>
+                    <li><strong>Retention Policy:</strong> Logs were retained for a defined period in compliance with regulatory and operational requirements.</li>
+                    <li><strong>Data Privacy:</strong> Ensuring that personally identifiable information (PII) was anonymized or excluded from logs to meet privacy requirements.</li>
+                    <li><strong>Log Purging:</strong> Regular purging of outdated logs to ensure compliance with the bank’s data retention policies.</li>
+                </ul>
+                <p>These measures ensured that the bank maintained high standards of data privacy while retaining logs necessary for investigation and compliance purposes.</p>
+            </div>
+        </div>
+
     </div>
 
+    <!-- Back to Home Button -->
+    <div class="back-to-home">
+        <a href="endpoint.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Hashmatullah Bahadari | Monitoring & Logging - Portfolio Project</p>
+    </footer>
+
+    <!-- JavaScript for Toggle -->
+    <script>
+        function toggleDetail(id) {
+            var content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+    </script>
 </body>
 </html>
