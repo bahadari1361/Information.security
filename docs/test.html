@@ -3,197 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encryption Project - Central Bank of Afghanistan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <title>Incident Response Plan - Identification</title>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
         }
-
-        .container {
-            width: 80%;
-            margin: 40px auto;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            color: #2c3e50;
-        }
-
-        .encryption-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .encryption-step {
-            text-align: center;
-            padding: 20px;
-            background-color: #ecf0f1;
-            border-radius: 8px;
-            width: 200px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .encryption-step:hover {
-            transform: scale(1.05);
-            background-color: #e1e8eb;
-        }
-
-        .encryption-step i {
-            font-size: 3rem;
-            color: #3498db;
-            margin-bottom: 10px;
-        }
-
-        .encryption-step h3 {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .encryption-step p {
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
-
-        /* Modal Styles */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            width: 60%;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            animation: zoomOut 0.5s ease;
-            position: relative;
-        }
-
-        @keyframes zoomOut {
-            from {
-                transform: scale(0);
-            }
-            to {
-                transform: scale(1);
-            }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: #3498db;
+        header {
+            background: #0056b3;
             color: #fff;
-            border: none;
-            padding: 5px 10px;
-            cursor: pointer;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #0056b3;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #0056b3;
+            color: #fff;
+        }
+        .diagram {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .diagram img {
+            max-width: 100%;
+            height: auto;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
             border-radius: 5px;
-            font-size: 1rem;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
-
-        .close-btn:hover {
-            background: #1a242f;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .encryption-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .encryption-step {
-                width: 80%;
-            }
-
-            .modal-content {
-                width: 90%;
-            }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
     </style>
 </head>
 <body>
+    <header>
+        <h1>Incident Response Plan - Identification</h1>
+    </header>
 
-    <div class="container">
-        <h2>Encryption Project - Central Bank of Afghanistan</h2>
-        <div class="encryption-container">
-            <div class="encryption-step" data-content="Design and implementation of encryption protocols ensure robust security.">
-                <i class="fas fa-cogs"></i>
-                <h3>Design and Implementation</h3>
-                <p>Click to learn about the design and implementation of encryption protocols.</p>
-            </div>
+    <section>
+        <h2>Identification Section – Incident Response Plan</h2>
+        <p>The <strong>Identification</strong> phase of the Incident Response Plan (IRP) at the Central Bank of Afghanistan focuses on detecting and confirming potential security incidents. This phase is critical for timely and accurate response to minimize the impact of cybersecurity threats on the organization’s operations, sensitive data, and financial systems.</p>
 
-            <div class="encryption-step" data-content="Compliance with ISO/IEC 27001 ensures project meets global security standards.">
-                <i class="fas fa-gavel"></i>
-                <h3>Compliance</h3>
-                <p>Click to explore how the project ensured compliance with ISO/IEC 27001 standards.</p>
-            </div>
+        <h3>Objectives</h3>
+        <ul>
+            <li>Detect anomalies and suspicious activities in IT systems and networks.</li>
+            <li>Confirm whether an event qualifies as a security incident.</li>
+            <li>Categorize and prioritize incidents based on severity and impact.</li>
+            <li>Document the initial details of the incident for further analysis and resolution.</li>
+        </ul>
 
-            <div class="encryption-step" data-content="Cryptographic key management protects sensitive information effectively.">
-                <i class="fas fa-key"></i>
-                <h3>Key Management</h3>
-                <p>Click to see how cryptographic key management was handled.</p>
-            </div>
+        <h3>Key Steps in the Identification Process</h3>
+        <ol>
+            <li><strong>Monitoring and Detection:</strong>
+                <ul>
+                    <li>Utilize automated monitoring tools such as SIEM (Security Information and Event Management) systems to identify potential threats in real time.</li>
+                    <li>Integrate logs from critical systems like firewalls, intrusion detection/prevention systems (IDS/IPS), and endpoint detection solutions for centralized analysis.</li>
+                </ul>
+            </li>
+            <li><strong>Incident Analysis:</strong>
+                <ul>
+                    <li>Analyze alerts using predefined baselines and thresholds to distinguish between false positives and genuine incidents.</li>
+                    <li>Collaborate with internal and external teams (e.g., SOC or CERT) to confirm the scope and nature of the incident.</li>
+                </ul>
+            </li>
+            <li><strong>Classification and Prioritization:</strong>
+                <ul>
+                    <li>Categorize incidents based on predefined classifications, such as malware attacks, unauthorized access, data breaches, or denial-of-service (DoS) attacks.</li>
+                    <li>Assign priority levels (Critical, High, Medium, Low) based on the potential impact on the bank’s systems, data, and reputation.</li>
+                </ul>
+            </li>
+            <li><strong>Notification and Reporting:</strong>
+                <ul>
+                    <li>Notify stakeholders, including the Incident Response Team (IRT), IT administrators, and executive management, as per the escalation matrix.</li>
+                    <li>Record all details, including date/time, affected systems, and initial findings, in an incident tracking system.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>Incident Classification Table</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Incident Type</th>
+                    <th>Description</th>
+                    <th>Example Indicators</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Malware Attack</td>
+                    <td>Unauthorized software causing harm</td>
+                    <td>Unusual file activity, antivirus alerts</td>
+                    <td>Critical</td>
+                </tr>
+                <tr>
+                    <td>Unauthorized Access</td>
+                    <td>Access to systems without authorization</td>
+                    <td>Failed login attempts, privilege escalation</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Data Breach</td>
+                    <td>Unauthorized disclosure of sensitive data</td>
+                    <td>Suspicious data exfiltration alerts</td>
+                    <td>Critical</td>
+                </tr>
+                <tr>
+                    <td>Denial of Service (DoS)</td>
+                    <td>Disruption of service availability</td>
+                    <td>Traffic spikes, server unresponsiveness</td>
+                    <td>High</td>
+                </tr>
+                <tr>
+                    <td>Phishing Attack</td>
+                    <td>Social engineering targeting users</td>
+                    <td>Fraudulent emails, credential compromise</td>
+                    <td>Medium</td>
+                </tr>
+                <tr>
+                    <td>Insider Threat</td>
+                    <td>Malicious actions by internal personnel</td>
+                    <td>Unusual access patterns, data transfers</td>
+                    <td>Medium</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Security Diagram: Incident Identification Workflow</h3>
+        <div class="diagram">
+            <img src="workflow_diagram.png" alt="Incident Identification Workflow" usemap="#workflowmap">
+            <map name="workflowmap">
+                <area shape="rect" coords="0,0,100,50" href="#" class="tooltip">
+                    <span class="tooltiptext">Monitoring Systems (SIEM, IDS/IPS, Firewalls)</span>
+                </area>
+                <area shape="rect" coords="110,0,210,50" href="#" class="tooltip">
+                    <span class="tooltiptext">Analyze Alerts</span>
+                </area>
+                <area shape="rect" coords="220,0,320,50" href="#" class="tooltip">
+                    <span class="tooltiptext">Confirm Incident</span>
+                </area>
+                <area shape="rect" coords="330,0,430,50" href="#" class="tooltip">
+                    <span class="tooltiptext">Classify Incident</span>
+                </area>
+                <area shape="rect" coords="440,0,540,50" href="#" class="tooltip">
+                    <span class="tooltiptext">Notify Stakeholders</span>
+                </area>
+                <area shape="rect" coords="550,0,650,50" href="#" class="tooltip">
+                    <span class="tooltiptext">Document Findings</span>
+                </area>
+            </map>
         </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-content">
-            <button class="close-btn" id="closeModal">Close</button>
-            <div id="modalText"></div>
-        </div>
-    </div>
-
-    <script>
-        const steps = document.querySelectorAll('.encryption-step');
-        const modal = document.getElementById('modal');
-        const modalText = document.getElementById('modalText');
-        const closeModal = document.getElementById('closeModal');
-
-        steps.forEach(step => {
-            step.addEventListener('click', () => {
-                const content = step.getAttribute('data-content');
-                modalText.textContent = content;
-                modal.style.display = 'flex';
-            });
-        });
-
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-            }
-        });
-    </script>
+    </section>
 </body>
 </html>
