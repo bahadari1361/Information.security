@@ -54,7 +54,7 @@
         }
 
         .irp-step i {
-            font-size: 3rem;
+            font-size: 4rem; /* Increased icon size */
             color: #e74c3c;
             margin-bottom: 10px;
         }
@@ -68,6 +68,11 @@
         .irp-step p {
             font-size: 1rem;
             color: #7f8c8d;
+            display: none;
+        }
+
+        .irp-step.open p {
+            display: block;
         }
 
         .team-section {
@@ -121,23 +126,23 @@
             color: #7f8c8d;
         }
 
-      .back-home {
-    position: fixed; /* Fixed position relative to the viewport */
-    bottom: 20px; /* Distance from the bottom of the page */
-    left: 20px; /* Distance from the left edge */
-    background-color: #3498db; /* Initial blue color */
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 500;
-    text-decoration: none;
-    text-align: center;
-    font-size: 1rem; /* Optional: Adjust font size */
-    z-index: 1000; /* Ensure it's on top of other elements */
-}
+        .back-home {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1rem;
+            z-index: 1000;
+        }
 
-.back-home:hover {
-    background-color: #1a242f; /* Darker blue on hover */
+        .back-home:hover {
+            background-color: #1a242f;
         }
 
         /* Responsive */
@@ -158,34 +163,34 @@
     <div class="container">
         <h2>Incident Response Plan (IRP)</h2>
         <div class="irp-container">
-            <div class="irp-step">
+            <div class="irp-step" onclick="toggleDetail(this)">
                 <i class="fas fa-bell"></i>
                 <h3>Identification</h3>
-                <p>Detect and identify potential security incidents or breaches in systems or networks.</p>
+                <p>ISO 27001 emphasizes the importance of identifying potential security incidents promptly. This includes monitoring systems, logs, and analyzing anomalies to detect unauthorized access or suspicious activity.</p>
             </div>
 
-            <div class="irp-step">
+            <div class="irp-step" onclick="toggleDetail(this)">
                 <i class="fas fa-clipboard-list"></i>
                 <h3>Containment</h3>
-                <p>Contain the incident to prevent further damage or impact to systems or data.</p>
+                <p>Containment strategies in ISO 27001 are aimed at limiting the scope of security incidents. This involves isolating affected systems or networks, preserving evidence, and preventing further damage.</p>
             </div>
 
-            <div class="irp-step">
+            <div class="irp-step" onclick="toggleDetail(this)">
                 <i class="fas fa-user-shield"></i>
                 <h3>Eradication</h3>
-                <p>Remove the cause of the incident, such as malware, and prevent further occurrence.</p>
+                <p>ISO 27001 recommends eliminating the root cause of incidents, such as malware or unauthorized access, ensuring that systems are completely cleansed before returning to service.</p>
             </div>
 
-            <div class="irp-step">
+            <div class="irp-step" onclick="toggleDetail(this)">
                 <i class="fas fa-redo-alt"></i>
                 <h3>Recovery</h3>
-                <p>Restore affected systems and data, and ensure systems are back to normal operation.</p>
+                <p>Recovery procedures in ISO 27001 include restoring affected systems to normal operations, ensuring data integrity, and validating the security of systems before they are brought back online.</p>
             </div>
 
-            <div class="irp-step">
+            <div class="irp-step" onclick="toggleDetail(this)">
                 <i class="fas fa-history"></i>
                 <h3>Lessons Learned</h3>
-                <p>Review and document the incident, determine lessons learned, and adjust policies and procedures.</p>
+                <p>ISO 27001 stresses the need to document incidents and review responses to enhance future preparedness. This includes updating security policies, conducting root cause analysis, and improving incident handling procedures.</p>
             </div>
         </div>
 
@@ -196,27 +201,27 @@
                 <div class="team-member">
                     <i class="fas fa-user-tie"></i>
                     <h4>Incident Response Manager</h4>
-                    <p>Leads the incident response process and ensures the team follows the established protocols.</p>
+                    <p>Leads the incident response process, ensuring alignment with ISO 27001 standards and best practices, and oversees the coordination of all team members.</p>
                 </div>
                 <div class="team-member">
                     <i class="fas fa-shield-virus"></i>
                     <h4>Security Analyst</h4>
-                    <p>Analyzes incidents, investigates the scope, and works to mitigate the impact.</p>
+                    <p>Assesses the nature and scope of security incidents, performs detailed analysis, and follows ISO 27001 guidelines for effective incident resolution.</p>
                 </div>
                 <div class="team-member">
                     <i class="fas fa-laptop-code"></i>
                     <h4>IT Specialist</h4>
-                    <p>Supports the containment and eradication of incidents through technical means.</p>
+                    <p>Handles the technical aspects of containment, eradication, and recovery, ensuring that systems comply with ISO 27001's technical security controls.</p>
                 </div>
                 <div class="team-member">
                     <i class="fas fa-users-cog"></i>
                     <h4>Business Continuity Planner</h4>
-                    <p>Ensures recovery processes are in place and works with business units to maintain operations.</p>
+                    <p>Ensures that business continuity plans are integrated with incident response efforts and that recovery processes are aligned with ISO 27001's continuity management standards.</p>
                 </div>
                 <div class="team-member">
                     <i class="fas fa-clipboard-check"></i>
                     <h4>Communication Lead</h4>
-                    <p>Manages internal and external communication during the incident response process.</p>
+                    <p>Manages internal and external communications in accordance with ISO 27001, ensuring compliance with incident reporting requirements and maintaining transparency.</p>
                 </div>
             </div>
         </div>
@@ -224,6 +229,12 @@
         <!-- Back to Home Button -->
         <a href="index.html" class="back-home">Back to Home</a>
     </div>
+
+    <script>
+        function toggleDetail(element) {
+            element.classList.toggle('open');
+        }
+    </script>
 
 </body>
 </html>
