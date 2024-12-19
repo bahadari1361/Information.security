@@ -24,20 +24,19 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
+        h2, h3 {
             text-align: center;
-            font-size: 2rem;
             color: #2c3e50;
         }
 
-        .irp-container {
+        .irp-container, .team-container {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
             margin-top: 20px;
         }
 
-        .irp-step {
+        .irp-step, .team-member {
             text-align: center;
             padding: 20px;
             background-color: #ecf0f1;
@@ -49,20 +48,19 @@
             cursor: pointer;
         }
 
-        .irp-step:hover {
+        .irp-step:hover, .team-member:hover {
             transform: scale(1.05);
             background-color: #e1e8eb;
         }
 
-        .irp-step i {
+        .irp-step i, .team-member i {
             font-size: 4rem;
             color: #e74c3c;
             margin-bottom: 10px;
         }
 
-        .irp-step h3 {
+        .irp-step h3, .team-member h3 {
             font-size: 1.2rem;
-            color: #2c3e50;
             margin-bottom: 10px;
         }
 
@@ -114,12 +112,12 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .irp-container {
+            .irp-container, .team-container {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .irp-step {
+            .irp-step, .team-member {
                 width: 80%;
             }
         }
@@ -129,31 +127,54 @@
 
 <div class="container">
     <h2>Incident Response Plan (ISO 27001)</h2>
+    
+    <!-- IRP Cycle -->
+    <h3>IRP Process Cycle</h3>
     <div class="irp-container">
-        <!-- Identification Section -->
         <div class="irp-step" onclick="openModal('identification')">
             <i class="fas fa-bell"></i>
             <h3>Identification</h3>
         </div>
-        <!-- Containment Section -->
         <div class="irp-step" onclick="openModal('containment')">
             <i class="fas fa-clipboard-list"></i>
             <h3>Containment</h3>
         </div>
-        <!-- Eradication Section -->
         <div class="irp-step" onclick="openModal('eradication')">
             <i class="fas fa-user-shield"></i>
             <h3>Eradication</h3>
         </div>
-        <!-- Recovery Section -->
         <div class="irp-step" onclick="openModal('recovery')">
             <i class="fas fa-redo-alt"></i>
             <h3>Recovery</h3>
         </div>
-        <!-- Lessons Learned Section -->
         <div class="irp-step" onclick="openModal('lessons-learned')">
             <i class="fas fa-history"></i>
             <h3>Lessons Learned</h3>
+        </div>
+    </div>
+    
+    <!-- IRP Team -->
+    <h3>IRP Team</h3>
+    <div class="team-container">
+        <div class="team-member" onclick="openModal('team-leader')">
+            <i class="fas fa-user-tie"></i>
+            <h3>Team Leader</h3>
+        </div>
+        <div class="team-member" onclick="openModal('forensic-analyst')">
+            <i class="fas fa-microscope"></i>
+            <h3>Forensic Analyst</h3>
+        </div>
+        <div class="team-member" onclick="openModal('it-admin')">
+            <i class="fas fa-server"></i>
+            <h3>IT Administrator</h3>
+        </div>
+        <div class="team-member" onclick="openModal('legal-consultant')">
+            <i class="fas fa-gavel"></i>
+            <h3>Legal Consultant</h3>
+        </div>
+        <div class="team-member" onclick="openModal('communications')">
+            <i class="fas fa-bullhorn"></i>
+            <h3>Communications Officer</h3>
         </div>
     </div>
 </div>
@@ -163,39 +184,47 @@
     <button class="close-btn" onclick="closeModal('identification')">Close</button>
     <div class="modal-content">
         <h3>Identification</h3>
-        <p>Identifying potential incidents is critical. This involves monitoring systems and logs using tools like Nessus, Wireshark, and Splunk. In line with ISO 27001, proactive monitoring helps detect and escalate anomalies for timely resolution.</p>
+        <p>Details about identification...</p>
     </div>
 </div>
 
-<div id="containment" class="modal">
-    <button class="close-btn" onclick="closeModal('containment')">Close</button>
+<div id="team-leader" class="modal">
+    <button class="close-btn" onclick="closeModal('team-leader')">Close</button>
     <div class="modal-content">
-        <h3>Containment</h3>
-        <p>Containment limits the scope of an incident by isolating systems. This includes quarantining infected hosts, ensuring business continuity, and preserving forensic evidence for analysis and reporting.</p>
+        <h3>Team Leader</h3>
+        <p>Coordinates all response activities, ensures alignment with ISO 27001, and acts as the primary decision-maker during incidents.</p>
     </div>
 </div>
 
-<div id="eradication" class="modal">
-    <button class="close-btn" onclick="closeModal('eradication')">Close</button>
+<div id="forensic-analyst" class="modal">
+    <button class="close-btn" onclick="closeModal('forensic-analyst')">Close</button>
     <div class="modal-content">
-        <h3>Eradication</h3>
-        <p>Eradication focuses on removing threats such as malware or compromised accounts. Steps include patching vulnerabilities and ensuring systems are clean before restoration.</p>
+        <h3>Forensic Analyst</h3>
+        <p>Conducts investigations, gathers evidence, and performs detailed analyses to identify root causes and methods of attack.</p>
     </div>
 </div>
 
-<div id="recovery" class="modal">
-    <button class="close-btn" onclick="closeModal('recovery')">Close</button>
+<div id="it-admin" class="modal">
+    <button class="close-btn" onclick="closeModal('it-admin')">Close</button>
     <div class="modal-content">
-        <h3>Recovery</h3>
-        <p>Recovery ensures the safe restoration of operations. This includes validating backups, reconfiguring systems, and verifying security measures in compliance with ISO 27001.</p>
+        <h3>IT Administrator</h3>
+        <p>Handles system and network configurations, isolates affected systems, and implements technical fixes.</p>
     </div>
 </div>
 
-<div id="lessons-learned" class="modal">
-    <button class="close-btn" onclick="closeModal('lessons-learned')">Close</button>
+<div id="legal-consultant" class="modal">
+    <button class="close-btn" onclick="closeModal('legal-consultant')">Close</button>
     <div class="modal-content">
-        <h3>Lessons Learned</h3>
-        <p>ISO 27001 emphasizes learning from incidents. This involves documenting actions, improving policies, and conducting audits to strengthen security posture.</p>
+        <h3>Legal Consultant</h3>
+        <p>Advises on legal obligations, ensures compliance, and communicates with external legal entities if needed.</p>
+    </div>
+</div>
+
+<div id="communications" class="modal">
+    <button class="close-btn" onclick="closeModal('communications')">Close</button>
+    <div class="modal-content">
+        <h3>Communications Officer</h3>
+        <p>Manages internal and external communication, including updates to stakeholders and the public.</p>
     </div>
 </div>
 
