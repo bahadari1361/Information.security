@@ -30,125 +30,78 @@
             color: #2c3e50;
         }
 
-        .irp-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
+        .irp-section {
             margin-top: 20px;
         }
 
-        .irp-step {
-            text-align: center;
-            padding: 20px;
+        .irp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background-color: #ecf0f1;
+            padding: 15px;
             border-radius: 8px;
-            width: 200px;
+            margin-bottom: 20px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            transition: all 0.3s ease;
         }
 
-        .irp-step:hover {
-            transform: scale(1.05);
-            background-color: #e1e8eb;
-        }
-
-        .irp-step i {
-            font-size: 3rem;
-            color: #e74c3c;
-            margin-bottom: 10px;
-        }
-
-        .irp-step h3 {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .irp-step p {
-            font-size: 1rem;
-            color: #7f8c8d;
-        }
-
-        .team-section {
-            margin-top: 40px;
-            text-align: center;
-        }
-
-        .team-section h3 {
+        .irp-header h3 {
             font-size: 1.5rem;
             color: #2c3e50;
-            margin-bottom: 20px;
+            font-weight: 500;
         }
 
-        .team-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .team-member {
-            text-align: center;
-            padding: 20px;
-            background-color: #ecf0f1;
-            border-radius: 8px;
-            width: 200px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .team-member:hover {
-            transform: scale(1.05);
-            background-color: #e1e8eb;
-        }
-
-        .team-member i {
-            font-size: 3rem;
+        .irp-header i {
+            font-size: 2rem;
             color: #e74c3c;
-            margin-bottom: 10px;
         }
 
-        .team-member h4 {
-            font-size: 1.2rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .team-member p {
+        .irp-content {
+            padding-left: 30px;
             font-size: 1rem;
             color: #7f8c8d;
         }
 
-      .back-home {
-    position: fixed; /* Fixed position relative to the viewport */
-    bottom: 20px; /* Distance from the bottom of the page */
-    left: 20px; /* Distance from the left edge */
-    background-color: #3498db; /* Initial blue color */
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 500;
-    text-decoration: none;
-    text-align: center;
-    font-size: 1rem; /* Optional: Adjust font size */
-    z-index: 1000; /* Ensure it's on top of other elements */
-}
+        .irp-content ul {
+            padding-left: 20px;
+        }
 
-.back-home:hover {
-    background-color: #1a242f; /* Darker blue on hover */
+        .irp-content ul li {
+            margin-bottom: 10px;
+        }
+
+        .back-home {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1rem;
+            z-index: 1000;
+        }
+
+        .back-home:hover {
+            background-color: #1a242f;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .irp-container, .team-container {
-                flex-direction: column;
-                align-items: center;
+            .container {
+                width: 90%;
             }
 
-            .irp-step, .team-member {
-                width: 80%;
+            .irp-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .irp-content {
+                padding-left: 0;
             }
         }
     </style>
@@ -157,67 +110,84 @@
 
     <div class="container">
         <h2>Incident Response Plan (IRP)</h2>
-        <div class="irp-container">
-            <div class="irp-step">
+
+        <!-- Incident Identification -->
+        <div class="irp-section">
+            <div class="irp-header">
+                <h3>1. Identification</h3>
                 <i class="fas fa-bell"></i>
-                <h3>Identification</h3>
-                <p>Detect and identify potential security incidents or breaches in systems or networks.</p>
             </div>
-
-            <div class="irp-step">
-                <i class="fas fa-clipboard-list"></i>
-                <h3>Containment</h3>
-                <p>Contain the incident to prevent further damage or impact to systems or data.</p>
-            </div>
-
-            <div class="irp-step">
-                <i class="fas fa-user-shield"></i>
-                <h3>Eradication</h3>
-                <p>Remove the cause of the incident, such as malware, and prevent further occurrence.</p>
-            </div>
-
-            <div class="irp-step">
-                <i class="fas fa-redo-alt"></i>
-                <h3>Recovery</h3>
-                <p>Restore affected systems and data, and ensure systems are back to normal operation.</p>
-            </div>
-
-            <div class="irp-step">
-                <i class="fas fa-history"></i>
-                <h3>Lessons Learned</h3>
-                <p>Review and document the incident, determine lessons learned, and adjust policies and procedures.</p>
+            <div class="irp-content">
+                <p>ISO 27001 mandates that organizations promptly detect and identify any security incidents. Early detection is crucial for minimizing damage and reducing the impact on business operations.</p>
+                <ul>
+                    <li>Implement monitoring tools and alerts for suspicious activities (e.g., intrusion detection systems, log management solutions).</li>
+                    <li>Regularly review system and network logs to detect anomalies or unauthorized activities.</li>
+                    <li>Establish clear procedures for employees to report suspected security incidents.</li>
+                </ul>
             </div>
         </div>
 
-        <!-- IRP Team Section -->
-        <div class="team-section">
-            <h3>IRP Team</h3>
-            <div class="team-container">
-                <div class="team-member">
-                    <i class="fas fa-user-tie"></i>
-                    <h4>Incident Response Manager</h4>
-                    <p>Leads the incident response process and ensures the team follows the established protocols.</p>
-                </div>
-                <div class="team-member">
-                    <i class="fas fa-shield-virus"></i>
-                    <h4>Security Analyst</h4>
-                    <p>Analyzes incidents, investigates the scope, and works to mitigate the impact.</p>
-                </div>
-                <div class="team-member">
-                    <i class="fas fa-laptop-code"></i>
-                    <h4>IT Specialist</h4>
-                    <p>Supports the containment and eradication of incidents through technical means.</p>
-                </div>
-                <div class="team-member">
-                    <i class="fas fa-users-cog"></i>
-                    <h4>Business Continuity Planner</h4>
-                    <p>Ensures recovery processes are in place and works with business units to maintain operations.</p>
-                </div>
-                <div class="team-member">
-                    <i class="fas fa-clipboard-check"></i>
-                    <h4>Communication Lead</h4>
-                    <p>Manages internal and external communication during the incident response process.</p>
-                </div>
+        <!-- Incident Containment -->
+        <div class="irp-section">
+            <div class="irp-header">
+                <h3>2. Containment</h3>
+                <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="irp-content">
+                <p>The containment stage focuses on preventing the incident from escalating further while ensuring business continuity. This stage is aligned with ISO 27001's risk containment strategies.</p>
+                <ul>
+                    <li>Isolate affected systems to prevent the spread of the incident (e.g., disconnecting compromised systems from the network).</li>
+                    <li>Identify key assets or critical infrastructure at risk and prioritize their protection.</li>
+                    <li>Notify relevant stakeholders (management, security team, etc.) to ensure coordination of efforts.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Incident Eradication -->
+        <div class="irp-section">
+            <div class="irp-header">
+                <h3>3. Eradication</h3>
+                <i class="fas fa-user-shield"></i>
+            </div>
+            <div class="irp-content">
+                <p>Eradication involves removing the root cause of the incident, such as malware, vulnerabilities, or unauthorized access, ensuring it does not recur in the future.</p>
+                <ul>
+                    <li>Perform a thorough investigation to identify the source of the incident (e.g., malware, external attack vectors).</li>
+                    <li>Remove any malicious code or compromised files from affected systems.</li>
+                    <li>Apply patches, security fixes, and reconfigure settings to prevent recurrence.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Incident Recovery -->
+        <div class="irp-section">
+            <div class="irp-header">
+                <h3>4. Recovery</h3>
+                <i class="fas fa-redo-alt"></i>
+            </div>
+            <div class="irp-content">
+                <p>Recovery focuses on restoring affected systems and services to full functionality. It ensures that systems are securely reinstated into the operational environment.</p>
+                <ul>
+                    <li>Restore systems from secure backups, ensuring data integrity and completeness.</li>
+                    <li>Monitor systems closely after recovery to detect any residual issues or vulnerabilities.</li>
+                    <li>Ensure that users and systems can resume normal operations with minimal downtime.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Lessons Learned -->
+        <div class="irp-section">
+            <div class="irp-header">
+                <h3>5. Lessons Learned</h3>
+                <i class="fas fa-history"></i>
+            </div>
+            <div class="irp-content">
+                <p>ISO 27001 stresses the importance of reviewing each incident to determine what went well, what didn’t, and how response procedures can be improved in the future.</p>
+                <ul>
+                    <li>Conduct a post-incident review meeting with all relevant stakeholders.</li>
+                    <li>Document the findings and update security policies, procedures, and controls based on lessons learned.</li>
+                    <li>Conduct a root cause analysis to improve preventive measures and avoid recurrence.</li>
+                </ul>
             </div>
         </div>
 
