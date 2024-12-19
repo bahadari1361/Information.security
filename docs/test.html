@@ -3,202 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incident Response Plan - Identification</title>
+    <title>Incident Response Plan - Identification Phase</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
             color: #333;
-            line-height: 1.6;
         }
+
         header {
-            background: #0056b3;
+            background: #2d3e50;
             color: #fff;
-            padding: 10px 20px;
+            padding: 20px;
             text-align: center;
         }
-        section {
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 1200px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+
         h1, h2 {
-            color: #0056b3;
+            font-family: 'Open Sans', sans-serif;
         }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            margin-top: 20px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container {
+            margin-top: 30px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin-top: 20px;
         }
+
         table, th, td {
             border: 1px solid #ddd;
-        }
-        th, td {
-            padding: 12px;
             text-align: left;
         }
+
+        th, td {
+            padding: 10px;
+        }
+
         th {
-            background: #0056b3;
-            color: #fff;
+            background-color: #f4f4f9;
         }
+
+        .diagram-container {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .diagram {
-            text-align: center;
-            margin: 40px 0;
-        }
-        .diagram img {
-            max-width: 100%;
+            width: 60%;
             height: auto;
         }
+
         .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-        .tooltip .tooltiptext {
+            position: absolute;
             visibility: hidden;
-            width: 200px;
-            background-color: #555;
+            background-color: #333;
             color: #fff;
             text-align: center;
             border-radius: 5px;
             padding: 5px;
-            position: absolute;
+            font-size: 0.9em;
             z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
         }
-        .tooltip:hover .tooltiptext {
+
+        .diagram .step:hover + .tooltip {
             visibility: visible;
-            opacity: 1;
         }
+
+        .step {
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Incident Response Plan - Identification</h1>
+        <h1>Incident Response Plan - Identification Phase</h1>
     </header>
 
-    <section>
-        <h2>Identification Section – Incident Response Plan</h2>
-        <p>The <strong>Identification</strong> phase of the Incident Response Plan (IRP) at the Central Bank of Afghanistan focuses on detecting and confirming potential security incidents. This phase is critical for timely and accurate response to minimize the impact of cybersecurity threats on the organization’s operations, sensitive data, and financial systems.</p>
+    <div class="container">
+        <div class="content">
+            <h2>Identification Section</h2>
+            <p>The <strong>Identification</strong> phase of the Incident Response Plan (IRP) at the Central Bank of Afghanistan focuses on detecting and confirming potential security incidents. This phase is critical for timely and accurate response to minimize the impact of cybersecurity threats on the organization’s operations, sensitive data, and financial systems.</p>
 
-        <h3>Objectives</h3>
-        <ul>
-            <li>Detect anomalies and suspicious activities in IT systems and networks.</li>
-            <li>Confirm whether an event qualifies as a security incident.</li>
-            <li>Categorize and prioritize incidents based on severity and impact.</li>
-            <li>Document the initial details of the incident for further analysis and resolution.</li>
-        </ul>
+            <h3>Objectives</h3>
+            <ul>
+                <li>Detect anomalies and suspicious activities in IT systems and networks.</li>
+                <li>Confirm whether an event qualifies as a security incident.</li>
+                <li>Categorize and prioritize incidents based on severity and impact.</li>
+                <li>Document the initial details of the incident for further analysis and resolution.</li>
+            </ul>
 
-        <h3>Key Steps in the Identification Process</h3>
-        <ol>
-            <li><strong>Monitoring and Detection:</strong>
-                <ul>
-                    <li>Utilize automated monitoring tools such as SIEM (Security Information and Event Management) systems to identify potential threats in real time.</li>
-                    <li>Integrate logs from critical systems like firewalls, intrusion detection/prevention systems (IDS/IPS), and endpoint detection solutions for centralized analysis.</li>
-                </ul>
-            </li>
-            <li><strong>Incident Analysis:</strong>
-                <ul>
-                    <li>Analyze alerts using predefined baselines and thresholds to distinguish between false positives and genuine incidents.</li>
-                    <li>Collaborate with internal and external teams (e.g., SOC or CERT) to confirm the scope and nature of the incident.</li>
-                </ul>
-            </li>
-            <li><strong>Classification and Prioritization:</strong>
-                <ul>
-                    <li>Categorize incidents based on predefined classifications, such as malware attacks, unauthorized access, data breaches, or denial-of-service (DoS) attacks.</li>
-                    <li>Assign priority levels (Critical, High, Medium, Low) based on the potential impact on the bank’s systems, data, and reputation.</li>
-                </ul>
-            </li>
-            <li><strong>Notification and Reporting:</strong>
-                <ul>
-                    <li>Notify stakeholders, including the Incident Response Team (IRT), IT administrators, and executive management, as per the escalation matrix.</li>
-                    <li>Record all details, including date/time, affected systems, and initial findings, in an incident tracking system.</li>
-                </ul>
-            </li>
-        </ol>
+            <h3>Key Steps in the Identification Process</h3>
+            <h4>Monitoring and Detection:</h4>
+            <ul>
+                <li>Utilize automated monitoring tools such as SIEM (Security Information and Event Management) systems to identify potential threats in real-time.</li>
+                <li>Integrate logs from critical systems like firewalls, intrusion detection/prevention systems (IDS/IPS), and endpoint detection solutions for centralized analysis.</li>
+            </ul>
 
-        <h3>Incident Classification Table</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Incident Type</th>
-                    <th>Description</th>
-                    <th>Example Indicators</th>
-                    <th>Priority</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Malware Attack</td>
-                    <td>Unauthorized software causing harm</td>
-                    <td>Unusual file activity, antivirus alerts</td>
-                    <td>Critical</td>
-                </tr>
-                <tr>
-                    <td>Unauthorized Access</td>
-                    <td>Access to systems without authorization</td>
-                    <td>Failed login attempts, privilege escalation</td>
-                    <td>High</td>
-                </tr>
-                <tr>
-                    <td>Data Breach</td>
-                    <td>Unauthorized disclosure of sensitive data</td>
-                    <td>Suspicious data exfiltration alerts</td>
-                    <td>Critical</td>
-                </tr>
-                <tr>
-                    <td>Denial of Service (DoS)</td>
-                    <td>Disruption of service availability</td>
-                    <td>Traffic spikes, server unresponsiveness</td>
-                    <td>High</td>
-                </tr>
-                <tr>
-                    <td>Phishing Attack</td>
-                    <td>Social engineering targeting users</td>
-                    <td>Fraudulent emails, credential compromise</td>
-                    <td>Medium</td>
-                </tr>
-                <tr>
-                    <td>Insider Threat</td>
-                    <td>Malicious actions by internal personnel</td>
-                    <td>Unusual access patterns, data transfers</td>
-                    <td>Medium</td>
-                </tr>
-            </tbody>
-        </table>
+            <h4>Incident Analysis:</h4>
+            <ul>
+                <li>Analyze alerts using predefined baselines and thresholds to distinguish between false positives and genuine incidents.</li>
+                <li>Collaborate with internal and external teams (e.g., SOC or CERT) to confirm the scope and nature of the incident.</li>
+            </ul>
 
-        <h3>Security Diagram: Incident Identification Workflow</h3>
-        <div class="diagram">
-            <img src="workflow_diagram.png" alt="Incident Identification Workflow" usemap="#workflowmap">
-            <map name="workflowmap">
-                <area shape="rect" coords="0,0,100,50" href="#" class="tooltip">
-                    <span class="tooltiptext">Monitoring Systems (SIEM, IDS/IPS, Firewalls)</span>
-                </area>
-                <area shape="rect" coords="110,0,210,50" href="#" class="tooltip">
-                    <span class="tooltiptext">Analyze Alerts</span>
-                </area>
-                <area shape="rect" coords="220,0,320,50" href="#" class="tooltip">
-                    <span class="tooltiptext">Confirm Incident</span>
-                </area>
-                <area shape="rect" coords="330,0,430,50" href="#" class="tooltip">
-                    <span class="tooltiptext">Classify Incident</span>
-                </area>
-                <area shape="rect" coords="440,0,540,50" href="#" class="tooltip">
-                    <span class="tooltiptext">Notify Stakeholders</span>
-                </area>
-                <area shape="rect" coords="550,0,650,50" href="#" class="tooltip">
-                    <span class="tooltiptext">Document Findings</span>
-                </area>
-            </map>
+            <h4>Classification and Prioritization:</h4>
+            <ul>
+                <li>Categorize incidents based on predefined classifications, such as malware attacks, unauthorized access, data breaches, or denial-of-service (DoS) attacks.</li>
+                <li>Assign priority levels (Critical, High, Medium, Low) based on the potential impact on the bank’s systems, data, and reputation.</li>
+            </ul>
+
+            <h4>Notification and Reporting:</h4>
+            <ul>
+                <li>Notify stakeholders, including the Incident Response Team (IRT), IT administrators, and executive management, as per the escalation matrix.</li>
+                <li>Record all details, including date/time, affected systems, and initial findings, in an incident tracking system.</li>
+            </ul>
+
+            <div class="table-container">
+                <h3>Incident Classification Table</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Incident Type</th>
+                            <th>Description</th>
+                            <th>Example Indicators</th>
+                            <th>Priority</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Malware Attack</td>
+                            <td>Unauthorized software causing harm</td>
+                            <td>Unusual file activity, antivirus alerts</td>
+                            <td>Critical</td>
+                        </tr>
+                        <tr>
+                            <td>Unauthorized Access</td>
+                            <td>Access to systems without authorization</td>
+                            <td>Failed login attempts, privilege escalation</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>Data Breach</td>
+                            <td>Unauthorized disclosure of sensitive data</td>
+                            <td>Suspicious data exfiltration alerts</td>
+                            <td>Critical</td>
+                        </tr>
+                        <tr>
+                            <td>Denial of Service (DoS)</td>
+                            <td>Disruption of service availability</td>
+                            <td>Traffic spikes, server unresponsiveness</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td>Phishing Attack</td>
+                            <td>Social engineering targeting users</td>
+                            <td>Fraudulent emails, credential compromise</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td>Insider Threat</td>
+                            <td>Malicious actions by internal personnel</td>
+                            <td>Unusual access patterns, data transfers</td>
+                            <td>Medium</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="diagram-container">
+                <h3>Security Diagram: Incident Identification Workflow</h3>
+                <!-- Incident Identification Workflow Diagram (SVG) -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" class="diagram">
+                    <rect x="10" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
+                    <text x="15" y="45" font-family="Arial" font-size="12" fill="#333">Monitoring Systems</text>
+
+                    <rect x="150" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
+                    <text x="155" y="45" font-family="Arial" font-size="12" fill="#333">Analyze Alerts</text>
+
+                    <rect x="290" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
+                    <text x="295" y="45" font-family="Arial" font-size="12" fill="#333">Confirm Incident</text>
+
+                    <rect x="430" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
+                    <text x="435" y="45" font-family="Arial" font-size="12" fill="#333">Classify Incident</text>
+
+                    <rect x="570" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
+                    <text x="575" y="45" font-family="Arial" font-size="12" fill="#333">Notify Stakeholders</text>
+
+                    <rect x="710" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
+                    <text x="715" y="45" font-family="Arial" font-size="12" fill="#333">Document Findings</text>
+
+                    <line x1="130" y1="50" x2="150" y2="50" stroke="#ccc" stroke-width="2" />
+                    <line x1="270" y1="50" x2="290" y2="50" stroke="#ccc" stroke-width="2" />
+                    <line x1="410" y1="50" x2="430" y2="50" stroke="#ccc" stroke-width="2" />
+                    <line x1="550" y1="50" x2="570" y2="50" stroke="#ccc" stroke-width="2" />
+                </svg>
+            </div>
         </div>
-    </section>
+    </div>
+
 </body>
 </html>
