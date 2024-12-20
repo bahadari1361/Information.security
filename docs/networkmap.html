@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
+      background-color: #f9f9f9;
       margin: 0;
       padding: 20px;
     }
@@ -17,9 +17,9 @@
       color: #333;
     }
     .node {
-      fill: steelblue;
       stroke: #333;
-      stroke-width: 1.5px;
+      stroke-width: 2px;
+      cursor: pointer;
     }
     .link {
       fill: none;
@@ -30,24 +30,40 @@
       font-size: 12px;
       font-weight: bold;
       text-anchor: middle;
+      pointer-events: none;
+    }
+    .tooltip {
+      position: absolute;
+      background-color: #333;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 12px;
+      pointer-events: none;
+      visibility: hidden;
     }
   </style>
 </head>
 <body>
   <h1>Interactive Banking Cybersecurity Diagram</h1>
   <svg width="1000" height="800"></svg>
+  <div class="tooltip" id="tooltip"></div>
   <script>
     const svg = d3.select("svg");
+    const tooltip = d3.select("#tooltip");
+
     const nodes = [
-      { id: "Internet", x: 100, y: 100 },
-      { id: "Router", x: 300, y: 100 },
-      { id: "Firewall", x: 500, y: 100 },
-      { id: "DMZ - Web Server", x: 500, y: 300 },
-      { id: "DMZ - Email Server", x: 700, y: 300 },
-      { id: "Database Server", x: 500, y: 500 },
-      { id: "Core Banking System", x: 700, y: 500 },
-      { id: "Security Operations Center (SOC)", x: 300, y: 500 }
+      { id: "Internet", x: 100, y: 100, color: "blue", info: "External internet connection." },
+      { id: "Router", x: 300, y: 100, color: "green", info: "Routes traffic within the network." },
+      { id: "Firewall", x: 500, y: 100, color: "red", info: "Blocks unauthorized traffic." },
+      { id: "DMZ - Web Server", x: 500, y: 300, color: "orange", info: "Hosts public-facing websites." },
+      { id: "DMZ - Email Server", x: 700, y: 300, color: "orange", info: "Handles email services." },
+      { id: "Database Server", x: 500, y: 500, color: "purple", info: "Stores critical data." },
+      { id: "Core Banking System", x: 700, y: 500, color: "purple", info: "Manages banking operations." },
+      { id: "Security Operations Center (SOC)", x: 300, y: 500, color: "yellow", info: "Monitors and responds to threats." },
+      { id: "Backup System", x: 300, y: 700, color: "gray", info: "Stores backups for disaster recovery." }
     ];
+
     const links = [
       { source: "Internet", target: "Router" },
       { source: "Router", target: "Firewall" },
@@ -56,7 +72,8 @@
       { source: "DMZ - Web Server", target: "Database Server" },
       { source: "DMZ - Email Server", target: "Core Banking System" },
       { source: "Database Server", target: "Security Operations Center (SOC)" },
-      { source: "Core Banking System", target: "Security Operations Center (SOC)" }
+      { source: "Core Banking System", target: "Security Operations Center (SOC)" },
+      { source: "Security Operations Center (SOC)", target: "Backup System" }
     ];
 
     // Draw links
@@ -78,7 +95,21 @@
       .attr("class", "node")
       .attr("cx", d => d.x)
       .attr("cy", d => d.y)
-      .attr("r", 30);
+      .attr("r", 30)
+      .attr("fill", d => d.color)
+      .on("mouseover", (event, d) => {
+        tooltip.style("visibility", "visible")
+          .text(d.info)
+          .style("top", (event.pageY + 10) + "px")
+          .style("left", (event.pageX + 10) + "px");
+      })
+      .on("mousemove", (event) => {
+        tooltip.style("top", (event.pageY + 10) + "px")
+          .style("left", (event.pageX + 10) + "px");
+      })
+      .on("mouseout", () => {
+        tooltip.style("visibility", "hidden");
+      });
 
     // Add labels
     svg.selectAll("text")
