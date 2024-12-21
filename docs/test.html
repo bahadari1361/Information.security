@@ -3,283 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Incident Response Plan - Identification Phase</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio showcasing Information Security projects at the Central Bank of Afghanistan">
+    <title>Information Security Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.4/mermaid.min.js"></script>
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
             color: #333;
         }
-
         header {
-            background: #2d3e50;
-            color: #fff;
-            padding: 20px;
+            background-color: #003366;
+            color: white;
+            padding: 20px 10%;
             text-align: center;
         }
-
-        h1, h2 {
-            font-family: 'Open Sans', sans-serif;
+        header h1 {
+            margin: 0;
         }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        nav {
+            margin: 20px 10%;
+            display: flex;
+            justify-content: center;
         }
-
-        h2 {
-            font-size: 1.8em;
-            margin-top: 20px;
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #003366;
+            font-weight: bold;
         }
-
-        .container {
-            width: 80%;
-            margin: 20px auto;
+        nav a:hover {
+            text-decoration: underline;
         }
-
-        .content {
-            background-color: #fff;
+        section {
+            padding: 20px 10%;
+        }
+        .diagram-container {
+            background: white;
+            margin: 20px 0;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
-        .table-container {
-            margin-top: 30px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th, td {
-            padding: 10px;
-        }
-
-        th {
-            background-color: #f4f4f9;
-        }
-
-        .diagram-container {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .diagram {
-            width: 60%;
-            height: auto;
-        }
-
-        .tooltip {
-            position: absolute;
-            visibility: hidden;
-            background-color: #333;
-            color: #fff;
+        footer {
+            background-color: #003366;
+            color: white;
             text-align: center;
-            border-radius: 5px;
-            padding: 5px;
-            font-size: 0.9em;
-            z-index: 1;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
-
-        .diagram .step:hover + .tooltip {
-            visibility: visible;
-        }
-
-        .step {
-            cursor: pointer;
-        }
-
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport Meta Tag -->
-    <title>Your GitHub Page</title>
-
-    <style>
-        /* Basic responsive styles */
-        body {
-            font-family: Arial, sans-serif;
+        footer p {
             margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Mobile responsiveness */
-        @media only screen and (max-width: 768px) {
-            .container {
-                padding: 10px;
-                width: 100%;
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-
-            p {
-                font-size: 1em;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to My Portfolio Project</h1>
-        <p>This page looks good on both mobile and desktop!</p>
-        <!-- Add your other content here -->
-    </div>
-</body>
-</html>
-
-    </style>
-</head>
-<body>
-
     <header>
-        <h1>Incident Response Plan - Identification Phase</h1>
+        <h1>Information Security Portfolio</h1>
+        <p>Central Bank of Afghanistan</p>
     </header>
-
-    <div class="container">
-        <div class="content">
-            <h2>Identification Section</h2>
-            <p>The <strong>Identification</strong> phase of the Incident Response Plan (IRP) at the Central Bank of Afghanistan focuses on detecting and confirming potential security incidents. This phase is critical for timely and accurate response to minimize the impact of cybersecurity threats on the organization’s operations, sensitive data, and financial systems.</p>
-
-            <h3>Objectives</h3>
-            <ul>
-                <li>Detect anomalies and suspicious activities in IT systems and networks.</li>
-                <li>Confirm whether an event qualifies as a security incident.</li>
-                <li>Categorize and prioritize incidents based on severity and impact.</li>
-                <li>Document the initial details of the incident for further analysis and resolution.</li>
-            </ul>
-
-            <h3>Key Steps in the Identification Process</h3>
-            <h4>Monitoring and Detection:</h4>
-            <ul>
-                <li>Utilize automated monitoring tools such as SIEM (Security Information and Event Management) systems to identify potential threats in real-time.</li>
-                <li>Integrate logs from critical systems like firewalls, intrusion detection/prevention systems (IDS/IPS), and endpoint detection solutions for centralized analysis.</li>
-            </ul>
-
-            <h4>Incident Analysis:</h4>
-            <ul>
-                <li>Analyze alerts using predefined baselines and thresholds to distinguish between false positives and genuine incidents.</li>
-                <li>Collaborate with internal and external teams (e.g., SOC or CERT) to confirm the scope and nature of the incident.</li>
-            </ul>
-
-            <h4>Classification and Prioritization:</h4>
-            <ul>
-                <li>Categorize incidents based on predefined classifications, such as malware attacks, unauthorized access, data breaches, or denial-of-service (DoS) attacks.</li>
-                <li>Assign priority levels (Critical, High, Medium, Low) based on the potential impact on the bank’s systems, data, and reputation.</li>
-            </ul>
-
-            <h4>Notification and Reporting:</h4>
-            <ul>
-                <li>Notify stakeholders, including the Incident Response Team (IRT), IT administrators, and executive management, as per the escalation matrix.</li>
-                <li>Record all details, including date/time, affected systems, and initial findings, in an incident tracking system.</li>
-            </ul>
-
-            <div class="table-container">
-                <h3>Incident Classification Table</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Incident Type</th>
-                            <th>Description</th>
-                            <th>Example Indicators</th>
-                            <th>Priority</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Malware Attack</td>
-                            <td>Unauthorized software causing harm</td>
-                            <td>Unusual file activity, antivirus alerts</td>
-                            <td>Critical</td>
-                        </tr>
-                        <tr>
-                            <td>Unauthorized Access</td>
-                            <td>Access to systems without authorization</td>
-                            <td>Failed login attempts, privilege escalation</td>
-                            <td>High</td>
-                        </tr>
-                        <tr>
-                            <td>Data Breach</td>
-                            <td>Unauthorized disclosure of sensitive data</td>
-                            <td>Suspicious data exfiltration alerts</td>
-                            <td>Critical</td>
-                        </tr>
-                        <tr>
-                            <td>Denial of Service (DoS)</td>
-                            <td>Disruption of service availability</td>
-                            <td>Traffic spikes, server unresponsiveness</td>
-                            <td>High</td>
-                        </tr>
-                        <tr>
-                            <td>Phishing Attack</td>
-                            <td>Social engineering targeting users</td>
-                            <td>Fraudulent emails, credential compromise</td>
-                            <td>Medium</td>
-                        </tr>
-                        <tr>
-                            <td>Insider Threat</td>
-                            <td>Malicious actions by internal personnel</td>
-                            <td>Unusual access patterns, data transfers</td>
-                            <td>Medium</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="diagram-container">
-                <h3>Security Diagram: Incident Identification Workflow</h3>
-                <!-- Incident Identification Workflow Diagram (SVG) -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" class="diagram">
-                    <rect x="10" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
-                    <text x="15" y="45" font-family="Arial" font-size="12" fill="#333">Monitoring Systems</text>
-
-                    <rect x="150" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
-                    <text x="155" y="45" font-family="Arial" font-size="12" fill="#333">Analyze Alerts</text>
-
-                    <rect x="290" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
-                    <text x="295" y="45" font-family="Arial" font-size="12" fill="#333">Confirm Incident</text>
-
-                    <rect x="430" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
-                    <text x="435" y="45" font-family="Arial" font-size="12" fill="#333">Classify Incident</text>
-
-                    <rect x="570" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
-                    <text x="575" y="45" font-family="Arial" font-size="12" fill="#333">Notify Stakeholders</text>
-
-                    <rect x="710" y="20" width="120" height="60" rx="10" ry="10" fill="#f4f4f9" stroke="#ccc" stroke-width="2" />
-                    <text x="715" y="45" font-family="Arial" font-size="12" fill="#333">Document Findings</text>
-
-                    <line x1="130" y1="50" x2="150" y2="50" stroke="#ccc" stroke-width="2" />
-                    <line x1="270" y1="50" x2="290" y2="50" stroke="#ccc" stroke-width="2" />
-                    <line x1="410" y1="50" x2="430" y2="50" stroke="#ccc" stroke-width="2" />
-                    <line x1="550" y1="50" x2="570" y2="50" stroke="#ccc" stroke-width="2" />
-                </svg>
+    <nav>
+        <a href="#policies">Policies</a>
+        <a href="#diagram">OSINT Diagram</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <section id="diagram">
+        <h2>OSINT Diagram</h2>
+        <div class="diagram-container">
+            <div class="mermaid">
+                graph TD
+                    A[Central Bank of Afghanistan] --> B[Information Security Policies]
+                    A --> C[Security Projects]
+                    B --> D[ISO 27001 Compliance]
+                    B --> E[Business Continuity Planning]
+                    C --> F[Monitoring and Logging System]
+                    C --> G[Penetration Testing]
+                    C --> H[Multi-Factor Authentication]
             </div>
         </div>
-    </div>
-
+    </section>
+    <footer>
+        <p>&copy; 2024 Hashmatullah Bahadari. All Rights Reserved.</p>
+    </footer>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
 </body>
 </html>
