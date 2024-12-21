@@ -3,136 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hashmatullah Bahadari's OSINT Portfolio</title>
+    <title>Hashmatullah Bahadari's Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
             background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
             color: #333;
         }
-        h1, h2 {
-            color: #2a6ebb;
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
         }
         .section {
-            background-color: #fff;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
         }
-        .section h2 {
-            margin-top: 0;
+        .collapsible {
+            background-color: #777;
+            color: white;
             cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
         }
-        .section ul {
-            list-style-type: none;
-            padding-left: 20px;
+        .active, .collapsible:hover {
+            background-color: #555;
+        }
+        .content {
+            padding: 0 18px;
             display: none;
+            overflow: hidden;
+            background-color: #f1f1f1;
         }
-        .section ul.open {
-            display: block;
+        ul {
+            list-style-type: none;
         }
-        .meta {
-            font-size: 0.9em;
-            color: #888;
+        li {
+            margin: 10px 0;
         }
-        .meta span {
-            color: #444;
+        .tree {
+            margin-left: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Hashmatullah Bahadari's OSINT Portfolio</h1>
-    <div id="portfolio" class="section"></div>
+    <div class="container">
+        <h1>Hashmatullah Bahadari's Portfolio</h1>
+        <h2 id="portfolioName"></h2>
+
+        <!-- Bio Section -->
+        <div class="section" id="bioSection">
+            <button class="collapsible">Bio</button>
+            <div class="content">
+                <p><strong>Location:</strong> <span id="location"></span></p>
+                <p><strong>Native Language:</strong> <span id="nativeLanguage"></span></p>
+                <p><strong>Languages:</strong></p>
+                <ul id="languagesList"></ul>
+            </div>
+        </div>
+
+        <!-- Certifications Section -->
+        <div class="section" id="certificationsSection">
+            <button class="collapsible">Certifications</button>
+            <div class="content">
+                <ul id="certificationsList"></ul>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="section" id="experienceSection">
+            <button class="collapsible">Experience</button>
+            <div class="content">
+                <ul id="experienceList"></ul>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section" id="skillsSection">
+            <button class="collapsible">Skills</button>
+            <div class="content">
+                <ul id="skillsList"></ul>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section" id="projectsSection">
+            <button class="collapsible">Projects</button>
+            <div class="content">
+                <ul id="projectsList"></ul>
+            </div>
+        </div>
+    </div>
 
     <script>
-        fetch('https://raw.githubusercontent.com/bahadari1361/Information.security/main/docs/test1.json')
+        // Fetch JSON data
+        fetch('test1.json')
             .then(response => response.json())
             .then(data => {
-                const portfolio = data.portfolio;
+                // Populate basic information
+                document.getElementById("portfolioName").textContent = data.portfolio.name;
 
-                function toggleSection(event) {
-                    const section = event.target.nextElementSibling;
-                    section.classList.toggle('open');
+                // Bio Information
+                document.getElementById("location").textContent = data.portfolio.bio.location;
+                document.getElementById("nativeLanguage").textContent = data.portfolio.bio.native_language;
+                const languagesList = document.getElementById("languagesList");
+                for (const [language, level] of Object.entries(data.portfolio.bio.languages)) {
+                    const li = document.createElement('li');
+                    li.textContent = `${language}: ${level}`;
+                    languagesList.appendChild(li);
                 }
 
-                document.getElementById('portfolio').innerHTML = `
-                    <h2 onclick="toggleSection(event)">Basic Information</h2>
-                    <div class="section">
-                        <p><strong>Name:</strong> ${portfolio.name}</p>
-                        <p><strong>Location:</strong> ${portfolio.bio.location}</p>
-                        <p><strong>Native Language:</strong> ${portfolio.bio.native_language}</p>
-                        <p><strong>Languages:</strong> 
-                            <ul>
-                                <li><strong>English:</strong> ${portfolio.bio.languages.English}</li>
-                                <li><strong>German:</strong> ${portfolio.bio.languages.German}</li>
-                                <li><strong>Turkish:</strong> ${portfolio.bio.languages.Turkish}</li>
-                            </ul>
-                        </p>
-                    </div>
+                // Certifications
+                const certificationsList = document.getElementById("certificationsList");
+                data.portfolio.bio.certifications.forEach(cert => {
+                    const li = document.createElement('li');
+                    li.textContent = `${cert.name} - ${cert.organization} (Valid until: ${cert.valid_until})`;
+                    certificationsList.appendChild(li);
+                });
 
-                    <h2 onclick="toggleSection(event)">Certifications</h2>
-                    <div class="section">
-                        <ul>
-                            ${portfolio.bio.certifications.map(cert => `
-                                <li>
-                                    <span class="meta">Name: </span>${cert.name}, 
-                                    <span class="meta">Organization: </span>${cert.organization}, 
-                                    <span class="meta">Valid Until: </span>${cert.valid_until}
-                                </li>
-                            `).join('')}
-                        </ul>
-                    </div>
+                // Experience
+                const experienceList = document.getElementById("experienceList");
+                data.portfolio.experience.forEach(exp => {
+                    const li = document.createElement('li');
+                    li.textContent = `${exp.role} at ${exp.organization} (${exp.duration})`;
+                    const ul = document.createElement('ul');
+                    exp.responsibilities.forEach(responsibility => {
+                        const subLi = document.createElement('li');
+                        subLi.textContent = responsibility;
+                        ul.appendChild(subLi);
+                    });
+                    li.appendChild(ul);
+                    experienceList.appendChild(li);
+                });
 
-                    <h2 onclick="toggleSection(event)">Professional Experience</h2>
-                    ${portfolio.experience.map(exp => `
-                        <div class="section">
-                            <p><strong>Role:</strong> ${exp.role}</p>
-                            <p><strong>Organization:</strong> ${exp.organization}</p>
-                            <p><strong>Duration:</strong> ${exp.duration}</p>
-                            <p><strong>Responsibilities:</strong></p>
-                            <ul>
-                                ${exp.responsibilities.map(res => `<li>${res}</li>`).join('')}
-                            </ul>
-                        </div>
-                    `).join('')}
+                // Skills
+                const skillsList = document.getElementById("skillsList");
+                data.portfolio.skills.forEach(skill => {
+                    const li = document.createElement('li');
+                    li.textContent = skill;
+                    skillsList.appendChild(li);
+                });
 
-                    <h2 onclick="toggleSection(event)">Skills</h2>
-                    <div class="section">
-                        <ul>
-                            ${portfolio.skills.map(skill => `<li>${skill}</li>`).join('')}
-                        </ul>
-                    </div>
+                // Projects
+                const projectsList = document.getElementById("projectsList");
+                data.portfolio.projects.forEach(project => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `<strong>${project.name}</strong>: ${project.description}`;
+                    const toolsUl = document.createElement('ul');
+                    project.tools_used.forEach(tool => {
+                        const toolLi = document.createElement('li');
+                        toolLi.textContent = tool;
+                        toolsUl.appendChild(toolLi);
+                    });
+                    li.appendChild(toolsUl);
+                    projectsList.appendChild(li);
+                });
 
-                    <h2 onclick="toggleSection(event)">Projects</h2>
-                    ${portfolio.projects.map(project => `
-                        <div class="section">
-                            <p><strong>Project Name:</strong> ${project.name}</p>
-                            <p><strong>Description:</strong> ${project.description}</p>
-                            <p><strong>Tools Used:</strong> ${project.tools_used.join(', ')}</p>
-                            <p><strong>Repository:</strong> <a href="${project.repository}" target="_blank">${project.repository}</a></p>
-                        </div>
-                    `).join('')}
-
-                    <h2 onclick="toggleSection(event)">Education</h2>
-                    <div class="section">
-                        <p><strong>Degree:</strong> ${portfolio.education.degree}</p>
-                        <p><strong>Institution:</strong> ${portfolio.education.institution}</p>
-                        <p><strong>Years:</strong> ${portfolio.education.years}</p>
-                        <p><strong>Specialization:</strong> ${portfolio.education.specialization}</p>
-                    </div>
-
-                    <h2 onclick="toggleSection(event)">Additional Information</h2>
-                    <div class="section">
-                        <p><strong>Cryptocurrency Experience:</strong> ${portfolio.additional_info.experience_in_cryptocurrency}</p>
-                        <p><strong>Recent Work:</strong> ${portfolio.additional_info.recent_work}</p>
-                    </div>
-                `;
-            })
-            .catch(error => {
-                console.error('Error fetching JSON:', error);
-                document.getElementById('portfolio').innerHTML = 'Failed to load portfolio data.';
+                // Add collapsible functionality
+                const collapsibles = document.querySelectorAll(".collapsible");
+                collapsibles.forEach(collapsible => {
+                    collapsible.addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        const content = this.nextElementSibling;
+                        if (content.style.display === "block") {
+                            content.style.display = "none";
+                        } else {
+                            content.style.display = "block";
+                        }
+                    });
+                });
             });
     </script>
 </body>
