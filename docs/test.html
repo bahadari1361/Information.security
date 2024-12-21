@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hashmatullah Bahadari's Information Security OSINT Portfolio</title>
+    <title>Hashmatullah Bahadari's OSINT Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,13 +23,15 @@
         }
         .section h2 {
             margin-top: 0;
+            cursor: pointer;
         }
-        .list {
+        .section ul {
             list-style-type: none;
-            padding: 0;
+            padding-left: 20px;
+            display: none;
         }
-        .list li {
-            margin: 5px 0;
+        .section ul.open {
+            display: block;
         }
         .meta {
             font-size: 0.9em;
@@ -50,14 +52,19 @@
             .then(data => {
                 const portfolio = data.portfolio;
 
+                function toggleSection(event) {
+                    const section = event.target.nextElementSibling;
+                    section.classList.toggle('open');
+                }
+
                 document.getElementById('portfolio').innerHTML = `
-                    <h2>Basic Information</h2>
+                    <h2 onclick="toggleSection(event)">Basic Information</h2>
                     <div class="section">
                         <p><strong>Name:</strong> ${portfolio.name}</p>
                         <p><strong>Location:</strong> ${portfolio.bio.location}</p>
                         <p><strong>Native Language:</strong> ${portfolio.bio.native_language}</p>
                         <p><strong>Languages:</strong> 
-                            <ul class="list">
+                            <ul>
                                 <li><strong>English:</strong> ${portfolio.bio.languages.English}</li>
                                 <li><strong>German:</strong> ${portfolio.bio.languages.German}</li>
                                 <li><strong>Turkish:</strong> ${portfolio.bio.languages.Turkish}</li>
@@ -65,9 +72,9 @@
                         </p>
                     </div>
 
-                    <h2>Certifications</h2>
+                    <h2 onclick="toggleSection(event)">Certifications</h2>
                     <div class="section">
-                        <ul class="list">
+                        <ul>
                             ${portfolio.bio.certifications.map(cert => `
                                 <li>
                                     <span class="meta">Name: </span>${cert.name}, 
@@ -78,27 +85,27 @@
                         </ul>
                     </div>
 
-                    <h2>Professional Experience</h2>
+                    <h2 onclick="toggleSection(event)">Professional Experience</h2>
                     ${portfolio.experience.map(exp => `
                         <div class="section">
                             <p><strong>Role:</strong> ${exp.role}</p>
                             <p><strong>Organization:</strong> ${exp.organization}</p>
                             <p><strong>Duration:</strong> ${exp.duration}</p>
                             <p><strong>Responsibilities:</strong></p>
-                            <ul class="list">
+                            <ul>
                                 ${exp.responsibilities.map(res => `<li>${res}</li>`).join('')}
                             </ul>
                         </div>
                     `).join('')}
 
-                    <h2>Skills</h2>
+                    <h2 onclick="toggleSection(event)">Skills</h2>
                     <div class="section">
-                        <ul class="list">
+                        <ul>
                             ${portfolio.skills.map(skill => `<li>${skill}</li>`).join('')}
                         </ul>
                     </div>
 
-                    <h2>Projects</h2>
+                    <h2 onclick="toggleSection(event)">Projects</h2>
                     ${portfolio.projects.map(project => `
                         <div class="section">
                             <p><strong>Project Name:</strong> ${project.name}</p>
@@ -108,7 +115,7 @@
                         </div>
                     `).join('')}
 
-                    <h2>Education</h2>
+                    <h2 onclick="toggleSection(event)">Education</h2>
                     <div class="section">
                         <p><strong>Degree:</strong> ${portfolio.education.degree}</p>
                         <p><strong>Institution:</strong> ${portfolio.education.institution}</p>
@@ -116,7 +123,7 @@
                         <p><strong>Specialization:</strong> ${portfolio.education.specialization}</p>
                     </div>
 
-                    <h2>Additional Information</h2>
+                    <h2 onclick="toggleSection(event)">Additional Information</h2>
                     <div class="section">
                         <p><strong>Cryptocurrency Experience:</strong> ${portfolio.additional_info.experience_in_cryptocurrency}</p>
                         <p><strong>Recent Work:</strong> ${portfolio.additional_info.recent_work}</p>
