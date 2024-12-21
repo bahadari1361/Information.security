@@ -3,94 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfolio showcasing Information Security projects at the Central Bank of Afghanistan">
-    <title>Information Security Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.4/mermaid.min.js"></script>
+    <title>Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            line-height: 1.6;
         }
-        header {
-            background-color: #003366;
-            color: white;
-            padding: 20px 10%;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-        }
-        nav {
-            margin: 20px 10%;
-            display: flex;
-            justify-content: center;
-        }
-        nav a {
-            margin: 0 15px;
-            text-decoration: none;
-            color: #003366;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        section {
-            padding: 20px 10%;
-        }
-        .diagram-container {
-            background: white;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background-color: #003366;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        footer p {
-            margin: 0;
+        pre {
+            white-space: pre-wrap; /* Allows long lines of text to wrap */
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Information Security Portfolio</h1>
-        <p>Central Bank of Afghanistan</p>
-    </header>
-    <nav>
-        <a href="#policies">Policies</a>
-        <a href="#diagram">OSINT Diagram</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <section id="diagram">
-        <h2>OSINT Diagram</h2>
-        <div class="diagram-container">
-            <div class="mermaid">
-                graph TD
-                    A[Central Bank of Afghanistan] --> B[Information Security Policies]
-                    A --> C[Security Projects]
-                    B --> D[ISO 27001 Compliance]
-                    B --> E[Business Continuity Planning]
-                    C --> F[Monitoring and Logging System]
-                    C --> G[Penetration Testing]
-                    C --> H[Multi-Factor Authentication]
-            </div>
-        </div>
-    </section>
-    <footer>
-        <p>&copy; 2024 Hashmatullah Bahadari. All Rights Reserved.</p>
-    </footer>
-    <script>
-        mermaid.initialize({ startOnLoad: true });
-    </script>
+
+<h1>Hashmatullah Bahadari's Portfolio</h1>
+
+<!-- Add an area to display the JSON content -->
+<pre id="portfolio-content"></pre>
+
+<script>
+// Fetch the JSON from GitHub raw URL
+fetch('https://raw.githubusercontent.com/bahadari1361/Information.security/main/docs/test1.json')
+    .then(response => response.json())  // Parse the JSON
+    .then(data => {
+        // Process the data and display in the 'portfolio-content' element
+        document.getElementById('portfolio-content').textContent = JSON.stringify(data, null, 2);  // Format the JSON output with indentation
+    })
+    .catch(error => {
+        console.error('Error fetching JSON:', error);
+    });
+</script>
+
 </body>
 </html>
