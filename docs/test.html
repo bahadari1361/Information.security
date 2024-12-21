@@ -8,32 +8,84 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
+            padding: 20px;
         }
-        pre {
-            white-space: pre-wrap; /* Allows long lines of text to wrap */
-            word-wrap: break-word;
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        .section ul {
+            padding-left: 20px;
+        }
+
+        .section li {
+            margin-bottom: 5px;
+        }
+
+        .project, .experience, .education {
+            margin-bottom: 20px;
+        }
+
+        .project p, .experience p, .education p {
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
 
-<h1>Hashmatullah Bahadari's Portfolio</h1>
+<div class="container">
+    <h1>Hashmatullah Bahadari's Portfolio</h1>
 
-<!-- Add an area to display the JSON content -->
-<pre id="portfolio-content"></pre>
+    <div id="bio" class="section"></div>
+    <div id="experience" class="section"></div>
+    <div id="skills" class="section"></div>
+    <div id="projects" class="section"></div>
+    <div id="education" class="section"></div>
+    <div id="additional_info" class="section"></div>
+</div>
 
 <script>
-// Fetch the JSON from GitHub raw URL
 fetch('https://raw.githubusercontent.com/bahadari1361/Information.security/main/docs/test1.json')
     .then(response => response.json())  // Parse the JSON
     .then(data => {
-        // Process the data and display in the 'portfolio-content' element
-        document.getElementById('portfolio-content').textContent = JSON.stringify(data, null, 2);  // Format the JSON output with indentation
-    })
-    .catch(error => {
-        console.error('Error fetching JSON:', error);
-    });
-</script>
+        // Populate the bio section
+        const bio = data.portfolio.bio;
+        document.getElementById('bio').innerHTML = `
+            <h2>Bio</h2>
+            <p><strong>Name:</strong> ${data.portfolio.name}</p>
+            <p><strong>Location:</strong> ${bio.location}</p>
+            <p><strong>Languages:</strong> ${bio.native_language} (Native), 
+            English: ${bio.languages.English}, German: ${bio.languages.German}, Turkish: ${bio.languages.Turkish}</p>
+            <h3>Certifications</h3>
+            <ul>${bio.certifications.map(cert => `<li><strong>${cert.name}</strong> - ${cert.organization} (Valid until: ${cert.valid_until})</li>`).join('')}</ul>
+        `;
 
-</body>
-</html>
+        // Populate the experience section
+        const experience = data.portfolio.experience;
+        document.getElementById('experience').innerHTML = `
+            <h2>Experience</h2>
+            ${experience.map(job => `
+                <div class="experience">
+                    <h3>${job.role} - ${job.organization}</h3>
+                    <p><strong>Duration:</strong> ${job.duration}</p>
+                    <ul>${job.responsibilities.map(responsibility => `<li>${responsibility}</li>`).join('')}</ul>
+                </div>
+            `).join('')}
+        `;
+
+        // Populate the skills section
