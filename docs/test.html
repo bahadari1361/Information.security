@@ -3,22 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Hashmatullah Bahadari's Information Security Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2a6ebb;
+        }
+        .section {
+            background-color: #fff;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 {
+            margin-top: 0;
+        }
+        .list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .list li {
+            margin: 5px 0;
+        }
+        .project {
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #2a6ebb;
+        }
+        .project a {
+            color: #2a6ebb;
+            text-decoration: none;
+        }
+        .project a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hashmatullah Bahadari's Portfolio</h1>
-    <div id="portfolio"></div>
+    <h1>Hashmatullah Bahadari's Information Security Portfolio</h1>
+    <div id="portfolio" class="section"></div>
 
     <script>
         fetch('https://raw.githubusercontent.com/bahadari1361/Information.security/main/docs/test1.json')
             .then(response => response.json())
             .then(data => {
                 const portfolio = data.portfolio;
+
                 document.getElementById('portfolio').innerHTML = `
                     <h2>${portfolio.name}</h2>
-                    <p>Location: ${portfolio.bio.location}</p>
-                    <p>Languages: English (${portfolio.bio.languages.English}), German (${portfolio.bio.languages.German}), Turkish (${portfolio.bio.languages.Turkish})</p>
-                    <p><strong>Certifications:</strong> ${portfolio.bio.certifications.map(cert => cert.name).join(', ')}</p>
+                    <p><strong>Location:</strong> ${portfolio.bio.location}</p>
+                    <p><strong>Native Language:</strong> ${portfolio.bio.native_language}</p>
+
+                    <div class="section">
+                        <h3>Languages</h3>
+                        <ul class="list">
+                            <li><strong>English:</strong> ${portfolio.bio.languages.English}</li>
+                            <li><strong>German:</strong> ${portfolio.bio.languages.German}</li>
+                            <li><strong>Turkish:</strong> ${portfolio.bio.languages.Turkish}</li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h3>Certifications</h3>
+                        <ul class="list">
+                            ${portfolio.bio.certifications.map(cert => `
+                                <li><strong>${cert.name}</strong> (Organization: ${cert.organization}, Valid until: ${cert.valid_until})</li>
+                            `).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h3>Experience</h3>
+                        ${portfolio.experience.map(exp => `
+                            <div class="section">
+                                <h4>${exp.role} at ${exp.organization}</h4>
+                                <p><strong>Duration:</strong> ${exp.duration}</p>
+                                <p><strong>Responsibilities:</strong></p>
+                                <ul class="list">
+                                    ${exp.responsibilities.map(res => `<li>${res}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="section">
+                        <h3>Skills</h3>
+                        <ul class="list">
+                            ${portfolio.skills.map(skill => `<li>${skill}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h3>Projects</h3>
+                        ${portfolio.projects.map(project => `
+                            <div class="project">
+                                <h4>${project.name}</h4>
+                                <p><strong>Description:</strong> ${project.description}</p>
+                                <p><strong>Tools Used:</strong> ${project.tools_used.join(', ')}</p>
+                                <p><strong>Repository:</strong> <a href="${project.repository}" target="_blank">${project.repository}</a></p>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="section">
+                        <h3>Education</h3>
+                        <p><strong>Degree:</strong> ${portfolio.education.degree}</p>
+                        <p><strong>Institution:</strong> ${portfolio.education.institution}</p>
+                        <p><strong>Years:</strong> ${portfolio.education.years}</p>
+                        <p><strong>Specialization:</strong> ${portfolio.education.specialization}</p>
+                    </div>
+
+                    <div class="section">
+                        <h3>Additional Information</h3>
+                        <p><strong>Experience in Cryptocurrency:</strong> ${portfolio.additional_info.experience_in_cryptocurrency}</p>
+                        <p><strong>Recent Work:</strong> ${portfolio.additional_info.recent_work}</p>
+                    </div>
                 `;
             })
             .catch(error => {
