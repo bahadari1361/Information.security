@@ -4,196 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hashmatullah Bahadari - CV</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        * {
+        body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            background-color: #f4f4f4;
         }
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
+        .container {
+            width: 21cm; /* A4 paper size */
+            height: 29.7cm; /* A4 paper size */
+            margin: 0 auto;
             background-color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            page-break-before: always;
         }
         header {
-            text-align: center;
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
         }
         header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+            margin: 0;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
         }
-        header p {
-            font-size: 1.2rem;
-            margin-top: 5px;
-        }
-        .contact-info {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .contact-info p {
-            margin: 5px 0;
-            font-size: 1rem;
-        }
-        .contact-info a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section h2 {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-        }
-        .section p, .section ul {
-            font-size: 1rem;
+        header .contact-info {
+            text-align: right;
+            font-size: 14px;
             color: #555;
         }
-        .section ul {
-            list-style: none;
-            padding-left: 0;
+        header .contact-info p {
+            margin: 0;
         }
-        .section ul li {
-            margin-bottom: 8px;
+        header img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        section h2 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        section p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .experience, .education, .skills, .languages, .certifications {
+            margin-bottom: 20px;
+        }
+        .experience ul, .education ul, .skills ul, .languages ul, .certifications ul {
+            list-style: none;
+            padding: 0;
+        }
+        .experience li, .education li, .skills li, .languages li, .certifications li {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #555;
+        }
+        .experience .job-title, .education .degree, .skills .skill, .languages .language, .certifications .cert {
+            font-weight: bold;
+            color: #2c3e50;
         }
         footer {
             text-align: center;
-            padding: 10px;
-            margin-top: 40px;
-            font-size: 1rem;
-        }
-        footer a {
-            color: #3498db;
-            text-decoration: none;
+            font-size: 12px;
+            color: #777;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Hashmatullah Bahadari</h1>
-    <p>Information Security Manager</p>
-</header>
+<div class="container">
+    <header>
+        <div>
+            <h1>Hashmatullah Bahadari</h1>
+            <p class="job-title">Information Security Manager</p>
+        </div>
+        <div class="contact-info">
+            <p>Steitngutstr. 2, 28759 Bremen</p>
+            <p>Phone: +49 176 26 63 61 33</p>
+            <p>Email: hashmat.bahadari@gmail.com</p>
+            <p><a href="https://www.linkedin.com/in/bahadari" target="_blank">LinkedIn</a></p>
+            <p>Date of Birth: 02.11.1982</p>
+            <p>Nationality: Afghanistan | Status: Married</p>
+        </div>
+        <div>
+            <img src="photo.jpg" alt="Hashmatullah Bahadari">
+        </div>
+    </header>
 
-<div class="contact-info">
-    <p><strong>Address:</strong> Steitngutstr. 2, 28759 Bremen</p>
-    <p><strong>Phone:</strong> +49 176 26 63 61 33</p>
-    <p><strong>Email:</strong> <a href="mailto:hashmat.bahadari@gmail.com">hashmat.bahadari@gmail.com</a></p>
-    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/bahadari" target="_blank">linkedin.com/in/bahadari</a></p>
-    <p><strong>Date of Birth:</strong> 02.11.1982</p>
-    <p><strong>Nationality:</strong> Afghanistan</p>
-    <p><strong>Status:</strong> Married</p>
-</div>
+    <section class="professional-summary">
+        <h2>Professional Summary</h2>
+        <p>Experienced Information Security Manager and IT Specialist with over 10 years of expertise in securing IT systems, managing networks, and driving compliance with ISO/IEC 27001 standards. Successfully reduced data breaches by 20%, achieved 99% system uptime, and implemented advanced security measures to protect critical organizational assets.</p>
+        <p>After a career break since September 2021 due to the situation in Afghanistan, I have focused on advancing my technical skills and certifications, including ISO/IEC 27001 Senior Lead Auditor and Microsoft Azure Security Engineer Associate. Now prepared to bring my extensive expertise and proactive approach to a dynamic organization.</p>
+    </section>
 
-<div class="section">
-    <h2>Professional Summary</h2>
-    <p>Experienced Information Security Manager and IT Specialist with over 10 years of expertise in securing IT systems, managing networks, and driving compliance with ISO/IEC 27001 standards. Successfully reduced data breaches by 20%, achieved 99% system uptime, and implemented advanced security measures to protect critical organizational assets.</p>
-    <p>After a career break since September 2021 due to the situation in Afghanistan, I have focused on advancing my technical skills and certifications, including ISO/IEC 27001 Senior Lead Auditor and Microsoft Azure Security Engineer Associate. Now prepared to bring my extensive expertise and proactive approach to a dynamic organization.</p>
-</div>
+    <section class="experience">
+        <h2>Experience</h2>
+        <div class="job">
+            <p class="job-title">Information Security Manager</p>
+            <p><strong>Central Bank of Afghanistan, Kabul</strong> | 05.2014 – 09.2021</p>
+            <ul>
+                <li>Developed and enforced security policies, achieving a 20% reduction in data breaches and maintaining 99% system uptime.</li>
+                <li>Led ISO 27001 certification efforts, improving compliance and trust with regulatory bodies.</li>
+                <li>Spearheaded a robust Data Loss Prevention (DLP) strategy, reducing data risks by 90%.</li>
+                <li>Implemented advanced threat detection systems, cutting malware infections by 75%.</li>
+                <li>Conducted risk assessments and vulnerability scans, mitigating 90% of critical vulnerabilities.</li>
+                <li>Trained employees on cybersecurity, increasing awareness by 80% and reducing errors.</li>
+            </ul>
+        </div>
 
-<div class="section">
-    <h2>Professional Experience</h2>
-    <div>
-        <h3>Information Security Manager</h3>
-        <p><strong>Central Bank of Afghanistan, Kabul (05.2014 – 09.2021)</strong></p>
+        <div class="job">
+            <p class="job-title">Senior System Administrator</p>
+            <p><strong>Central Bank of Afghanistan, Kabul</strong> | 06.2011 – 05.2014</p>
+            <ul>
+                <li>Managed Windows Servers (2008, 2019, 2022) and Linux environments, achieving 99% system uptime through proactive maintenance and optimization.</li>
+                <li>Configured and maintained secure network infrastructure (firewalls, switches, routers, DHCP, DNS), reducing downtime by 25%.</li>
+                <li>Deployed and administered Active Directory and virtualization platforms (VMware, Hyper-V), enhancing system scalability and reliability.</li>
+                <li>Implemented data backup and recovery protocols, ensuring 100% data integrity and minimizing risks of data loss.</li>
+            </ul>
+        </div>
+
+        <div class="job">
+            <p class="job-title">Network Administrator</p>
+            <p><strong>BearingPoint, Central Bank of Afghanistan Project</strong> | 06.2010 – 06.2011</p>
+            <ul>
+                <li>Managed LAN/WAN networks, configuring and maintaining Cisco switches, routers, and firewalls to ensure 99% network uptime and secure, reliable connectivity.</li>
+                <li>Implemented centralized endpoint security solutions, reducing security risks by 40% and proactively addressing vulnerabilities.</li>
+                <li>Diagnosed and resolved network issues, reducing system downtime by 15% and improving response times for critical systems.</li>
+                <li>Enforced network access controls and user permissions, ensuring secure data access and reducing unauthorized access incidents by 25%.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="education">
+        <h2>Education</h2>
         <ul>
-            <li>Developed and enforced security policies, reducing data breaches by 20% and maintaining 99% system uptime.</li>
-            <li>Led ISO 27001 certification efforts, improving compliance and trust with regulatory bodies.</li>
-            <li>Spearheaded a Data Loss Prevention (DLP) strategy, reducing data risks by 90%.</li>
-            <li>Implemented advanced threat detection systems, cutting malware infections by 75%.</li>
-            <li>Conducted risk assessments and vulnerability scans, mitigating 90% of critical vulnerabilities.</li>
-            <li>Trained employees on cybersecurity, increasing awareness by 80% and reducing errors.</li>
+            <li><strong>Bachelor of Computer Science</strong>, Maiwand University, Kabul, Afghanistan | 09/2010 – 09/2014</li>
+            <li>Specialization: Networking</li>
+            <li>Focused on network design, administration, and security, laying a strong foundation in LAN/WAN technologies, protocols, and IT infrastructure management.</li>
         </ul>
-    </div>
+    </section>
 
-    <div>
-        <h3>Senior System Administrator</h3>
-        <p><strong>Central Bank of Afghanistan, Kabul (06.2011 – 05.2014)</strong></p>
+    <section class="certifications">
+        <h2>Certifications</h2>
         <ul>
-            <li>Managed Windows Servers (2008, 2019, 2022) and Linux environments, achieving 99% system uptime through proactive maintenance and optimization.</li>
-            <li>Configured and maintained secure network infrastructure (firewalls, switches, routers, DHCP, DNS), reducing downtime by 25%.</li>
-            <li>Deployed and administered Active Directory and virtualization platforms (VMware, Hyper-V), enhancing system scalability and reliability.</li>
-            <li>Implemented data backup and recovery protocols, ensuring 100% data integrity.</li>
+            <li>ISO/IEC 27001 Senior Lead Auditor (PECB, valid until 07/2026)</li>
+            <li>Fortinet Certified Fundamentals Cybersecurity (Fortinet, valid until 04/2025)</li>
+            <li>Microsoft Certified: Azure Security Engineer Associate (Microsoft, valid until 03/2026)</li>
+            <li>NSE 1 & NSE 2 Network Security Associate (Fortinet, valid until 07/2025)</li>
+            <li>Certified Ethical Hacker (CEH) v10 (EC-Council, 12/2018)</li>
+            <li>CompTIA Network+ (CompTIA, certified 08/2010)</li>
+            <li>CompTIA Security+ (CompTIA, certified 06/2010)</li>
         </ul>
-    </div>
+    </section>
 
-    <div>
-        <h3>Network Administrator</h3>
-        <p><strong>BearingPoint, Central Bank of Afghanistan Project (06.2010 – 06.2011)</strong></p>
+    <section class="languages">
+        <h2>Languages</h2>
         <ul>
-            <li>Managed LAN/WAN networks, configuring and maintaining Cisco switches, routers, and firewalls to ensure 99% network uptime and secure connectivity.</li>
-            <li>Implemented centralized endpoint security solutions, reducing security risks by 40%.</li>
-            <li>Diagnosed and resolved network issues, reducing downtime by 15% and improving response times for critical systems.</li>
+            <li><strong>Persian</strong>: Native</li>
+            <li><strong>English</strong>: B2</li>
+            <li><strong>German</strong>: A2 (Currently learning, aiming for B1)</li>
+            <li><strong>Turkish</strong>: A2</li>
         </ul>
-    </div>
-</div>
+    </section>
 
-<div class="section">
-    <h2>Education</h2>
-    <p><strong>Bachelor of Computer Science</strong> – Maiwand University, Kabul, Afghanistan (09/2010 – 09/2014)</p>
-    <p>Specialization: Networking, with a focus on network design, administration, and security.</p>
-</div>
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li><strong>Information Security & Risk Management</strong>: ISO/IEC 27001 Compliance & Auditing, Cybersecurity Strategy, Risk Management</li>
+            <li><strong>Network & Systems Administration</strong>: Windows Server Administration, Firewalls, VPN Solutions, Network Configuration</li>
+            <li><strong>Cloud Security</strong>: Microsoft Azure, Identity & Access Management (IAM)</li>
+            <li><strong>Technical Skills</strong>: VMware, Hyper-V, Office 365, Intrusion Detection Systems (IDS/IPS)</li>
+        </ul>
+    </section>
 
-<div class="section">
-    <h2>Certifications</h2>
-    <ul>
-        <li>ISO/IEC 27001 Senior Lead Auditor (PECB, valid until 07/2026)</li>
-        <li>Fortinet Certified Fundamentals Cybersecurity (Fortinet, valid until 04/2025)</li>
-        <li>Microsoft Certified: Azure Security Engineer Associate (Microsoft, valid until 03/2026)</li>
-        <li>NSE 1 & NSE 2 Network Security Associate (Fortinet, valid until 07/2025)</li>
-        <li>Certified Ethical Hacker (CEH) v10 (EC-Council, 12/2018)</li>
-        <li>CompTIA Network+ (CompTIA, certified 08/2010)</li>
-        <li>CompTIA Security+ (CompTIA, certified 06/2010)</li>
-    </ul>
+    <footer>
+        <p>Hashmatullah Bahadari | Information Security Manager</p>
+    </footer>
 </div>
-
-<div class="section">
-    <h2>Professional Development</h2>
-    <ul>
-        <li>CC Cybersecurity Certified (ISC)2 (Online Self-study, 04/2023)</li>
-        <li>Cybersecurity Training (Central Bank of Turkey, Istanbul, 10/2018)</li>
-        <li>Database Administration (NIIT Technology, New Delhi, India, 11/2011)</li>
-        <li>Swift Banking System (EastNet, Dubai, 04/2017)</li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2>Languages</h2>
-    <ul>
-        <li>Persian: Native</li>
-        <li>English: B2</li>
-        <li>German: A2 (Currently learning, aiming for B1)</li>
-        <li>Turkish: A2</li>
-    </ul>
-</div>
-
-<div class="section">
-    <h2>Skills</h2>
-    <ul>
-        <li>ISO/IEC 27001 Compliance & Auditing</li>
-        <li>Cybersecurity Strategy & Risk Management</li>
-        <li>Threat Analysis & Penetration Testing</li>
-        <li>Incident Response & Forensics</li>
-        <li>Data Loss Prevention (DLP)</li>
-        <li>Network Configuration & Troubleshooting (TCP/IP, VLANs)</li>
-        <li>Cloud Security (Microsoft Azure)</li>
-        <li>Virtualization (VMware, Hyper-V)</li>
-        <li>SIEM Management</li>
-        <li>Windows Server Administration</li>
-        <li>Identity & Access Management (IAM)</li>
-    </ul>
-</div>
-
-<footer>
-    <p>&copy; 2024 Hashmatullah Bahadari | <a href="https://www.linkedin.com/in/bahadari" target="_blank">LinkedIn</a> | <a href="https://github.com/bahadari1361" target="_blank">GitHub</a></p>
-</footer>
 
 </body>
 </html>
