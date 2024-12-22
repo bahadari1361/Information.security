@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Viewport Meta Tag -->
     <title>Hashmatullah Bahadari - Information Security Management Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -122,25 +122,19 @@
         }
 
         .resume-btn {
-            background-color: #2980b9;
-            color: white;
+            text-decoration: none;
+            background-color: #3498db;
+            color: #fff;
             padding: 10px 20px;
             border-radius: 5px;
             font-weight: 500;
-            text-align: center;
-            cursor: pointer;
-            width: 220px;
             transition: background-color 0.3s ease;
+            text-align: center;
+            width: 220px;
         }
 
         .resume-btn:hover {
-            background-color: #3498db;
-        }
-
-        .resume-section {
-            display: none;
-            margin-top: 30px;
-            text-align: center;
+            background-color: #2980b9;
         }
 
         footer {
@@ -175,6 +169,10 @@
             .certification-buttons a {
                 width: 100%;
             }
+
+            .resume-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -199,85 +197,33 @@
                 <a href="https://www.credly.com/badges/7393c803-c0e6-4d73-a943-983401634f6f" target="_blank">Security, Compliance, and Identity</a>
                 <a href="https://www.credly.com/badges/fb9a3359-4c27-42ad-b83e-58670da824ef" target="_blank">Azure Fundamentals</a>
                 <a href="https://learn.microsoft.com/en-us/users/57872887/credentials/6bc10c45f64bdb67?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank">Azure Security Engineer</a>
-                <!-- Added Resume Button -->
-                <button class="resume-btn" onclick="showResume()">Resume</button>
+                <!-- Resume Button -->
+                <a href="#resume-modal" class="resume-btn" data-toggle="modal">Resume</a>
             </div>
         </section>
 
-        <section class="resume-section" id="resume-section">
-            <h2>My Resume</h2>
-            <embed src="hashmatbahdari.pdf" type="application/pdf" width="100%" height="600px">
-            <br>
-            <a href="hashmatbahdari.pdf" download="Hashmatullah_Bahadari_Resume" class="resume-btn">Download CV</a>
-        </section>
-
-        <section>
-            <h2>Overview</h2>
-            <p>This portfolio highlights my work as the Information Security Manager at the Central Bank of Afghanistan. It includes security policies, business continuity planning, incident response plans, IT audits, penetration testing, and security assessments—all aimed at safeguarding the bank’s critical infrastructure and ensuring compliance with international security standards.</p>
-        </section>
-
-        <section class="portfolio-sections">
-            <div class="section-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Information Security Policies</h3>
-                <p>Developed and implemented robust security policies, ensuring the protection of sensitive financial data and compliance with ISO/IEC 27001 standards.</p>
-                <a href="policy.html">View Details</a>
+        <!-- Modal for CV -->
+        <div id="resume-modal" style="display:none;">
+            <div class="container">
+                <h2>My CV</h2>
+                <iframe src="hashmatbahdari.pdf" width="100%" height="600px"></iframe>
+                <a href="hashmatbahdari.pdf" download class="resume-btn">Download CV</a>
             </div>
-
-            <div class="section-card">
-                <i class="fas fa-clipboard-list"></i>
-                <h3>Business Continuity Planning</h3>
-                <p>Created comprehensive business continuity plans to ensure disaster recovery and operational continuity in critical situations.</p>
-                <a href="bcp.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-exclamation-circle"></i>
-                <h3>Incident Response Plan</h3>
-                <p>Developed a strategic incident response plan to address security breaches, minimize impacts, and ensure rapid recovery.</p>
-                <a href="IRP.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-search"></i>
-                <h3>IT Audits</h3>
-                <p>Conducted thorough IT security audits, ensuring compliance with industry standards and identifying areas for improvement.</p>
-                <a href="ITA.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-hacking"></i>
-                <h3>Penetration Testing</h3>
-                <p>Performed penetration tests to identify vulnerabilities in the bank's IT systems and strengthen security defenses.</p>
-                <a href="PT.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-shield-virus"></i>
-                <h3>Security Assessments</h3>
-                <p>Performed security assessments to evaluate the risk posture of the bank's systems, ensuring their resilience against evolving threats.</p>
-                <a href="SA.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-cogs"></i>
-                <h3>Security Best Practices</h3>
-                <p>Aligned security practices with industry standards like ISO 27001 to enhance the bank's overall cybersecurity posture.</p>
-                <a href="s.html">View Details</a>
-            </div>
-        </section>
+        </div>
     </div>
 
     <footer>
-        <p>&copy; 2024 Hashmatullah Bahadari | <a href="https://www.linkedin.com/in/bahadari/" target="_blank">LinkedIn</a> | <a href="https://bahadari1361.github.io/information-security-project/" target="_blank">GitHub</a></p>
-        <p>Location: Bremen, Germany | Contact: hashmat.bahadari@icloud.com</p>
+        <p>&copy; 2024 Hashmatullah Bahadari | <a href="https://www.linkedin.com/in/bahadari/" target="_blank">LinkedIn</a> | <a href="https://bahadari1361.github.io/information-security-project/"_blank">GitHub</a></p>
+        <p>Location: Bremen, Germany | Contact: hashmat.bahdari@icloud.com</p>
     </footer>
 
     <script>
-        function showResume() {
-            document.getElementById('resume-section').style.display = 'block';
-        }
+        // Toggle modal visibility
+        document.querySelector('.resume-btn').addEventListener('click', function() {
+            document.getElementById('resume-modal').style.display = 'block';
+        });
     </script>
+
 </body>
 
 </html>
