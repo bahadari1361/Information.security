@@ -23,6 +23,7 @@
             padding: 20px;
             box-sizing: border-box;
             border: 1px solid #ddd;
+            page-break-before: always;
         }
 
         header {
@@ -48,8 +49,10 @@
             font-size: 14px;
             color: #555;
             display: flex;
+            flex-wrap: wrap;
             gap: 15px;
             align-items: center;
+            margin-top: 10px;
         }
 
         .contact-info i {
@@ -59,10 +62,6 @@
         .contact-info a {
             color: #3498db;
             text-decoration: none;
-        }
-
-        .contact-info p {
-            margin: 0;
         }
 
         .photo {
@@ -102,8 +101,15 @@
             color: #3498db;
         }
 
-        .page-break {
-            page-break-before: always;
+        .company-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1d3c6d;
+        }
+
+        .date {
+            font-size: 14px;
+            color: #1d3c6d;
         }
 
         footer {
@@ -113,11 +119,23 @@
             margin-top: 20px;
         }
 
+        .page-break {
+            page-break-before: always;
+        }
+
+        /* Book-like Flip Effect */
+        .flip-book {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .flip-arrow {
             font-size: 24px;
             color: #3498db;
             display: inline-block;
             transform: rotate(90deg);
+            cursor: pointer;
         }
 
         .flip-arrow:hover {
@@ -126,6 +144,10 @@
 
         .contact-info .fa-phone, .contact-info .fa-envelope, .contact-info .fa-linkedin {
             font-size: 18px;
+        }
+
+        .contact-info p {
+            margin: 0;
         }
 
     </style>
@@ -140,7 +162,7 @@
             <h2>Information Security Manager</h2>
         </div>
         <div>
-            <img src="photo.JPG" alt="Hashmatullah Bahadari" class="photo">
+            <img src="photo.jpg" alt="Hashmatullah Bahadari" class="photo">
         </div>
     </header>
 
@@ -161,7 +183,7 @@
         <h2>Experience</h2>
         <div class="section-content">
             <ul>
-                <li><strong>Information Security Manager</strong> – Central Bank of Afghanistan, Kabul | 05.2014 – 09.2021</li>
+                <li><span class="company-name">Information Security Manager</span> – Central Bank of Afghanistan, Kabul <span class="date">05.2014 – 09.2021</span></li>
                 <ul>
                     <li>Developed and enforced security policies, achieving a 20% reduction in data breaches and maintaining 99% system uptime.</li>
                     <li>Led ISO 27001 certification efforts, improving compliance and trust with regulatory bodies.</li>
@@ -170,7 +192,7 @@
                     <li>Conducted risk assessments and vulnerability scans, mitigating 90% of critical vulnerabilities.</li>
                 </ul>
 
-                <li><strong>Senior System Administrator</strong> – Central Bank of Afghanistan, Kabul | 06.2011 – 05.2014</li>
+                <li><span class="company-name">Senior System Administrator</span> – Central Bank of Afghanistan, Kabul <span class="date">06.2011 – 05.2014</span></li>
                 <ul>
                     <li>Managed Windows Servers (2008, 2019, 2022) and Linux environments, achieving 99% system uptime through proactive maintenance and optimization.</li>
                     <li>Configured and maintained secure network infrastructure (firewalls, switches, routers, DHCP, DNS), reducing downtime by 25%.</li>
@@ -178,7 +200,7 @@
                     <li>Implemented data backup and recovery protocols, ensuring 100% data integrity and minimizing risks of data loss.</li>
                 </ul>
                 
-                <li><strong>Network Administrator</strong> – BearingPoint, Central Bank of Afghanistan Project | 06.2010 – 06.2011</li>
+                <li><span class="company-name">Network Administrator</span> – BearingPoint, Central Bank of Afghanistan Project <span class="date">06.2010 – 06.2011</span></li>
                 <ul>
                     <li>Managed LAN/WAN networks, configuring and maintaining Cisco switches, routers, and firewalls to ensure 99% network uptime and secure, reliable connectivity.</li>
                     <li>Implemented centralized endpoint security solutions, reducing security risks by 40% and proactively addressing vulnerabilities.</li>
@@ -224,12 +246,18 @@
         <h2>Skills</h2>
         <div class="section-content">
             <ul>
-                <li><strong>Information Security & Risk Management</strong>: ISO/IEC 27001 Compliance & Auditing, Cybersecurity Strategy, Risk Management</li>
-                <li><strong>Network & Systems Administration</strong>: Windows Server Administration, Firewalls, VPN Solutions, Network Configuration</li>
-                <li><strong>Cloud Security</strong>: Microsoft Azure, Identity & Access Management (IAM), Virtualization (VMware, Hyper-V)</li>
+                <li><strong>Information Security & Risk Management</strong></li>
+                <li><strong>Network & Systems Administration</strong></li>
+                <li>ISO/IEC 27001 Compliance & Auditing</li>
+                <li>Cybersecurity Strategy & Risk Management</li>
             </ul>
         </div>
     </section>
+
+    <!-- Flip Effect -->
+    <div class="flip-book">
+        <span class="flip-arrow"><i class="fa fa-arrow-right"></i></span>
+    </div>
 </div>
 
 </body>
