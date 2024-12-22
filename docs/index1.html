@@ -41,6 +41,13 @@
             font-weight: 400;
         }
 
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
         .certification-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -175,16 +182,9 @@
                 width: 100%;
             }
 
-            .header-container {
-                display: flex;
-                justify-content: space-between;
+            header .header-content {
+                flex-direction: column;
                 align-items: center;
-            }
-
-            header img {
-                height: 50px;
-                width: auto;
-                margin-top: 10px;
             }
         }
 
@@ -194,13 +194,13 @@
 <body>
 
     <header>
-        <div class="header-container" style="position: absolute; top: 20px; left: 0;">
-            <a href="hashmatbahadari.pdf" download><button style="background-color: #2980b9; color: #fff; padding: 10px 15px; border-radius: 6px; font-weight: 500; border: none; cursor: pointer;">Download My CV</button></a>
+        <div class="header-content">
+            <div>
+                <h1>Hashmatullah Bahadari</h1>
+                <p>Information Security Manager</p>
+            </div>
         </div>
-        <div>
-            <h1>Hashmatullah Bahadari</h1>
-            <p>Information Security Manager</p>
-        </div>
+
         <div class="certification-buttons">
             <a href="https://training.fortinet.com/mod/customcert/verify_certificate.php?contextid=251440&code=X4l5qLhaEw&qrcode=1" target="_blank"><i class="fas fa-shield-alt"></i> Fortinet NSE 2</a>
             <a href="https://www.credly.com/badges/d6134e81-b0a4-4bf3-b04b-9d4427883a58" target="_blank"><i class="fas fa-network-wired"></i> CompTIA Network+</a>
@@ -211,8 +211,13 @@
             <a href="https://www.credly.com/badges/fb9a3359-4c27-42ad-b83e-58670da824ef" target="_blank"><i class="fas fa-cloud"></i> Azure Fundamentals</a>
             <a href="https://learn.microsoft.com/en-us/users/57872887/credentials/6bc10c45f64bdb67?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank"><i class="fas fa-lock"></i> Azure Security Engineer</a>
         </div>
-        <div style="text-align: right; margin-top: 15px;">
-            <img src="PECB.JPG" alt="PECB Certification" style="height: 50px;">
+
+        <div class="certification-buttons">
+            <a href="hashmatbahadari.pdf" download><i class="fas fa-download"></i> Download My CV</a>
+        </div>
+
+        <div style="position: absolute; bottom: -40px; width: 100%; text-align: center;">
+            <img src="PECB.JPG" alt="PECB Certification" style="max-height: 80px; margin-top: 10px; width: auto;">
         </div>
     </header>
 
