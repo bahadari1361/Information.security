@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Security Architecture Diagram</title>
+    <title>Professional Network Security Architecture</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
@@ -20,70 +20,85 @@
             text-align: center;
         }
         .container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 20px auto;
             padding: 20px;
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
         h1, h2 {
             color: #004aad;
         }
-        svg {
-            width: 100%;
-            height: auto;
+        ul {
+            list-style: none;
+            padding: 0;
         }
-        .node {
-            fill: #004aad;
-            stroke: #fff;
-            stroke-width: 2px;
-            cursor: pointer;
+        ul li {
+            display: flex;
+            align-items: center;
+            background-color: #f4f7fc;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
-        .label {
-            font-size: 14px;
-            text-anchor: middle;
-            fill: #333;
+        ul li i {
+            font-size: 1.5em;
+            margin-right: 10px;
+            color: #004aad;
         }
-        .link {
-            stroke: #004aad;
-            stroke-width: 2px;
-            fill: none;
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Network Security Architecture Diagram</h1>
+        <h1>Professional Network Security Architecture</h1>
     </header>
     <div class="container">
-        <h2>Interactive Routed Diagram</h2>
-        <svg viewBox="0 0 1000 600">
-            <!-- Links -->
-            <line x1="300" y1="100" x2="500" y2="200" class="link" />
-            <line x1="500" y1="200" x2="700" y2="100" class="link" />
-            <line x1="500" y1="200" x2="500" y2="400" class="link" />
-            <line x1="300" y1="100" x2="500" y2="400" class="link" />
-            <line x1="700" y1="100" x2="500" y2="400" class="link" />
-            
-            <!-- Nodes -->
-            <circle cx="300" cy="100" r="30" class="node" />
-            <text x="300" y="100" class="label" dy="5">Firewall</text>
-            
-            <circle cx="500" cy="200" r="30" class="node" />
-            <text x="500" y="200" class="label" dy="5">Router</text>
-            
-            <circle cx="700" cy="100" r="30" class="node" />
-            <text x="700" y="100" class="label" dy="5">IDPS</text>
-            
-            <circle cx="500" cy="400" r="30" class="node" />
-            <text x="500" y="400" class="label" dy="5">SIEM</text>
-            
-            <circle cx="500" cy="500" r="30" class="node" />
-            <text x="500" y="500" class="label" dy="5">Cloud</text>
-        </svg>
-        <p>This diagram illustrates the network security architecture using a routed chart format. Hover over the nodes to explore key components.</p>
+        <h2>Overview</h2>
+        <p>This project highlights a robust network security architecture for enterprise organizations, focusing on layered defense strategies and adherence to industry standards.</p>
+
+        <h2>Key Components</h2>
+        <ul>
+            <li><i class="fas fa-shield-alt"></i> <strong>Firewall:</strong> Filters network traffic and enforces security policies.</li>
+            <li><i class="fas fa-network-wired"></i> <strong>IDPS:</strong> Monitors traffic to detect and block malicious activities.</li>
+            <li><i class="fas fa-route"></i> <strong>Router:</strong> Manages traffic between networks with access control lists.</li>
+            <li><i class="fas fa-exchange-alt"></i> <strong>Switch:</strong> Connects devices within a LAN and supports VLANs for segmentation.</li>
+            <li><i class="fas fa-laptop"></i> <strong>Endpoint Protection:</strong> Provides device-level security with antivirus and EDR solutions.</li>
+            <li><i class="fas fa-lock"></i> <strong>VPN Gateway:</strong> Ensures secure connections for remote users.</li>
+            <li><i class="fas fa-server"></i> <strong>SIEM:</strong> Centralized logging for monitoring and incident response.</li>
+            <li><i class="fas fa-database"></i> <strong>Server:</strong> Hosts critical resources secured through hardening techniques.</li>
+            <li><i class="fas fa-cloud"></i> <strong>Cloud Environment:</strong> Scalable and secure data storage with encryption and IAM policies.</li>
+            <li><i class="fas fa-globe"></i> <strong>WAF:</strong> Protects web applications from vulnerabilities like SQL injection and XSS.</li>
+        </ul>
+
+        <h2>Architecture Design</h2>
+        <p>The architecture adopts a "Defense in Depth" strategy, protecting against threats at multiple levels:</p>
+        <ul>
+            <li><strong>Perimeter Security:</strong> Firewalls and WAFs safeguard external-facing components.</li>
+            <li><strong>Network Segmentation:</strong> VLANs and physical isolation secure critical data zones.</li>
+            <li><strong>Monitoring:</strong> Real-time tracking and logging via IDPS and SIEM systems.</li>
+            <li><strong>Endpoint Security:</strong> Ensures that devices accessing the network are secured.</li>
+        </ul>
+
+        <h2>Standards and Protocols</h2>
+        <ul>
+            <li>ISO/IEC 27001: Information Security Management</li>
+            <li>NIST Cybersecurity Framework</li>
+            <li>CIS Controls for Enterprise Security</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>This project demonstrates a professional and scalable approach to enterprise network security, ensuring resilience against evolving cyber threats.</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Network Security Portfolio. All rights reserved.</p>
     </div>
 </body>
 </html>
