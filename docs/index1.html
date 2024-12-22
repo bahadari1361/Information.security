@@ -25,14 +25,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            border-bottom: 3px solid #2c3e50;
+            padding: 40px 20px;
+            background-color: #2c3e50;
+            color: #fff;
+            border-bottom: 3px solid #34495e;
+        }
+
+        header .text-section {
+            max-width: 50%;
         }
 
         header h1 {
             font-size: 1.5rem;
             font-weight: 700;
-            margin: 0;
         }
 
         header p {
@@ -41,9 +46,10 @@
             font-weight: 400;
         }
 
-        header .pebc-logo img {
-            width: 80px;
+        header .image-section img {
+            max-width: 100%;
             height: auto;
+            border-radius: 10px;
         }
 
         .certification-buttons {
@@ -51,7 +57,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin-top: 10px;
+            margin-top: 20px;
         }
 
         .certification-buttons a {
@@ -166,6 +172,21 @@
 
         /* Responsive Styling */
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            header .text-section {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            header .image-section {
+                max-width: 100%;
+            }
+
             .portfolio-sections {
                 flex-direction: column;
                 align-items: center;
@@ -180,76 +201,33 @@
                 width: 100%;
             }
         }
-
     </style>
 </head>
 
 <body>
 
     <header>
-        <div>
+        <div class="text-section">
             <h1>Hashmatullah Bahadari</h1>
             <p>Information Security Manager & ISO/IEC 27001 Lead Auditor</p>
         </div>
-        <div class="pebc-logo">
-            <img src="PECB.JPG" alt="PECB Logo">
+        <div class="image-section">
+            <img src="PECB.JPG" alt="PECB Certification Image">
         </div>
     </header>
 
     <div class="container">
         <section>
-            <h2>Overview</h2>
-            <p>This portfolio highlights my work as the Information Security Manager at the Central Bank of Afghanistan. It includes security policies, business continuity planning, incident response plans, IT audits, penetration testing, and security assessments—all aimed at safeguarding the bank’s critical infrastructure and ensuring compliance with international security standards.</p>
-        </section>
-
-        <section class="portfolio-sections">
-            <div class="section-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Information Security Policies</h3>
-                <p>Developed and implemented robust security policies, ensuring the protection of sensitive financial data and compliance with ISO/IEC 27001 standards.</p>
-                <a href="policy.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-clipboard-list"></i>
-                <h3>Business Continuity Planning</h3>
-                <p>Created comprehensive business continuity plans to ensure disaster recovery and operational continuity in critical situations.</p>
-                <a href="bcp.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-exclamation-circle"></i>
-                <h3>Incident Response Plan</h3>
-                <p>Developed a strategic incident response plan to address security breaches, minimize impacts, and ensure rapid recovery.</p>
-                <a href="IRP.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-search"></i>
-                <h3>IT Audits</h3>
-                <p>Conducted thorough IT security audits, ensuring compliance with industry standards and identifying areas for improvement.</p>
-                <a href="ITA.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-hacking"></i>
-                <h3>Penetration Testing</h3>
-                <p>Performed penetration tests to identify vulnerabilities in the bank's IT systems and strengthen security defenses.</p>
-                <a href="PT.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-shield-virus"></i>
-                <h3>Security Assessments</h3>
-                <p>Performed security assessments to evaluate the risk posture of the bank's systems, ensuring their resilience against evolving threats.</p>
-                <a href="SA.html">View Details</a>
-            </div>
-
-            <div class="section-card">
-                <i class="fas fa-cogs"></i>
-                <h3>Security Best Practices</h3>
-                <p>Aligned security practices with industry standards like ISO 27001 to enhance the bank's overall cybersecurity posture.</p>
-                <a href="s.html">View Details</a>
+            <h2>Certifications</h2>
+            <div class="certification-buttons">
+                <a href="https://training.fortinet.com/mod/customcert/verify_certificate.php?contextid=251440&code=X4l5qLhaEw&qrcode=1" target="_blank"><i class="fas fa-shield-alt"></i> Fortinet NSE 2</a>
+                <a href="https://www.credly.com/badges/d6134e81-b0a4-4bf3-b04b-9d4427883a58" target="_blank"><i class="fas fa-network-wired"></i> CompTIA Network+</a>
+                <a href="https://www.credly.com/badges/e833678e-8cbf-4319-827b-3c9f8ec9c420" target="_blank"><i class="fas fa-lock"></i> CompTIA Security+</a>
+                <a href="https://www.credly.com/badges/ae824ce3-881a-4750-93eb-21dec5752fee" target="_blank"><i class="fas fa-cogs"></i> ISO/IEC 27001</a>
+                <a href="https://www.credly.com/badges/6d9a5562-5a32-464f-9c19-879afb5d88ab" target="_blank"><i class="fas fa-laptop"></i> Fortinet Fundamentals Cybersecurity</a>
+                <a href="https://www.credly.com/badges/7393c803-c0e6-4d73-a943-983401634f6f" target="_blank"><i class="fas fa-shield-virus"></i> Security, Compliance, and Identity</a>
+                <a href="https://www.credly.com/badges/fb9a3359-4c27-42ad-b83e-58670da824ef" target="_blank"><i class="fas fa-cloud"></i> Azure Fundamentals</a>
+                <a href="https://learn.microsoft.com/en-us/users/57872887/credentials/6bc10c45f64bdb67?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank"><i class="fas fa-lock"></i> Azure Security Engineer</a>
             </div>
         </section>
     </div>
