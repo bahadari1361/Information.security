@@ -3,77 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Security - Complete and Professional</title>
+    <title>Professional Network Security Architecture</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f9f9fb;
+            color: #333;
         }
         header {
-            background: #333;
+            background-color: #004aad;
             color: #fff;
-            padding: 1rem 0;
+            padding: 20px;
             text-align: center;
         }
         .container {
+            max-width: 900px;
+            margin: 20px auto;
             padding: 20px;
-            max-width: 800px;
-            margin: auto;
             background: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         h1, h2 {
-            color: #333;
+            color: #004aad;
         }
         ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
         }
         ul li {
-            background: #f4f4f9;
-            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            background-color: #f4f7fc;
+            margin-bottom: 10px;
             padding: 10px;
             border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        ul li img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #666;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Network Security: Complete and Professional</h1>
+        <h1>Professional Network Security Architecture</h1>
     </header>
     <div class="container">
         <h2>Overview</h2>
-        <p>This project outlines a comprehensive network security architecture designed for professional and enterprise-level organizations. It demonstrates the implementation of layered security measures and best practices.</p>
+        <p>This project highlights a robust network security architecture for enterprise organizations, focusing on layered defense strategies and adherence to industry standards.</p>
 
-        <h2>Diagram Legend</h2>
+        <h2>Key Components</h2>
         <ul>
-            <li><strong>Firewall:</strong> Protects the network by filtering traffic and enforcing security policies.</li>
-            <li><strong>Intrusion Detection/Prevention System (IDPS):</strong> Monitors and blocks suspicious activities.</li>
-            <li><strong>Router:</strong> Directs network traffic and enforces access control lists (ACLs).</li>
-            <li><strong>Switch:</strong> Connects devices within a LAN and supports VLANs for segmentation.</li>
-            <li><strong>Endpoint Protection:</strong> Provides antivirus, anti-malware, and EDR for devices.</li>
-            <li><strong>VPN Gateway:</strong> Secures remote user connections with encryption.</li>
-            <li><strong>SIEM:</strong> Centralized logging and monitoring for threat detection and incident response.</li>
-            <li><strong>Server:</strong> Hosts applications and resources, secured through hardening techniques.</li>
-            <li><strong>Cloud Environment:</strong> Provides scalable resources with encryption and IAM policies.</li>
-            <li><strong>Web Application Firewall (WAF):</strong> Protects web applications from vulnerabilities.</li>
+            <li><img src="icons/firewall.svg" alt="Firewall"> <strong>Firewall:</strong> Filters network traffic and enforces security policies.</li>
+            <li><img src="icons/idps.svg" alt="IDPS"> <strong>IDPS:</strong> Monitors traffic to detect and block malicious activities.</li>
+            <li><img src="icons/router.svg" alt="Router"> <strong>Router:</strong> Manages traffic between networks with access control lists.</li>
+            <li><img src="icons/switch.svg" alt="Switch"> <strong>Switch:</strong> Connects devices within a LAN and supports VLANs for segmentation.</li>
+            <li><img src="icons/endpoint.svg" alt="Endpoint"> <strong>Endpoint Protection:</strong> Provides device-level security with antivirus and EDR solutions.</li>
+            <li><img src="icons/vpn.svg" alt="VPN"> <strong>VPN Gateway:</strong> Ensures secure connections for remote users.</li>
+            <li><img src="icons/siem.svg" alt="SIEM"> <strong>SIEM:</strong> Centralized logging for monitoring and incident response.</li>
+            <li><img src="icons/server.svg" alt="Server"> <strong>Server:</strong> Hosts critical resources secured through hardening techniques.</li>
+            <li><img src="icons/cloud.svg" alt="Cloud"> <strong>Cloud Environment:</strong> Scalable and secure data storage with encryption and IAM policies.</li>
+            <li><img src="icons/waf.svg" alt="WAF"> <strong>WAF:</strong> Protects web applications from vulnerabilities like SQL injection and XSS.</li>
         </ul>
 
-        <h2>Architecture Components and Flow</h2>
-        <p>The network architecture employs a "Defense in Depth" strategy to protect against various attack vectors:</p>
+        <h2>Architecture Design</h2>
+        <p>The architecture adopts a "Defense in Depth" strategy, protecting against threats at multiple levels:</p>
         <ul>
-            <li><strong>Perimeter Security:</strong> Combines firewalls, WAFs, and VPN gateways to filter and secure incoming traffic.</li>
-            <li><strong>Internal Network:</strong> Utilizes switches, routers, and network segmentation to isolate sensitive systems.</li>
-            <li><strong>Monitoring and Logging:</strong> Integrates IDPS and SIEM for real-time monitoring and alerts.</li>
-            <li><strong>Endpoint Security:</strong> Ensures devices are protected with advanced security solutions and MFA.</li>
-            <li><strong>Cloud Integration:</strong> Secures connections between on-premises systems and cloud resources.</li>
+            <li><strong>Perimeter Security:</strong> Firewalls and WAFs safeguard external-facing components.</li>
+            <li><strong>Network Segmentation:</strong> VLANs and physical isolation secure critical data zones.</li>
+            <li><strong>Monitoring:</strong> Real-time tracking and logging via IDPS and SIEM systems.</li>
+            <li><strong>Endpoint Security:</strong> Ensures that devices accessing the network are secured.</li>
         </ul>
 
         <h2>Standards and Protocols</h2>
-        <p>This architecture aligns with the following industry standards:</p>
         <ul>
             <li>ISO/IEC 27001: Information Security Management</li>
             <li>NIST Cybersecurity Framework</li>
@@ -81,7 +94,10 @@
         </ul>
 
         <h2>Conclusion</h2>
-        <p>This project showcases a robust and scalable network security design tailored for enterprise environments. By implementing these best practices, organizations can enhance their cybersecurity posture and mitigate risks effectively.</p>
+        <p>This project demonstrates a professional and scalable approach to enterprise network security, ensuring resilience against evolving cyber threats.</p>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 Network Security Portfolio. All rights reserved.</p>
     </div>
 </body>
 </html>
