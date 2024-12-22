@@ -31,26 +31,36 @@
         }
         .container {
             display: flex;
-            overflow-x: auto;
-            gap: 1rem;
-            padding: 2rem;
-            scroll-snap-type: x mandatory;
-            justify-content: start;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem;
         }
+        /* Arrow Style Cards */
         .section {
-            min-width: 260px;
-            flex-shrink: 0;
-            padding: 1.5rem;
-            border-radius: 10px;
+            position: relative;
+            width: 280px;
+            margin: 1rem;
+            padding: 2rem;
             background-color: #fff;
+            border-radius: 50px 50px 50px 0;
             box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
-            overflow: hidden;
-            scroll-snap-align: start;
+            text-align: center;
+        }
+        .section::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 100%;
+            width: 0;
+            height: 0;
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid #fff;
         }
         .section:hover {
-            transform: translateY(-10px);
+            transform: translateX(10px);
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
         }
         .section i {
@@ -69,6 +79,12 @@
             line-height: 1.5;
             color: #7f8c8d;
         }
+        /* Card hover effect */
+        .section:hover {
+            box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+        }
+
         .section-detail {
             display: none;
             margin-top: 20px;
@@ -76,10 +92,12 @@
             color: #333;
             text-align: left;
         }
+
         .section-detail ul {
             list-style-type: none;
             padding: 0;
         }
+
         .section-detail ul li {
             margin-bottom: 10px;
         }
@@ -103,34 +121,11 @@
             z-index: 1000;
             transition: background-color 0.3s ease;
         }
-
+        
         .back-home:hover {
             background-color: #004d7a;
         }
 
-        /* Arrow buttons to scroll left and right */
-        .arrow-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: #004d7a;
-            color: #fff;
-            padding: 10px;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 10;
-        }
-        .arrow-left {
-            left: 10px;
-        }
-        .arrow-right {
-            right: 10px;
-        }
-
-        .arrow-button:hover {
-            background-color: #0088cc;
-        }
     </style>
 </head>
 <body>
@@ -229,11 +224,8 @@
                 <p><strong>ISO 27001 Reference:</strong> Clause 11.1, A.11.1</p>
             </div>
         </div>
-    </div>
 
-    <!-- Arrow Buttons for Navigation -->
-    <button class="arrow-button arrow-left" onclick="scrollContainer(-1)">&#8592;</button>
-    <button class="arrow-button arrow-right" onclick="scrollContainer(1)">&#8594;</button>
+    </div>
 
     <!-- Back to Home Button -->
     <div class="back-to-home">
@@ -248,15 +240,6 @@
             } else {
                 detailSection.style.display = 'block';
             }
-        }
-
-        function scrollContainer(direction) {
-            const container = document.querySelector('.container');
-            const scrollAmount = 300;
-            container.scrollBy({
-                left: direction * scrollAmount,
-                behavior: 'smooth'
-            });
         }
     </script>
 </body>
