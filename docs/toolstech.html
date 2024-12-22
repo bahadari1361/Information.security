@@ -37,46 +37,30 @@
             margin-top: 20px;
         }
 
-        .tools-list {
+        .tool-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 30px;
         }
 
-        .tool {
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        .tool-table th, .tool-table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
         }
 
-        .tool h3 {
-            font-size: 1.5rem;
-            color: #2c3e50;
-            margin-bottom: 10px;
+        .tool-table th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
         }
 
-        .tool p {
-            font-size: 1rem;
-            color: #7f8c8d;
+        .tool-table tr:nth-child(even) {
+            background-color: #f9f9f9;
         }
 
-        .tool ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .tool ul li {
-            padding-left: 15px;
-            position: relative;
-        }
-
-        .tool ul li:before {
-            content: '\2022';
-            color: #3498db;
-            font-size: 1.5rem;
-            position: absolute;
-            left: 0;
-            top: 0;
+        .tool-table tr:hover {
+            background-color: #e0f7fa;
         }
 
         .back-home {
@@ -113,92 +97,112 @@
         <p class="section-title">Comprehensive Tools and Techniques for Security Assessments at the Central Bank of Afghanistan</p>
         
         <div class="tools-list">
-            <!-- Tool 1: Kali Linux -->
+            <!-- Wireshark -->
             <div class="tool">
-                <h3>1. Kali Linux</h3>
-                <p>Kali Linux is a powerful and versatile penetration testing distribution, providing a vast collection of tools for vulnerability assessment. I used Kali Linux as a comprehensive platform for conducting penetration tests and security audits at the Central Bank of Afghanistan.</p>
-                <ul>
-                    <li>Used Kali's pre-installed tools like Nmap for network scanning and OpenVAS for vulnerability scanning.</li>
-                    <li>Utilized Metasploit for exploit testing and social engineering assessments.</li>
-                    <li>Conducted thorough penetration testing to identify exploitable vulnerabilities in both internal and external network infrastructures.</li>
-                </ul>
+                <h3>1. Wireshark</h3>
+                <table class="tool-table">
+                    <thead>
+                        <tr>
+                            <th>Tool Name</th>
+                            <th>Function</th>
+                            <th>Techniques Used</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Wireshark</td>
+                            <td>Packet Analysis</td>
+                            <td>
+                                <ul>
+                                    <li>Captured and analyzed network traffic for security issues.</li>
+                                    <li>Monitored for unencrypted sensitive data or unauthorized access attempts.</li>
+                                    <li>Investigated incidents by analyzing network packets in real-time.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Tool 2: Nessus -->
+            <!-- Nmap -->
             <div class="tool">
-                <h3>2. Nessus</h3>
-                <p>Nessus is a leading vulnerability scanner that helped in identifying known vulnerabilities, misconfigurations, and missing patches within the bank's network infrastructure. I used Nessus extensively to detect security weaknesses and recommend necessary patching actions.</p>
-                <ul>
-                    <li>Performed full network scans to identify vulnerabilities in servers, workstations, and other network devices.</li>
-                    <li>Configured customized scan policies to address specific security requirements for the banking systems.</li>
-                    <li>Generated detailed vulnerability reports with actionable remediation steps for the IT team.</li>
-                </ul>
+                <h3>2. Nmap</h3>
+                <table class="tool-table">
+                    <thead>
+                        <tr>
+                            <th>Tool Name</th>
+                            <th>Function</th>
+                            <th>Techniques Used</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Nmap</td>
+                            <td>Network Scanning</td>
+                            <td>
+                                <ul>
+                                    <li>Used for open port scanning and service detection.</li>
+                                    <li>Performed OS fingerprinting to identify running systems.</li>
+                                    <li>Utilized Nmap Scripting Engine (NSE) for vulnerability detection.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Tool 3: Nmap -->
+            <!-- Zenmap -->
             <div class="tool">
-                <h3>3. Nmap</h3>
-                <p>Nmap (Network Mapper) was used to conduct network discovery and security auditing. With Nmap, I performed detailed scanning to identify open ports, services, and possible vulnerabilities in network devices.</p>
-                <ul>
-                    <li>Used Nmap's advanced scripting engine (NSE) to check for common vulnerabilities and misconfigurations.</li>
-                    <li>Utilized Nmap for OS fingerprinting to accurately identify systems running on the bank's network.</li>
-                    <li>Conducted comprehensive network topology mapping to detect potential attack surfaces and misconfigurations.</li>
-                </ul>
+                <h3>3. Zenmap</h3>
+                <table class="tool-table">
+                    <thead>
+                        <tr>
+                            <th>Tool Name</th>
+                            <th>Function</th>
+                            <th>Techniques Used</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Zenmap</td>
+                            <td>Network Mapping & Visualization</td>
+                            <td>
+                                <ul>
+                                    <li>Provided a GUI for Nmap for easier visualization of scan results.</li>
+                                    <li>Mapped out network topology to identify possible vulnerabilities.</li>
+                                    <li>Helped prioritize vulnerabilities based on scan results.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Tool 4: Wireshark -->
+            <!-- OWASP ZAP -->
             <div class="tool">
-                <h3>4. Wireshark</h3>
-                <p>Wireshark was employed for deep packet analysis, helping in identifying traffic patterns and security issues such as unencrypted sensitive data or unauthorized access attempts.</p>
-                <ul>
-                    <li>Monitored network traffic to identify any suspicious activity or communication over insecure protocols.</li>
-                    <li>Captured packets to analyze data being transmitted across the network, identifying potential leaks or unauthorized access.</li>
-                    <li>Used Wireshark in real-time to investigate incidents and verify security controls.</li>
-                </ul>
-            </div>
-
-            <!-- Tool 5: Acunetix -->
-            <div class="tool">
-                <h3>5. Acunetix</h3>
-                <p>Acunetix is a web vulnerability scanner that helped in assessing web applications for security flaws such as SQL Injection, Cross-Site Scripting (XSS), and other common web vulnerabilities.</p>
-                <ul>
-                    <li>Ran automated scans of the bank’s web applications to identify common vulnerabilities.</li>
-                    <li>Conducted detailed reports highlighting the severity of identified vulnerabilities and recommending remediations.</li>
-                    <li>Used Acunetix to verify compliance with security standards and practices for the bank's digital services.</li>
-                </ul>
-            </div>
-
-            <!-- Tool 6: Metasploit -->
-            <div class="tool">
-                <h3>6. Metasploit</h3>
-                <p>Metasploit was an essential tool for testing the exploitation of vulnerabilities found during the assessment. I used it for controlled penetration tests and vulnerability validation.</p>
-                <ul>
-                    <li>Tested discovered vulnerabilities by attempting controlled exploitation to simulate real-world attacks.</li>
-                    <li>Developed and tested exploit payloads to verify if vulnerabilities could be remotely triggered.</li>
-                    <li>Utilized Metasploit's database to track vulnerabilities, exploits, and results during the assessment process.</li>
-                </ul>
-            </div>
-
-            <!-- Tool 7: OWASP ZAP -->
-            <div class="tool">
-                <h3>7. OWASP ZAP</h3>
-                <p>The OWASP Zed Attack Proxy (ZAP) is an open-source web application security scanner that I used to find vulnerabilities such as Cross-Site Scripting (XSS) and SQL Injection within web applications.</p>
-                <ul>
-                    <li>Automated security scans to identify security flaws in the bank’s web applications.</li>
-                    <li>Performed active scanning for vulnerabilities and manual testing for complex cases.</li>
-                    <li>Integrated ZAP into the continuous security monitoring process to ensure ongoing protection for web applications.</li>
-                </ul>
-            </div>
-
-            <!-- Tool 8: Zenmap -->
-            <div class="tool">
-                <h3>8. Zenmap</h3>
-                <p>Zenmap is the graphical user interface for Nmap, and I used it to visually analyze network scans and produce detailed reports, which helped the team prioritize vulnerabilities based on their severity.</p>
-                <ul>
-                    <li>Used Zenmap for network mapping and identifying network devices and hosts.</li>
-                    <li>Visualized network scan results to identify attack vectors and potential entry points into the bank’s systems.</li>
-                    <li>Assisted in creating a comprehensive vulnerability assessment report for internal and external stakeholders.</li>
-                </ul>
+                <h3>4. OWASP ZAP</h3>
+                <table class="tool-table">
+                    <thead>
+                        <tr>
+                            <th>Tool Name</th>
+                            <th>Function</th>
+                            <th>Techniques Used</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>OWASP ZAP</td>
+                            <td>Web Application Security Testing</td>
+                            <td>
+                                <ul>
+                                    <li>Automated scans to find vulnerabilities like XSS and SQL Injection.</li>
+                                    <li>Performed manual testing to validate complex vulnerabilities.</li>
+                                    <li>Integrated with continuous security monitoring processes.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
