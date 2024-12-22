@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Matrix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        .matrix-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 30px;
+        }
+
+        .matrix-table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .matrix-table th, .matrix-table td {
+            padding: 20px;
+            border: 1px solid #ddd;
+            font-size: 1.2rem;
+        }
+
+        .matrix-table th {
+            background-color: #2c3e50;
+            color: #fff;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .low {
+            background-color: #2ecc71;
+            color: #fff;
+        }
+
+        .medium {
+            background-color: #f39c12;
+            color: #fff;
+        }
+
+        .high {
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        .risk-label {
+            font-weight: bold;
+        }
+
+        .risk-description {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .footer a {
+            color: #2c3e50;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .matrix-table {
+                width: 100%;
+            }
+
+            .matrix-table th, .matrix-table td {
+                font-size: 1rem;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Risk Matrix</h1>
+        <p class="section-title">Visual Representation of Identified Risks</p>
+
+        <div class="matrix-container">
+            <!-- Risk Matrix Table -->
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th>Impact / Likelihood</th>
+                        <th>Very Low</th>
+                        <th>Low</th>
+                        <th>Medium</th>
+                        <th>High</th>
+                        <th>Very High</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Very Low Impact Row -->
+                    <tr>
+                        <td class="risk-label">Very Low</td>
+                        <td class="low">Minimal</td>
+                        <td class="low">Low</td>
+                        <td class="medium">Medium</td>
+                        <td class="medium">Medium</td>
+                        <td class="high">High</td>
+                    </tr>
+
+                    <!-- Low Impact Row -->
+                    <tr>
+                        <td class="risk-label">Low</td>
+                        <td class="low">Low</td>
+                        <td class="medium">Medium</td>
+                        <td class="medium">Medium</td>
+                        <td class="high">High</td>
+                        <td class="high">High</td>
+                    </tr>
+
+                    <!-- Medium Impact Row -->
+                    <tr>
+                        <td class="risk-label">Medium</td>
+                        <td class="medium">Medium</td>
+                        <td class="medium">Medium</td>
+                        <td class="high">High</td>
+                        <td class="high">High</td>
+                        <td class="high">Critical</td>
+                    </tr>
+
+                    <!-- High Impact Row -->
+                    <tr>
+                        <td class="risk-label">High</td>
+                        <td class="medium">Medium</td>
+                        <td class="high">High</td>
+                        <td class="high">Critical</td>
+                        <td class="high">Critical</td>
+                        <td class="high">Critical</td>
+                    </tr>
+
+                    <!-- Very High Impact Row -->
+                    <tr>
+                        <td class="risk-label">Very High</td>
+                        <td class="high">Critical</td>
+                        <td class="high">Critical</td>
+                        <td class="high">Critical</td>
+                        <td class="high">Critical</td>
+                        <td class="high">Critical</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Hashmatullah Bahadari | ISO 27001 Certified Professional | <a href="index.html">Back to Portfolio</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
