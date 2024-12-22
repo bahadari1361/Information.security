@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Assessment - Central Bank of Afghanistan</title>
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem;
+        }
+        .section {
+            width: 220px;
+            margin: 1rem;
+            padding: 1.5rem;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .section:hover {
+            transform: scale(1.05);
+        }
+        .section i {
+            font-size: 3rem;
+            color: #2c3e50;
+        }
+        .section h3 {
+            margin-top: 1rem;
+            color: #2c3e50;
+        }
+        .section p {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #7f8c8d;
+        }
+        .section-detail {
+            display: none;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #2c3e50;
+            text-align: left;
+        }
+        .back-to-home {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .back-home {
+            position: fixed; /* Fixed position relative to the viewport */
+            bottom: 20px; /* Distance from the bottom of the page */
+            left: 20px; /* Distance from the left edge */
+            background-color: #3498db; /* Initial blue color */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1rem; /* Optional: Adjust font size */
+            z-index: 1000; /* Ensure it's on top of other elements */
+        }
+        
+        .back-home:hover {
+            background-color: #1a242f; /* Darker blue on hover */
+                }
+        
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Risk Assessment - ISO/IEC 27001</h1>
+        <p>Central Bank of Afghanistan Project</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Risk Identification Section -->
+        <div class="section" onclick="toggleDetail('detail1')">
+            <i class="fas fa-bullseye"></i>
+            <h3>Risk Identification</h3>
+            <p>Identifying potential risks that could affect the bank’s operations, infrastructure, and data.</p>
+            <div id="detail1" class="section-detail">
+                <p>In this phase, we focused on identifying all possible risks to the bank's systems and data, including cyber threats, physical risks, operational disruptions, and regulatory risks.</p>
+                <ul>
+                    <li><strong>Cyber threats:</strong> Malware, ransomware, phishing, insider threats.</li>
+                    <li><strong>Physical risks:</strong> Theft, natural disasters, fire.</li>
+                    <li><strong>Operational risks:</strong> System failures, human error, external disruptions.</li>
+                    <li><strong>Regulatory risks:</strong> Non-compliance with financial and data protection regulations.</li>
+                </ul>
+                <p>We conducted regular threat modeling sessions with stakeholders to ensure a comprehensive understanding of potential risks.</p>
+            </div>
+        </div>
+
+        <!-- Risk Evaluation Section -->
+        <div class="section" onclick="toggleDetail('detail2')">
+            <i class="fas fa-chart-pie"></i>
+            <h3>Risk Evaluation</h3>
+            <p>Evaluating identified risks based on their impact and likelihood to prioritize mitigation strategies.</p>
+            <div id="detail2" class="section-detail">
+                <p>We evaluated risks by assessing their potential impact on operations and their likelihood of occurring, ensuring that the most critical risks were addressed first.</p>
+                <ul>
+                    <li><strong>Impact assessment:</strong> Severity of disruption caused by the risk.</li>
+                    <li><strong>Likelihood assessment:</strong> Probability of the risk occurring.</li>
+                    <li><strong>Risk Matrix:</strong> Categorizing risks as high, medium, or low priority based on impact and likelihood.</li>
+                </ul>
+                <p>This process helped us focus on the highest-priority risks and allocate resources accordingly.</p>
+            </div>
+        </div>
+
+        <!-- Risk Treatment Section -->
+        <div class="section" onclick="toggleDetail('detail3')">
+            <i class="fas fa-tools"></i>
+            <h3>Risk Treatment</h3>
+            <p>Implementing strategies to mitigate or eliminate identified risks through control measures.</p>
+            <div id="detail3" class="section-detail">
+                <p>For each identified risk, we developed a treatment plan that included strategies for mitigation or avoidance. Key actions included:</p>
+                <ul>
+                    <li><strong>Firewalls and encryption:</strong> Protecting systems from unauthorized access and ensuring data security.</li>
+                    <li><strong>Access controls:</strong> Enforcing least-privilege access and multi-factor authentication to secure sensitive data.</li>
+                    <li><strong>Disaster recovery planning:</strong> Developing plans to ensure business continuity in case of disruptions.</li>
+                    <li><strong>Employee training:</strong> Raising awareness through regular security awareness programs.</li>
+                </ul>
+                <p>We also worked closely with third-party vendors to ensure they followed the same security standards.</p>
+            </div>
+        </div>
+
+        <!-- Risk Monitoring Section -->
+        <div class="section" onclick="toggleDetail('detail4')">
+            <i class="fas fa-sync-alt"></i>
+            <h3>Risk Monitoring</h3>
+            <p>Continuously monitoring the effectiveness of risk treatments through audits, reviews, and incident tracking.</p>
+            <div id="detail4" class="section-detail">
+                <p>We established ongoing monitoring activities to evaluate the effectiveness of risk treatment plans. These activities included:</p>
+                <ul>
+                    <li><strong>Regular audits:</strong> Conducting IT and security audits to ensure control measures remain effective.</li>
+                    <li><strong>Incident tracking:</strong> Using a centralized system to track and analyze security incidents.</li>
+                    <li><strong>Risk reviews:</strong> Continuously reviewing the risk landscape and adjusting treatments based on emerging threats.</li>
+                    <li><strong>Risk posture updates:</strong> Ensuring that the organization’s risk posture evolves in response to changing circumstances.</li>
+                </ul>
+                <p>This approach allowed us to ensure the ongoing resilience of the bank’s infrastructure and data security practices.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Home Button -->
+        <a href="SA.html" class="back-home">Back to Home</a>
+    </div>
+
+    
+
+    <!-- JavaScript for Toggle -->
+    <script>
+        function toggleDetail(id) {
+            var content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
