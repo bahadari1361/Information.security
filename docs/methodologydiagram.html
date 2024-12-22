@@ -3,48 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Route Circular Chart</title>
+    <title>Network Route Circular Chart - Methodology Phases</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f6f9;
+            background-color: #f0f4f8;
             margin: 40px;
             color: #333;
+            text-align: center;
         }
 
         h1 {
             color: #2E3A8C;
-            font-size: 32px;
-            text-align: center;
+            font-size: 36px;
             margin-bottom: 40px;
         }
 
         .network-container {
             position: relative;
-            width: 400px;
-            height: 400px;
+            width: 450px;
+            height: 450px;
             margin: 0 auto;
             border-radius: 50%;
             background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(135deg, #f3f4f6, #ffffff);
         }
 
         .network-point {
             position: absolute;
-            width: 50px;
-            height: 50px;
+            width: 70px;
+            height: 70px;
             background-color: #ffffff;
             border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: center;
             align-items: center;
             color: #2E3A8C;
-            font-size: 24px;
+            font-size: 32px;
             transition: all 0.3s ease;
         }
 
@@ -54,29 +55,39 @@
         }
 
         .network-text {
-            text-align: center;
-            font-size: 16px;
-            margin-top: 10px;
             color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
         }
 
         .network-arrow {
             position: absolute;
-            font-size: 30px;
+            font-size: 36px;
             color: #2E3A8C;
             font-weight: bold;
         }
 
         /* Positioning of network points around the circle */
-        .point-1 { top: 10px; left: 50%; transform: translateX(-50%); }
+        .point-1 { top: 20px; left: 50%; transform: translateX(-50%); }
         .point-2 { top: 50%; left: 90%; transform: translateY(-50%) translateX(-50%); }
-        .point-3 { top: 90%; left: 50%; transform: translateX(-50%) translateY(-50%); }
+        .point-3 { top: 80%; left: 50%; transform: translateX(-50%) translateY(-50%); }
         .point-4 { top: 50%; left: 10%; transform: translateY(-50%) translateX(-50%); }
 
         .arrow-1 { top: 40%; left: 70%; }
         .arrow-2 { top: 40%; left: 10%; }
         .arrow-3 { top: 80%; left: 70%; }
         .arrow-4 { top: 80%; left: 10%; }
+
+        .network-point i {
+            font-size: 36px;
+        }
+
+        .network-text {
+            font-size: 16px;
+            margin-top: 8px;
+            color: #2E3A8C;
+        }
     </style>
 </head>
 <body>
@@ -88,15 +99,19 @@
         <!-- Network Points (Phases) -->
         <div class="network-point point-1">
             <i class="fas fa-file-alt"></i>
+            <div class="network-text">Document Review</div>
         </div>
         <div class="network-point point-2">
             <i class="fas fa-users"></i>
+            <div class="network-text">Stakeholder Interviews</div>
         </div>
         <div class="network-point point-3">
             <i class="fas fa-search"></i>
+            <div class="network-text">Vulnerability Scanning</div>
         </div>
         <div class="network-point point-4">
             <i class="fas fa-user-shield"></i>
+            <div class="network-text">Penetration Testing</div>
         </div>
 
         <!-- Arrows -->
@@ -114,7 +129,6 @@
         </div>
     </div>
 
-    <!-- Descriptions of Each Phase -->
     <div class="network-text">
         <div><strong>Document Review:</strong> Review critical documents like security policies, risk management frameworks, and business continuity plans.</div>
         <div><strong>Stakeholder Interviews:</strong> Conduct interviews with security personnel to identify concerns and gather insights.</div>
