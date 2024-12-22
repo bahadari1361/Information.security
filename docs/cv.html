@@ -27,9 +27,14 @@
             padding: 2cm;
             box-sizing: border-box;
             border: 1px solid #ddd;
-            page-break-before: always;
-            margin-top: 10px;
+            margin-top: 20px;
             position: relative;
+        }
+
+        /* Center the content */
+        .container {
+            margin-left: auto;
+            margin-right: auto;
         }
 
         header {
@@ -125,6 +130,11 @@
             margin-top: 20px;
         }
 
+        /* Page break for second page */
+        .page-break {
+            page-break-before: always;
+        }
+
         .page-flip {
             display: flex;
             justify-content: center;
@@ -135,13 +145,7 @@
             cursor: pointer;
         }
 
-        /* Book-like Page Flip Styling */
-        .page-flip {
-            font-size: 20px;
-            color: #3498db;
-            cursor: pointer;
-        }
-
+        /* Styling for second page */
         .flip-container {
             display: flex;
             justify-content: center;
@@ -175,31 +179,25 @@
             font-weight: bold;
         }
 
-        .container {
-            margin-left: 2cm;
-            margin-right: 2cm;
-        }
-
-        .container {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Styling for second page */
-        .page-break {
-            page-break-before: always;
+        /* Fix contact information alignment */
+        .contact-info {
+            font-size: 14px;
+            color: #555;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 10px;
         }
 
         .central-bank {
             color: #1d3c6d;
         }
 
-        .flip-container .arrow {
-            font-size: 24px;
-            color: #3498db;
-            cursor: pointer;
+        /* Page container and break styles */
+        .container {
+            margin-left: 2cm;
+            margin-right: 2cm;
         }
-
     </style>
 </head>
 <body>
@@ -264,16 +262,5 @@
     </footer>
 </div>
 
-<!-- Page flip button -->
-<div class="flip-container">
-    <div class="page-flip" onclick="flipPage()">Next Page <i class="fa fa-arrow-right"></i></div>
-</div>
-
-<script>
-    function flipPage() {
-        // Add your page flip animation here (CSS transition or class toggle)
-        alert('Flipping to the next page!');
-    }
-</script>
 </body>
 </html>
