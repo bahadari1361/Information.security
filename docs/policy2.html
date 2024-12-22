@@ -9,7 +9,6 @@
     <!-- Font Awesome for Icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
-        /* Global Styles */
         body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
@@ -20,60 +19,93 @@
         header {
             background-color: #004d7a;
             color: white;
-            padding: 3rem 1rem;
+            padding: 2rem;
             text-align: center;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-family: 'Roboto', sans-serif;
             border-bottom: 4px solid #0088cc;
         }
         header p {
             margin-top: 10px;
-            font-size: 1.1rem;
-            font-weight: 400;
+            font-size: 1.2rem;
         }
-
-        /* Container for the sections */
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-evenly;
-            margin: 3rem 2rem;
+            justify-content: center;
+            margin: 2rem;
         }
-
-        /* Individual Section Styles */
         .section {
-            width: 280px;
+            width: 220px;
             margin: 1rem;
-            padding: 2rem;
-            background-color: #ffffff;
-            border-radius: 10px;
+            padding: 1.5rem;
+            border-radius: 8px;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
         }
         .section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
         }
         .section i {
-            font-size: 3.5rem;
-            color: #0088cc;
+            font-size: 3rem;
+            color: #fff;
         }
         .section h3 {
             margin-top: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #004d7a;
             font-weight: 500;
         }
         .section p {
             margin-top: 0.5rem;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.4;
             color: #7f8c8d;
         }
+        /* Differentiating styles for each section */
+        .section-1 {
+            background-color: #004d7a; /* Dark blue */
+            border: 2px solid #0088cc;
+        }
 
-        /* Hidden Details Section */
+        .section-2 {
+            background-color: #006f91; /* Slightly lighter blue */
+            border: 2px solid #0094c6;
+        }
+
+        .section-3 {
+            background-color: #3a8fbf; /* Teal blue */
+            border: 2px solid #65aedd;
+        }
+
+        .section-4 {
+            background-color: #0094c6; /* Sky blue */
+            border: 2px solid #66d0e1;
+        }
+
+        .section-5 {
+            background-color: #00697d; /* Dark teal */
+            border: 2px solid #004f60;
+        }
+
+        .section-6 {
+            background-color: #004f60; /* Deep blue */
+            border: 2px solid #338c99;
+        }
+
+        .section-7 {
+            background-color: #336f87; /* Slate blue */
+            border: 2px solid #507f92;
+        }
+
+        .section-8 {
+            background-color: #508f9d; /* Light slate blue */
+            border: 2px solid #6ca9b9;
+        }
+
         .section-detail {
             display: none;
             margin-top: 20px;
@@ -81,46 +113,40 @@
             color: #333;
             text-align: left;
         }
+
         .section-detail ul {
             list-style-type: none;
             padding: 0;
         }
+
         .section-detail ul li {
             margin-bottom: 10px;
         }
 
-        /* Back to Home Button */
+        .back-to-home {
+            text-align: center;
+            margin-top: 3rem;
+        }
         .back-home {
             position: fixed;
             bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 20px;
             background-color: #0088cc;
             color: #fff;
             padding: 12px 25px;
             border-radius: 5px;
             font-weight: 600;
             text-decoration: none;
-            font-size: 1rem;
             text-align: center;
+            font-size: 1rem;
             z-index: 1000;
             transition: background-color 0.3s ease;
         }
-
+        
         .back-home:hover {
             background-color: #004d7a;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .section {
-                width: 90%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -133,7 +159,7 @@
     <!-- Main Content -->
     <div class="container">
         <!-- Information Security Policy -->
-        <div class="section" onclick="toggleDetail('detail1')">
+        <div class="section section-1" onclick="toggleDetail('detail1')">
             <i class="fas fa-shield-alt"></i>
             <h3>Information Security Policy</h3>
             <p>Defines the framework for developing, implementing, and reviewing security controls.</p>
@@ -144,7 +170,7 @@
         </div>
 
         <!-- Asset Management Policy -->
-        <div class="section" onclick="toggleDetail('detail2')">
+        <div class="section section-2" onclick="toggleDetail('detail2')">
             <i class="fas fa-cogs"></i>
             <h3>Asset Management Policy</h3>
             <p>Defines how assets should be classified, managed, and protected.</p>
@@ -155,7 +181,7 @@
         </div>
 
         <!-- Access Control Policy -->
-        <div class="section" onclick="toggleDetail('detail3')">
+        <div class="section section-3" onclick="toggleDetail('detail3')">
             <i class="fas fa-user-lock"></i>
             <h3>Access Control Policy</h3>
             <p>Ensures the appropriate use of access privileges.</p>
@@ -166,7 +192,7 @@
         </div>
 
         <!-- Data Protection and Privacy Policy -->
-        <div class="section" onclick="toggleDetail('detail4')">
+        <div class="section section-4" onclick="toggleDetail('detail4')">
             <i class="fas fa-user-secret"></i>
             <h3>Data Protection and Privacy Policy</h3>
             <p>Manages personal data in compliance with privacy regulations.</p>
@@ -177,7 +203,7 @@
         </div>
 
         <!-- Cryptographic Controls Policy -->
-        <div class="section" onclick="toggleDetail('detail5')">
+        <div class="section section-5" onclick="toggleDetail('detail5')">
             <i class="fas fa-lock"></i>
             <h3>Cryptographic Controls Policy</h3>
             <p>Ensures data confidentiality and integrity through encryption.</p>
@@ -188,7 +214,7 @@
         </div>
 
         <!-- Incident Management and Response Policy -->
-        <div class="section" onclick="toggleDetail('detail6')">
+        <div class="section section-6" onclick="toggleDetail('detail6')">
             <i class="fas fa-bug"></i>
             <h3>Incident Management and Response Policy</h3>
             <p>Defines procedures for identifying and responding to incidents.</p>
@@ -199,7 +225,7 @@
         </div>
 
         <!-- Business Continuity and Disaster Recovery Policy -->
-        <div class="section" onclick="toggleDetail('detail7')">
+        <div class="section section-7" onclick="toggleDetail('detail7')">
             <i class="fas fa-umbrella"></i>
             <h3>Business Continuity and Disaster Recovery Policy</h3>
             <p>Ensures continuity of critical operations during incidents.</p>
@@ -210,7 +236,7 @@
         </div>
 
         <!-- Physical and Environmental Security Policy -->
-        <div class="section" onclick="toggleDetail('detail8')">
+        <div class="section section-8" onclick="toggleDetail('detail8')">
             <i class="fas fa-building"></i>
             <h3>Physical and Environmental Security Policy</h3>
             <p>Prevents unauthorized access and protects equipment.</p>
@@ -219,17 +245,22 @@
                 <p><strong>ISO 27001 Reference:</strong> Clause 11.1, A.11.1</p>
             </div>
         </div>
+
     </div>
 
     <!-- Back to Home Button -->
-    <div class="back-home">
+    <div class="back-to-home">
         <a href="#!" class="back-home">Back to Home</a>
     </div>
 
     <script>
         function toggleDetail(sectionId) {
             const detailSection = document.getElementById(sectionId);
-            detailSection.style.display = detailSection.style.display === 'block' ? 'none' : 'block';
+            if (detailSection.style.display === 'block') {
+                detailSection.style.display = 'none';
+            } else {
+                detailSection.style.display = 'block';
+            }
         }
     </script>
 </body>
