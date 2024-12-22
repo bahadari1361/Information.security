@@ -20,7 +20,7 @@
             height: 29.7cm;
             margin: 1.5cm auto;
             background-color: #fff;
-            padding: 20px;
+            padding: 2cm;
             box-sizing: border-box;
             border: 1px solid #ddd;
             page-break-before: always;
@@ -123,23 +123,18 @@
             page-break-before: always;
         }
 
-        /* Book-like Flip Effect */
-        .flip-book {
+        .book-flip {
             display: flex;
             justify-content: center;
             align-items: center;
+            margin-top: 30px;
         }
 
         .flip-arrow {
             font-size: 24px;
             color: #3498db;
-            display: inline-block;
+            cursor: pointer;
             transform: rotate(90deg);
-            cursor: pointer;
-        }
-
-        .flip-arrow:hover {
-            cursor: pointer;
         }
 
         .contact-info .fa-phone, .contact-info .fa-envelope, .contact-info .fa-linkedin {
@@ -148,6 +143,17 @@
 
         .contact-info p {
             margin: 0;
+        }
+
+        /* Apply color to Central Bank of Afghanistan */
+        .central-bank {
+            color: #1d3c6d;
+        }
+
+        /* Ensure good spacing on the page */
+        .container {
+            margin-left: 2cm;
+            margin-right: 2cm;
         }
 
     </style>
@@ -183,7 +189,7 @@
         <h2>Experience</h2>
         <div class="section-content">
             <ul>
-                <li><span class="company-name">Information Security Manager</span> – Central Bank of Afghanistan, Kabul <span class="date">05.2014 – 09.2021</span></li>
+                <li><span class="company-name central-bank">Information Security Manager</span> – Central Bank of Afghanistan, Kabul <span class="date">05.2014 – 09.2021</span></li>
                 <ul>
                     <li>Developed and enforced security policies, achieving a 20% reduction in data breaches and maintaining 99% system uptime.</li>
                     <li>Led ISO 27001 certification efforts, improving compliance and trust with regulatory bodies.</li>
@@ -213,7 +219,10 @@
         <p>Hashmatullah Bahadari | Information Security Manager</p>
     </footer>
 
-    <!-- Page Break -->
+    <!-- Page Break with Arrow -->
+    <div class="book-flip">
+        <span class="flip-arrow">➔</span>
+    </div>
     <div class="page-break"></div>
 
     <!-- Page 2 -->
@@ -246,18 +255,16 @@
         <h2>Skills</h2>
         <div class="section-content">
             <ul>
-                <li><strong>Information Security & Risk Management</strong></li>
-                <li><strong>Network & Systems Administration</strong></li>
-                <li>ISO/IEC 27001 Compliance & Auditing</li>
                 <li>Cybersecurity Strategy & Risk Management</li>
+                <li>ISO/IEC 27001 Compliance & Auditing</li>
+                <li>Network & Systems Administration</li>
+                <li>Data Loss Prevention (DLP)</li>
+                <li>Advanced Threat Detection</li>
+                <li>Penetration Testing & Security Assessments</li>
             </ul>
         </div>
     </section>
 
-    <!-- Flip Effect -->
-    <div class="flip-book">
-        <span class="flip-arrow"><i class="fa fa-arrow-right"></i></span>
-    </div>
 </div>
 
 </body>
