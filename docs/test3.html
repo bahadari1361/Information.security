@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Portfolio - Traffic Management via Router</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th, td {
+            padding: 16px;
+            font-size: 1.1em;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        td {
+            background-color: #f9f9f9;
+        }
+        caption {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+        pre {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+            font-family: 'Courier New', Courier, monospace;
+            color: #2d2d2d;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin-top: 10px;
+        }
+        .step-number {
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        .tools-header {
+            font-size: 1.2em;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Project Portfolio: Router Traffic Management</h1>
+
+    <p>In this project, the focus is on configuring and managing router traffic between multiple networks to ensure optimal and secure data flow. The router employs Access Control Lists (ACLs) to regulate and secure network traffic based on defined security policies and specific network requirements.</p>
+
+    <table>
+        <caption>Traffic Management Project Overview</caption>
+        <thead>
+            <tr>
+                <th>Step</th>
+                <th>Description</th>
+                <th>Tools & Technologies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><span class="step-number">1.</span> Planning & Analysis</td>
+                <td>Define the network topology, traffic flow requirements, and security policies. Identify critical access points, and prepare the necessary access control strategy.</td>
+                <td><span class="tools-header">Tools:</span> Network Diagrams, Security Policy Documents</td>
+            </tr>
+            <tr>
+                <td><span class="step-number">2.</span> Router Configuration</td>
+                <td>Configure the router interfaces and enable routing protocols to ensure communication between the internal and external networks.</td>
+                <td><span class="tools-header">Tools:</span> Cisco Routers, IOS Configuration</td>
+            </tr>
+            <tr>
+                <td><span class="step-number">3.</span> Access Control Lists (ACL) Configuration</td>
+                <td>Implement ACLs to specify which traffic is allowed or denied based on IP addresses, protocols, and ports, to control access to network resources.</td>
+                <td><span class="tools-header">Tools:</span> Cisco IOS ACL Configuration</td>
+            </tr>
+            <tr>
+                <td><span class="step-number">4.</span> Traffic Flow Testing</td>
+                <td>Test the traffic routing and verify that ACLs are properly applied, ensuring that traffic is correctly managed between networks.</td>
+                <td><span class="tools-header">Tools:</span> Ping, Traceroute, ACL Debugging</td>
+                <td>
+                    <pre>
+# Example Traceroute Command
+Router# traceroute 8.8.8.8
+
+# Example Ping Command
+Router# ping 192.168.1.1
+
+# Debugging ACL Functionality
+Router# debug ip access-list
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="step-number">5.</span> Monitoring & Logging</td>
+                <td>Configure logging and monitoring features to track network traffic patterns and detect potential issues or security events.</td>
+                <td><span class="tools-header">Tools:</span> Cisco NetFlow, Syslog, SNMP</td>
+                <td>
+                    <pre>
+# Example Syslog Configuration
+Router(config)# logging 192.168.1.100
+Router(config)# logging trap notifications
+
+# Example NetFlow Configuration
+Router(config)# ip flow-export destination 192.168.1.200 2055
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="step-number">6.</span> Optimization & Troubleshooting</td>
+                <td>Fine-tune the configuration, optimize traffic flows, and troubleshoot any issues that arise, such as incorrect ACL configurations or performance degradation.</td>
+                <td><span class="tools-header">Tools:</span> Network Analyzers, Cisco Diagnostic Tools</td>
+                <td>
+                    <pre>
+# View routing table
+Router# show ip route
+
+# Troubleshoot ACL issues
+Router# show access-lists
+Router# show ip interface GigabitEthernet0/1
+                    </pre>
+                </td>
+            </tr>
+            <tr>
+                <td><span class="step-number">7.</span> Documentation & Reporting</td>
+                <td>Document all configurations, including ACL rules, routing protocols, and network security measures. Generate reports for review by stakeholders.</td>
+                <td><span class="tools-header">Tools:</span> Documentation Tools (Word, Excel), Cisco CLI</td>
+                <td>
+                    <pre>
+# Show running-config for documentation
+Router# show running-config
+
+# Display ACL rules
+Router# show access-lists
+                    </pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
