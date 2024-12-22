@@ -15,8 +15,8 @@
             line-height: 1.6;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            align-items: flex-start;
+            min-height: 100vh;
             overflow: hidden;
         }
 
@@ -28,8 +28,8 @@
             box-sizing: border-box;
             border: 1px solid #ddd;
             page-break-before: always;
-            display: flex;
-            flex-direction: column;
+            margin-top: 10px;
+            position: relative;
         }
 
         header {
@@ -125,22 +125,6 @@
             margin-top: 20px;
         }
 
-        .page-break {
-            page-break-before: always;
-        }
-
-        /* Apply color to Central Bank of Afghanistan */
-        .central-bank {
-            color: #1d3c6d;
-        }
-
-        /* Ensure good spacing on the page */
-        .container {
-            margin-left: 2cm;
-            margin-right: 2cm;
-        }
-
-        /* Styling for Book-like Page Flip Simulation */
         .page-flip {
             display: flex;
             justify-content: center;
@@ -151,50 +135,71 @@
             cursor: pointer;
         }
 
-        /* Center the page */
-        .container {
-            margin-left: auto;
-            margin-right: auto;
+        /* Book-like Page Flip Styling */
+        .page-flip {
+            font-size: 20px;
+            color: #3498db;
+            cursor: pointer;
         }
 
-        /* Adjust the container to simulate book flip */
+        .flip-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+        }
+
         .flip-page {
-            position: relative;
             display: flex;
             justify-content: space-between;
-            flex-direction: row;
+            align-items: flex-start;
             width: 100%;
+            max-width: 700px;
+            flex-direction: row;
+            margin-top: 50px;
         }
 
-        .flip-page .page {
-            flex: 1;
-            border: 1px solid #ddd;
+        .page {
+            width: 100%;
+            margin-right: 15px;
             padding: 20px;
-            margin-right: 10px;
+            border: 1px solid #ddd;
         }
 
-        .flip-page .page:last-child {
+        .page:last-child {
             margin-right: 0;
         }
 
-        /* Page color styling */
-        .page-content {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-        
-        /* Styling for bold job entry */
         .highlight-job {
             color: #1d3c6d;
             font-weight: bold;
         }
 
-        /* Ensure content is responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 1cm;
-            }
+        .container {
+            margin-left: 2cm;
+            margin-right: 2cm;
         }
+
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Styling for second page */
+        .page-break {
+            page-break-before: always;
+        }
+
+        .central-bank {
+            color: #1d3c6d;
+        }
+
+        .flip-container .arrow {
+            font-size: 24px;
+            color: #3498db;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -247,22 +252,28 @@
                 
                 <li><span class="company-name">Network Administrator</span> – BearingPoint, Central Bank of Afghanistan Project <span class="date">06.2010 – 06.2011</span></li>
                 <ul>
-                    <li>Managed LAN/WAN networks, configuring and maintaining Cisco switches, routers, and firewalls to ensure 99% network uptime and secure, reliable connectivity.</li>
-                    <li>Implemented centralized endpoint security solutions, reducing security risks by 40% and proactively addressing vulnerabilities.</li>
+                    <li>Maintained LAN/WAN network, resolving critical network issues within an average time of 4 hours.</li>
+                    <li>Ensured endpoint security by deploying antivirus solutions and enforcing strict access controls.</li>
                 </ul>
             </ul>
         </div>
     </section>
 
     <footer>
-        <p>Hashmatullah Bahadari | Information Security Manager</p>
+        <p>Hashmatullah Bahadari – CV Updated: December 2024</p>
     </footer>
 </div>
 
-<!-- Simulated Page Flip -->
-<div class="page-flip">
-    <span>➔</span>
+<!-- Page flip button -->
+<div class="flip-container">
+    <div class="page-flip" onclick="flipPage()">Next Page <i class="fa fa-arrow-right"></i></div>
 </div>
 
+<script>
+    function flipPage() {
+        // Add your page flip animation here (CSS transition or class toggle)
+        alert('Flipping to the next page!');
+    }
+</script>
 </body>
 </html>
