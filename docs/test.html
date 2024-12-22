@@ -3,184 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hashmatullah Bahadari's Portfolio</title>
+    <title>Information Security Assessment - Central Bank of Afghanistan</title>
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-        }
-        h1, h2, h3 {
+            background-color: #f4f4f9;
             color: #333;
         }
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            font-size: 1.5rem;
+        }
         .container {
-            width: 80%;
-            margin: 0 auto;
-            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2rem;
         }
         .section {
-            margin: 20px 0;
-        }
-        .collapsible {
-            background-color: #777;
-            color: white;
+            width: 220px;
+            margin: 1rem;
+            padding: 1.5rem;
+            background-color: #ecf0f1;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            padding: 10px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 16px;
+            transition: transform 0.3s ease;
         }
-        .active, .collapsible:hover {
-            background-color: #555;
+        .section:hover {
+            transform: scale(1.05);
         }
-        .content {
-            padding: 0 18px;
+        .section i {
+            font-size: 3rem;
+            color: #2c3e50;
+        }
+        .section h3 {
+            margin-top: 1rem;
+            color: #2c3e50;
+        }
+        .section p {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            color: #7f8c8d;
+        }
+        .section-detail {
             display: none;
-            overflow: hidden;
-            background-color: #f1f1f1;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #2c3e50;
+            text-align: left;
         }
-        ul {
-            list-style-type: none;
+        .back-home {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1rem;
+            z-index: 1000;
         }
-        li {
-            margin: 10px 0;
-        }
-        .tree {
-            margin-left: 20px;
+        .back-home:hover {
+            background-color: #1a242f;
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <h1>Information Security Assessment</h1>
+        <p>Central Bank of Afghanistan</p>
+    </header>
+
+    <!-- Main Content -->
     <div class="container">
-        <h1>Hashmatullah Bahadari's Portfolio</h1>
-        <h2 id="portfolioName"></h2>
-
-        <!-- Bio Section -->
-        <div class="section" id="bioSection">
-            <button class="collapsible">Bio</button>
-            <div class="content">
-                <p><strong>Location:</strong> <span id="location"></span></p>
-                <p><strong>Native Language:</strong> <span id="nativeLanguage"></span></p>
-                <p><strong>Languages:</strong></p>
-                <ul id="languagesList"></ul>
+        <!-- Executive Summary Section -->
+        <div class="section" onclick="toggleDetail('detail1')">
+            <i class="fas fa-briefcase"></i>
+            <h3>Executive Summary</h3>
+            <p>An overview of objectives and scope of the assessment.</p>
+            <div id="detail1" class="section-detail">
+                <p><strong>Objective:</strong> Evaluate the information security posture, identify vulnerabilities, and recommend improvements.
+                <br><strong>Scope:</strong> Covers critical assets, systems, and compliance with ISO/IEC 27001.</p>
             </div>
         </div>
 
-        <!-- Certifications Section -->
-        <div class="section" id="certificationsSection">
-            <button class="collapsible">Certifications</button>
-            <div class="content">
-                <ul id="certificationsList"></ul>
+        <!-- Introduction Section -->
+        <div class="section" onclick="toggleDetail('detail2')">
+            <i class="fas fa-info-circle"></i>
+            <h3>Introduction</h3>
+            <p>Learn about the CBA and the purpose of the assessment.</p>
+            <div id="detail2" class="section-detail">
+                <p>The Central Bank of Afghanistan manages monetary policies and financial stability. This assessment evaluates its security measures to ensure robust protection against cyber threats.</p>
             </div>
         </div>
 
-        <!-- Experience Section -->
-        <div class="section" id="experienceSection">
-            <button class="collapsible">Experience</button>
-            <div class="content">
-                <ul id="experienceList"></ul>
+        <!-- Methodology Section -->
+        <div class="section" onclick="toggleDetail('detail3')">
+            <i class="fas fa-cogs"></i>
+            <h3>Methodology</h3>
+            <p>Understand the approach and tools used in the assessment.</p>
+            <div id="detail3" class="section-detail">
+                <p>Combines documentation review, stakeholder interviews, vulnerability scanning, and penetration testing with tools like Kali Linux, Nessus, and Acunetix.</p>
             </div>
         </div>
 
-        <!-- Skills Section -->
-        <div class="section" id="skillsSection">
-            <button class="collapsible">Skills</button>
-            <div class="content">
-                <ul id="skillsList"></ul>
+        <!-- ISMS Review Section -->
+        <div class="section" onclick="toggleDetail('detail4')">
+            <i class="fas fa-clipboard-check"></i>
+            <h3>ISMS Review</h3>
+            <p>Review of governance and organizational structure.</p>
+            <div id="detail4" class="section-detail">
+                <p>Evaluates roles, policies, and ISO/IEC 27001 compliance, including risk management, incident response, and business continuity plans.</p>
             </div>
         </div>
 
-        <!-- Projects Section -->
-        <div class="section" id="projectsSection">
-            <button class="collapsible">Projects</button>
-            <div class="content">
-                <ul id="projectsList"></ul>
+        <!-- Security Controls Section -->
+        <div class="section" onclick="toggleDetail('detail5')">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Security Controls</h3>
+            <p>Assessment of physical and logical security measures.</p>
+            <div id="detail5" class="section-detail">
+                <p>Examines network security, endpoint security, application security, and monitoring systems.</p>
+            </div>
+        </div>
+
+        <!-- Compliance Section -->
+        <div class="section" onclick="toggleDetail('detail6')">
+            <i class="fas fa-check-circle"></i>
+            <h3>ISO/IEC 27001 Compliance</h3>
+            <p>Assessment of ISO 27001 control domains and audit readiness.</p>
+            <div id="detail6" class="section-detail">
+                <p>Evaluates policies, risk management, and asset classification against ISO standards.</p>
+            </div>
+        </div>
+
+        <!-- Vulnerability Assessment Section -->
+        <div class="section" onclick="toggleDetail('detail7')">
+            <i class="fas fa-bug"></i>
+            <h3>Vulnerability Assessment</h3>
+            <p>Results of scanning and penetration testing.</p>
+            <div id="detail7" class="section-detail">
+                <p>Identifies vulnerabilities, assigns risk levels, and recommends mitigation strategies.</p>
+            </div>
+        </div>
+
+        <!-- Risk Assessment Section -->
+        <div class="section" onclick="toggleDetail('detail8')">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h3>Risk Assessment</h3>
+            <p>Identifies risks and proposes treatment plans.</p>
+            <div id="detail8" class="section-detail">
+                <p>Identifies risks, evaluates impact, and proposes mitigation, acceptance, or transfer strategies.</p>
+            </div>
+        </div>
+
+        <!-- Findings Section -->
+        <div class="section" onclick="toggleDetail('detail9')">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Findings & Recommendations</h3>
+            <p>Key findings and improvement measures.</p>
+            <div id="detail9" class="section-detail">
+                <p>Highlights gaps and provides actionable short-term and long-term recommendations.</p>
+            </div>
+        </div>
+
+        <!-- Conclusion Section -->
+        <div class="section" onclick="toggleDetail('detail10')">
+            <i class="fas fa-flag-checkered"></i>
+            <h3>Conclusion</h3>
+            <p>Summary and next steps.</p>
+            <div id="detail10" class="section-detail">
+                <p>Summarizes findings and suggests a roadmap for security improvements and ISO certification.</p>
             </div>
         </div>
     </div>
 
+    <!-- Back to Home Button -->
+    <a href="#" class="back-home">Back to Home</a>
+
+    <!-- JavaScript for Toggle -->
     <script>
-        // Fetch JSON data
-        fetch('test1.json')
-            .then(response => response.json())
-            .then(data => {
-                // Populate basic information
-                document.getElementById("portfolioName").textContent = data.portfolio.name;
-
-                // Bio Information
-                document.getElementById("location").textContent = data.portfolio.bio.location;
-                document.getElementById("nativeLanguage").textContent = data.portfolio.bio.native_language;
-                const languagesList = document.getElementById("languagesList");
-                for (const [language, level] of Object.entries(data.portfolio.bio.languages)) {
-                    const li = document.createElement('li');
-                    li.textContent = `${language}: ${level}`;
-                    languagesList.appendChild(li);
-                }
-
-                // Certifications
-                const certificationsList = document.getElementById("certificationsList");
-                data.portfolio.bio.certifications.forEach(cert => {
-                    const li = document.createElement('li');
-                    li.textContent = `${cert.name} - ${cert.organization} (Valid until: ${cert.valid_until})`;
-                    certificationsList.appendChild(li);
-                });
-
-                // Experience
-                const experienceList = document.getElementById("experienceList");
-                data.portfolio.experience.forEach(exp => {
-                    const li = document.createElement('li');
-                    li.textContent = `${exp.role} at ${exp.organization} (${exp.duration})`;
-                    const ul = document.createElement('ul');
-                    exp.responsibilities.forEach(responsibility => {
-                        const subLi = document.createElement('li');
-                        subLi.textContent = responsibility;
-                        ul.appendChild(subLi);
-                    });
-                    li.appendChild(ul);
-                    experienceList.appendChild(li);
-                });
-
-                // Skills
-                const skillsList = document.getElementById("skillsList");
-                data.portfolio.skills.forEach(skill => {
-                    const li = document.createElement('li');
-                    li.textContent = skill;
-                    skillsList.appendChild(li);
-                });
-
-                // Projects
-                const projectsList = document.getElementById("projectsList");
-                data.portfolio.projects.forEach(project => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `<strong>${project.name}</strong>: ${project.description}`;
-                    const toolsUl = document.createElement('ul');
-                    project.tools_used.forEach(tool => {
-                        const toolLi = document.createElement('li');
-                        toolLi.textContent = tool;
-                        toolsUl.appendChild(toolLi);
-                    });
-                    li.appendChild(toolsUl);
-                    projectsList.appendChild(li);
-                });
-
-                // Add collapsible functionality
-                const collapsibles = document.querySelectorAll(".collapsible");
-                collapsibles.forEach(collapsible => {
-                    collapsible.addEventListener("click", function() {
-                        this.classList.toggle("active");
-                        const content = this.nextElementSibling;
-                        if (content.style.display === "block") {
-                            content.style.display = "none";
-                        } else {
-                            content.style.display = "block";
-                        }
-                    });
-                });
-            });
+        function toggleDetail(id) {
+            var content = document.getElementById(id);
+            content.style.display = content.style.display === "block" ? "none" : "block";
+        }
     </script>
 </body>
 </html>
