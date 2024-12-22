@@ -13,17 +13,23 @@
             background-color: #f4f4f4;
             color: #333;
             line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
         }
 
         .container {
             width: 21cm;
             height: 29.7cm;
-            margin: 1.5cm auto;
             background-color: #fff;
             padding: 2cm;
             box-sizing: border-box;
             border: 1px solid #ddd;
             page-break-before: always;
+            display: flex;
+            flex-direction: column;
         }
 
         header {
@@ -123,28 +129,6 @@
             page-break-before: always;
         }
 
-        .book-flip {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-        }
-
-        .flip-arrow {
-            font-size: 24px;
-            color: #3498db;
-            cursor: pointer;
-            transform: rotate(90deg);
-        }
-
-        .contact-info .fa-phone, .contact-info .fa-envelope, .contact-info .fa-linkedin {
-            font-size: 18px;
-        }
-
-        .contact-info p {
-            margin: 0;
-        }
-
         /* Apply color to Central Bank of Afghanistan */
         .central-bank {
             color: #1d3c6d;
@@ -156,12 +140,67 @@
             margin-right: 2cm;
         }
 
+        /* Styling for Book-like Page Flip Simulation */
+        .page-flip {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+            font-size: 24px;
+            color: #3498db;
+            cursor: pointer;
+        }
+
+        /* Center the page */
+        .container {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Adjust the container to simulate book flip */
+        .flip-page {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            width: 100%;
+        }
+
+        .flip-page .page {
+            flex: 1;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-right: 10px;
+        }
+
+        .flip-page .page:last-child {
+            margin-right: 0;
+        }
+
+        /* Page color styling */
+        .page-content {
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        
+        /* Styling for bold job entry */
+        .highlight-job {
+            color: #1d3c6d;
+            font-weight: bold;
+        }
+
+        /* Ensure content is responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1cm;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- Page 1 -->
+    <!-- Page 1 Content -->
     <header>
         <div>
             <h1>Hashmatullah Bahadari</h1>
@@ -189,7 +228,7 @@
         <h2>Experience</h2>
         <div class="section-content">
             <ul>
-                <li><span class="company-name central-bank">Information Security Manager</span> – Central Bank of Afghanistan, Kabul <span class="date">05.2014 – 09.2021</span></li>
+                <li><span class="highlight-job">Information Security Manager</span> – Central Bank of Afghanistan, Kabul <span class="date">05.2014 – 09.2021</span></li>
                 <ul>
                     <li>Developed and enforced security policies, achieving a 20% reduction in data breaches and maintaining 99% system uptime.</li>
                     <li>Led ISO 27001 certification efforts, improving compliance and trust with regulatory bodies.</li>
@@ -197,7 +236,7 @@
                     <li>Implemented advanced threat detection systems, cutting malware infections by 75%.</li>
                     <li>Conducted risk assessments and vulnerability scans, mitigating 90% of critical vulnerabilities.</li>
                 </ul>
-
+                
                 <li><span class="company-name">Senior System Administrator</span> – Central Bank of Afghanistan, Kabul <span class="date">06.2011 – 05.2014</span></li>
                 <ul>
                     <li>Managed Windows Servers (2008, 2019, 2022) and Linux environments, achieving 99% system uptime through proactive maintenance and optimization.</li>
@@ -218,53 +257,11 @@
     <footer>
         <p>Hashmatullah Bahadari | Information Security Manager</p>
     </footer>
+</div>
 
-    <!-- Page Break with Arrow -->
-    <div class="book-flip">
-        <span class="flip-arrow">➔</span>
-    </div>
-    <div class="page-break"></div>
-
-    <!-- Page 2 -->
-    <section class="certifications">
-        <h2>Certifications</h2>
-        <div class="section-content">
-            <ul>
-                <li>ISO/IEC 27001 Senior Lead Auditor (PECB, valid until 07/2026)</li>
-                <li>Fortinet Certified Fundamentals Cybersecurity (Fortinet, valid until 04/2025)</li>
-                <li>Microsoft Certified: Azure Security Engineer Associate (Microsoft, valid until 03/2026)</li>
-                <li>Certified Ethical Hacker (CEH) v10 (EC-Council, 12/2018)</li>
-                <li>CompTIA Network+ (CompTIA, certified 08/2010)</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="languages">
-        <h2>Languages</h2>
-        <div class="section-content">
-            <ul>
-                <li><strong>Persian</strong>: Native</li>
-                <li><strong>English</strong>: B2</li>
-                <li><strong>German</strong>: A2 (Currently learning, aiming for B1)</li>
-                <li><strong>Turkish</strong>: A2</li>
-            </ul>
-        </div>
-    </section>
-
-    <section class="skills">
-        <h2>Skills</h2>
-        <div class="section-content">
-            <ul>
-                <li>Cybersecurity Strategy & Risk Management</li>
-                <li>ISO/IEC 27001 Compliance & Auditing</li>
-                <li>Network & Systems Administration</li>
-                <li>Data Loss Prevention (DLP)</li>
-                <li>Advanced Threat Detection</li>
-                <li>Penetration Testing & Security Assessments</li>
-            </ul>
-        </div>
-    </section>
-
+<!-- Simulated Page Flip -->
+<div class="page-flip">
+    <span>➔</span>
 </div>
 
 </body>
