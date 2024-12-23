@@ -298,6 +298,16 @@
           </select>
         </div>
       </form>
+
+      <div class="action-btns">
+        <div class="left-buttons">
+          <button onclick="updateCalculations()">Calculate</button>
+          <button onclick="clearResults()">Clear Results</button>
+        </div>
+        <div class="right-buttons">
+          <button onclick="exportPDF()">Export to PDF</button>
+        </div>
+      </div>
     </div>
 
     <div class="results" id="results">
@@ -311,16 +321,6 @@
 
       <div class="chart-container">
         <canvas id="barChart"></canvas>
-      </div>
-    </div>
-
-    <div class="action-btns">
-      <div class="left-buttons">
-        <button onclick="updateCalculations()">Calculate</button>
-        <button onclick="clearResults()">Clear Results</button>
-      </div>
-      <div class="right-buttons">
-        <button onclick="exportPDF()">Export to PDF</button>
       </div>
     </div>
   </div>
