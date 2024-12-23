@@ -3,95 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trading Tool</title>
+  <title>Professional Trading Tool</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
       margin: 0;
       padding: 0;
     }
 
     .container {
-      width: 50%;
-      margin: 0 auto;
+      max-width: 1200px;
+      margin: 30px auto;
       padding: 20px;
       background-color: white;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     h1 {
       text-align: center;
+      color: #333;
+      margin-bottom: 20px;
     }
 
     form {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 30px;
     }
 
     label {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
+      font-weight: bold;
     }
 
-    input {
+    input, button {
+      width: 48%;
       margin-bottom: 15px;
-      padding: 8px;
+      padding: 12px;
       font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
     }
 
     button {
-      padding: 10px;
-      background-color: #007BFF;
+      background-color: #4CAF50;
       color: white;
-      border: none;
-      border-radius: 5px;
       cursor: pointer;
+      border: none;
     }
 
     button:hover {
-      background-color: #0056b3;
+      background-color: #45a049;
     }
 
-    #results {
-      margin-top: 20px;
+    .results {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .results p {
+      margin: 8px 0;
+    }
+
+    .export-btn {
+      background-color: #008CBA;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    .export-btn:hover {
+      background-color: #006f8c;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Trading Tool</h1>
+    <h1>Trading Tool - Calculate P&L & Risk/Reward</h1>
     <form id="tradeForm">
-      <label for="entryPrice">Entry Price:</label>
-      <input type="number" id="entryPrice" required>
-
-      <label for="exitPrice">Exit Price:</label>
-      <input type="number" id="exitPrice" required>
-
-      <label for="tradeSize">Trade Size:</label>
-      <input type="number" id="tradeSize" required>
-
-      <label for="stopLoss">Stop Loss:</label>
-      <input type="number" id="stopLoss" required>
-
-      <label for="takeProfit">Take Profit:</label>
-      <input type="number" id="takeProfit" required>
-
-      <button type="button" onclick="calculatePnl()">Calculate P&L</button>
+      <div>
+        <label for="entryPrice">Entry Price ($)</label>
+        <input type="number" id="entryPrice" required>
+      </div>
+      <div>
+        <label for="exitPrice">Exit Price ($)</label>
+        <input type="number" id="exitPrice" required>
+      </div>
+      <div>
+        <label for="tradeSize">Trade Size (Units)</label>
+        <input type="number" id="tradeSize" required>
+      </div>
+      <div>
+        <label for="stopLoss">Stop Loss ($)</label>
+        <input type="number" id="stopLoss" required>
+      </div>
+      <div>
+        <label for="takeProfit">Take Profit ($)</label>
+        <input type="number" id="takeProfit" required>
+      </div>
+      <button type="button" onclick="calculatePnl()">Calculate</button>
     </form>
 
-    <h2>Results</h2>
-    <div id="results">
+    <div class="results" id="results" style="display:none;">
+      <h2>Results</h2>
       <p><strong>P&L ($):</strong> <span id="pnl"></span></p>
       <p><strong>Risk ($):</strong> <span id="risk"></span></p>
       <p><strong>Reward ($):</strong> <span id="reward"></span></p>
       <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio"></span></p>
+      <button class="export-btn" onclick="exportReport()">Export Report</button>
     </div>
   </div>
 
   <script>
     function calculatePnl() {
-      // Get the values from the form
       const entryPrice = parseFloat(document.getElementById('entryPrice').value);
       const exitPrice = parseFloat(document.getElementById('exitPrice').value);
       const tradeSize = parseFloat(document.getElementById('tradeSize').value);
@@ -113,6 +145,34 @@
       document.getElementById('risk').textContent = risk.toFixed(2);
       document.getElementById('reward').textContent = reward.toFixed(2);
       document.getElementById('rrRatio').textContent = rrRatio.toFixed(2);
+
+      document.getElementById('results').style.display = 'block';
+    }
+
+    function exportReport() {
+      const entryPrice = document.getElementById('entryPrice').value;
+      const exitPrice = document.getElementById('exitPrice').value;
+      const tradeSize = document.getElementById('tradeSize').value;
+      const stopLoss = document.getElementById('stopLoss').value;
+      const takeProfit = document.getElementById('takeProfit').value;
+      const pnl = document.getElementById('pnl').textContent;
+      const risk = document.getElementById('risk').textContent;
+      const reward = document.getElementById('reward').textContent;
+      const rrRatio = document.getElementById('rrRatio').textContent;
+
+      const reportData = [
+        ['Entry Price', 'Exit Price', 'Trade Size', 'Stop Loss', 'Take Profit', 'P&L', 'Risk', 'Reward', 'Risk/Reward'],
+        [entryPrice, exitPrice, tradeSize, stopLoss, takeProfit, pnl, risk, reward, rrRatio]
+      ];
+
+      let csvContent = "data:text/csv;charset=utf-8," 
+        + reportData.map(e => e.join(",")).join("\n");
+
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", "trading_report.csv");
+      link.click();
     }
   </script>
 </body>
