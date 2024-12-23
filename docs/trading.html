@@ -19,8 +19,9 @@
       background-image: url('biton.jpg');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       color: white;
-      padding: 20px;
+      padding: 60px;
       text-align: left;
       font-size: 28px;
       font-weight: 700;
@@ -110,7 +111,8 @@
     /* Button Styles */
     .action-btns {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
+      gap: 15px;
       margin-top: 20px;
     }
 
@@ -121,13 +123,19 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin-top: 15px;
       font-weight: 500;
-      width: 48%;
+      width: 100%;
     }
 
     .action-btns button:hover {
       background-color: #218838;
+    }
+
+    /* Chart Styles */
+    .chart-container {
+      width: 100%;
+      height: 300px;
+      margin-top: 30px;
     }
 
     /* Print Styling */
@@ -294,6 +302,11 @@
             <td id="maxDrawdown"></td>
           </tr>
         </table>
+
+        <!-- Chart container -->
+        <div class="chart-container">
+          <canvas id="barChart"></canvas>
+        </div>
       </div>
 
       <div class="action-btns">
@@ -344,42 +357,67 @@
       document.getElementById('positionSize').textContent = positionSize.toFixed(2);
       document.getElementById('maxDrawdown').textContent = `$${maxDrawdown.toFixed(2)}`;
       document.getElementById('pnl').textContent = `$${(reward - risk).toFixed(2)}`;
-      
+
       document.getElementById('results').style.display = 'block';
+
+      // Bar chart
+      createChart(risk, reward);
+    }
+
+    // Create bar chart for risk and reward
+    function createChart(risk, reward) {
+      const ctx = document.getElementById('barChart').getContext('2d');
+      const chartData = {
+        labels: ['Risk', 'Reward'],
+        datasets: [{
+          label: 'Amount ($)',
+          data: [risk, reward],
+          backgroundColor: ['#ff0000', '#00cc00']
+        }]
+      };
+
+      const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+        },
+      };
+
+      new Chart(ctx, {
+        type: 'bar',
+        data: chartData,
+        options: chartOptions,
+      });
     }
 
     // Export to PDF
     function exportPDF() {
-      const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
-      const entryPrice = document.getElementById('entryPrice').value;
-      const exitPrice = document.getElementById('exitPrice').value;
-      const tradeSize = document.getElementById('tradeSize').value;
-      const stopLoss = document.getElementById('stopLoss').value;
-      const takeProfit = document.getElementById('takeProfit').value;
-      const risk = document.getElementById('risk').textContent;
-      const reward = document.getElementById('reward').textContent;
-      const pnl = document.getElementById('pnl').textContent;
-      const rrRatio = document.getElementById('rrRatio').textContent;
-      const positionSize = document.getElementById('positionSize').textContent;
-      const maxDrawdown = document.getElementById('maxDrawdown').textContent;
-
+      doc.setFontSize(18);
       doc.text('Crypto Trading Report', 20, 20);
+      doc.setFontSize(12);
+      doc.text(`Entry Price: $${document.getElementById('entryPrice').value}`, 20, 40);
+      doc.text(`Exit Price: $${document.getElementById('exitPrice').value}`, 20, 50);
+      doc.text(`Trade Size: ${document.getElementById('tradeSize').value} units`, 20, 60);
+      doc.text(`Stop Loss: $${document.getElementById('stopLoss').value}`, 20, 70);
+      doc.text(`Take Profit: $${document.getElementById('takeProfit').value}`, 20, 80);
+      doc.text(`Account Balance: $${document.getElementById('accountBalance').value}`, 20, 90);
+      doc.text(`Risk Percentage: ${document.getElementById('riskPercentage').value}%`, 20, 100);
+
+      doc.text('Trade Results:', 20, 120);
       doc.autoTable({
-        startY: 30,
+        startY: 130,
         head: [['Metric', 'Value']],
         body: [
-          ['Entry Price', `$${entryPrice}`],
-          ['Exit Price', `$${exitPrice}`],
-          ['Trade Size', `${tradeSize} Units`],
-          ['Stop Loss', `$${stopLoss}`],
-          ['Take Profit', `$${takeProfit}`],
-          ['Risk', risk],
-          ['Reward', reward],
-          ['P&L', pnl],
-          ['Risk/Reward Ratio', rrRatio],
-          ['Position Size', positionSize],
-          ['Max Drawdown', maxDrawdown]
+          ['P&L ($)', document.getElementById('pnl').textContent],
+          ['Risk ($)', document.getElementById('risk').textContent],
+          ['Reward ($)', document.getElementById('reward').textContent],
+          ['Risk/Reward Ratio', document.getElementById('rrRatio').textContent],
+          ['Position Size (Units)', document.getElementById('positionSize').textContent],
+          ['Max Drawdown ($)', document.getElementById('maxDrawdown').textContent]
         ]
       });
       
