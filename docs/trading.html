@@ -6,7 +6,6 @@
   <title>Professional Crypto Trading Tool</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://www.gstatic.com/charts/loader.js"></script>
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -17,9 +16,8 @@
     }
 
     .container {
-      display: flex;
-      max-width: 1200px;
-      margin: 30px auto;
+      max-width: 900px;
+      margin: 40px auto;
       padding: 20px;
       background-color: white;
       border-radius: 12px;
@@ -27,14 +25,8 @@
     }
 
     .form-container {
-      flex: 1;
       padding-right: 30px;
       border-right: 1px solid #ddd;
-    }
-
-    .chart-container {
-      flex: 2;
-      padding-left: 30px;
     }
 
     h1 {
@@ -100,30 +92,40 @@
       background-color: #218838;
     }
 
-    .crypto-widget {
-      width: 100%;
-      height: 500px;
-    }
+    /* Print styling */
+    @media print {
+      body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+      }
 
-    .form-container select, .form-container input {
-      width: 100%;
-    }
+      .container {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 10px;
+        margin: 0;
+      }
 
-    .chart-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      .results {
+        border: 1px solid #ddd;
+        margin-top: 30px;
+        padding: 15px;
+      }
 
-    /* Styling for the form fields */
-    .form-container input[type="number"], .form-container select {
-      width: 100%;
+      .export-btn {
+        display: none;
+      }
+
+      .results h2, .results p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Left Side: Trading Form -->
     <div class="form-container">
       <h1>Crypto Trading Tool</h1>
       <form id="tradeForm">
@@ -194,35 +196,6 @@
         <button class="export-btn" onclick="exportPDF()">Export PDF Report</button>
       </div>
     </div>
-
-    <!-- Right Side: Price Chart and Widget -->
-    <div class="chart-container">
-      <div class="crypto-widget" id="cryptoWidget">
-        <!-- TradingView Chart -->
-        <div id="tradingview_widget"></div>
-        <script type="text/javascript">
-          function createChart(symbol) {
-            new TradingView.widget({
-              "container_id": "tradingview_widget", // Element where chart will be rendered
-              "width": "100%",
-              "height": "100%",
-              "symbol": `BINANCE:${symbol.toUpperCase()}USDT`, // Dynamic symbol change based on selected crypto
-              "interval": "60",
-              "timezone": "exchange",
-              "theme": "light",
-              "style": "1",
-              "locale": "en",
-              "toolbar_bg": "#f1f3f6",
-              "enable_publishing": false,
-              "allow_symbol_change": true
-            });
-          }
-
-          // Initial chart load for Bitcoin (BTC)
-          createChart('bitcoin');
-        </script>
-      </div>
-    </div>
   </div>
 
   <script>
@@ -236,9 +209,6 @@
       const price = data[selectedCrypto].usd;
       document.getElementById('entryPrice').value = price; // Set default entry price
       updateCalculations(); // Recalculate on price update
-
-      // Update TradingView widget with selected crypto
-      createChart(selectedCrypto);
     }
 
     // Update trade calculations
@@ -279,7 +249,6 @@
     function exportPDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
-
       const entryPrice = document.getElementById('entryPrice').value;
       const exitPrice = document.getElementById('exitPrice').value;
       const tradeSize = document.getElementById('tradeSize').value;
@@ -292,7 +261,7 @@
       const positionSize = document.getElementById('positionSize').textContent;
       const maxDrawdown = document.getElementById('maxDrawdown').textContent;
 
-      doc.text('Trading Report', 20, 20);
+      doc.text('Crypto Trading Report', 20, 20);
       doc.text(`Entry Price: $${entryPrice}`, 20, 30);
       doc.text(`Exit Price: $${exitPrice}`, 20, 40);
       doc.text(`Trade Size: ${tradeSize} Units`, 20, 50);
@@ -305,11 +274,11 @@
       doc.text(`Position Size: ${positionSize}`, 20, 120);
       doc.text(`Max Drawdown: $${maxDrawdown}`, 20, 130);
 
-      doc.save('Trading_Report.pdf');
+      doc.save('Crypto_Trading_Report.pdf');
     }
 
-    // Initial load
-    fetchCryptoPrice();
+    // Initialize on page load
+    fetchCryptoPrice(); 
   </script>
 </body>
 </html>
