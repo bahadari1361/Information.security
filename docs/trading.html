@@ -199,7 +199,28 @@
     <div class="chart-container">
       <div class="crypto-widget" id="cryptoWidget">
         <!-- TradingView Chart -->
-        <div id="tradingview_widget" style="width:100%; height:500px;"></div>
+        <div id="tradingview_widget"></div>
+        <script type="text/javascript">
+          function createChart(symbol) {
+            new TradingView.widget({
+              "container_id": "tradingview_widget", // Element where chart will be rendered
+              "width": "100%",
+              "height": "100%",
+              "symbol": `BINANCE:${symbol.toUpperCase()}USDT`, // Dynamic symbol change based on selected crypto
+              "interval": "60",
+              "timezone": "exchange",
+              "theme": "light",
+              "style": "1",
+              "locale": "en",
+              "toolbar_bg": "#f1f3f6",
+              "enable_publishing": false,
+              "allow_symbol_change": true
+            });
+          }
+
+          // Initial chart load for Bitcoin (BTC)
+          createChart('bitcoin');
+        </script>
       </div>
     </div>
   </div>
@@ -287,22 +308,8 @@
       doc.save('Trading_Report.pdf');
     }
 
-    // TradingView Widget integration
-    function createChart(symbol) {
-      new TradingView.widget({
-        autosize: true,
-        symbol: `${symbol}/USD`,
-        interval: "5", // Time interval (adjust as per your preference)
-        container_id: "tradingview_widget",
-        datafeed: new TradingView.Datafeeds.UDFCompatibleDatafeed("https://demo_feed.tradingview.com"),
-        library_path: "https://s3.tradingview.com/",
-        locale: "en",
-        disabled_features: ["use_localstorage_for_settings"],
-      });
-    }
-
-    // Initialize chart for Bitcoin by default
-    createChart('bitcoin');
+    // Initial load
+    fetchCryptoPrice();
   </script>
 </body>
 </html>
