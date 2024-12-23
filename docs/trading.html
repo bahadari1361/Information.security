@@ -111,9 +111,9 @@
     /* Button Styles */
     .action-btns {
       display: flex;
-      flex-direction: column;
       gap: 15px;
       margin-top: 20px;
+      justify-content: space-between;
     }
 
     .action-btns button {
@@ -311,22 +311,27 @@
 
       <div class="action-btns">
         <button class="export-btn" onclick="exportPDF()">Export PDF Report</button>
+        <button class="export-btn" onclick="clearResults()">Clear Results</button>
       </div>
     </div>
   </div>
 
   <script>
-    let cryptoPrices = {};
+    let selectedCrypto = 'bitcoin';
 
-    // Fetch real-time crypto prices from CoinGecko API
-    async function fetchCryptoPrice() {
-      const selectedCrypto = document.getElementById('cryptoSelect').value;
-      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`);
-      const data = await response.json();
-      const price = data[selectedCrypto].usd;
-      document.getElementById('entryPrice').value = price;
-      document.getElementById('exitPrice').value = price; // Initialize exit price with entry price
-      updateCalculations();
+    // Fetch cryptocurrency price
+    function fetchCryptoPrice() {
+      const cryptoSelect = document.getElementById('cryptoSelect');
+      selectedCrypto = cryptoSelect.value;
+
+      fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`)
+        .then(response => response.json())
+        .then(data => {
+          const price = data[selectedCrypto].usd;
+          document.getElementById('entryPrice').value = price;
+          document.getElementById('exitPrice').value = price; // Initialize exit price with entry price
+          updateCalculations();
+        });
     }
 
     // Calculate risk and reward
@@ -420,6 +425,13 @@
       });
 
       doc.save('crypto-trading-report.pdf');
+    }
+
+    // Clear results
+    function clearResults() {
+      document.getElementById('tradeForm').reset();
+      document.getElementById('results').style.display = 'none';
+      document.getElementById('barChart').getContext('2d').clearRect(0, 0, 400, 400);
     }
 
     // Initialize the default price on page load
