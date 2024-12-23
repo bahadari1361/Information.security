@@ -19,14 +19,13 @@
       background-image: url('biton.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
       color: white;
-      padding: 60px;
+      padding: 80px 40px;
       text-align: left;
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 700;
       letter-spacing: 1px;
-      padding-left: 20px;
+      background-attachment: fixed;
     }
 
     .container {
@@ -39,6 +38,9 @@
     }
 
     .form-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
       padding-right: 30px;
       border-right: 1px solid #ddd;
     }
@@ -52,8 +54,7 @@
     }
 
     form {
-      display: flex;
-      flex-direction: column;
+      display: grid;
       gap: 20px;
     }
 
@@ -68,7 +69,6 @@
       font-size: 1rem;
       border-radius: 8px;
       border: 1px solid #ddd;
-      margin-bottom: 12px;
     }
 
     .results {
@@ -324,40 +324,38 @@
       const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`);
       const data = await response.json();
       const price = data[selectedCrypto].usd;
-      document.getElementById('entryPrice').value = price; // Set default entry price
-      updateCalculations(); // Recalculate on price update
+      document.getElementById('entryPrice').value = price;
+      document.getElementById('exitPrice').value = price; // Initialize exit price with entry price
+      updateCalculations();
     }
 
-    // Update trade calculations
+    // Calculate risk and reward
     function updateCalculations() {
       const entryPrice = parseFloat(document.getElementById('entryPrice').value);
       const exitPrice = parseFloat(document.getElementById('exitPrice').value);
       const tradeSize = parseFloat(document.getElementById('tradeSize').value);
       const stopLoss = parseFloat(document.getElementById('stopLoss').value);
       const takeProfit = parseFloat(document.getElementById('takeProfit').value);
-      const riskPercentage = parseFloat(document.getElementById('riskPercentage').value);
       const accountBalance = parseFloat(document.getElementById('accountBalance').value);
+      const riskPercentage = parseFloat(document.getElementById('riskPercentage').value) / 100;
+      const leverage = parseFloat(document.getElementById('leverage').value);
 
-      // Risk and Reward Calculation
-      const risk = (entryPrice - stopLoss) * tradeSize;
-      const reward = (takeProfit - entryPrice) * tradeSize;
+      // Position size calculation
+      const positionSize = (accountBalance * riskPercentage) / (entryPrice - stopLoss);
+      const risk = (entryPrice - stopLoss) * positionSize;
+      const reward = (takeProfit - entryPrice) * positionSize;
       const rrRatio = reward / risk;
+      const pnl = (exitPrice - entryPrice) * positionSize;
 
-      // Position size calculation (Risk per trade)
-      const riskAmount = (accountBalance * (riskPercentage / 100));
-      const positionSize = riskAmount / (entryPrice - stopLoss);
-
-      // Max Drawdown Calculation
-      const maxDrawdown = Math.abs((entryPrice - stopLoss) * tradeSize);
-
-      // Update the results in the UI
-      document.getElementById('risk').textContent = `$${risk.toFixed(2)}`;
-      document.getElementById('reward').textContent = `$${reward.toFixed(2)}`;
+      // Update results
+      document.getElementById('pnl').textContent = pnl.toFixed(2);
+      document.getElementById('risk').textContent = risk.toFixed(2);
+      document.getElementById('reward').textContent = reward.toFixed(2);
       document.getElementById('rrRatio').textContent = rrRatio.toFixed(2);
       document.getElementById('positionSize').textContent = positionSize.toFixed(2);
-      document.getElementById('maxDrawdown').textContent = `$${maxDrawdown.toFixed(2)}`;
-      document.getElementById('pnl').textContent = `$${(reward - risk).toFixed(2)}`;
+      document.getElementById('maxDrawdown').textContent = Math.abs(risk).toFixed(2);
 
+      // Show results
       document.getElementById('results').style.display = 'block';
 
       // Bar chart
@@ -420,7 +418,7 @@
           ['Max Drawdown ($)', document.getElementById('maxDrawdown').textContent]
         ]
       });
-      
+
       doc.save('crypto-trading-report.pdf');
     }
 
