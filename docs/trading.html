@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advanced Trading Tool with Chart</title>
+  <title>Advanced Trading Tool with Real-Time Auto Calculation and PDF Report</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -41,24 +42,13 @@
       font-weight: bold;
     }
 
-    input, select, button {
+    input, select {
       width: 48%;
       margin-bottom: 15px;
       padding: 12px;
       font-size: 1rem;
       border-radius: 8px;
       border: 1px solid #ddd;
-    }
-
-    button {
-      background-color: #28a745;
-      color: white;
-      cursor: pointer;
-      border: none;
-    }
-
-    button:hover {
-      background-color: #218838;
     }
 
     .results {
@@ -71,6 +61,12 @@
     .results p {
       margin: 8px 0;
       font-size: 1.1rem;
+    }
+
+    .chart-container {
+      width: 100%;
+      height: 400px;
+      margin-top: 30px;
     }
 
     .export-btn {
@@ -86,49 +82,43 @@
     .export-btn:hover {
       background-color: #0056b3;
     }
-
-    .chart-container {
-      width: 100%;
-      height: 400px;
-      margin-top: 30px;
-    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Advanced Trading Tool with Profit & Loss Chart</h1>
+    <h1>Advanced Trading Tool with Real-Time Auto Calculation and PDF Report</h1>
     <form id="tradeForm">
       <div>
         <label for="entryPrice">Entry Price ($)</label>
-        <input type="number" id="entryPrice" required>
+        <input type="number" id="entryPrice" oninput="updateCalculations()" required>
       </div>
       <div>
         <label for="exitPrice">Exit Price ($)</label>
-        <input type="number" id="exitPrice" required>
+        <input type="number" id="exitPrice" oninput="updateCalculations()" required>
       </div>
       <div>
         <label for="tradeSize">Trade Size (Units)</label>
-        <input type="number" id="tradeSize" required>
+        <input type="number" id="tradeSize" oninput="updateCalculations()" required>
       </div>
       <div>
         <label for="stopLoss">Stop Loss ($)</label>
-        <input type="number" id="stopLoss" required>
+        <input type="number" id="stopLoss" oninput="updateCalculations()" required>
       </div>
       <div>
         <label for="takeProfit">Take Profit ($)</label>
-        <input type="number" id="takeProfit" required>
+        <input type="number" id="takeProfit" oninput="updateCalculations()" required>
       </div>
       <div>
         <label for="accountBalance">Account Balance ($)</label>
-        <input type="number" id="accountBalance" required>
+        <input type="number" id="accountBalance" oninput="updateCalculations()" required>
       </div>
       <div>
         <label for="riskPercentage">Risk Percentage (%)</label>
-        <input type="number" id="riskPercentage" value="1" min="0.1" step="0.1" required>
+        <input type="number" id="riskPercentage" oninput="updateCalculations()" value="1" min="0.1" step="0.1" required>
       </div>
       <div>
         <label for="leverage">Leverage</label>
-        <select id="leverage" required>
+        <select id="leverage" oninput="updateCalculations()" required>
           <option value="1">1x</option>
           <option value="2">2x</option>
           <option value="5">5x</option>
@@ -136,7 +126,6 @@
           <option value="20">20x</option>
         </select>
       </div>
-      <button type="button" onclick="calculatePnl()">Calculate</button>
     </form>
 
     <div class="results" id="results" style="display:none;">
@@ -147,7 +136,7 @@
       <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio"></span></p>
       <p><strong>Position Size (Units):</strong> <span id="positionSize"></span></p>
       <p><strong>Max Drawdown ($):</strong> <span id="maxDrawdown"></span></p>
-      <button class="export-btn" onclick="exportReport()">Export Report</button>
+      <button class="export-btn" onclick="exportPDF()">Export PDF Report</button>
     </div>
 
     <!-- Bar chart container -->
@@ -157,7 +146,7 @@
   </div>
 
   <script>
-    function calculatePnl() {
+    function updateCalculations() {
       const entryPrice = parseFloat(document.getElementById('entryPrice').value);
       const exitPrice = parseFloat(document.getElementById('exitPrice').value);
       const tradeSize = parseFloat(document.getElementById('tradeSize').value);
@@ -166,6 +155,10 @@
       const accountBalance = parseFloat(document.getElementById('accountBalance').value);
       const riskPercentage = parseFloat(document.getElementById('riskPercentage').value);
       const leverage = parseFloat(document.getElementById('leverage').value);
+
+      if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance)) {
+        return; // Avoid calculation if any value is missing
+      }
 
       // P&L Calculation
       const pnl = (exitPrice - entryPrice) * tradeSize;
@@ -184,7 +177,7 @@
       // Max Drawdown based on stop loss
       const maxDrawdown = positionSize * risk;
 
-      // Display results
+      // Update results in the DOM
       document.getElementById('pnl').textContent = pnl.toFixed(2);
       document.getElementById('risk').textContent = risk.toFixed(2);
       document.getElementById('reward').textContent = reward.toFixed(2);
@@ -232,7 +225,10 @@
       window.pnLChart = new Chart(ctx, config);
     }
 
-    function exportReport() {
+    function exportPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
       const entryPrice = document.getElementById('entryPrice').value;
       const exitPrice = document.getElementById('exitPrice').value;
       const tradeSize = document.getElementById('tradeSize').value;
@@ -248,19 +244,35 @@
       const positionSize = document.getElementById('positionSize').textContent;
       const maxDrawdown = document.getElementById('maxDrawdown').textContent;
 
-      const reportData = [
-        ['Entry Price', 'Exit Price', 'Trade Size', 'Stop Loss', 'Take Profit', 'Account Balance', 'Risk %', 'Leverage', 'P&L', 'Risk', 'Reward', 'Risk/Reward', 'Position Size', 'Max Drawdown'],
-        [entryPrice, exitPrice, tradeSize, stopLoss, takeProfit, accountBalance, riskPercentage, leverage, pnl, risk, reward, rrRatio, positionSize, maxDrawdown]
-      ];
+      doc.setFontSize(18);
+      doc.text("Trading Report", 105, 20, null, null, 'center');
 
-      let csvContent = "data:text/csv;charset=utf-8," 
-        + reportData.map(e => e.join(",")).join("\n");
+      doc.setFontSize(12);
+      doc.text(`Entry Price: $${entryPrice}`, 20, 40);
+      doc.text(`Exit Price: $${exitPrice}`, 20, 50);
+      doc.text(`Trade Size: ${tradeSize} units`, 20, 60);
+      doc.text(`Stop Loss: $${stopLoss}`, 20, 70);
+      doc.text(`Take Profit: $${takeProfit}`, 20, 80);
+      doc.text(`Account Balance: $${accountBalance}`, 20, 90);
+      doc.text(`Risk Percentage: ${riskPercentage}%`, 20, 100);
+      doc.text(`Leverage: ${leverage}x`, 20, 110);
 
-      const encodedUri = encodeURI(csvContent);
-      const link = document.createElement("a");
-      link.setAttribute("href", encodedUri);
-      link.setAttribute("download", "advanced_trading_report.csv");
-      link.click();
+      doc.text(`P&L: $${pnl}`, 20, 130);
+      doc.text(`Risk: $${risk}`, 20, 140);
+      doc.text(`Reward: $${reward}`, 20, 150);
+      doc.text(`Risk/Reward Ratio: ${rrRatio}`, 20, 160);
+      doc.text(`Position Size: ${positionSize} units`, 20, 170);
+      doc.text(`Max Drawdown: $${maxDrawdown}`, 20, 180);
+
+      doc.addPage();
+      doc.text("Trading Performance Chart", 105, 20, null, null, 'center');
+
+      // Add Chart image to PDF (use a canvas screenshot if needed)
+      const canvas = document.getElementById('pnlChart');
+      const imgData = canvas.toDataURL("image/png");
+      doc.addImage(imgData, 'PNG', 20, 30, 170, 120);
+
+      doc.save("advanced_trading_report.pdf");
     }
   </script>
 </body>
