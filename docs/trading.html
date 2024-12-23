@@ -6,6 +6,7 @@
   <title>Advanced Trading Tool with Real-Time Auto Calculation and PDF Report</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -82,12 +83,30 @@
     .export-btn:hover {
       background-color: #0056b3;
     }
+
+    .crypto-widget {
+      width: 100%;
+      height: 400px;
+      margin-top: 30px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Advanced Trading Tool with Real-Time Auto Calculation and PDF Report</h1>
     <form id="tradeForm">
+      <div>
+        <label for="cryptoSelect">Select Cryptocurrency</label>
+        <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
+          <option value="bitcoin">Bitcoin (BTC)</option>
+          <option value="ethereum">Ethereum (ETH)</option>
+          <option value="binancecoin">Binance Coin (BNB)</option>
+          <option value="cardano">Cardano (ADA)</option>
+          <option value="ripple">XRP (Ripple)</option>
+          <option value="solana">Solana (SOL)</option>
+          <!-- Add more coins as needed -->
+        </select>
+      </div>
       <div>
         <label for="entryPrice">Entry Price ($)</label>
         <input type="number" id="entryPrice" oninput="updateCalculations()" required>
@@ -139,13 +158,44 @@
       <button class="export-btn" onclick="exportPDF()">Export PDF Report</button>
     </div>
 
-    <!-- Bar chart container -->
+    <!-- TradingView Widget -->
+    <div class="crypto-widget" id="cryptoWidget">
+      <script type="text/javascript">
+        new TradingView.widget({
+          "width": "100%",
+          "height": 500,
+          "symbol": "BINANCE:BTCUSDT", // Default symbol
+          "interval": "60",
+          "timezone": "exchange",
+          "theme": "light",
+          "style": "1",
+          "locale": "en",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "allow_symbol_change": true
+        });
+      </script>
+    </div>
+
     <div class="chart-container">
       <canvas id="pnlChart"></canvas>
     </div>
   </div>
 
   <script>
+    let cryptoPrices = {};
+
+    // Function to fetch real-time crypto prices from CoinGecko API
+    async function fetchCryptoPrice() {
+      const selectedCrypto = document.getElementById('cryptoSelect').value;
+      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`);
+      const data = await response.json();
+      const price = data[selectedCrypto].usd;
+      document.getElementById('entryPrice').value = price; // Set default entry price to the latest price
+      updateCalculations(); // Recalculate based on new price
+    }
+
+    // Update the calculations
     function updateCalculations() {
       const entryPrice = parseFloat(document.getElementById('entryPrice').value);
       const exitPrice = parseFloat(document.getElementById('exitPrice').value);
@@ -160,7 +210,7 @@
         return; // Avoid calculation if any value is missing
       }
 
-      // P&L Calculation
+      // P&L Calculation (Profit or Loss)
       const pnl = (exitPrice - entryPrice) * tradeSize;
 
       // Risk and Reward Calculation
@@ -234,45 +284,27 @@
       const tradeSize = document.getElementById('tradeSize').value;
       const stopLoss = document.getElementById('stopLoss').value;
       const takeProfit = document.getElementById('takeProfit').value;
-      const accountBalance = document.getElementById('accountBalance').value;
-      const riskPercentage = document.getElementById('riskPercentage').value;
-      const leverage = document.getElementById('leverage').value;
-      const pnl = document.getElementById('pnl').textContent;
       const risk = document.getElementById('risk').textContent;
       const reward = document.getElementById('reward').textContent;
+      const pnl = document.getElementById('pnl').textContent;
       const rrRatio = document.getElementById('rrRatio').textContent;
       const positionSize = document.getElementById('positionSize').textContent;
       const maxDrawdown = document.getElementById('maxDrawdown').textContent;
 
-      doc.setFontSize(18);
-      doc.text("Trading Report", 105, 20, null, null, 'center');
+      doc.text('Trading Report', 20, 20);
+      doc.text(`Entry Price: $${entryPrice}`, 20, 30);
+      doc.text(`Exit Price: $${exitPrice}`, 20, 40);
+      doc.text(`Trade Size: ${tradeSize} Units`, 20, 50);
+      doc.text(`Stop Loss: $${stopLoss}`, 20, 60);
+      doc.text(`Take Profit: $${takeProfit}`, 20, 70);
+      doc.text(`Risk: $${risk}`, 20, 80);
+      doc.text(`Reward: $${reward}`, 20, 90);
+      doc.text(`P&L: $${pnl}`, 20, 100);
+      doc.text(`Risk/Reward Ratio: ${rrRatio}`, 20, 110);
+      doc.text(`Position Size: ${positionSize}`, 20, 120);
+      doc.text(`Max Drawdown: $${maxDrawdown}`, 20, 130);
 
-      doc.setFontSize(12);
-      doc.text(`Entry Price: $${entryPrice}`, 20, 40);
-      doc.text(`Exit Price: $${exitPrice}`, 20, 50);
-      doc.text(`Trade Size: ${tradeSize} units`, 20, 60);
-      doc.text(`Stop Loss: $${stopLoss}`, 20, 70);
-      doc.text(`Take Profit: $${takeProfit}`, 20, 80);
-      doc.text(`Account Balance: $${accountBalance}`, 20, 90);
-      doc.text(`Risk Percentage: ${riskPercentage}%`, 20, 100);
-      doc.text(`Leverage: ${leverage}x`, 20, 110);
-
-      doc.text(`P&L: $${pnl}`, 20, 130);
-      doc.text(`Risk: $${risk}`, 20, 140);
-      doc.text(`Reward: $${reward}`, 20, 150);
-      doc.text(`Risk/Reward Ratio: ${rrRatio}`, 20, 160);
-      doc.text(`Position Size: ${positionSize} units`, 20, 170);
-      doc.text(`Max Drawdown: $${maxDrawdown}`, 20, 180);
-
-      doc.addPage();
-      doc.text("Trading Performance Chart", 105, 20, null, null, 'center');
-
-      // Add Chart image to PDF (use a canvas screenshot if needed)
-      const canvas = document.getElementById('pnlChart');
-      const imgData = canvas.toDataURL("image/png");
-      doc.addImage(imgData, 'PNG', 20, 30, 170, 120);
-
-      doc.save("advanced_trading_report.pdf");
+      doc.save('Trading_Report.pdf');
     }
   </script>
 </body>
