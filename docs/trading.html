@@ -62,22 +62,34 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
-    .motivations-container {
+    .form-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
       padding-right: 30px;
       border-right: 1px solid #444;
     }
 
-    .motivations-container h1 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #007bff;
+    form {
+      display: grid;
+      gap: 30px; /* Increased space between form fields */
+      grid-template-columns: 1fr 1fr;
     }
 
-    .motivations-container p {
-      font-size: 16px;
-      line-height: 1.5;
+    label {
+      font-weight: 600;
       color: #ccc;
+      margin-bottom: 8px;
+    }
+
+    input, select, button {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #444;
+      width: 100%;
+      background-color: #333;
+      color: #fff;
     }
 
     .crypto-logo {
@@ -169,9 +181,8 @@
     }
 
     @media (max-width: 768px) {
-      .motivations-container {
-        padding-right: 0;
-        border-right: none;
+      .form-container {
+        grid-template-columns: 1fr;
       }
 
       header {
@@ -264,83 +275,54 @@
       <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink">LINK</div>
       <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap">UNI</div>
     </div>
+    <div style="margin-top: 20px; font-size: 20px; color: #00ff00; text-align: center;">
+      <p>Stay patient, stay focused. Success will follow.</p>
+      <p>Risk wisely, trade smartly, and keep learning.</p>
+      <p>Success in trading comes from persistence, not perfection.</p>
+    </div>
   </header>
 
   <div class="container">
-    <div class="motivations-container">
-      <h1>Motivations</h1>
-      <p>The motivation behind crypto trading is to take advantage of price fluctuations in various cryptocurrencies, enabling traders to capitalize on potential gains. Understanding market trends, leveraging technical analysis, and managing risk are key factors that guide successful trading strategies.</p>
-      <p>Cryptocurrency trading offers an exciting way to diversify investment portfolios. With the growing popularity of digital assets, many traders see potential in exploiting volatility for profit. However, it is crucial to remain aware of the risks and only trade with capital you can afford to lose.</p>
-    </div>
-
-    <div class="crypto-logo-center">
-      <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" class="crypto-logo" style="width: 150px; height: 150px;">
-    </div>
-
-    <div class="results" id="results">
-      <h2>Trade Summary</h2>
-      <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
-      <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
-      <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
-
-      <div class="chart-container">
-        <canvas id="profitLossChart"></canvas>
-      </div>
-    </div>
-
-    <div class="action-btns">
-      <div class="button-row">
-        <button onclick="exportToPDF()">Export to PDF</button>
-        <button onclick="window.print()">Print</button>
-      </div>
+    <div class="form-container">
+      <form id="tradeForm">
+        <div>
+          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo-left">
+        </div>
+        <div>
+          <label for="cryptoSelect">Select Cryptocurrency</label>
+          <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
+            <option value="bitcoin">Bitcoin</option>
+            <option value="ethereum">Ethereum</option>
+            <option value="binancecoin">Binance Coin</option>
+            <option value="cardano">Cardano</option>
+            <option value="ripple">XRP</option>
+            <option value="solana">Solana</option>
+            <option value="polkadot">Polkadot</option>
+            <option value="litecoin">Litecoin</option>
+            <option value="dogecoin">Dogecoin</option>
+            <option value="chainlink">Chainlink</option>
+            <option value="uniswap">Uniswap</option>
+          </select>
+        </div>
+        <div>
+          <label for="tradeAmount">Amount</label>
+          <input type="number" id="tradeAmount" placeholder="Enter Amount" required>
+        </div>
+        <div>
+          <label for="entryPrice">Entry Price ($)</label>
+          <input type="number" id="entryPrice" placeholder="Enter Entry Price" required>
+        </div>
+        <div>
+          <label for="targetPrice">Target Price ($)</label>
+          <input type="number" id="targetPrice" placeholder="Enter Target Price" required>
+        </div>
+        <div>
+          <label for="stopLoss">Stop Loss ($)</label>
+          <input type="number" id="stopLoss" placeholder="Enter Stop Loss" required>
+        </div>
+      </form>
     </div>
   </div>
 
-  <script>
-    const { jsPDF } = window.jspdf;
-
-    function exportToPDF() {
-      const doc = new jsPDF();
-
-      const tradeSummary = document.getElementById('results').innerHTML;
-      doc.html(tradeSummary, {
-        callback: function (doc) {
-          doc.save('crypto_trade_summary.pdf');
-        }
-      });
-    }
-
-    const profitLossData = {
-      labels: ['Initial', 'Current'],
-      datasets: [{
-        label: 'Profit/Loss',
-        data: [0, 0],
-        backgroundColor: ['#ff0000', '#00ff00'],
-        borderColor: ['#ff0000', '#00ff00'],
-        borderWidth: 1
-      }]
-    };
-
-    const ctx = document.getElementById('profitLossChart').getContext('2d');
-    const profitLossChart = new Chart(ctx, {
-      type: 'bar',
-      data: profitLossData,
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          tooltip: {
-            callbacks: {
-              label: function (tooltipItem) {
-                return tooltipItem.raw > 0 ? `$${tooltipItem.raw.toFixed(2)} Gain` : `$${Math.abs(tooltipItem.raw).toFixed(2)} Loss`;
-              }
-            }
-          }
-        }
-      }
-    });
-  </script>
 </body>
 </html>
