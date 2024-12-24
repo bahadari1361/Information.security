@@ -99,6 +99,13 @@
       color: #fff;
     }
 
+    .crypto-logo {
+      width: 100px; /* Increase the size of the logo */
+      height: 100px;
+      object-fit: cover;
+      margin: 20px auto 0; /* Center the logo with space on top */
+    }
+
     .results {
       background-color: #444;
       padding: 20px;
@@ -274,23 +281,7 @@
     <div class="form-container">
       <h1>Trade Inputs</h1>
       <form id="tradeForm">
-        <!-- Input fields -->
-        <div>
-          <label for="cryptoSelect">Select Cryptocurrency</label>
-          <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
-            <option value="bitcoin">Bitcoin (BTC)</option>
-            <option value="ethereum">Ethereum (ETH)</option>
-            <option value="binancecoin">Binance Coin (BNB)</option>
-            <option value="cardano">Cardano (ADA)</option>
-            <option value="ripple">XRP (Ripple)</option>
-            <option value="solana">Solana (SOL)</option>
-            <option value="polkadot">Polkadot (DOT)</option>
-            <option value="litecoin">Litecoin (LTC)</option>
-            <option value="dogecoin">Dogecoin (DOGE)</option>
-            <option value="chainlink">Chainlink (LINK)</option>
-            <option value="uniswap">Uniswap (UNI)</option>
-          </select>
-        </div>
+        <!-- Form Inputs -->
         <div>
           <label for="entryPrice">Entry Price ($)</label>
           <input type="number" id="entryPrice" oninput="updateCalculations()" required>
@@ -324,6 +315,7 @@
           <input type="number" id="leverage" oninput="updateCalculations()" required>
         </div>
       </form>
+      <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo">
     </div>
 
     <div class="results" id="results">
@@ -331,6 +323,7 @@
       <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
       <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
       <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
+
       <div class="chart-container">
         <canvas id="profitLossChart"></canvas>
       </div>
@@ -345,6 +338,7 @@
   </div>
 
   <script>
+    // Dummy data for cryptocurrency prices
     let cryptoPrices = {
       bitcoin: 30000,
       ethereum: 2000,
@@ -361,6 +355,7 @@
 
     let selectedCrypto = "bitcoin";
 
+    // Fetch crypto price on selection
     function fetchCryptoPrice() {
       selectedCrypto = document.getElementById("cryptoSelect").value;
       updateCalculations();
@@ -376,6 +371,9 @@
       let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
       let leverage = parseFloat(document.getElementById("leverage").value);
 
+      // Fetching price of selected cryptocurrency
+      let cryptoPrice = cryptoPrices[selectedCrypto];
+
       if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
         return;
       }
@@ -389,6 +387,9 @@
       document.getElementById("estimatedProfit").textContent = profit.toFixed(2);
       document.getElementById("estimatedLoss").textContent = loss.toFixed(2);
       document.getElementById("riskRewardRatio").textContent = riskReward.toFixed(2);
+
+      // Display the results section
+      document.getElementById("results").style.display = "block";
 
       // Update chart
       updateChart(profit, loss);
