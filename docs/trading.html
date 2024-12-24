@@ -89,7 +89,7 @@
       margin-bottom: 8px;
     }
 
-    input, select, button {
+    input, select {
       padding: 12px;
       font-size: 1rem;
       border-radius: 8px;
@@ -290,208 +290,162 @@
       <form id="tradeForm">
         <!-- Form Inputs -->
         <div>
-          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo-left">
+          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo" id="cryptoLogo">
         </div>
         <div>
-          <label for="cryptoSelect">Select Cryptocurrency</label>
-          <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
-            <option value="bitcoin">Bitcoin</option>
-            <option value="ethereum">Ethereum</option>
-            <option value="binancecoin">Binance Coin</option>
-            <option value="cardano">Cardano</option>
-            <option value="ripple">XRP</option>
-            <option value="solana">Solana</option>
-            <option value="polkadot">Polkadot</option>
-            <option value="litecoin">Litecoin</option>
-            <option value="dogecoin">Dogecoin</option>
-            <option value="chainlink">Chainlink</option>
-            <option value="uniswap">Uniswap</option>
+          <label for="cryptoSymbol">Select Cryptocurrency:</label>
+          <select id="cryptoSymbol" name="cryptoSymbol">
+            <option value="BTC">Bitcoin</option>
+            <option value="ETH">Ethereum</option>
+            <option value="BNB">Binance Coin</option>
+            <option value="ADA">Cardano</option>
+            <option value="XRP">XRP</option>
+            <option value="SOL">Solana</option>
+            <option value="DOT">Polkadot</option>
+            <option value="LTC">Litecoin</option>
+            <option value="DOGE">Dogecoin</option>
+            <option value="LINK">Chainlink</option>
+            <option value="UNI">Uniswap</option>
           </select>
         </div>
-
-        <!-- Buy/Sell Dropdown -->
         <div>
-          <label for="buySell">Buy/Sell</label>
-          <select id="buySell" required>
-            <option value="buy">Buy</option>
-            <option value="sell">Sell</option>
-          </select>
-        </div>
-
-        <div>
-          <label for="entryPrice">Entry Price ($)</label>
-          <input type="number" id="entryPrice" required />
+          <label for="amount">Amount to Trade:</label>
+          <input type="number" id="amount" name="amount" min="0" step="0.01" value="1" required>
         </div>
         <div>
-          <label for="exitPrice">Exit Price ($)</label>
-          <input type="number" id="exitPrice" required />
+          <label for="price">Price (USD):</label>
+          <input type="text" id="price" name="price" readonly>
         </div>
         <div>
-          <label for="tradeSize">Trade Size (Units)</label>
-          <input type="number" id="tradeSize" required />
+          <label for="fee">Fee (%):</label>
+          <input type="number" id="fee" name="fee" min="0" step="0.01" value="0.5" required>
         </div>
         <div>
-          <label for="stopLoss">Stop Loss ($)</label>
-          <input type="number" id="stopLoss" required />
+          <label for="totalAmount">Total Amount:</label>
+          <input type="text" id="totalAmount" name="totalAmount" readonly>
         </div>
         <div>
-          <label for="takeProfit">Take Profit ($)</label>
-          <input type="number" id="takeProfit" required />
-        </div>
-        <div>
-          <label for="accountBalance">Account Balance ($)</label>
-          <input type="number" id="accountBalance" required />
-        </div>
-        <div>
-          <label for="riskPercentage">Risk Percentage (%)</label>
-          <input type="number" id="riskPercentage" required />
-        </div>
-        <div>
-          <label for="leverage">Leverage</label>
-          <input type="number" id="leverage" required />
-        </div>
-        <div>
-          <button type="submit">Submit</button>
+          <label for="profitLoss">Profit/Loss:</label>
+          <input type="text" id="profitLoss" name="profitLoss" readonly>
         </div>
       </form>
     </div>
 
-    <!-- Results Section -->
-    <div class="results">
-      <h2>Trade Summary</h2>
-      <p><strong>Cryptocurrency:</strong> <span id="cryptoName"></span></p>
-      <p><strong>Trade Action:</strong> <span id="action"></span></p>
-      <p><strong>Amount (USD):</strong> $<span id="tradeAmount"></span></p>
-      <p><strong>Price per Coin (USD):</strong> $<span id="cryptoPrice"></span></p>
-      <p><strong>Total Price (USD):</strong> $<span id="totalPrice"></span></p>
-
+    <div class="results" id="results">
+      <h2>Trade Results</h2>
       <table>
-        <thead>
-          <tr>
-            <th>Cryptocurrency</th>
-            <th>Price (USD)</th>
-            <th>Amount</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="cryptoNameTable"></td>
-            <td id="cryptoPriceTable"></td>
-            <td id="quantityTable"></td>
-            <td id="totalPriceTable"></td>
-          </tr>
-        </tbody>
+        <tr>
+          <th>Crypto</th>
+          <th>Amount</th>
+          <th>Price (USD)</th>
+          <th>Fee (%)</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td id="resultCrypto"></td>
+          <td id="resultAmount"></td>
+          <td id="resultPrice"></td>
+          <td id="resultFee"></td>
+          <td id="resultTotal"></td>
+        </tr>
       </table>
     </div>
 
     <div class="chart-container">
-      <canvas id="cryptoChart"></canvas>
+      <canvas id="tradeChart"></canvas>
     </div>
 
-    <!-- Action Buttons -->
     <div class="action-btns">
-      <div class="button-row">
-        <button onclick="printSummary()">Print</button>
-        <button onclick="exportPDF()">Export PDF</button>
-      </div>
+      <button class="export-btn" onclick="exportToPDF()">Export as PDF</button>
     </div>
   </div>
 
   <script>
-    let selectedCrypto = 'bitcoin';
-    let selectedAction = 'buy';
-    let pricePerCoin = 0;
-    let quantity = 0;
+    // Variables for price data and selected cryptocurrency
+    const cryptoData = {
+      BTC: 55000,
+      ETH: 4000,
+      BNB: 600,
+      ADA: 2,
+      XRP: 1,
+      SOL: 150,
+      DOT: 25,
+      LTC: 180,
+      DOGE: 0.25,
+      LINK: 25,
+      UNI: 30
+    };
 
-    function fetchCryptoPrice() {
-      selectedCrypto = document.getElementById('cryptoSelect').value;
-      selectedAction = document.getElementById('buySell').value;
-      // For simplicity, use dummy prices here
-      const cryptoPrices = {
-        bitcoin: 35000,
-        ethereum: 2500,
-        binancecoin: 300,
-        cardano: 1.2,
-        ripple: 0.5,
-        solana: 35,
-        polkadot: 10,
-        litecoin: 100,
-        dogecoin: 0.07,
-        chainlink: 25,
-        uniswap: 18
-      };
+    // Function to update the price when the cryptocurrency is changed
+    document.getElementById('cryptoSymbol').addEventListener('change', function () {
+      const selectedCrypto = this.value;
+      const cryptoPrice = cryptoData[selectedCrypto];
+      document.getElementById('price').value = cryptoPrice;
+      document.getElementById('cryptoLogo').src = `https://cryptologos.cc/logos/${selectedCrypto.toLowerCase()}-logo.png`;
+      updateResults();
+    });
 
-      pricePerCoin = cryptoPrices[selectedCrypto];
-      updateTradeDetails();
+    // Function to calculate and update trade results
+    function updateResults() {
+      const amount = parseFloat(document.getElementById('amount').value);
+      const fee = parseFloat(document.getElementById('fee').value);
+      const price = parseFloat(document.getElementById('price').value);
+      const totalAmount = amount * price;
+      const totalFee = totalAmount * (fee / 100);
+      const profitLoss = totalAmount - totalFee;
+
+      document.getElementById('totalAmount').value = totalAmount.toFixed(2);
+      document.getElementById('profitLoss').value = profitLoss.toFixed(2);
+
+      // Update the results section
+      document.getElementById('resultCrypto').textContent = document.getElementById('cryptoSymbol').value;
+      document.getElementById('resultAmount').textContent = amount.toFixed(2);
+      document.getElementById('resultPrice').textContent = price.toFixed(2);
+      document.getElementById('resultFee').textContent = fee.toFixed(2);
+      document.getElementById('resultTotal').textContent = totalAmount.toFixed(2);
+
+      // Show the results section
+      document.getElementById('results').style.display = 'block';
+
+      // Update the chart with trade data
+      updateChart(amount, totalAmount, profitLoss);
     }
 
-    function updateTradeDetails() {
-      quantity = parseFloat(document.getElementById('tradeSize').value) || 0;
-      let totalPrice = pricePerCoin * quantity;
-
-      document.getElementById('cryptoName').textContent = selectedCrypto.charAt(0).toUpperCase() + selectedCrypto.slice(1);
-      document.getElementById('action').textContent = selectedAction.charAt(0).toUpperCase() + selectedAction.slice(1);
-      document.getElementById('tradeAmount').textContent = quantity.toFixed(2);
-      document.getElementById('cryptoPrice').textContent = pricePerCoin.toFixed(2);
-      document.getElementById('totalPrice').textContent = totalPrice.toFixed(2);
-      document.getElementById('cryptoNameTable').textContent = selectedCrypto.charAt(0).toUpperCase() + selectedCrypto.slice(1);
-      document.getElementById('cryptoPriceTable').textContent = pricePerCoin.toFixed(2);
-      document.getElementById('quantityTable').textContent = quantity.toFixed(2);
-      document.getElementById('totalPriceTable').textContent = totalPrice.toFixed(2);
-
-      document.querySelector('.results').style.display = 'block';
-      updateChart();
-    }
-
-    function updateChart() {
-      let ctx = document.getElementById('cryptoChart').getContext('2d');
-      let chart = new Chart(ctx, {
-        type: 'line',
+    // Function to update the chart with trade data
+    function updateChart(amount, totalAmount, profitLoss) {
+      const ctx = document.getElementById('tradeChart').getContext('2d');
+      const tradeChart = new Chart(ctx, {
+        type: 'bar',
         data: {
-          labels: ['1', '2', '3', '4', '5'], // Dummy time labels
+          labels: ['Amount', 'Total', 'Profit/Loss'],
           datasets: [{
-            label: 'Crypto Price (USD)',
-            data: [35000, 34500, 34000, 35500, 36000], // Dummy data for chart
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 2,
-            fill: false
+            label: 'Trade Data',
+            data: [amount, totalAmount, profitLoss],
+            backgroundColor: ['#ffcc00', '#4CAF50', '#f44336'],
+            borderColor: ['#ff9900', '#388E3C', '#d32f2f'],
+            borderWidth: 1
           }]
         },
         options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-          },
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
         }
       });
     }
 
-    function printSummary() {
-      window.print();
-    }
-
-    function exportPDF() {
-      const { jsPDF } = window.jspdf;
+    // Export to PDF function (optional)
+    function exportToPDF() {
       const doc = new jsPDF();
-
-      doc.text(`Cryptocurrency: ${document.getElementById('cryptoName').textContent}`, 10, 10);
-      doc.text(`Action: ${document.getElementById('action').textContent}`, 10, 20);
-      doc.text(`Amount: $${document.getElementById('tradeAmount').textContent}`, 10, 30);
-      doc.text(`Price per Coin: $${document.getElementById('cryptoPrice').textContent}`, 10, 40);
-      doc.text(`Total Price: $${document.getElementById('totalPrice').textContent}`, 10, 50);
-
-      doc.save('crypto_trade_summary.pdf');
+      doc.text("Trade Results", 20, 20);
+      doc.autoTable({ html: '.results table' });
+      doc.save('trade-results.pdf');
     }
 
-    document.getElementById('tradeForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      fetchCryptoPrice();
-    });
-
-    fetchCryptoPrice(); // Initialize the page with default crypto
+    // Initial calculation on page load
+    updateResults();
   </script>
 </body>
 </html>
