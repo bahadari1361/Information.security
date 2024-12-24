@@ -70,6 +70,13 @@
       border-right: 1px solid #444;
     }
 
+    .form-container h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
     form {
       display: grid;
       gap: 30px; /* Increased space between form fields */
@@ -275,16 +282,13 @@
       <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink">LINK</div>
       <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap">UNI</div>
     </div>
-    <div style="margin-top: 20px; font-size: 20px; color: #00ff00; text-align: center;">
-      <p>Stay patient, stay focused. Success will follow.</p>
-      <p>Risk wisely, trade smartly, and keep learning.</p>
-      <p>Success in trading comes from persistence, not perfection.</p>
-    </div>
   </header>
 
   <div class="container">
     <div class="form-container">
+      <h1>Trade Inputs</h1>
       <form id="tradeForm">
+        <!-- Form Inputs -->
         <div>
           <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo-left">
         </div>
@@ -306,23 +310,123 @@
         </div>
         <div>
           <label for="tradeAmount">Amount</label>
-          <input type="number" id="tradeAmount" placeholder="Enter Amount" required>
+          <input type="number" id="tradeAmount" name="amount" placeholder="Enter amount" required />
         </div>
         <div>
-          <label for="entryPrice">Entry Price ($)</label>
-          <input type="number" id="entryPrice" placeholder="Enter Entry Price" required>
+          <label for="buyOrSell">Action</label>
+          <select id="buyOrSell" name="action" required>
+            <option value="buy">Buy</option>
+            <option value="sell">Sell</option>
+          </select>
         </div>
         <div>
-          <label for="targetPrice">Target Price ($)</label>
-          <input type="number" id="targetPrice" placeholder="Enter Target Price" required>
+          <label for="cryptoPrice">Price</label>
+          <input type="text" id="cryptoPrice" name="price" disabled />
         </div>
         <div>
-          <label for="stopLoss">Stop Loss ($)</label>
-          <input type="number" id="stopLoss" placeholder="Enter Stop Loss" required>
+          <label for="totalValue">Total Value</label>
+          <input type="text" id="totalValue" name="totalValue" disabled />
         </div>
+        <button type="submit">Submit Trade</button>
       </form>
     </div>
   </div>
 
+  <div class="results" id="tradeResults">
+    <h2>Trade Results</h2>
+    <p><strong>Cryptocurrency:</strong> <span id="cryptoName">-</span></p>
+    <p><strong>Action:</strong> <span id="actionType">-</span></p>
+    <p><strong>Amount:</strong> <span id="tradeAmountResult">-</span></p>
+    <p><strong>Price:</strong> <span id="cryptoPriceResult">-</span></p>
+    <p><strong>Total Value:</strong> <span id="totalValueResult">-</span></p>
+
+    <div class="chart-container">
+      <canvas id="cryptoChart"></canvas>
+    </div>
+  </div>
+
+  <div class="action-btns">
+    <div class="button-row">
+      <button onclick="exportToPDF()">Export to PDF</button>
+    </div>
+  </div>
+
+  <script>
+    // Fetch current cryptocurrency prices from the CoinGecko API
+    async function fetchCryptoPrice() {
+      const selectedCrypto = document.getElementById("cryptoSelect").value;
+      const url = `https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`;
+
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const cryptoPrice = data[selectedCrypto]?.usd;
+
+        if (cryptoPrice) {
+          document.getElementById("cryptoPrice").value = cryptoPrice;
+        }
+      } catch (error) {
+        console.error('Error fetching crypto price:', error);
+      }
+    }
+
+    // Handle form submission
+    document.getElementById("tradeForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const cryptoSelect = document.getElementById("cryptoSelect").value;
+      const tradeAmount = parseFloat(document.getElementById("tradeAmount").value);
+      const cryptoPrice = parseFloat(document.getElementById("cryptoPrice").value);
+      const action = document.getElementById("buyOrSell").value;
+
+      const totalValue = tradeAmount * cryptoPrice;
+      document.getElementById("tradeResults").style.display = "block";
+
+      // Populate the results
+      document.getElementById("cryptoName").innerText = cryptoSelect.charAt(0).toUpperCase() + cryptoSelect.slice(1);
+      document.getElementById("actionType").innerText = action.charAt(0).toUpperCase() + action.slice(1);
+      document.getElementById("tradeAmountResult").innerText = tradeAmount.toFixed(2);
+      document.getElementById("cryptoPriceResult").innerText = cryptoPrice.toFixed(2);
+      document.getElementById("totalValueResult").innerText = totalValue.toFixed(2);
+
+      // Update total value input
+      document.getElementById("totalValue").value = totalValue.toFixed(2);
+
+      // Fetch price data for the chart (for demonstration purposes, using dummy data)
+      const priceHistory = [cryptoPrice, cryptoPrice * 1.01, cryptoPrice * 1.02, cryptoPrice * 0.99, cryptoPrice * 1.03];
+      
+      // Create a chart displaying price history
+      const ctx = document.getElementById('cryptoChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['1h', '2h', '3h', '4h', '5h'],
+          datasets: [{
+            label: 'Price History (USD)',
+            data: priceHistory,
+            borderColor: '#007bff',
+            fill: false,
+            tension: 0.1
+          }]
+        }
+      });
+    });
+
+    // Export results to PDF
+    function exportToPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const tradeResults = document.getElementById("tradeResults");
+      doc.html(tradeResults, {
+        callback: function (doc) {
+          doc.save("crypto_trade_results.pdf");
+        },
+        margin: [20, 20, 20, 20],
+        autoPaging: true,
+        pageSize: 'a4',
+      });
+    }
+  </script>
 </body>
 </html>
