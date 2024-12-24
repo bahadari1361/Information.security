@@ -6,6 +6,7 @@
   <title>Crypto Trading Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.full.min.js"></script> <!-- Added xlsx library -->
   <style>
     body {
       font-family: 'Roboto', sans-serif;
@@ -299,7 +300,7 @@
             <option value="ethereum">Ethereum</option>
             <option value="binancecoin">Binance Coin</option>
             <option value="cardano">Cardano</option>
-            <option value="ripple">XRP</option>
+            <option value="ripple">Ripple</option>
             <option value="solana">Solana</option>
             <option value="polkadot">Polkadot</option>
             <option value="litecoin">Litecoin</option>
@@ -309,170 +310,114 @@
           </select>
         </div>
         <div>
-          <label for="entryPrice">Entry Price ($)</label>
-          <input type="number" id="entryPrice" oninput="updateCalculations()" required>
+          <label for="entryPrice">Entry Price</label>
+          <input type="number" id="entryPrice" placeholder="Enter Entry Price" required>
         </div>
         <div>
-          <label for="exitPrice">Exit Price ($)</label>
-          <input type="number" id="exitPrice" oninput="updateCalculations()" required>
+          <label for="exitPrice">Exit Price</label>
+          <input type="number" id="exitPrice" placeholder="Enter Exit Price" required>
         </div>
         <div>
-          <label for="tradeSize">Trade Size (Units)</label>
-          <input type="number" id="tradeSize" oninput="updateCalculations()" required>
+          <label for="tradeSize">Trade Size</label>
+          <input type="number" id="tradeSize" placeholder="Enter Trade Size" required>
         </div>
         <div>
-          <label for="stopLoss">Stop Loss ($)</label>
-          <input type="number" id="stopLoss" oninput="updateCalculations()" required>
+          <label for="stopLoss">Stop Loss</label>
+          <input type="number" id="stopLoss" placeholder="Enter Stop Loss" required>
         </div>
         <div>
-          <label for="takeProfit">Take Profit ($)</label>
-          <input type="number" id="takeProfit" oninput="updateCalculations()" required>
+          <label for="takeProfit">Take Profit</label>
+          <input type="number" id="takeProfit" placeholder="Enter Take Profit" required>
         </div>
         <div>
-          <label for="accountBalance">Account Balance ($)</label>
-          <input type="number" id="accountBalance" oninput="updateCalculations()" required>
+          <label for="accountBalance">Account Balance</label>
+          <input type="number" id="accountBalance" placeholder="Enter Account Balance" required>
         </div>
         <div>
-          <label for="riskPercentage">Risk Percentage (%)</label>
-          <input type="number" id="riskPercentage" oninput="updateCalculations()" required>
+          <label for="riskPercentage">Risk Percentage</label>
+          <input type="number" id="riskPercentage" placeholder="Enter Risk Percentage" required>
         </div>
         <div>
           <label for="leverage">Leverage</label>
-          <input type="number" id="leverage" oninput="updateCalculations()" required>
+          <input type="number" id="leverage" placeholder="Enter Leverage" required>
         </div>
       </form>
     </div>
-    <div class="crypto-logo-center">
-      <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" class="crypto-logo" style="width: 150px; height: 150px;">
-    </div>
-    <div class="results" id="results">
-      <h2>Trade Summary</h2>
-      <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
-      <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
-      <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
+    <div class="results" id="resultsContainer">
+      <h2>Results</h2>
+      <p><strong>Estimated Profit:</strong> <span id="estimatedProfit">0</span></p>
+      <p><strong>Estimated Loss:</strong> <span id="estimatedLoss">0</span></p>
+      <p><strong>Risk-Reward Ratio:</strong> <span id="riskRewardRatio">0</span></p>
 
-      <div class="chart-container">
-        <canvas id="profitLossChart"></canvas>
-      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Cryptocurrency</th>
+            <th>Entry Price</th>
+            <th>Exit Price</th>
+            <th>Trade Size</th>
+            <th>Stop Loss</th>
+            <th>Take Profit</th>
+            <th>Account Balance</th>
+            <th>Risk Percentage</th>
+            <th>Leverage</th>
+            <th>Estimated Profit</th>
+            <th>Estimated Loss</th>
+            <th>Risk-Reward Ratio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="cryptoSymbol">Bitcoin</td>
+            <td id="entryPriceResult"></td>
+            <td id="exitPriceResult"></td>
+            <td id="tradeSizeResult"></td>
+            <td id="stopLossResult"></td>
+            <td id="takeProfitResult"></td>
+            <td id="accountBalanceResult"></td>
+            <td id="riskPercentageResult"></td>
+            <td id="leverageResult"></td>
+            <td id="estimatedProfitResult"></td>
+            <td id="estimatedLossResult"></td>
+            <td id="riskRewardResult"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
     <div class="action-btns">
       <div class="button-row">
-        <button onclick="exportToPDF()">Export to PDF</button>
-        <button onclick="resetForm()">Reset</button>
-        <button onclick="window.print()">Print</button>
+        <button onclick="exportToExcel()">Export to Excel</button> <!-- Export Button -->
       </div>
     </div>
   </div>
 
   <script>
-    // Dummy data for cryptocurrency prices
-    let cryptoPrices = {
-      bitcoin: 30000,
-      ethereum: 2000,
-      binancecoin: 250,
-      cardano: 1.5,
-      ripple: 0.5,
-      solana: 25,
-      polkadot: 10,
-      litecoin: 100,
-      dogecoin: 0.07,
-      chainlink: 7,
-      uniswap: 30
-    };
+    // Function to calculate trade details and export to Excel
+    function exportToExcel() {
+      const tradeData = [
+        ["Cryptocurrency", document.getElementById("cryptoSelect").value],
+        ["Entry Price", document.getElementById("entryPrice").value],
+        ["Exit Price", document.getElementById("exitPrice").value],
+        ["Trade Size", document.getElementById("tradeSize").value],
+        ["Stop Loss", document.getElementById("stopLoss").value],
+        ["Take Profit", document.getElementById("takeProfit").value],
+        ["Account Balance", document.getElementById("accountBalance").value],
+        ["Risk Percentage", document.getElementById("riskPercentage").value],
+        ["Leverage", document.getElementById("leverage").value],
+        ["Estimated Profit", document.getElementById("estimatedProfit").textContent],
+        ["Estimated Loss", document.getElementById("estimatedLoss").textContent],
+        ["Risk-Reward Ratio", document.getElementById("riskRewardRatio").textContent]
+      ];
 
-    let selectedCrypto = "bitcoin";
+      // Create a new workbook
+      let wb = XLSX.utils.book_new();
+      let ws = XLSX.utils.aoa_to_sheet(tradeData);
 
-    // Fetch crypto price on selection
-    function fetchCryptoPrice() {
-      selectedCrypto = document.getElementById("cryptoSelect").value;
-      updateCalculations();
-    }
+      // Append worksheet to workbook
+      XLSX.utils.book_append_sheet(wb, ws, "Trade Data");
 
-    function updateCalculations() {
-      let entryPrice = parseFloat(document.getElementById("entryPrice").value);
-      let exitPrice = parseFloat(document.getElementById("exitPrice").value);
-      let tradeSize = parseFloat(document.getElementById("tradeSize").value);
-      let stopLoss = parseFloat(document.getElementById("stopLoss").value);
-      let takeProfit = parseFloat(document.getElementById("takeProfit").value);
-      let accountBalance = parseFloat(document.getElementById("accountBalance").value);
-      let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
-      let leverage = parseFloat(document.getElementById("leverage").value);
-
-      // Fetching price of selected cryptocurrency
-      let cryptoPrice = cryptoPrices[selectedCrypto];
-
-      if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
-        return;
-      }
-
-      // Calculate profit and loss
-      let profit = (exitPrice - entryPrice) * tradeSize;
-      let loss = (entryPrice - stopLoss) * tradeSize;
-      let riskReward = profit / loss;
-
-      // Update results
-      document.getElementById("estimatedProfit").textContent = profit.toFixed(2);
-      document.getElementById("estimatedLoss").textContent = loss.toFixed(2);
-      document.getElementById("riskRewardRatio").textContent = riskReward.toFixed(2);
-
-      // Display the results section
-      document.getElementById("results").style.display = "block";
-
-      // Update chart
-      updateChart(profit, loss);
-    }
-
-    let profitLossChart;
-
-    function updateChart(profit, loss) {
-      const ctx = document.getElementById('profitLossChart').getContext('2d');
-      if (profitLossChart) {
-        profitLossChart.destroy();
-      }
-
-      profitLossChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['Profit', 'Loss'],
-          datasets: [{
-            label: 'Estimated Profit and Loss',
-            data: [profit, loss],
-            backgroundColor: ['green', 'red'],
-            borderColor: ['green', 'red'],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
-      });
-    }
-
-    function exportToPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-
-      doc.text('Crypto Trading Dashboard', 10, 10);
-      doc.text(`Cryptocurrency: ${document.getElementById("cryptoSelect").value}`, 10, 20);
-      doc.text(`Estimated Profit: $${document.getElementById("estimatedProfit").textContent}`, 10, 30);
-      doc.text(`Estimated Loss: $${document.getElementById("estimatedLoss").textContent}`, 10, 40);
-      doc.text(`Risk-Reward Ratio: ${document.getElementById("riskRewardRatio").textContent}`, 10, 50);
-
-      doc.save('crypto-trading-summary.pdf');
-    }
-
-    function resetForm() {
-      document.getElementById("tradeForm").reset();
-      document.getElementById("results").style.display = "none";
-      if (profitLossChart) {
-        profitLossChart.destroy();
-      }
+      // Trigger file download
+      XLSX.writeFile(wb, "crypto-trading-dashboard.xlsx");
     }
   </script>
 </body>
