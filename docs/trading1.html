@@ -36,6 +36,14 @@
       padding: 5px 10px;
       border-radius: 5px;
       display: inline-block;
+      text-align: center;
+    }
+
+    .crypto-symbol img {
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+      margin-right: 5px;
     }
 
     .container {
@@ -236,17 +244,17 @@
 </head>
 <body>
   <header>
-    <div class="crypto-symbol">BTC</div>
-    <div class="crypto-symbol">ETH</div>
-    <div class="crypto-symbol">BNB</div>
-    <div class="crypto-symbol">ADA</div>
-    <div class="crypto-symbol">XRP</div>
-    <div class="crypto-symbol">SOL</div>
-    <div class="crypto-symbol">DOT</div>
-    <div class="crypto-symbol">LTC</div>
-    <div class="crypto-symbol">DOGE</div>
-    <div class="crypto-symbol">LINK</div>
-    <div class="crypto-symbol">UNI</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">BTC</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">ETH</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance Coin">BNB</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="Cardano">ADA</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/ripple-xrp-logo.png" alt="XRP">XRP</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana">SOL</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/polkadot-dot-logo.png" alt="Polkadot">DOT</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/litecoin-ltc-logo.png" alt="Litecoin">LTC</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="Dogecoin">DOGE</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink">LINK</div>
+    <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap">UNI</div>
   </header>
 
   <div class="container">
@@ -295,44 +303,35 @@
         </div>
         <div>
           <label for="riskPercentage">Risk Percentage (%)</label>
-          <input type="number" id="riskPercentage" oninput="updateCalculations()" value="1" min="0.1" step="0.1" required>
+          <input type="number" id="riskPercentage" oninput="updateCalculations()" required>
         </div>
         <div>
           <label for="leverage">Leverage</label>
-          <select id="leverage" oninput="updateCalculations()" required>
-            <option value="1">1x</option>
-            <option value="2">2x</option>
-            <option value="5">5x</option>
-            <option value="10">10x</option>
-            <option value="20">20x</option>
-            <option value="50">50x</option>
-          </select>
+          <input type="number" id="leverage" oninput="updateCalculations()" required>
         </div>
       </form>
     </div>
 
-    <div class="action-btns">
-      <div class="button-row">
-        <button onclick="updateCalculations()">Calculate</button>
-        <button onclick="clearResults()">Clear Results</button>
-        <button onclick="exportPDF()">Export to PDF</button>
-      </div>
-      <div class="results" id="results">
-        <h2>Trade Summary</h2>
-        <p><strong>P&L:</strong> <span id="pnl"></span></p>
-        <p><strong>Risk:</strong> <span id="risk"></span></p>
-        <p><strong>Reward:</strong> <span id="reward"></span></p>
-        <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio"></span></p>
-        <p><strong>Position Size:</strong> <span id="positionSize"></span></p>
-        <p><strong>Max Drawdown:</strong> <span id="maxDrawdown"></span></p>
-        <div class="chart-container">
-          <canvas id="barChart"></canvas>
-        </div>
+    <div class="results" id="results">
+      <h2>Trade Summary</h2>
+      <p><strong>P&L:</strong> <span id="pnl"></span></p>
+      <p><strong>Risk:</strong> <span id="risk"></span></p>
+      <p><strong>Reward:</strong> <span id="reward"></span></p>
+      <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio"></span></p>
+      <p><strong>Position Size:</strong> <span id="positionSize"></span></p>
+      <p><strong>Max Drawdown:</strong> <span id="maxDrawdown"></span></p>
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
       </div>
     </div>
   </div>
 
   <script>
+    function fetchCryptoPrice() {
+      const selectedCrypto = document.getElementById('cryptoSelect').value;
+      // Fetch price of the selected crypto (You can use an API for live data if needed)
+    }
+
     function updateCalculations() {
       const entryPrice = parseFloat(document.getElementById('entryPrice').value);
       const exitPrice = parseFloat(document.getElementById('exitPrice').value);
@@ -399,24 +398,6 @@
           }
         }
       });
-    }
-
-    function clearResults() {
-      document.getElementById('tradeForm').reset();
-      document.getElementById('results').style.display = 'none';
-    }
-
-    function exportPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-      doc.text('Crypto Trading Results', 10, 10);
-      doc.text(`P&L: $${document.getElementById('pnl').textContent}`, 10, 20);
-      doc.text(`Risk: $${document.getElementById('risk').textContent}`, 10, 30);
-      doc.text(`Reward: $${document.getElementById('reward').textContent}`, 10, 40);
-      doc.text(`Risk/Reward: ${document.getElementById('rrRatio').textContent}`, 10, 50);
-      doc.text(`Position Size: ${document.getElementById('positionSize').textContent}`, 10, 60);
-      doc.text(`Max Drawdown: $${document.getElementById('maxDrawdown').textContent}`, 10, 70);
-      doc.save('crypto_trade_results.pdf');
     }
   </script>
 </body>
