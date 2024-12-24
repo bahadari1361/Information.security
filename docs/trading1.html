@@ -151,21 +151,21 @@
 
     .action-btns .button-row {
       display: flex;
-      gap: 20px;
+      gap: 10px;
       justify-content: space-between;
     }
 
     .action-btns button {
       background-color: #007bff;
       color: white;
-      padding: 12px 20px;
+      padding: 10px 15px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-weight: 600;
       text-align: center;
       width: 100%;
-      font-size: 16px;
+      font-size: 14px;
       transition: background-color 0.3s ease;
     }
 
@@ -315,6 +315,14 @@
           <label for="accountBalance">Account Balance ($)</label>
           <input type="number" id="accountBalance" oninput="updateCalculations()" required>
         </div>
+        <div>
+          <label for="riskPercentage">Risk Percentage (%)</label>
+          <input type="number" id="riskPercentage" oninput="updateCalculations()" required>
+        </div>
+        <div>
+          <label for="leverage">Leverage</label>
+          <input type="number" id="leverage" oninput="updateCalculations()" required>
+        </div>
       </form>
     </div>
 
@@ -322,7 +330,7 @@
       <h2>Trade Summary</h2>
       <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
       <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
-      <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
+      <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></span></p>
       <div class="chart-container">
         <canvas id="profitLossChart"></canvas>
       </div>
@@ -365,8 +373,10 @@
       let stopLoss = parseFloat(document.getElementById("stopLoss").value);
       let takeProfit = parseFloat(document.getElementById("takeProfit").value);
       let accountBalance = parseFloat(document.getElementById("accountBalance").value);
+      let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
+      let leverage = parseFloat(document.getElementById("leverage").value);
 
-      if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance)) {
+      if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
         return;
       }
 
