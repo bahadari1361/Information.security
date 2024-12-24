@@ -9,19 +9,57 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #2f2f2f;
+      background-color: #2f2f2f; /* Dark gray background */
       margin: 0;
       padding: 0;
-      color: #fff;
+      color: #fff; /* Text color changed to white for better contrast */
     }
 
     header {
-      background-color: #000000;
+      background-color: #000000; /* Black header background */
       color: white;
       padding: 40px;
       text-align: center;
       font-size: 24px;
       font-weight: 700;
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .crypto-symbols {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .crypto-symbol {
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .crypto-symbol img {
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #1f1f1f; /* Dark gray container */
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
     .form-container {
@@ -41,7 +79,7 @@
 
     form {
       display: grid;
-      gap: 30px;
+      gap: 30px; /* Increased space between form fields */
       grid-template-columns: 1fr 1fr;
     }
 
@@ -59,6 +97,13 @@
       width: 100%;
       background-color: #333;
       color: #fff;
+    }
+
+    .crypto-logo {
+      width: 100px; /* Increase the size of the logo */
+      height: 100px;
+      object-fit: cover;
+      margin: 20px auto 0; /* Center the logo with space on top */
     }
 
     .results {
@@ -128,12 +173,115 @@
       text-align: center;
       width: 100%;
       font-size: 14px;
+      transition: background-color 0.3s ease;
+    }
+
+    .action-btns button:hover {
+      background-color: #0056b3;
+    }
+
+    .crypto-logo-left {
+      width: 80px; /* Adjusted size of Bitcoin logo on the left */
+      height: 80px;
+      object-fit: cover;
+      margin: 10px auto;
+    }
+
+    @media (max-width: 768px) {
+      .form-container {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 80px 20px;
+        font-size: 28px;
+      }
+
+      .results {
+        margin-top: 20px;
+      }
+
+      .action-btns {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .action-btns .button-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .action-btns button {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+      }
+
+      .container {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 10px;
+        margin: 0;
+      }
+
+      .results {
+        border: 1px solid #ddd;
+        margin-top: 30px;
+        padding: 15px;
+      }
+
+      .export-btn {
+        display: none;
+      }
+
+      .results h2, .results p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      .results table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .results table, .results th, .results td {
+        border: 1px solid #ddd;
+      }
+
+      .results th, .results td {
+        padding: 12px;
+        text-align: left;
+      }
+
+      .results th {
+        background-color: #f1f1f1;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <h2>Crypto Trading Dashboard</h2>
+    <div class="crypto-symbols">
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">BTC</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">ETH</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance Coin">BNB</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="Cardano">ADA</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/ripple-xrp-logo.png" alt="XRP">XRP</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana">SOL</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/polkadot-dot-logo.png" alt="Polkadot">DOT</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/litecoin-ltc-logo.png" alt="Litecoin">LTC</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="Dogecoin">DOGE</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink">LINK</div>
+      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap">UNI</div>
+    </div>
   </header>
 
   <div class="container">
@@ -141,6 +289,9 @@
       <h1>Trade Inputs</h1>
       <form id="tradeForm">
         <!-- Form Inputs -->
+        <div>
+          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo-left">
+        </div>
         <div>
           <label for="cryptoSelect">Select Cryptocurrency</label>
           <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
@@ -191,13 +342,14 @@
         </div>
       </form>
     </div>
+    <div class="crypto-logo-center">
+      <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" class="crypto-logo" style="width: 150px; height: 150px;">
+    </div>
     <div class="results" id="results">
       <h2>Trade Summary</h2>
       <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
       <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
       <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
-      <p><strong>Risk per Trade: $<span id="riskPerTrade">0</span></strong></p>
-      <p><strong>Expected Return: $<span id="expectedReturn">0</span></strong></p>
 
       <div class="chart-container">
         <canvas id="profitLossChart"></canvas>
@@ -259,61 +411,68 @@
       let loss = (entryPrice - stopLoss) * tradeSize;
       let riskReward = profit / loss;
 
-      // Additional metrics
-      let riskPerTrade = (accountBalance * riskPercentage) / 100;
-      let expectedReturn = profit * leverage;
-
       // Update results
       document.getElementById("estimatedProfit").textContent = profit.toFixed(2);
       document.getElementById("estimatedLoss").textContent = loss.toFixed(2);
       document.getElementById("riskRewardRatio").textContent = riskReward.toFixed(2);
-      document.getElementById("riskPerTrade").textContent = riskPerTrade.toFixed(2);
-      document.getElementById("expectedReturn").textContent = expectedReturn.toFixed(2);
 
-      // Show results
+      // Display the results section
       document.getElementById("results").style.display = "block";
 
-      // Chart update
+      // Update chart
       updateChart(profit, loss);
     }
 
-    // Create a profit/loss bar chart
-    let profitLossChart = new Chart(document.getElementById("profitLossChart"), {
-      type: "bar",
-      data: {
-        labels: ["Profit", "Loss"],
-        datasets: [{
-          label: "Trade Outcome",
-          data: [0, 0],
-          backgroundColor: ["green", "red"],
-        }]
-      }
-    });
+    let profitLossChart;
 
     function updateChart(profit, loss) {
-      profitLossChart.data.datasets[0].data = [profit, loss];
-      profitLossChart.update();
+      const ctx = document.getElementById('profitLossChart').getContext('2d');
+      if (profitLossChart) {
+        profitLossChart.destroy();
+      }
+
+      profitLossChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Profit', 'Loss'],
+          datasets: [{
+            label: 'Estimated Profit and Loss',
+            data: [profit, loss],
+            backgroundColor: ['green', 'red'],
+            borderColor: ['green', 'red'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
     }
 
     function exportToPDF() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
-      doc.text("Crypto Trading Summary", 10, 10);
-      doc.text("Estimated Profit: $" + document.getElementById("estimatedProfit").textContent, 10, 20);
-      doc.text("Estimated Loss: $" + document.getElementById("estimatedLoss").textContent, 10, 30);
-      doc.text("Risk-Reward Ratio: " + document.getElementById("riskRewardRatio").textContent, 10, 40);
-      doc.text("Risk per Trade: $" + document.getElementById("riskPerTrade").textContent, 10, 50);
-      doc.text("Expected Return: $" + document.getElementById("expectedReturn").textContent, 10, 60);
+      doc.text('Crypto Trading Dashboard', 10, 10);
+      doc.text(`Cryptocurrency: ${document.getElementById("cryptoSelect").value}`, 10, 20);
+      doc.text(`Estimated Profit: $${document.getElementById("estimatedProfit").textContent}`, 10, 30);
+      doc.text(`Estimated Loss: $${document.getElementById("estimatedLoss").textContent}`, 10, 40);
+      doc.text(`Risk-Reward Ratio: ${document.getElementById("riskRewardRatio").textContent}`, 10, 50);
 
-      doc.save("crypto_trading_summary.pdf");
+      doc.save('crypto-trading-summary.pdf');
     }
 
     function resetForm() {
       document.getElementById("tradeForm").reset();
       document.getElementById("results").style.display = "none";
-      profitLossChart.data.datasets[0].data = [0, 0];
-      profitLossChart.update();
+      if (profitLossChart) {
+        profitLossChart.destroy();
+      }
     }
   </script>
 </body>
