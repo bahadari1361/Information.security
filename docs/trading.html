@@ -263,6 +263,26 @@
       .results th {
         background-color: #f1f1f1;
       }
+   .motivational-container {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  width: 250px; /* You can adjust this as per your preference */
+}
+
+.motivational-container p {
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+  text-align: left;
+}
+
     }
   </style>
 </head>
@@ -288,12 +308,14 @@
     <div class="form-container">
       <h1>Trade Inputs</h1>
       <!-- Motivational Text -->
-      <div class="motivational-text">
+   <!-- Motivational Text Container -->
+      <div class="motivational-container">
         <p>"Every trade is a lesson. Every loss is an opportunity to grow."</p>
         <p>"Stay patient, stay focused. Success will follow."</p>
         <p>"Risk wisely, trade smartly, and keep learning."</p>
         <p>"Success in trading comes from persistence, not perfection."</p>
       </div>
+
 
       <form id="tradeForm">
         <!-- Form Inputs -->
