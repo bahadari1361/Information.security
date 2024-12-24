@@ -382,13 +382,30 @@
             position: 'top',
           },
         },
-      };
+    }
 
-      new Chart(ctx, {
-        type: 'bar',
-        data: chartData,
-        options: chartOptions,
-      });
+    // Function to create a simple chart with Chart.js
+    const ctx = document.getElementById("cryptoChart").getContext("2d");
+    const cryptoChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["10:00", "12:00", "14:00", "16:00", "18:00", "20:00"], // Placeholder times
+        datasets: [{
+          label: "Cryptocurrency Price",
+          data: [500, 510, 490, 520, 530, 540], // Placeholder data
+          borderColor: "rgba(75, 192, 192, 1)",
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+          }
+        }
+      }
+    });
     }
 
     function exportPDF() {
