@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Trading Dashboard</title>
+  <title>Crypto Trading Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
   <style>
@@ -43,6 +43,7 @@
       padding: 20px;
       border-radius: 10px;
       width: 300px;
+      margin-bottom: 20px;
     }
     .form-container input, .form-container select {
       width: 100%;
@@ -130,35 +131,68 @@
         <option value="chainlink">Chainlink (LINK)</option>
         <option value="uniswap">Uniswap (UNI)</option>
       </select>
+    </div>
 
-      <label for="entryPrice">Entry Price ($)</label>
-      <input type="number" id="entryPrice" placeholder="Enter Entry Price" required>
+    <!-- Long Position Form -->
+    <div class="form-container">
+      <h2>Long Position</h2>
+      <label for="entryPriceLong">Entry Price ($)</label>
+      <input type="number" id="entryPriceLong" placeholder="Enter Entry Price" required>
 
-      <label for="exitPrice">Exit Price ($)</label>
-      <input type="number" id="exitPrice" placeholder="Enter Exit Price" required>
+      <label for="exitPriceLong">Exit Price ($)</label>
+      <input type="number" id="exitPriceLong" placeholder="Enter Exit Price" required>
 
-      <label for="tradeSize">Trade Size (Units)</label>
-      <input type="number" id="tradeSize" placeholder="Enter Trade Size" required>
+      <label for="tradeSizeLong">Trade Size (Units)</label>
+      <input type="number" id="tradeSizeLong" placeholder="Enter Trade Size" required>
 
-      <label for="stopLoss">Stop Loss ($)</label>
-      <input type="number" id="stopLoss" placeholder="Enter Stop Loss" required>
+      <label for="stopLossLong">Stop Loss ($)</label>
+      <input type="number" id="stopLossLong" placeholder="Enter Stop Loss" required>
 
-      <label for="takeProfit">Take Profit ($)</label>
-      <input type="number" id="takeProfit" placeholder="Enter Take Profit" required>
+      <label for="takeProfitLong">Take Profit ($)</label>
+      <input type="number" id="takeProfitLong" placeholder="Enter Take Profit" required>
 
-      <label for="accountBalance">Account Balance ($)</label>
-      <input type="number" id="accountBalance" placeholder="Enter Account Balance" required>
+      <label for="accountBalanceLong">Account Balance ($)</label>
+      <input type="number" id="accountBalanceLong" placeholder="Enter Account Balance" required>
 
-      <label for="riskPercentage">Risk Percentage (%)</label>
-      <input type="number" id="riskPercentage" placeholder="Enter Risk Percentage" required>
+      <label for="riskPercentageLong">Risk Percentage (%)</label>
+      <input type="number" id="riskPercentageLong" placeholder="Enter Risk Percentage" required>
 
-      <label for="leverage">Leverage</label>
-      <input type="number" id="leverage" placeholder="Enter Leverage" required>
+      <label for="leverageLong">Leverage</label>
+      <input type="number" id="leverageLong" placeholder="Enter Leverage" required>
+    </div>
 
-      <div class="button-container">
-        <button onclick="calculateEntry()">Calculate Entry</button>
-        <button onclick="printChart()">Print</button>
-      </div>
+    <!-- Short Position Form -->
+    <div class="form-container">
+      <h2>Short Position</h2>
+      <label for="entryPriceShort">Entry Price ($)</label>
+      <input type="number" id="entryPriceShort" placeholder="Enter Entry Price" required>
+
+      <label for="exitPriceShort">Exit Price ($)</label>
+      <input type="number" id="exitPriceShort" placeholder="Enter Exit Price" required>
+
+      <label for="tradeSizeShort">Trade Size (Units)</label>
+      <input type="number" id="tradeSizeShort" placeholder="Enter Trade Size" required>
+
+      <label for="stopLossShort">Stop Loss ($)</label>
+      <input type="number" id="stopLossShort" placeholder="Enter Stop Loss" required>
+
+      <label for="takeProfitShort">Take Profit ($)</label>
+      <input type="number" id="takeProfitShort" placeholder="Enter Take Profit" required>
+
+      <label for="accountBalanceShort">Account Balance ($)</label>
+      <input type="number" id="accountBalanceShort" placeholder="Enter Account Balance" required>
+
+      <label for="riskPercentageShort">Risk Percentage (%)</label>
+      <input type="number" id="riskPercentageShort" placeholder="Enter Risk Percentage" required>
+
+      <label for="leverageShort">Leverage</label>
+      <input type="number" id="leverageShort" placeholder="Enter Leverage" required>
+    </div>
+
+    <!-- Buttons Section -->
+    <div class="button-container">
+      <button onclick="calculateEntry()">Calculate Entry</button>
+      <button onclick="printChart()">Print</button>
     </div>
 
     <!-- Trading Chart Section -->
@@ -177,18 +211,30 @@
   <script>
     // Sample function to handle entry calculation
     function calculateEntry() {
-      const entryPrice = parseFloat(document.getElementById('entryPrice').value);
-      const exitPrice = parseFloat(document.getElementById('exitPrice').value);
-      const tradeSize = parseFloat(document.getElementById('tradeSize').value);
-      const accountBalance = parseFloat(document.getElementById('accountBalance').value);
-      const riskPercentage = parseFloat(document.getElementById('riskPercentage').value);
+      const entryPriceLong = parseFloat(document.getElementById('entryPriceLong').value);
+      const exitPriceLong = parseFloat(document.getElementById('exitPriceLong').value);
+      const tradeSizeLong = parseFloat(document.getElementById('tradeSizeLong').value);
+      const accountBalanceLong = parseFloat(document.getElementById('accountBalanceLong').value);
+      const riskPercentageLong = parseFloat(document.getElementById('riskPercentageLong').value);
 
-      // Risk calculation example
-      const riskAmount = (riskPercentage / 100) * accountBalance;
-      const stopLoss = parseFloat(document.getElementById('stopLoss').value);
-      const tradeRisk = (entryPrice - stopLoss) * tradeSize;
+      const riskAmountLong = (riskPercentageLong / 100) * accountBalanceLong;
+      const stopLossLong = parseFloat(document.getElementById('stopLossLong').value);
+      const tradeRiskLong = (entryPriceLong - stopLossLong) * tradeSizeLong;
 
-      alert('Risk Amount: $' + riskAmount + '\nTrade Risk: $' + tradeRisk);
+      alert('Long Risk Amount: $' + riskAmountLong + '\nLong Trade Risk: $' + tradeRiskLong);
+
+      // Repeat the same for short positions in a similar manner
+      const entryPriceShort = parseFloat(document.getElementById('entryPriceShort').value);
+      const exitPriceShort = parseFloat(document.getElementById('exitPriceShort').value);
+      const tradeSizeShort = parseFloat(document.getElementById('tradeSizeShort').value);
+      const accountBalanceShort = parseFloat(document.getElementById('accountBalanceShort').value);
+      const riskPercentageShort = parseFloat(document.getElementById('riskPercentageShort').value);
+
+      const riskAmountShort = (riskPercentageShort / 100) * accountBalanceShort;
+      const stopLossShort = parseFloat(document.getElementById('stopLossShort').value);
+      const tradeRiskShort = (entryPriceShort - stopLossShort) * tradeSizeShort;
+
+      alert('Short Risk Amount: $' + riskAmountShort + '\nShort Trade Risk: $' + tradeRiskShort);
     }
 
     // Function to print the chart
@@ -201,10 +247,10 @@
     var longChart = new Chart(ctxLong, {
       type: 'line',
       data: {
-        labels: ['1', '2', '3', '4', '5'],  // Example labels for time periods
+        labels: ['1', '2', '3', '4', '5'],
         datasets: [{
           label: 'Long Position',
-          data: [1, 2, 3, 4, 5],  // Example data for long position
+          data: [1, 2, 3, 4, 5],
           borderColor: 'green',
           fill: false
         }]
@@ -215,17 +261,17 @@
     var shortChart = new Chart(ctxShort, {
       type: 'line',
       data: {
-        labels: ['1', '2', '3', '4', '5'],  // Example labels for time periods
+        labels: ['1', '2', '3', '4', '5'],
         datasets: [{
           label: 'Short Position',
-          data: [5, 4, 3, 2, 1],  // Example data for short position
+          data: [5, 4, 3, 2, 1],
           borderColor: 'red',
           fill: false
         }]
       }
     });
 
-    // Example candlestick chart setup (you'll need real data for candlestick)
+    // Example candlestick chart setup
     var ctxCandle = document.getElementById('candlestickChart').getContext('2d');
     var candlestickChart = new Chart(ctxCandle, {
       type: 'candlestick',
