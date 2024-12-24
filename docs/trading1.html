@@ -18,13 +18,14 @@
     }
 
     header {
-      background-image: url('back.JPG');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      background-color: #333;
       color: white;
-      padding: 80px 40px;
-      text-align: left;
+      padding: 40px;
+      text-align: center;
       font-size: 30px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -32,10 +33,11 @@
 
     header .crypto-icons {
       display: flex;
+      flex-wrap: wrap;
       gap: 30px;
-      margin-top: 20px;
-      font-size: 40px;
       justify-content: center;
+      font-size: 40px;
+      width: 100%;
     }
 
     header .crypto-icons i {
@@ -355,108 +357,103 @@
     <div class="action-btns">
       <div class="button-row">
         <button onclick="downloadReport()">Download Report</button>
-        <button onclick="printPage()">Print</button>
+        <button onclick="printSummary()">Print Summary</button>
       </div>
     </div>
   </div>
 
   <script>
-    let chart;
-
-    // Function to fetch real-time crypto price based on selected cryptocurrency
+    let cryptoData = {}; // Placeholder for dynamic data
+    let entryPrice = 0;
+    let exitPrice = 0;
+    let tradeSize = 0;
+    let stopLoss = 0;
+    let takeProfit = 0;
+    let accountBalance = 10000; // Default value
+    
+    // Fetch crypto price based on selection
     async function fetchCryptoPrice() {
-      const cryptoSelect = document.getElementById('cryptoSelect');
-      const selectedCrypto = cryptoSelect.value;
-      const url = `https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`;
-      const response = await fetch(url);
-      const data = await response.json();
-      const price = data[selectedCrypto].usd;
-      document.getElementById('entryPrice').value = price;
+      const selectedCrypto = document.getElementById("cryptoSelect").value;
+      // Here you could use an API to get the current price, using a placeholder for now
+      cryptoData[selectedCrypto] = Math.random() * 1000 + 100;  // Mock price
+      document.getElementById("entryPrice").value = cryptoData[selectedCrypto];
     }
-
-    // Function to update calculations
+    
+    // Calculate results based on user input
     function updateCalculations() {
-      const entryPrice = parseFloat(document.getElementById('entryPrice').value);
-      const exitPrice = parseFloat(document.getElementById('exitPrice').value);
-      const tradeSize = parseFloat(document.getElementById('tradeSize').value);
-      const stopLoss = parseFloat(document.getElementById('stopLoss').value);
-      const takeProfit = parseFloat(document.getElementById('takeProfit').value);
-      const accountBalance = parseFloat(document.getElementById('accountBalance').value);
-
-      // Risk and Reward calculations
+      entryPrice = parseFloat(document.getElementById("entryPrice").value);
+      exitPrice = parseFloat(document.getElementById("exitPrice").value);
+      tradeSize = parseFloat(document.getElementById("tradeSize").value);
+      stopLoss = parseFloat(document.getElementById("stopLoss").value);
+      takeProfit = parseFloat(document.getElementById("takeProfit").value);
+      accountBalance = parseFloat(document.getElementById("accountBalance").value);
+      
       const riskAmount = (entryPrice - stopLoss) * tradeSize;
       const rewardAmount = (takeProfit - entryPrice) * tradeSize;
-
-      // Risk and Reward percentages
+      
       const riskPercentage = (riskAmount / accountBalance) * 100;
       const rewardPercentage = (rewardAmount / accountBalance) * 100;
-
-      // Update the summary in the results section
-      document.getElementById('entryPriceSummary').textContent = entryPrice.toFixed(2);
-      document.getElementById('exitPriceSummary').textContent = exitPrice.toFixed(2);
-      document.getElementById('tradeSizeSummary').textContent = tradeSize.toFixed(2);
-      document.getElementById('stopLossSummary').textContent = stopLoss.toFixed(2);
-      document.getElementById('takeProfitSummary').textContent = takeProfit.toFixed(2);
-      document.getElementById('accountBalanceSummary').textContent = accountBalance.toFixed(2);
-      document.getElementById('riskAmount').textContent = riskAmount.toFixed(2);
-      document.getElementById('riskPercentage').textContent = riskPercentage.toFixed(2);
-      document.getElementById('rewardAmount').textContent = rewardAmount.toFixed(2);
-      document.getElementById('rewardPercentage').textContent = rewardPercentage.toFixed(2);
-
-      // Show the results section
-      document.querySelector('.results').style.display = 'block';
+      
+      // Update the summary with calculated values
+      document.getElementById("entryPriceSummary").textContent = entryPrice;
+      document.getElementById("exitPriceSummary").textContent = exitPrice;
+      document.getElementById("tradeSizeSummary").textContent = tradeSize;
+      document.getElementById("stopLossSummary").textContent = stopLoss;
+      document.getElementById("takeProfitSummary").textContent = takeProfit;
+      document.getElementById("accountBalanceSummary").textContent = accountBalance;
+      document.getElementById("riskAmount").textContent = riskAmount.toFixed(2);
+      document.getElementById("riskPercentage").textContent = riskPercentage.toFixed(2) + "%";
+      document.getElementById("rewardAmount").textContent = rewardAmount.toFixed(2);
+      document.getElementById("rewardPercentage").textContent = rewardPercentage.toFixed(2) + "%";
+      
+      document.querySelector(".results").style.display = "block"; // Show results
     }
 
-    // Function to initialize the chart
-    function initChart() {
-      const ctx = document.getElementById('cryptoChart').getContext('2d');
-      chart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          datasets: [{
-            label: 'Crypto Price',
-            data: [40000, 35000, 42000, 38000, 40000, 41000, 45000, 44000, 46000, 50000, 48000, 52000],
-            borderColor: '#007bff',
-            backgroundColor: 'rgba(0, 123, 255, 0.2)',
-            borderWidth: 2,
-            fill: true
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: false
-            }
+    // Function to create a simple chart with Chart.js
+    const ctx = document.getElementById("cryptoChart").getContext("2d");
+    const cryptoChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["10:00", "12:00", "14:00", "16:00", "18:00", "20:00"], // Placeholder times
+        datasets: [{
+          label: "Cryptocurrency Price",
+          data: [500, 510, 490, 520, 530, 540], // Placeholder data
+          borderColor: "rgba(75, 192, 192, 1)",
+          fill: false,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
           }
         }
-      });
-    }
-
-    // Function to download the report as PDF
+      }
+    });
+    
+    // Download the report as PDF
     function downloadReport() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
-
-      doc.text('Crypto Trading Report', 20, 20);
-      doc.text(`Entry Price: ${document.getElementById('entryPrice').value}`, 20, 40);
-      doc.text(`Exit Price: ${document.getElementById('exitPrice').value}`, 20, 50);
-      doc.text(`Trade Size: ${document.getElementById('tradeSize').value}`, 20, 60);
-      doc.text(`Stop Loss: ${document.getElementById('stopLoss').value}`, 20, 70);
-      doc.text(`Take Profit: ${document.getElementById('takeProfit').value}`, 20, 80);
-      doc.text(`Account Balance: ${document.getElementById('accountBalance').value}`, 20, 90);
-
-      doc.save('crypto-trading-report.pdf');
+      doc.text("Crypto Trading Summary", 20, 20);
+      doc.text("Entry Price: $" + entryPrice, 20, 30);
+      doc.text("Exit Price: $" + exitPrice, 20, 40);
+      doc.text("Trade Size: " + tradeSize + " units", 20, 50);
+      doc.text("Stop Loss: $" + stopLoss, 20, 60);
+      doc.text("Take Profit: $" + takeProfit, 20, 70);
+      doc.text("Risk Amount: $" + (entryPrice - stopLoss) * tradeSize, 20, 80);
+      doc.text("Reward Amount: $" + (takeProfit - entryPrice) * tradeSize, 20, 90);
+      doc.save("crypto_trade_report.pdf");
     }
 
-    // Function to print the page
-    function printPage() {
+    // Print the summary
+    function printSummary() {
       window.print();
     }
 
-    // Initialize chart when the page loads
-    window.onload = initChart;
+    // Initial crypto price fetch
+    fetchCryptoPrice();
   </script>
 </body>
 </html>
