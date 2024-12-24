@@ -9,23 +9,20 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f4f7fa;
       margin: 0;
       padding: 0;
-      color: #333;
+      color: #fff;
+      background-color: #000;
     }
 
     header {
-      background-color: #000000;
+      background-color: #000;
       color: white;
-      padding: 40px;
+      padding: 30px;
       text-align: center;
       font-size: 24px;
       font-weight: 700;
       letter-spacing: 1px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
     .crypto-symbols {
@@ -57,98 +54,16 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 20px;
-      background-color: white;
+      background-color: #1a1a1a;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .form-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      padding-right: 30px;
-      border-right: 1px solid #ddd;
-    }
-
-    .form-container h1 {
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: #007bff;
-    }
-
-    form {
-      display: grid;
-      gap: 20px;
-      grid-template-columns: 1fr 1fr;
-    }
-
-    label {
-      font-weight: 600;
-      color: #555;
-      margin-bottom: 8px;
-    }
-
-    input, select {
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      width: 100%;
-    }
-
-    .results {
-      background-color: #f8f8f8;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-      margin-top: 30px;
-      display: none;
-    }
-
-    .results p {
-      margin: 8px 0;
-      font-size: 1.1rem;
-    }
-
-    .results h2 {
-      font-size: 22px;
-      margin-bottom: 15px;
-      color: #333;
-    }
-
-    .results table {
-      width: 100%;
-      margin-top: 20px;
-      border-collapse: collapse;
-    }
-
-    .results th, .results td {
-      padding: 12px;
-      text-align: left;
-      border: 1px solid #ddd;
-    }
-
-    .results th {
-      background-color: #f1f1f1;
-    }
-
-    .chart-container {
-      width: 100%;
-      height: 300px;
-      margin-top: 30px;
     }
 
     .action-btns {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
-    }
-
-    .action-btns .button-row {
-      display: flex;
-      gap: 20px;
-      justify-content: space-between;
+      margin-bottom: 40px;
     }
 
     .action-btns button {
@@ -169,18 +84,20 @@
       background-color: #0056b3;
     }
 
+    .chart-container {
+      width: 100%;
+      height: 400px;
+    }
+
+    .candle-chart-container {
+      width: 100%;
+      height: 400px;
+      margin-top: 50px;
+    }
+
     @media (max-width: 768px) {
-      .form-container {
-        grid-template-columns: 1fr;
-      }
-
       header {
-        padding: 80px 20px;
         font-size: 28px;
-      }
-
-      .results {
-        margin-top: 20px;
       }
 
       .action-btns {
@@ -188,62 +105,8 @@
         gap: 10px;
       }
 
-      .action-btns .button-row {
-        flex-direction: column;
-        gap: 10px;
-      }
-
       .action-btns button {
         width: 100%;
-      }
-    }
-
-    @media print {
-      body {
-        margin: 0;
-        font-family: 'Arial', sans-serif;
-      }
-
-      .container {
-        width: 100%;
-        box-shadow: none;
-        border-radius: 0;
-        padding: 10px;
-        margin: 0;
-      }
-
-      .results {
-        border: 1px solid #ddd;
-        margin-top: 30px;
-        padding: 15px;
-      }
-
-      .export-btn {
-        display: none;
-      }
-
-      .results h2, .results p {
-        font-size: 16px;
-        margin: 5px 0;
-      }
-
-      .results table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
-
-      .results table, .results th, .results td {
-        border: 1px solid #ddd;
-      }
-
-      .results th, .results td {
-        padding: 12px;
-        text-align: left;
-      }
-
-      .results th {
-        background-color: #f1f1f1;
       }
     }
   </style>
@@ -267,122 +130,90 @@
   </header>
 
   <div class="container">
-    <div class="form-container">
-      <h1>Trade Inputs</h1>
-      <form id="tradeForm">
-        <!-- Input fields -->
-        <div>
-          <label for="cryptoSelect">Select Cryptocurrency</label>
-          <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
-            <option value="bitcoin">Bitcoin (BTC)</option>
-            <option value="ethereum">Ethereum (ETH)</option>
-            <option value="binancecoin">Binance Coin (BNB)</option>
-            <option value="cardano">Cardano (ADA)</option>
-            <option value="ripple">XRP (Ripple)</option>
-            <option value="solana">Solana (SOL)</option>
-            <option value="polkadot">Polkadot (DOT)</option>
-            <option value="litecoin">Litecoin (LTC)</option>
-            <option value="dogecoin">Dogecoin (DOGE)</option>
-            <option value="chainlink">Chainlink (LINK)</option>
-            <option value="uniswap">Uniswap (UNI)</option>
-          </select>
-        </div>
-        <div>
-          <label for="entryPrice">Entry Price ($)</label>
-          <input type="number" id="entryPrice" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="exitPrice">Exit Price ($)</label>
-          <input type="number" id="exitPrice" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="tradeSize">Trade Size (Units)</label>
-          <input type="number" id="tradeSize" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="stopLoss">Stop Loss ($)</label>
-          <input type="number" id="stopLoss" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="takeProfit">Take Profit ($)</label>
-          <input type="number" id="takeProfit" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="accountBalance">Account Balance ($)</label>
-          <input type="number" id="accountBalance" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="riskPercentage">Risk Percentage (%)</label>
-          <input type="number" id="riskPercentage" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="leverage">Leverage</label>
-          <input type="number" id="leverage" oninput="updateCalculations()" required>
-        </div>
-        <div class="action-btns">
-          <div class="button-row">
-            <button type="button" onclick="window.print()">Print</button>
-            <button type="button" onclick="updateCalculations()">Calculate</button>
-          </div>
-          <div class="button-row">
-            <button type="button">Long Position 1</button>
-            <button type="button">Long Position 2</button>
-            <button type="button">Short Position 1</button>
-            <button type="button">Short Position 2</button>
-          </div>
-        </div>
-      </form>
+    <div class="action-btns">
+      <button onclick="printPage()">Print</button>
+      <button onclick="calculateEntryPrice()">Calculate Entry</button>
     </div>
-    <div class="results" id="results">
-      <h2>Calculation Results</h2>
-      <p>Trade Size: <span id="tradeSizeResult"></span></p>
-      <p>Stop Loss: <span id="stopLossResult"></span></p>
-      <p>Take Profit: <span id="takeProfitResult"></span></p>
-      <p>Account Balance: <span id="accountBalanceResult"></span></p>
-      <p>Risk Percentage: <span id="riskPercentageResult"></span></p>
-      <p>Leverage: <span id="leverageResult"></span></p>
-      <table>
-        <tr>
-          <th>Result Type</th>
-          <th>Value</th>
-        </tr>
-        <tr>
-          <td>Trade Size</td>
-          <td id="tradeSizeResultValue"></td>
-        </tr>
-        <tr>
-          <td>Stop Loss</td>
-          <td id="stopLossResultValue"></td>
-        </tr>
-        <tr>
-          <td>Take Profit</td>
-          <td id="takeProfitResultValue"></td>
-        </tr>
-      </table>
-    </div>
+
+    <!-- Long/Short Position Chart -->
+    <div class="chart-container" id="chartContainer"></div>
+
+    <!-- Candlestick Chart -->
+    <div class="candle-chart-container" id="candleChartContainer"></div>
   </div>
 
   <script>
-    function fetchCryptoPrice() {
-      let crypto = document.getElementById("cryptoSelect").value;
-      // Fetch price based on selected crypto (mocked value here)
-      let price = 50000; // Replace with API fetch logic
-      return price;
-    }
+    let selectedCrypto = 'bitcoin';
 
-    function updateCalculations() {
-      // Logic to calculate trade size, stop loss, take profit, etc.
-      document.getElementById("results").style.display = 'block'; // Show results container
-      document.getElementById("tradeSizeResult").textContent = "1000"; // Example output
-      document.getElementById("stopLossResult").textContent = "$45,000";
-      document.getElementById("takeProfitResult").textContent = "$55,000";
-      document.getElementById("accountBalanceResult").textContent = "$10,000";
-      document.getElementById("riskPercentageResult").textContent = "2%";
-      document.getElementById("leverageResult").textContent = "10x";
-      document.getElementById("tradeSizeResultValue").textContent = "1000 Units";
-      document.getElementById("stopLossResultValue").textContent = "$45,000";
-      document.getElementById("takeProfitResultValue").textContent = "$55,000";
-    }
+    const fetchRealTimeData = async () => {
+      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`);
+      const data = await res.json();
+      return data[selectedCrypto].usd;
+    };
+
+    const createChart = (type) => {
+      const ctx = document.getElementById('chartContainer').getContext('2d');
+      new Chart(ctx, {
+        type: 'line', // You can change this to 'bar' for bar charts
+        data: {
+          labels: ['1', '2', '3', '4', '5', '6'],
+          datasets: [{
+            label: type === 'long' ? 'Long Position' : 'Short Position',
+            data: [50000, 51000, 52000, 53000, 54000, 55000], // Example data
+            borderColor: type === 'long' ? 'green' : 'red',
+            fill: false,
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            x: { title: { display: true, text: 'Time' } },
+            y: { title: { display: true, text: 'Price' } },
+          }
+        }
+      });
+    };
+
+    const createCandleChart = () => {
+      const ctx = document.getElementById('candleChartContainer').getContext('2d');
+      const data = {
+        labels: ['1', '2', '3', '4', '5', '6'],
+        datasets: [{
+          label: 'Candlestick',
+          data: [{ t: '2024-12-01', o: 50000, h: 51000, l: 49000, c: 50500 }, /* Example data for OHLC */
+                 { t: '2024-12-02', o: 50500, h: 51500, l: 49500, c: 51000 }],
+          borderColor: 'black',
+          backgroundColor: 'rgba(0,0,0,0.2)',
+        }]
+      };
+      new Chart(ctx, {
+        type: 'candlestick',
+        data: data,
+        options: {
+          responsive: true,
+          scales: {
+            x: { title: { display: true, text: 'Date' } },
+            y: { title: { display: true, text: 'Price' } },
+          }
+        }
+      });
+    };
+
+    const printPage = () => {
+      window.print();
+    };
+
+    const calculateEntryPrice = async () => {
+      const price = await fetchRealTimeData();
+      alert(`Current entry price for ${selectedCrypto.toUpperCase()}: $${price}`);
+    };
+
+    // Initialize charts
+    window.onload = () => {
+      createChart('long');
+      createChart('short');
+      createCandleChart();
+    };
   </script>
 </body>
 </html>
