@@ -7,7 +7,10 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    /* Your CSS styles here */
+    /* Your existing styles here... */
+    .crypto-select {
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -18,8 +21,43 @@
   <div class="container">
     <div class="form-container">
       <h1>Trade Inputs</h1>
+      
+      <!-- Dropdown to select cryptocurrency -->
+      <div class="crypto-select">
+        <label for="cryptoSelect">Select Cryptocurrency:</label>
+        <select id="cryptoSelect" onchange="fetchCryptoPrice()">
+          <option value="bitcoin">Bitcoin</option>
+          <option value="ethereum">Ethereum</option>
+          <option value="litecoin">Litecoin</option>
+          <option value="ripple">Ripple</option>
+        </select>
+      </div>
+      
       <form id="tradeForm">
-        <!-- Your form inputs here -->
+        <!-- Form inputs go here... -->
+        <label for="entryPrice">Entry Price ($):</label>
+        <input type="number" id="entryPrice" step="0.01">
+        
+        <label for="exitPrice">Exit Price ($):</label>
+        <input type="number" id="exitPrice" step="0.01">
+        
+        <label for="tradeSize">Trade Size (Units):</label>
+        <input type="number" id="tradeSize" step="0.01">
+        
+        <label for="stopLoss">Stop Loss ($):</label>
+        <input type="number" id="stopLoss" step="0.01">
+        
+        <label for="takeProfit">Take Profit ($):</label>
+        <input type="number" id="takeProfit" step="0.01">
+        
+        <label for="accountBalance">Account Balance ($):</label>
+        <input type="number" id="accountBalance" step="0.01">
+        
+        <label for="riskPercentage">Risk Percentage (%):</label>
+        <input type="number" id="riskPercentage" step="0.01">
+        
+        <label for="leverage">Leverage:</label>
+        <input type="number" id="leverage" step="0.01">
       </form>
     </div>
 
@@ -31,9 +69,15 @@
       </div>
     </div>
 
-    <div class="results" id="results">
+    <div class="results" id="results" style="display: none;">
       <h2>Trade Results</h2>
-      <!-- Trade results output here -->
+      <p><strong>P&L ($):</strong> <span id="pnl">0.00</span></p>
+      <p><strong>Risk ($):</strong> <span id="risk">0.00</span></p>
+      <p><strong>Reward ($):</strong> <span id="reward">0.00</span></p>
+      <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio">0.00</span></p>
+      <p><strong>Position Size (Units):</strong> <span id="positionSize">0.00</span></p>
+      <p><strong>Max Drawdown ($):</strong> <span id="maxDrawdown">0.00</span></p>
+
       <div class="chart-container">
         <canvas id="barChart"></canvas>
       </div>
@@ -42,8 +86,9 @@
 
   <script>
     let selectedCrypto = 'bitcoin';
-    let chartInstance = null;
+    let barChart;
 
+    // Fetch current price of selected cryptocurrency
     function fetchCryptoPrice() {
       const cryptoSelect = document.getElementById('cryptoSelect');
       selectedCrypto = cryptoSelect.value;
@@ -58,6 +103,7 @@
         });
     }
 
+    // Update calculations when input changes
     function updateCalculations() {
       const entryPrice = parseFloat(document.getElementById('entryPrice').value);
       const exitPrice = parseFloat(document.getElementById('exitPrice').value);
@@ -85,10 +131,10 @@
       createChart(risk, reward);
     }
 
+    // Create chart based on risk and reward
     function createChart(risk, reward) {
-      // Destroy the previous chart instance if exists
-      if (chartInstance) {
-        chartInstance.destroy();
+      if (barChart) {
+        barChart.destroy();
       }
 
       const ctx = document.getElementById('barChart').getContext('2d');
@@ -111,14 +157,14 @@
         },
       };
 
-      // Create a new chart instance
-      chartInstance = new Chart(ctx, {
+      barChart = new Chart(ctx, {
         type: 'bar',
         data: chartData,
         options: chartOptions,
       });
     }
 
+    // Export results to PDF
     function exportPDF() {
       const doc = new jsPDF();
       doc.setFontSize(18);
@@ -149,14 +195,15 @@
       doc.save('crypto-trading-report.pdf');
     }
 
+    // Clear results and chart
     function clearResults() {
       document.getElementById('tradeForm').reset();
       document.getElementById('results').style.display = 'none';
 
-      // Destroy the existing chart instance
-      if (chartInstance) {
-        chartInstance.destroy();
+      if (barChart) {
+        barChart.destroy();
       }
+      document.getElementById('barChart').getContext('2d').clearRect(0, 0, 400, 400);
     }
 
     window.onload = fetchCryptoPrice;
