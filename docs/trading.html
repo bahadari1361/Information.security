@@ -9,10 +9,10 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f4f7fa;
+      background-color: #2f2f2f; /* Dark gray background */
       margin: 0;
       padding: 0;
-      color: #333;
+      color: #fff; /* Text color changed to white for better contrast */
     }
 
     header {
@@ -57,7 +57,7 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 20px;
-      background-color: white;
+      background-color: #1f1f1f; /* Dark gray container */
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
@@ -67,7 +67,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 20px;
       padding-right: 30px;
-      border-right: 1px solid #ddd;
+      border-right: 1px solid #444;
     }
 
     .form-container h1 {
@@ -79,26 +79,35 @@
 
     form {
       display: grid;
-      gap: 20px;
+      gap: 30px; /* Increased space between form fields */
       grid-template-columns: 1fr 1fr;
     }
 
     label {
       font-weight: 600;
-      color: #555;
+      color: #ccc;
       margin-bottom: 8px;
     }
 
-    input, select {
+    input, select, button {
       padding: 12px;
       font-size: 1rem;
       border-radius: 8px;
-      border: 1px solid #ddd;
+      border: 1px solid #444;
       width: 100%;
+      background-color: #333;
+      color: #fff;
+    }
+
+    .crypto-logo {
+      width: 60px;
+      height: 60px;
+      margin-right: 20px;
+      object-fit: cover;
     }
 
     .results {
-      background-color: #f8f8f8;
+      background-color: #444;
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -114,7 +123,7 @@
     .results h2 {
       font-size: 22px;
       margin-bottom: 15px;
-      color: #333;
+      color: #fff;
     }
 
     .results table {
@@ -126,11 +135,12 @@
     .results th, .results td {
       padding: 12px;
       text-align: left;
-      border: 1px solid #ddd;
+      border: 1px solid #444;
+      color: #fff;
     }
 
     .results th {
-      background-color: #f1f1f1;
+      background-color: #555;
     }
 
     .chart-container {
@@ -148,21 +158,21 @@
 
     .action-btns .button-row {
       display: flex;
-      gap: 20px;
+      gap: 10px;
       justify-content: space-between;
     }
 
     .action-btns button {
       background-color: #007bff;
       color: white;
-      padding: 12px 20px;
+      padding: 10px 15px;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       font-weight: 600;
       text-align: center;
-      width: 200px;
-      font-size: 16px;
+      width: 100%;
+      font-size: 14px;
       transition: background-color 0.3s ease;
     }
 
@@ -271,23 +281,25 @@
     <div class="form-container">
       <h1>Trade Inputs</h1>
       <form id="tradeForm">
-        <!-- Input fields -->
-        <div>
+        <!-- Bitcoin Logo -->
+        <div style="display: flex; align-items: center;">
+          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Logo" class="crypto-logo">
           <label for="cryptoSelect">Select Cryptocurrency</label>
-          <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
-            <option value="bitcoin">Bitcoin (BTC)</option>
-            <option value="ethereum">Ethereum (ETH)</option>
-            <option value="binancecoin">Binance Coin (BNB)</option>
-            <option value="cardano">Cardano (ADA)</option>
-            <option value="ripple">XRP (Ripple)</option>
-            <option value="solana">Solana (SOL)</option>
-            <option value="polkadot">Polkadot (DOT)</option>
-            <option value="litecoin">Litecoin (LTC)</option>
-            <option value="dogecoin">Dogecoin (DOGE)</option>
-            <option value="chainlink">Chainlink (LINK)</option>
-            <option value="uniswap">Uniswap (UNI)</option>
-          </select>
         </div>
+        <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
+          <option value="bitcoin">Bitcoin (BTC)</option>
+          <option value="ethereum">Ethereum (ETH)</option>
+          <option value="binancecoin">Binance Coin (BNB)</option>
+          <option value="cardano">Cardano (ADA)</option>
+          <option value="ripple">XRP (Ripple)</option>
+          <option value="solana">Solana (SOL)</option>
+          <option value="polkadot">Polkadot (DOT)</option>
+          <option value="litecoin">Litecoin (LTC)</option>
+          <option value="dogecoin">Dogecoin (DOGE)</option>
+          <option value="chainlink">Chainlink (LINK)</option>
+          <option value="uniswap">Uniswap (UNI)</option>
+        </select>
+        <!-- Form Inputs: Entry Price, Exit Price, etc. -->
         <div>
           <label for="entryPrice">Entry Price ($)</label>
           <input type="number" id="entryPrice" oninput="updateCalculations()" required>
@@ -320,94 +332,99 @@
           <label for="leverage">Leverage</label>
           <input type="number" id="leverage" oninput="updateCalculations()" required>
         </div>
-        <div class="action-btns">
-          <div class="button-row">
-            <button type="button" onclick="window.print()">Print</button>
-            <button type="button" onclick="updateCalculations()">Calculate</button>
-          </div>
-        </div>
       </form>
     </div>
 
     <div class="results" id="results">
       <h2>Trade Summary</h2>
-      <p><strong>P&L:</strong> <span id="pnl"></span></p>
-      <p><strong>Risk:</strong> <span id="risk"></span></p>
-      <p><strong>Reward:</strong> <span id="reward"></span></p>
-      <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio"></span></p>
-      <p><strong>Position Size:</strong> <span id="positionSize"></span></p>
-      <p><strong>Max Drawdown:</strong> <span id="maxDrawdown"></span></p>
+      <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
+      <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
+      <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
       <div class="chart-container">
-        <canvas id="barChart"></canvas>
+        <canvas id="profitLossChart"></canvas>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <div class="button-row">
+        <button onclick="exportToPDF()">Export to PDF</button>
+        <button onclick="resetForm()">Reset</button>
       </div>
     </div>
   </div>
 
   <script>
+    let cryptoPrices = {
+      bitcoin: 30000,
+      ethereum: 2000,
+      binancecoin: 250,
+      cardano: 1.5,
+      ripple: 0.5,
+      solana: 25,
+      polkadot: 10,
+      litecoin: 100,
+      dogecoin: 0.07,
+      chainlink: 7,
+      uniswap: 30
+    };
+
+    let selectedCrypto = "bitcoin";
+
     function fetchCryptoPrice() {
-      const selectedCrypto = document.getElementById('cryptoSelect').value;
-      // Fetch price of the selected crypto (You can use an API for live data if needed)
+      selectedCrypto = document.getElementById("cryptoSelect").value;
+      updateCalculations();
     }
 
     function updateCalculations() {
-      const entryPrice = parseFloat(document.getElementById('entryPrice').value);
-      const exitPrice = parseFloat(document.getElementById('exitPrice').value);
-      const tradeSize = parseFloat(document.getElementById('tradeSize').value);
-      const stopLoss = parseFloat(document.getElementById('stopLoss').value);
-      const takeProfit = parseFloat(document.getElementById('takeProfit').value);
-      const accountBalance = parseFloat(document.getElementById('accountBalance').value);
-      const riskPercentage = parseFloat(document.getElementById('riskPercentage').value) / 100;
-      const leverage = parseFloat(document.getElementById('leverage').value);
+      let entryPrice = parseFloat(document.getElementById("entryPrice").value);
+      let exitPrice = parseFloat(document.getElementById("exitPrice").value);
+      let tradeSize = parseFloat(document.getElementById("tradeSize").value);
+      let stopLoss = parseFloat(document.getElementById("stopLoss").value);
+      let takeProfit = parseFloat(document.getElementById("takeProfit").value);
+      let accountBalance = parseFloat(document.getElementById("accountBalance").value);
+      let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
+      let leverage = parseFloat(document.getElementById("leverage").value);
 
-      if (!entryPrice || !exitPrice || !tradeSize || !stopLoss || !takeProfit || !accountBalance || !riskPercentage || !leverage) {
+      if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
         return;
       }
 
-      // Calculate P&L
-      const pnl = (exitPrice - entryPrice) * tradeSize;
-      document.getElementById('pnl').textContent = pnl.toFixed(2);
+      // Calculate profit and loss
+      let profit = (exitPrice - entryPrice) * tradeSize;
+      let loss = (entryPrice - stopLoss) * tradeSize;
+      let riskReward = profit / loss;
 
-      // Calculate risk
-      const risk = Math.abs(entryPrice - stopLoss) * tradeSize;
-      document.getElementById('risk').textContent = risk.toFixed(2);
+      // Update results
+      document.getElementById("estimatedProfit").textContent = profit.toFixed(2);
+      document.getElementById("estimatedLoss").textContent = loss.toFixed(2);
+      document.getElementById("riskRewardRatio").textContent = riskReward.toFixed(2);
 
-      // Calculate reward
-      const reward = Math.abs(exitPrice - entryPrice) * tradeSize;
-      document.getElementById('reward').textContent = reward.toFixed(2);
-
-      // Calculate risk/reward ratio
-      const rrRatio = reward / risk;
-      document.getElementById('rrRatio').textContent = rrRatio.toFixed(2);
-
-      // Calculate position size
-      const positionSize = (accountBalance * riskPercentage) / risk;
-      document.getElementById('positionSize').textContent = positionSize.toFixed(2);
-
-      // Calculate max drawdown
-      const maxDrawdown = Math.abs(accountBalance * riskPercentage);
-      document.getElementById('maxDrawdown').textContent = maxDrawdown.toFixed(2);
-
-      document.getElementById('results').style.display = 'block';
-
-      // Update the chart
-      updateChart(pnl, risk, reward, rrRatio);
+      // Update chart
+      updateChart(profit, loss);
     }
 
-    function updateChart(pnl, risk, reward, rrRatio) {
-      const ctx = document.getElementById('barChart').getContext('2d');
-      const chart = new Chart(ctx, {
+    let profitLossChart;
+
+    function updateChart(profit, loss) {
+      const ctx = document.getElementById('profitLossChart').getContext('2d');
+      if (profitLossChart) {
+        profitLossChart.destroy();
+      }
+
+      profitLossChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: ['P&L', 'Risk', 'Reward', 'Risk/Reward'],
+          labels: ['Profit', 'Loss'],
           datasets: [{
-            label: 'Values',
-            data: [pnl, risk, reward, rrRatio],
-            backgroundColor: ['#4CAF50', '#FF5722', '#2196F3', '#FFC107'],
-            borderColor: ['#4CAF50', '#FF5722', '#2196F3', '#FFC107'],
+            label: 'Estimated Profit and Loss',
+            data: [profit, loss],
+            backgroundColor: ['green', 'red'],
+            borderColor: ['green', 'red'],
             borderWidth: 1
           }]
         },
         options: {
+          responsive: true,
           scales: {
             y: {
               beginAtZero: true
@@ -415,6 +432,27 @@
           }
         }
       });
+    }
+
+    function exportToPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.text('Crypto Trading Dashboard', 10, 10);
+      doc.text(`Cryptocurrency: ${document.getElementById("cryptoSelect").value}`, 10, 20);
+      doc.text(`Estimated Profit: $${document.getElementById("estimatedProfit").textContent}`, 10, 30);
+      doc.text(`Estimated Loss: $${document.getElementById("estimatedLoss").textContent}`, 10, 40);
+      doc.text(`Risk-Reward Ratio: ${document.getElementById("riskRewardRatio").textContent}`, 10, 50);
+
+      doc.save('crypto-trading-summary.pdf');
+    }
+
+    function resetForm() {
+      document.getElementById("tradeForm").reset();
+      document.getElementById("results").style.display = "none";
+      if (profitLossChart) {
+        profitLossChart.destroy();
+      }
     }
   </script>
 </body>
