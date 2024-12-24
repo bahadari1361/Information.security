@@ -367,113 +367,93 @@
 
   <script>
     // Dummy data for cryptocurrency prices
-    let cryptoPrices = {
-      bitcoin: 30000,
-      ethereum: 2000,
-      binancecoin: 250,
-      cardano: 1.5,
-      ripple: 0.5,
-      solana: 25,
-      polkadot: 10,
-      litecoin: 100,
-      dogecoin: 0.07,
-      chainlink: 7,
-      uniswap: 30
-    };
+   let selectedCrypto = "bitcoin";
 
-    let selectedCrypto = "bitcoin";
+// Fetch crypto price on selection
+async function fetchCryptoPrice() {
+  selectedCrypto = document.getElementById("cryptoSelect").value;
 
-    // Fetch crypto price on selection
-    function fetchCryptoPrice() {
-      selectedCrypto = document.getElementById("cryptoSelect").value;
-      updateCalculations();
+  // Example: Use CoinGecko API to fetch real-time prices
+  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+
+    // Get the price of the selected cryptocurrency
+    let cryptoPrice = data[selectedCrypto]?.usd;
+
+    if (!cryptoPrice) {
+      alert('Price data not available');
+      return;
     }
 
-    function updateCalculations() {
-      let entryPrice = parseFloat(document.getElementById("entryPrice").value);
-      let exitPrice = parseFloat(document.getElementById("exitPrice").value);
-      let tradeSize = parseFloat(document.getElementById("tradeSize").value);
-      let stopLoss = parseFloat(document.getElementById("stopLoss").value);
-      let takeProfit = parseFloat(document.getElementById("takeProfit").value);
-      let accountBalance = parseFloat(document.getElementById("accountBalance").value);
-      let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
-      let leverage = parseFloat(document.getElementById("leverage").value);
+    // Now update the calculations with the real-time price
+    updateCalculations(cryptoPrice);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    alert('Error fetching price data');
+  }
+}
 
-      // Fetching price of selected cryptocurrency
-      let cryptoPrice = cryptoPrices[selectedCrypto];
+function updateCalculations(cryptoPrice) {
+  let entryPrice = parseFloat(document.getElementById("entryPrice").value);
+  let exitPrice = parseFloat(document.getElementById("exitPrice").value);
+  let tradeSize = parseFloat(document.getElementById("tradeSize").value);
+  let stopLoss = parseFloat(document.getElementById("stopLoss").value);
+  let takeProfit = parseFloat(document.getElementById("takeProfit").value);
+  let accountBalance = parseFloat(document.getElementById("accountBalance").value);
+  let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
+  let leverage = parseFloat(document.getElementById("leverage").value);
 
-      if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
-        return;
-      }
+  if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
+    return;
+  }
 
-      // Calculate profit and loss
-      let profit = (exitPrice - entryPrice) * tradeSize;
-      let loss = (entryPrice - stopLoss) * tradeSize;
-      let riskReward = profit / loss;
+  // Calculate profit and loss
+  let profit = (exitPrice - entryPrice) * tradeSize;
+  let loss = (entryPrice - stopLoss) * tradeSize;
+  let riskReward = profit / loss;
 
-      // Update results
-      document.getElementById("estimatedProfit").textContent = profit.toFixed(2);
-      document.getElementById("estimatedLoss").textContent = loss.toFixed(2);
-      document.getElementById("riskRewardRatio").textContent = riskReward.toFixed(2);
+  // Update results
+  document.getElementById("estimatedProfit").textContent = profit.toFixed(2);
+  document.getElementById("estimatedLoss").textContent = loss.toFixed(2);
+  document.getElementById("riskRewardRatio").textContent = riskReward.toFixed(2);
 
-      // Display the results section
-      document.getElementById("results").style.display = "block";
+  // Display the results section
+  document.getElementById("results").style.display = "block";
 
-      // Update chart
-      updateChart(profit, loss);
-    }
+  // Update chart
+  updateChart(profit, loss);
+}
 
-    let profitLossChart;
+let profitLossChart;
 
-    function updateChart(profit, loss) {
-      const ctx = document.getElementById('profitLossChart').getContext('2d');
-      if (profitLossChart) {
-        profitLossChart.destroy();
-      }
+function updateChart(profit, loss) {
+  const ctx = document.getElementById('profitLossChart').getContext('2d');
+  if (profitLossChart) {
+    profitLossChart.destroy();
+  }
 
-      profitLossChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ['Profit', 'Loss'],
-          datasets: [{
-            label: 'Estimated Profit and Loss',
-            data: [profit, loss],
-            backgroundColor: ['green', 'red'],
-            borderColor: ['green', 'red'],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
+  profitLossChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Profit', 'Loss'],
+      datasets: [{
+        label: 'Estimated Profit and Loss',
+        data: [profit, loss],
+        backgroundColor: ['green', 'red'],
+        borderColor: ['green', 'red'],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true
         }
-      });
-    }
-
-    function exportToPDF() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF();
-
-      doc.text('Crypto Trading Dashboard', 10, 10);
-      doc.text(`Cryptocurrency: ${document.getElementById("cryptoSelect").value}`, 10, 20);
-      doc.text(`Estimated Profit: $${document.getElementById("estimatedProfit").textContent}`, 10, 30);
-      doc.text(`Estimated Loss: $${document.getElementById("estimatedLoss").textContent}`, 10, 40);
-      doc.text(`Risk-Reward Ratio: ${document.getElementById("riskRewardRatio").textContent}`, 10, 50);
-
-      doc.save('crypto-trading-summary.pdf');
-    }
-
-    function resetForm() {
-      document.getElementById("tradeForm").reset();
-      document.getElementById("results").style.display = "none";
-      if (profitLossChart) {
-        profitLossChart.destroy();
       }
     }
-  </script>
-</body>
-</html>
+  });
+}
