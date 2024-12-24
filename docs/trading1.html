@@ -180,6 +180,13 @@
       background-color: #0056b3;
     }
 
+    .crypto-logo-left {
+      width: 80px; /* Adjusted size of Bitcoin logo on the left */
+      height: 80px;
+      object-fit: cover;
+      margin: 10px auto;
+    }
+
     @media (max-width: 768px) {
       .form-container {
         grid-template-columns: 1fr;
@@ -283,6 +290,25 @@
       <form id="tradeForm">
         <!-- Form Inputs -->
         <div>
+          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo-left">
+        </div>
+        <div>
+          <label for="cryptoSelect">Select Cryptocurrency</label>
+          <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
+            <option value="bitcoin">Bitcoin</option>
+            <option value="ethereum">Ethereum</option>
+            <option value="binancecoin">Binance Coin</option>
+            <option value="cardano">Cardano</option>
+            <option value="ripple">XRP</option>
+            <option value="solana">Solana</option>
+            <option value="polkadot">Polkadot</option>
+            <option value="litecoin">Litecoin</option>
+            <option value="dogecoin">Dogecoin</option>
+            <option value="chainlink">Chainlink</option>
+            <option value="uniswap">Uniswap</option>
+          </select>
+        </div>
+        <div>
           <label for="entryPrice">Entry Price ($)</label>
           <input type="number" id="entryPrice" oninput="updateCalculations()" required>
         </div>
@@ -315,9 +341,10 @@
           <input type="number" id="leverage" oninput="updateCalculations()" required>
         </div>
       </form>
-      <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo">
     </div>
-
+    <div class="crypto-logo-center">
+      <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" class="crypto-logo" style="width: 150px; height: 150px;">
+    </div>
     <div class="results" id="results">
       <h2>Trade Summary</h2>
       <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
@@ -333,7 +360,7 @@
       <div class="button-row">
         <button onclick="exportToPDF()">Export to PDF</button>
         <button onclick="resetForm()">Reset</button>
-        <button onclick="window.print()">Print</button> <!-- Added Print Button -->
+        <button onclick="window.print()">Print</button>
       </div>
     </div>
   </div>
