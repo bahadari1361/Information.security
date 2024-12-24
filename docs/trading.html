@@ -9,14 +9,14 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #2f2f2f; /* Dark gray background */
+      background-color: #2f2f2f;
       margin: 0;
       padding: 0;
-      color: #fff; /* Text color changed to white for better contrast */
+      color: #fff;
     }
 
     header {
-      background-color: #000000; /* Black header background */
+      background-color: #000000;
       color: white;
       padding: 40px;
       text-align: center;
@@ -57,7 +57,7 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 20px;
-      background-color: #1f1f1f; /* Dark gray container */
+      background-color: #1f1f1f;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
@@ -79,7 +79,7 @@
 
     form {
       display: grid;
-      gap: 30px; /* Increased space between form fields */
+      gap: 30px;
       grid-template-columns: 1fr 1fr;
     }
 
@@ -100,10 +100,10 @@
     }
 
     .crypto-logo {
-      width: 100px; /* Increase the size of the logo */
+      width: 100px;
       height: 100px;
       object-fit: cover;
-      margin: 20px auto 0; /* Center the logo with space on top */
+      margin: 20px auto 0;
     }
 
     .results {
@@ -181,7 +181,7 @@
     }
 
     .crypto-logo-left {
-      width: 80px; /* Adjusted size of Bitcoin logo on the left */
+      width: 80px;
       height: 80px;
       object-fit: cover;
       margin: 10px auto;
@@ -288,7 +288,6 @@
     <div class="form-container">
       <h1>Trade Inputs</h1>
       <form id="tradeForm">
-        <!-- Form Inputs -->
         <div>
           <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo-left">
         </div>
@@ -309,6 +308,13 @@
           </select>
         </div>
         <div>
+          <label for="buySellSelect">Buy/Sell</label>
+          <select id="buySellSelect" onchange="updateCalculations()" required>
+            <option value="buy">Buy</option>
+            <option value="sell">Sell</option>
+          </select>
+        </div>
+        <div>
           <label for="entryPrice">Entry Price ($)</label>
           <input type="number" id="entryPrice" oninput="updateCalculations()" required>
         </div>
@@ -324,136 +330,98 @@
           <label for="stopLoss">Stop Loss ($)</label>
           <input type="number" id="stopLoss" oninput="updateCalculations()" required>
         </div>
-        <div>
-          <label for="takeProfit">Take Profit ($)</label>
-          <input type="number" id="takeProfit" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="accountBalance">Account Balance ($)</label>
-          <input type="number" id="accountBalance" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="riskPercentage">Risk Percentage (%)</label>
-          <input type="number" id="riskPercentage" oninput="updateCalculations()" required>
-        </div>
-        <div>
-          <label for="leverage">Leverage</label>
-          <input type="number" id="leverage" oninput="updateCalculations()" required>
-        </div>
       </form>
     </div>
-    <div class="crypto-logo-center">
-      <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" class="crypto-logo" style="width: 150px; height: 150px;">
-    </div>
-    <div class="results" id="results">
-      <h2>Trade Summary</h2>
-      <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
-      <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
-      <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
-
-      <div class="chart-container">
-        <canvas id="profitLossChart"></canvas>
-      </div>
-    </div>
-
     <div class="action-btns">
       <div class="button-row">
-        <button onclick="exportToPDF()">Export to PDF</button>
-        <button onclick="resetForm()">Reset</button>
-        <button onclick="window.print()">Print</button>
+        <button type="button" onclick="exportToPDF()">Export to PDF</button>
+      </div>
+      <div class="results">
+        <h2>Trade Summary</h2>
+        <p><strong>Crypto Symbol:</strong> <span id="cryptoSymbol"></span></p>
+        <p><strong>Entry Price:</strong> $<span id="entryPriceResult"></span></p>
+        <p><strong>Exit Price:</strong> $<span id="exitPriceResult"></span></p>
+        <p><strong>Trade Size:</strong> <span id="tradeSizeResult"></span> units</p>
+        <p><strong>Stop Loss:</strong> $<span id="stopLossResult"></span></p>
+        <p><strong>Buy/Sell:</strong> <span id="buySellAction"></span></p>
+        <div class="chart-container">
+          <canvas id="priceChart"></canvas>
+        </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Dummy data for cryptocurrency prices
-   let selectedCrypto = "bitcoin";
-
-// Fetch crypto price on selection
-async function fetchCryptoPrice() {
-  selectedCrypto = document.getElementById("cryptoSelect").value;
-
-  // Example: Use CoinGecko API to fetch real-time prices
-  const url = `https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`;
-
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
-
-    // Get the price of the selected cryptocurrency
-    let cryptoPrice = data[selectedCrypto]?.usd;
-
-    if (!cryptoPrice) {
-      alert('Price data not available');
-      return;
+    function fetchCryptoPrice() {
+      const cryptoSelect = document.getElementById("cryptoSelect").value;
+      const url = `https://api.coingecko.com/api/v3/simple/price?ids=${cryptoSelect}&vs_currencies=usd`;
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const price = data[cryptoSelect].usd;
+          document.getElementById("entryPrice").value = price;
+          document.getElementById("exitPrice").value = price;
+          updateCalculations();
+        });
     }
 
-    // Now update the calculations with the real-time price
-    updateCalculations(cryptoPrice);
-  } catch (error) {
-    console.error('Error fetching data:', error);
-    alert('Error fetching price data');
-  }
-}
+    function updateCalculations() {
+      const buySellSelect = document.getElementById("buySellSelect").value;
+      const entryPrice = parseFloat(document.getElementById("entryPrice").value);
+      const exitPrice = parseFloat(document.getElementById("exitPrice").value);
+      const tradeSize = parseFloat(document.getElementById("tradeSize").value);
+      const stopLoss = parseFloat(document.getElementById("stopLoss").value);
 
-function updateCalculations(cryptoPrice) {
-  let entryPrice = parseFloat(document.getElementById("entryPrice").value);
-  let exitPrice = parseFloat(document.getElementById("exitPrice").value);
-  let tradeSize = parseFloat(document.getElementById("tradeSize").value);
-  let stopLoss = parseFloat(document.getElementById("stopLoss").value);
-  let takeProfit = parseFloat(document.getElementById("takeProfit").value);
-  let accountBalance = parseFloat(document.getElementById("accountBalance").value);
-  let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
-  let leverage = parseFloat(document.getElementById("leverage").value);
+      const priceChange = exitPrice - entryPrice;
+      const totalProfitLoss = priceChange * tradeSize;
+      const percentChange = ((priceChange / entryPrice) * 100).toFixed(2);
+      const buySellAction = buySellSelect === "buy" ? "Buying" : "Selling";
 
-  if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
-    return;
-  }
+      // Update the results on the page
+      document.getElementById("cryptoSymbol").textContent = document.getElementById("cryptoSelect").value.toUpperCase();
+      document.getElementById("entryPriceResult").textContent = entryPrice.toFixed(2);
+      document.getElementById("exitPriceResult").textContent = exitPrice.toFixed(2);
+      document.getElementById("tradeSizeResult").textContent = tradeSize;
+      document.getElementById("stopLossResult").textContent = stopLoss.toFixed(2);
+      document.getElementById("buySellAction").textContent = buySellAction;
 
-  // Calculate profit and loss
-  let profit = (exitPrice - entryPrice) * tradeSize;
-  let loss = (entryPrice - stopLoss) * tradeSize;
-  let riskReward = profit / loss;
-
-  // Update results
-  document.getElementById("estimatedProfit").textContent = profit.toFixed(2);
-  document.getElementById("estimatedLoss").textContent = loss.toFixed(2);
-  document.getElementById("riskRewardRatio").textContent = riskReward.toFixed(2);
-
-  // Display the results section
-  document.getElementById("results").style.display = "block";
-
-  // Update chart
-  updateChart(profit, loss);
-}
-
-let profitLossChart;
-
-function updateChart(profit, loss) {
-  const ctx = document.getElementById('profitLossChart').getContext('2d');
-  if (profitLossChart) {
-    profitLossChart.destroy();
-  }
-
-  profitLossChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Profit', 'Loss'],
-      datasets: [{
-        label: 'Estimated Profit and Loss',
-        data: [profit, loss],
-        backgroundColor: ['green', 'red'],
-        borderColor: ['green', 'red'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+      if (entryPrice && exitPrice && tradeSize && stopLoss) {
+        document.querySelector(".results").style.display = "block";
       }
+
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Entry', 'Exit'],
+          datasets: [{
+            label: 'Price ($)',
+            data: [entryPrice, exitPrice],
+            fill: false,
+            borderColor: '#007bff',
+            tension: 0.1
+          }]
+        }
+      });
     }
-  });
-}
+
+    function exportToPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.text("Crypto Trading Summary", 20, 20);
+      doc.text(`Crypto Symbol: ${document.getElementById("cryptoSymbol").textContent}`, 20, 30);
+      doc.text(`Entry Price: $${document.getElementById("entryPriceResult").textContent}`, 20, 40);
+      doc.text(`Exit Price: $${document.getElementById("exitPriceResult").textContent}`, 20, 50);
+      doc.text(`Trade Size: ${document.getElementById("tradeSizeResult").textContent} units`, 20, 60);
+      doc.text(`Stop Loss: $${document.getElementById("stopLossResult").textContent}`, 20, 70);
+      doc.text(`Buy/Sell: ${document.getElementById("buySellAction").textContent}`, 20, 80);
+
+      doc.save("crypto_trade_summary.pdf");
+    }
+
+    // Initialize with the default selected cryptocurrency
+    fetchCryptoPrice();
+  </script>
+</body>
+</html>
