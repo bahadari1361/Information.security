@@ -283,23 +283,23 @@
       <form id="tradeForm">
         <!-- Bitcoin Logo -->
         <div style="display: flex; align-items: center;">
-          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin Logo" class="crypto-logo">
-          <label for="cryptoSelect">Select Cryptocurrency</label>
+          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo">
+          <select id="cryptoSelect" onchange="fetchCryptoPrice()">
+            <option value="bitcoin">Bitcoin (BTC)</option>
+            <option value="ethereum">Ethereum (ETH)</option>
+            <option value="binancecoin">Binance Coin (BNB)</option>
+            <option value="cardano">Cardano (ADA)</option>
+            <option value="ripple">XRP</option>
+            <option value="solana">Solana (SOL)</option>
+            <option value="polkadot">Polkadot (DOT)</option>
+            <option value="litecoin">Litecoin (LTC)</option>
+            <option value="dogecoin">Dogecoin (DOGE)</option>
+            <option value="chainlink">Chainlink (LINK)</option>
+            <option value="uniswap">Uniswap (UNI)</option>
+          </select>
         </div>
-        <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
-          <option value="bitcoin">Bitcoin (BTC)</option>
-          <option value="ethereum">Ethereum (ETH)</option>
-          <option value="binancecoin">Binance Coin (BNB)</option>
-          <option value="cardano">Cardano (ADA)</option>
-          <option value="ripple">XRP (Ripple)</option>
-          <option value="solana">Solana (SOL)</option>
-          <option value="polkadot">Polkadot (DOT)</option>
-          <option value="litecoin">Litecoin (LTC)</option>
-          <option value="dogecoin">Dogecoin (DOGE)</option>
-          <option value="chainlink">Chainlink (LINK)</option>
-          <option value="uniswap">Uniswap (UNI)</option>
-        </select>
-        <!-- Form Inputs: Entry Price, Exit Price, etc. -->
+
+        <!-- Form Inputs -->
         <div>
           <label for="entryPrice">Entry Price ($)</label>
           <input type="number" id="entryPrice" oninput="updateCalculations()" required>
@@ -340,6 +340,7 @@
       <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
       <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
       <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
+
       <div class="chart-container">
         <canvas id="profitLossChart"></canvas>
       </div>
@@ -354,6 +355,7 @@
   </div>
 
   <script>
+    // Dummy data for cryptocurrency prices
     let cryptoPrices = {
       bitcoin: 30000,
       ethereum: 2000,
@@ -370,6 +372,7 @@
 
     let selectedCrypto = "bitcoin";
 
+    // Fetch crypto price on selection
     function fetchCryptoPrice() {
       selectedCrypto = document.getElementById("cryptoSelect").value;
       updateCalculations();
@@ -385,6 +388,9 @@
       let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
       let leverage = parseFloat(document.getElementById("leverage").value);
 
+      // Fetching price of selected cryptocurrency
+      let cryptoPrice = cryptoPrices[selectedCrypto];
+
       if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
         return;
       }
@@ -398,6 +404,9 @@
       document.getElementById("estimatedProfit").textContent = profit.toFixed(2);
       document.getElementById("estimatedLoss").textContent = loss.toFixed(2);
       document.getElementById("riskRewardRatio").textContent = riskReward.toFixed(2);
+
+      // Display the results section
+      document.getElementById("results").style.display = "block";
 
       // Update chart
       updateChart(profit, loss);
