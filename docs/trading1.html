@@ -5,289 +5,347 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Trading Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #121212;
-      color: white;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f7fa;
       margin: 0;
       padding: 0;
+      color: #333;
     }
+
     header {
-      background-color: #1e1e1e;
-      padding: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header h1 {
+      background-color: #000000; 
+      color: white;
+      padding: 40px;
+      text-align: center;
       font-size: 24px;
-      color: #ffffff;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
-    .crypto-icons img {
-      width: 30px;
-      margin: 0 5px;
-    }
+
     .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
+
     .form-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background-color: #222222;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      padding-right: 30px;
+      border-right: 1px solid #ddd;
+    }
+
+    .form-container h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    form {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    label {
+      font-weight: 600;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      width: 100%;
+    }
+
+    .results {
+      background-color: #f8f8f8;
       padding: 20px;
       border-radius: 10px;
-      width: 300px;
-      margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-top: 30px;
+      display: none;
     }
-    .form-container input, .form-container select {
+
+    .results p {
+      margin: 8px 0;
+      font-size: 1.1rem;
+    }
+
+    .results h2 {
+      font-size: 22px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .results table {
       width: 100%;
-      margin: 10px 0;
-      padding: 10px;
-      background-color: #333333;
-      border: 1px solid #444444;
-      color: white;
-      border-radius: 5px;
-    }
-    .chart-container {
-      width: 80%;
-      max-width: 800px;
       margin-top: 20px;
+      border-collapse: collapse;
     }
-    .button-container {
-      margin-top: 20px;
+
+    .results th, .results td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid #ddd;
     }
-    .button-container button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      border: none;
-      color: white;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 10px;
+
+    .results th {
+      background-color: #f1f1f1;
     }
-    .button-container button:hover {
-      background-color: #45a049;
-    }
-    .crypto-list {
+
+    .action-btns {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 20px;
     }
-    .crypto-list span {
-      cursor: pointer;
-      padding: 5px 10px;
-      background-color: #333333;
+
+    .action-btns .button-row {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .action-btns button {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 20px;
+      border: none;
       border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      text-align: center;
+      width: 200px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
     }
-    .crypto-list span:hover {
-      background-color: #4CAF50;
+
+    .action-btns button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .form-container {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 80px 20px;
+        font-size: 28px;
+      }
+
+      .results {
+        margin-top: 20px;
+      }
+
+      .action-btns {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .action-btns .button-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .action-btns button {
+        width: 100%;
+      }
+    }
+
+    @media print {
+      body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+      }
+
+      .container {
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 10px;
+        margin: 0;
+      }
+
+      .results {
+        border: 1px solid #ddd;
+        margin-top: 30px;
+        padding: 15px;
+      }
+
+      .export-btn {
+        display: none;
+      }
+
+      .results h2, .results p {
+        font-size: 16px;
+        margin: 5px 0;
+      }
+
+      .results table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .results table, .results th, .results td {
+        border: 1px solid #ddd;
+      }
+
+      .results th, .results td {
+        padding: 12px;
+        text-align: left;
+      }
+
+      .results th {
+        background-color: #f1f1f1;
+      }
     }
   </style>
 </head>
 <body>
-
-  <!-- Header Section -->
   <header>
-    <h1>Crypto Trading Dashboard</h1>
-    <div class="crypto-icons">
-      <span>Bitcoin (BTC)</span>
-      <span>Ethereum (ETH)</span>
-      <span>Binance Coin (BNB)</span>
-      <span>Cardano (ADA)</span>
-      <span>XRP (XRP)</span>
-      <span>Solana (SOL)</span>
-      <span>Polkadot (DOT)</span>
-      <span>Litecoin (LTC)</span>
-      <span>Dogecoin (DOGE)</span>
-      <span>Chainlink (LINK)</span>
-      <span>Uniswap (UNI)</span>
-    </div>
+    <h2>Crypto Trading Dashboard</h2>
   </header>
 
-  <!-- Main Content Section -->
   <div class="container">
-
-    <!-- Cryptocurrency Selection Form -->
     <div class="form-container">
-      <label for="crypto">Select Cryptocurrency</label>
-      <select id="crypto">
-        <option value="bitcoin">Bitcoin (BTC)</option>
-        <option value="ethereum">Ethereum (ETH)</option>
-        <option value="binancecoin">Binance Coin (BNB)</option>
-        <option value="cardano">Cardano (ADA)</option>
-        <option value="ripple">XRP (XRP)</option>
-        <option value="solana">Solana (SOL)</option>
-        <option value="polkadot">Polkadot (DOT)</option>
-        <option value="litecoin">Litecoin (LTC)</option>
-        <option value="dogecoin">Dogecoin (DOGE)</option>
-        <option value="chainlink">Chainlink (LINK)</option>
-        <option value="uniswap">Uniswap (UNI)</option>
-      </select>
+      <h1>Trade Inputs</h1>
+      <form id="tradeForm">
+        <!-- Input fields for trade details -->
+        <div>
+          <label for="entryPrice">Entry Price ($)</label>
+          <input type="number" id="entryPrice" oninput="updateCalculations()" required>
+        </div>
+        <div>
+          <label for="exitPrice">Exit Price ($)</label>
+          <input type="number" id="exitPrice" oninput="updateCalculations()" required>
+        </div>
+        <div>
+          <label for="tradeSize">Trade Size (Units)</label>
+          <input type="number" id="tradeSize" oninput="updateCalculations()" required>
+        </div>
+        <div>
+          <label for="stopLoss">Stop Loss ($)</label>
+          <input type="number" id="stopLoss" oninput="updateCalculations()" required>
+        </div>
+        <div>
+          <label for="takeProfit">Take Profit ($)</label>
+          <input type="number" id="takeProfit" oninput="updateCalculations()" required>
+        </div>
+        <div>
+          <label for="accountBalance">Account Balance ($)</label>
+          <input type="number" id="accountBalance" oninput="updateCalculations()" required>
+        </div>
+        <div>
+          <label for="riskPercentage">Risk Percentage (%)</label>
+          <input type="number" id="riskPercentage" oninput="updateCalculations()" required>
+        </div>
+        <div>
+          <label for="leverage">Leverage</label>
+          <input type="number" id="leverage" oninput="updateCalculations()" required>
+        </div>
+        <div class="action-btns">
+          <div class="button-row">
+            <button type="button" onclick="window.print()">Print</button>
+            <button type="button" onclick="updateCalculations()">Calculate</button>
+          </div>
+        </div>
+      </form>
     </div>
 
-    <!-- Long Position Form -->
-    <div class="form-container">
-      <h2>Long Position</h2>
-      <label for="entryPriceLong">Entry Price ($)</label>
-      <input type="number" id="entryPriceLong" placeholder="Enter Entry Price" required>
-
-      <label for="exitPriceLong">Exit Price ($)</label>
-      <input type="number" id="exitPriceLong" placeholder="Enter Exit Price" required>
-
-      <label for="tradeSizeLong">Trade Size (Units)</label>
-      <input type="number" id="tradeSizeLong" placeholder="Enter Trade Size" required>
-
-      <label for="stopLossLong">Stop Loss ($)</label>
-      <input type="number" id="stopLossLong" placeholder="Enter Stop Loss" required>
-
-      <label for="takeProfitLong">Take Profit ($)</label>
-      <input type="number" id="takeProfitLong" placeholder="Enter Take Profit" required>
-
-      <label for="accountBalanceLong">Account Balance ($)</label>
-      <input type="number" id="accountBalanceLong" placeholder="Enter Account Balance" required>
-
-      <label for="riskPercentageLong">Risk Percentage (%)</label>
-      <input type="number" id="riskPercentageLong" placeholder="Enter Risk Percentage" required>
-
-      <label for="leverageLong">Leverage</label>
-      <input type="number" id="leverageLong" placeholder="Enter Leverage" required>
+    <div class="results" id="results">
+      <h2>Trade Summary</h2>
+      <p><strong>P&L:</strong> <span id="pnl"></span></p>
+      <p><strong>Risk:</strong> <span id="risk"></span></p>
+      <p><strong>Reward:</strong> <span id="reward"></span></p>
+      <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio"></span></p>
+      <p><strong>Position Size:</strong> <span id="positionSize"></span></p>
+      <p><strong>Max Drawdown:</strong> <span id="maxDrawdown"></span></p>
+      <div class="chart-container">
+        <canvas id="barChart"></canvas>
+      </div>
     </div>
-
-    <!-- Short Position Form -->
-    <div class="form-container">
-      <h2>Short Position</h2>
-      <label for="entryPriceShort">Entry Price ($)</label>
-      <input type="number" id="entryPriceShort" placeholder="Enter Entry Price" required>
-
-      <label for="exitPriceShort">Exit Price ($)</label>
-      <input type="number" id="exitPriceShort" placeholder="Enter Exit Price" required>
-
-      <label for="tradeSizeShort">Trade Size (Units)</label>
-      <input type="number" id="tradeSizeShort" placeholder="Enter Trade Size" required>
-
-      <label for="stopLossShort">Stop Loss ($)</label>
-      <input type="number" id="stopLossShort" placeholder="Enter Stop Loss" required>
-
-      <label for="takeProfitShort">Take Profit ($)</label>
-      <input type="number" id="takeProfitShort" placeholder="Enter Take Profit" required>
-
-      <label for="accountBalanceShort">Account Balance ($)</label>
-      <input type="number" id="accountBalanceShort" placeholder="Enter Account Balance" required>
-
-      <label for="riskPercentageShort">Risk Percentage (%)</label>
-      <input type="number" id="riskPercentageShort" placeholder="Enter Risk Percentage" required>
-
-      <label for="leverageShort">Leverage</label>
-      <input type="number" id="leverageShort" placeholder="Enter Leverage" required>
-    </div>
-
-    <!-- Buttons Section -->
-    <div class="button-container">
-      <button onclick="calculateEntry()">Calculate Entry</button>
-      <button onclick="printChart()">Print</button>
-    </div>
-
-    <!-- Trading Chart Section -->
-    <div class="chart-container">
-      <canvas id="longChart"></canvas>
-      <canvas id="shortChart"></canvas>
-    </div>
-    
-    <!-- Candlestick Chart Section -->
-    <div class="chart-container">
-      <canvas id="candlestickChart"></canvas>
-    </div>
-
   </div>
 
   <script>
-    // Sample function to handle entry calculation
-    function calculateEntry() {
-      const entryPriceLong = parseFloat(document.getElementById('entryPriceLong').value);
-      const exitPriceLong = parseFloat(document.getElementById('exitPriceLong').value);
-      const tradeSizeLong = parseFloat(document.getElementById('tradeSizeLong').value);
-      const accountBalanceLong = parseFloat(document.getElementById('accountBalanceLong').value);
-      const riskPercentageLong = parseFloat(document.getElementById('riskPercentageLong').value);
+    function updateCalculations() {
+      const entryPrice = parseFloat(document.getElementById('entryPrice').value);
+      const exitPrice = parseFloat(document.getElementById('exitPrice').value);
+      const tradeSize = parseFloat(document.getElementById('tradeSize').value);
+      const stopLoss = parseFloat(document.getElementById('stopLoss').value);
+      const takeProfit = parseFloat(document.getElementById('takeProfit').value);
+      const accountBalance = parseFloat(document.getElementById('accountBalance').value);
+      const riskPercentage = parseFloat(document.getElementById('riskPercentage').value) / 100;
+      const leverage = parseFloat(document.getElementById('leverage').value);
 
-      const riskAmountLong = (riskPercentageLong / 100) * accountBalanceLong;
-      const stopLossLong = parseFloat(document.getElementById('stopLossLong').value);
-      const tradeRiskLong = (entryPriceLong - stopLossLong) * tradeSizeLong;
+      if (!entryPrice || !exitPrice || !tradeSize || !stopLoss || !takeProfit || !accountBalance || !riskPercentage || !leverage) {
+        return;
+      }
 
-      alert('Long Risk Amount: $' + riskAmountLong + '\nLong Trade Risk: $' + tradeRiskLong);
+      // Calculate P&L
+      const pnl = (exitPrice - entryPrice) * tradeSize;
+      document.getElementById('pnl').textContent = pnl.toFixed(2);
 
-      // Repeat the same for short positions in a similar manner
-      const entryPriceShort = parseFloat(document.getElementById('entryPriceShort').value);
-      const exitPriceShort = parseFloat(document.getElementById('exitPriceShort').value);
-      const tradeSizeShort = parseFloat(document.getElementById('tradeSizeShort').value);
-      const accountBalanceShort = parseFloat(document.getElementById('accountBalanceShort').value);
-      const riskPercentageShort = parseFloat(document.getElementById('riskPercentageShort').value);
+      // Calculate risk
+      const risk = Math.abs(entryPrice - stopLoss) * tradeSize;
+      document.getElementById('risk').textContent = risk.toFixed(2);
 
-      const riskAmountShort = (riskPercentageShort / 100) * accountBalanceShort;
-      const stopLossShort = parseFloat(document.getElementById('stopLossShort').value);
-      const tradeRiskShort = (entryPriceShort - stopLossShort) * tradeSizeShort;
+      // Calculate reward
+      const reward = Math.abs(exitPrice - entryPrice) * tradeSize;
+      document.getElementById('reward').textContent = reward.toFixed(2);
 
-      alert('Short Risk Amount: $' + riskAmountShort + '\nShort Trade Risk: $' + tradeRiskShort);
+      // Calculate risk/reward ratio
+      const rrRatio = reward / risk;
+      document.getElementById('rrRatio').textContent = rrRatio.toFixed(2);
+
+      // Calculate position size
+      const positionSize = (accountBalance * riskPercentage) / risk;
+      document.getElementById('positionSize').textContent = positionSize.toFixed(2);
+
+      // Calculate max drawdown
+      const maxDrawdown = Math.abs(accountBalance * riskPercentage);
+      document.getElementById('maxDrawdown').textContent = maxDrawdown.toFixed(2);
+
+      // Display results
+      document.getElementById('results').style.display = 'block';
+
+      // Update chart
+      const ctx = document.getElementById('barChart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['P&L', 'Risk', 'Reward', 'Risk/Reward Ratio'],
+          datasets: [{
+            label: 'Trade Metrics',
+            data: [pnl, risk, reward, rrRatio],
+            backgroundColor: '#007bff',
+            borderColor: '#0056b3',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
     }
-
-    // Function to print the chart
-    function printChart() {
-      window.print();
-    }
-
-    // Chart.js Initialization for Long and Short Positions
-    var ctxLong = document.getElementById('longChart').getContext('2d');
-    var longChart = new Chart(ctxLong, {
-      type: 'line',
-      data: {
-        labels: ['1', '2', '3', '4', '5'],
-        datasets: [{
-          label: 'Long Position',
-          data: [1, 2, 3, 4, 5],
-          borderColor: 'green',
-          fill: false
-        }]
-      }
-    });
-
-    var ctxShort = document.getElementById('shortChart').getContext('2d');
-    var shortChart = new Chart(ctxShort, {
-      type: 'line',
-      data: {
-        labels: ['1', '2', '3', '4', '5'],
-        datasets: [{
-          label: 'Short Position',
-          data: [5, 4, 3, 2, 1],
-          borderColor: 'red',
-          fill: false
-        }]
-      }
-    });
-
-    // Example candlestick chart setup
-    var ctxCandle = document.getElementById('candlestickChart').getContext('2d');
-    var candlestickChart = new Chart(ctxCandle, {
-      type: 'candlestick',
-      data: {
-        datasets: [{
-          label: 'Crypto Candlestick',
-          data: [
-            { t: new Date(), o: 1, h: 2, l: 0.5, c: 1.5 },
-            { t: new Date(), o: 1.5, h: 2.5, l: 1, c: 2 }
-          ],
-          borderColor: 'black',
-          borderWidth: 1
-        }]
-      }
-    });
   </script>
-
 </body>
 </html>
