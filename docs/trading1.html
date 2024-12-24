@@ -3,217 +3,245 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crypto Trading Dashboard</title>
+  <title>Trading Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-chart-financial"></script>
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
       margin: 0;
       padding: 0;
-      color: #fff;
-      background-color: #000;
     }
-
     header {
-      background-color: #000;
-      color: white;
-      padding: 30px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    .crypto-symbols {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .crypto-symbol {
-      font-size: 16px;
-      background-color: #333;
-      color: white;
-      padding: 5px 10px;
-      border-radius: 5px;
-      display: inline-block;
-      text-align: center;
-    }
-
-    .crypto-symbol img {
-      width: 30px;
-      height: 30px;
-      vertical-align: middle;
-      margin-right: 5px;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 20px;
-      background-color: #1a1a1a;
-      border-radius: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .action-btns {
+      background-color: #1e1e1e;
+      padding: 10px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 24px;
+      color: #ffffff;
+    }
+    .crypto-icons img {
+      width: 30px;
+      margin: 0 5px;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       margin-top: 20px;
-      margin-bottom: 40px;
     }
-
-    .action-btns button {
-      background-color: #007bff;
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #222222;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+    }
+    .form-container input, .form-container select {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #333333;
+      border: 1px solid #444444;
       color: white;
-      padding: 12px 20px;
-      border: none;
       border-radius: 5px;
-      cursor: pointer;
-      font-weight: 600;
-      text-align: center;
-      width: 200px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
     }
-
-    .action-btns button:hover {
-      background-color: #0056b3;
-    }
-
     .chart-container {
-      width: 100%;
-      height: 400px;
+      width: 80%;
+      max-width: 800px;
+      margin-top: 20px;
     }
-
-    .candle-chart-container {
-      width: 100%;
-      height: 400px;
-      margin-top: 50px;
+    .button-container {
+      margin-top: 20px;
     }
-
-    @media (max-width: 768px) {
-      header {
-        font-size: 28px;
-      }
-
-      .action-btns {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .action-btns button {
-        width: 100%;
-      }
+    .button-container button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .button-container button:hover {
+      background-color: #45a049;
+    }
+    .crypto-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+    .crypto-list span {
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #333333;
+      border-radius: 5px;
+    }
+    .crypto-list span:hover {
+      background-color: #4CAF50;
     }
   </style>
 </head>
 <body>
+
+  <!-- Header Section -->
   <header>
-    <h2>Crypto Trading Dashboard</h2>
-    <div class="crypto-symbols">
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">BTC</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">ETH</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="Binance Coin">BNB</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="Cardano">ADA</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/ripple-xrp-logo.png" alt="XRP">XRP</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana">SOL</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/polkadot-dot-logo.png" alt="Polkadot">DOT</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/litecoin-ltc-logo.png" alt="Litecoin">LTC</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="Dogecoin">DOGE</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/chainlink-link-logo.png" alt="Chainlink">LINK</div>
-      <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap">UNI</div>
+    <h1>Crypto Trading Dashboard</h1>
+    <div class="crypto-icons">
+      <span>Bitcoin (BTC)</span>
+      <span>Ethereum (ETH)</span>
+      <span>Binance Coin (BNB)</span>
+      <span>Cardano (ADA)</span>
+      <span>XRP (XRP)</span>
+      <span>Solana (SOL)</span>
+      <span>Polkadot (DOT)</span>
+      <span>Litecoin (LTC)</span>
+      <span>Dogecoin (DOGE)</span>
+      <span>Chainlink (LINK)</span>
+      <span>Uniswap (UNI)</span>
     </div>
   </header>
 
+  <!-- Main Content Section -->
   <div class="container">
-    <div class="action-btns">
-      <button onclick="printPage()">Print</button>
-      <button onclick="calculateEntryPrice()">Calculate Entry</button>
+
+    <!-- Cryptocurrency Selection Form -->
+    <div class="form-container">
+      <label for="crypto">Select Cryptocurrency</label>
+      <select id="crypto">
+        <option value="bitcoin">Bitcoin (BTC)</option>
+        <option value="ethereum">Ethereum (ETH)</option>
+        <option value="binancecoin">Binance Coin (BNB)</option>
+        <option value="cardano">Cardano (ADA)</option>
+        <option value="ripple">XRP (XRP)</option>
+        <option value="solana">Solana (SOL)</option>
+        <option value="polkadot">Polkadot (DOT)</option>
+        <option value="litecoin">Litecoin (LTC)</option>
+        <option value="dogecoin">Dogecoin (DOGE)</option>
+        <option value="chainlink">Chainlink (LINK)</option>
+        <option value="uniswap">Uniswap (UNI)</option>
+      </select>
+
+      <label for="entryPrice">Entry Price ($)</label>
+      <input type="number" id="entryPrice" placeholder="Enter Entry Price" required>
+
+      <label for="exitPrice">Exit Price ($)</label>
+      <input type="number" id="exitPrice" placeholder="Enter Exit Price" required>
+
+      <label for="tradeSize">Trade Size (Units)</label>
+      <input type="number" id="tradeSize" placeholder="Enter Trade Size" required>
+
+      <label for="stopLoss">Stop Loss ($)</label>
+      <input type="number" id="stopLoss" placeholder="Enter Stop Loss" required>
+
+      <label for="takeProfit">Take Profit ($)</label>
+      <input type="number" id="takeProfit" placeholder="Enter Take Profit" required>
+
+      <label for="accountBalance">Account Balance ($)</label>
+      <input type="number" id="accountBalance" placeholder="Enter Account Balance" required>
+
+      <label for="riskPercentage">Risk Percentage (%)</label>
+      <input type="number" id="riskPercentage" placeholder="Enter Risk Percentage" required>
+
+      <label for="leverage">Leverage</label>
+      <input type="number" id="leverage" placeholder="Enter Leverage" required>
+
+      <div class="button-container">
+        <button onclick="calculateEntry()">Calculate Entry</button>
+        <button onclick="printChart()">Print</button>
+      </div>
     </div>
 
-    <!-- Long/Short Position Chart -->
-    <div class="chart-container" id="chartContainer"></div>
+    <!-- Trading Chart Section -->
+    <div class="chart-container">
+      <canvas id="longChart"></canvas>
+      <canvas id="shortChart"></canvas>
+    </div>
+    
+    <!-- Candlestick Chart Section -->
+    <div class="chart-container">
+      <canvas id="candlestickChart"></canvas>
+    </div>
 
-    <!-- Candlestick Chart -->
-    <div class="candle-chart-container" id="candleChartContainer"></div>
   </div>
 
   <script>
-    let selectedCrypto = 'bitcoin';
+    // Sample function to handle entry calculation
+    function calculateEntry() {
+      const entryPrice = parseFloat(document.getElementById('entryPrice').value);
+      const exitPrice = parseFloat(document.getElementById('exitPrice').value);
+      const tradeSize = parseFloat(document.getElementById('tradeSize').value);
+      const accountBalance = parseFloat(document.getElementById('accountBalance').value);
+      const riskPercentage = parseFloat(document.getElementById('riskPercentage').value);
 
-    const fetchRealTimeData = async () => {
-      const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`);
-      const data = await res.json();
-      return data[selectedCrypto].usd;
-    };
+      // Risk calculation example
+      const riskAmount = (riskPercentage / 100) * accountBalance;
+      const stopLoss = parseFloat(document.getElementById('stopLoss').value);
+      const tradeRisk = (entryPrice - stopLoss) * tradeSize;
 
-    const createChart = (type) => {
-      const ctx = document.getElementById('chartContainer').getContext('2d');
-      new Chart(ctx, {
-        type: 'line', // You can change this to 'bar' for bar charts
-        data: {
-          labels: ['1', '2', '3', '4', '5', '6'],
-          datasets: [{
-            label: type === 'long' ? 'Long Position' : 'Short Position',
-            data: [50000, 51000, 52000, 53000, 54000, 55000], // Example data
-            borderColor: type === 'long' ? 'green' : 'red',
-            fill: false,
-          }]
-        },
-        options: {
-          responsive: true,
-          scales: {
-            x: { title: { display: true, text: 'Time' } },
-            y: { title: { display: true, text: 'Price' } },
-          }
-        }
-      });
-    };
+      alert('Risk Amount: $' + riskAmount + '\nTrade Risk: $' + tradeRisk);
+    }
 
-    const createCandleChart = () => {
-      const ctx = document.getElementById('candleChartContainer').getContext('2d');
-      const data = {
-        labels: ['1', '2', '3', '4', '5', '6'],
-        datasets: [{
-          label: 'Candlestick',
-          data: [{ t: '2024-12-01', o: 50000, h: 51000, l: 49000, c: 50500 }, /* Example data for OHLC */
-                 { t: '2024-12-02', o: 50500, h: 51500, l: 49500, c: 51000 }],
-          borderColor: 'black',
-          backgroundColor: 'rgba(0,0,0,0.2)',
-        }]
-      };
-      new Chart(ctx, {
-        type: 'candlestick',
-        data: data,
-        options: {
-          responsive: true,
-          scales: {
-            x: { title: { display: true, text: 'Date' } },
-            y: { title: { display: true, text: 'Price' } },
-          }
-        }
-      });
-    };
-
-    const printPage = () => {
+    // Function to print the chart
+    function printChart() {
       window.print();
-    };
+    }
 
-    const calculateEntryPrice = async () => {
-      const price = await fetchRealTimeData();
-      alert(`Current entry price for ${selectedCrypto.toUpperCase()}: $${price}`);
-    };
+    // Chart.js Initialization for Long and Short Positions
+    var ctxLong = document.getElementById('longChart').getContext('2d');
+    var longChart = new Chart(ctxLong, {
+      type: 'line',
+      data: {
+        labels: ['1', '2', '3', '4', '5'],  // Example labels for time periods
+        datasets: [{
+          label: 'Long Position',
+          data: [1, 2, 3, 4, 5],  // Example data for long position
+          borderColor: 'green',
+          fill: false
+        }]
+      }
+    });
 
-    // Initialize charts
-    window.onload = () => {
-      createChart('long');
-      createChart('short');
-      createCandleChart();
-    };
+    var ctxShort = document.getElementById('shortChart').getContext('2d');
+    var shortChart = new Chart(ctxShort, {
+      type: 'line',
+      data: {
+        labels: ['1', '2', '3', '4', '5'],  // Example labels for time periods
+        datasets: [{
+          label: 'Short Position',
+          data: [5, 4, 3, 2, 1],  // Example data for short position
+          borderColor: 'red',
+          fill: false
+        }]
+      }
+    });
+
+    // Example candlestick chart setup (you'll need real data for candlestick)
+    var ctxCandle = document.getElementById('candlestickChart').getContext('2d');
+    var candlestickChart = new Chart(ctxCandle, {
+      type: 'candlestick',
+      data: {
+        datasets: [{
+          label: 'Crypto Candlestick',
+          data: [
+            { t: new Date(), o: 1, h: 2, l: 0.5, c: 1.5 },
+            { t: new Date(), o: 1.5, h: 2.5, l: 1, c: 2 }
+          ],
+          borderColor: 'black',
+          borderWidth: 1
+        }]
+      }
+    });
   </script>
+
 </body>
 </html>
