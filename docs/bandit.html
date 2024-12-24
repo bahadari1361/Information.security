@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandit Level 0 to Level 1 Challenge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        h3 {
+            color: #666;
+            font-style: italic;
+        }
+        .step {
+            margin: 20px 0;
+        }
+        .terminal {
+            background-color: #2e2e2e;
+            color: #f4f4f4;
+            padding: 10px;
+            font-family: 'Courier New', monospace;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .terminal span {
+            color: #ffcc00;
+        }
+        .terminal-header {
+            color: #4CAF50;
+        }
+        .description {
+            margin: 10px 0;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bandit Level 0 to Level 1 Challenge</h1>
+        <h3>A Step-by-Step Guide to Accessing the Next Level Using SSH</h3>
+    </header>
+    <div class="container">
+        <section>
+            <h2>Overview</h2>
+            <p>This challenge is part of the **OverTheWire Bandit** game, a series of levels designed to enhance penetration testing and Linux command-line skills. The goal of **Level 0 to Level 1** was to find the password for the next level, stored in a file called `readme` in the home directory, and use it to log into the next level using **SSH** (Secure Shell).</p>
+        </section>
+
+        <section>
+            <h2>Skills Utilized</h2>
+            <ul>
+                <li>SSH (Secure Shell)</li>
+                <li>Linux Command Line</li>
+                <li>File Navigation</li>
+                <li>Cybersecurity Fundamentals</li>
+                <li>Penetration Testing</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Step-by-Step Breakdown</h2>
+            <div class="step">
+                <h3>Step 1: Initial SSH Login to Bandit Level 0</h3>
+                <p class="description">To begin, I connected to the Bandit server via SSH. The command used is as follows:</p>
+                <div class="terminal">
+                    <div class="terminal-header">Bahadari@Mac-Terminal:</div>
+                    <span>ssh bandit0@bandit.labs.overthewire.org -p 2220</span>
+                </div>
+                <p>The login was completed with the password provided in the challenge instructions.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 2: Navigating to the Home Directory</h3>
+                <p class="description">After logging in, I verified that I was in the home directory where the `readme` file was located. To confirm, I used the `pwd` command:</p>
+                <div class="terminal">
+                    <div class="terminal-header">Bahadari@Mac-Terminal:</div>
+                    <span>pwd</span>
+                </div>
+                <p>The output confirmed the home directory:</p>
+                <div class="terminal">
+                    <span>/home/bandit0</span>
+                </div>
+                <p>If necessary, I used the following command to explicitly navigate to the home directory:</p>
+                <div class="terminal">
+                    <div class="terminal-header">Bahadari@Mac-Terminal:</div>
+                    <span>cd ~</span>
+                </div>
+            </div>
+
+            <div class="step">
+                <h3>Step 3: Listing Files in the Home Directory</h3>
+                <p class="description">Next, I listed all files in the home directory to find the `readme` file:</p>
+                <div class="terminal">
+                    <div class="terminal-header">Bahadari@Mac-Terminal:</div>
+                    <span>ls -l</span>
+                </div>
+                <p>The file `readme` was found in the listing, and I proceeded to view its contents.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 4: Accessing the `readme` File</h3>
+                <p class="description">To retrieve the password for **Bandit Level 1**, I used the `cat` command:</p>
+                <div class="terminal">
+                    <div class="terminal-header">Bahadari@Mac-Terminal:</div>
+                    <span>cat readme</span>
+                </div>
+                <p>The content displayed the password required for the next level.</p>
+            </div>
+
+            <div class="step">
+                <h3>Step 5: SSH Login to Bandit Level 1</h3>
+                <p class="description">With the password for **Bandit Level 1**, I logged in using the following command:</p>
+                <div class="terminal">
+                    <div class="terminal-header">Bahadari@Mac-Terminal:</div>
+                    <span>ssh bandit1@bandit.labs.overthewire.org -p 2220</span>
+                </div>
+                <p>I entered the password when prompted, successfully logging into **Bandit Level 1**.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Outcome and Learning</h2>
+            <p>Successfully completing the **Bandit Level 0 to Level 1** challenge demonstrated my proficiency with basic Linux command-line utilities (`ls`, `cat`, `pwd`, etc.) and my ability to establish SSH connections and retrieve sensitive information from files. This challenge reinforced fundamental cybersecurity skills, including file navigation, SSH access, and password retrieval in a penetration testing context.</p>
+        </section>
+
+        <section>
+            <h2>Conclusion</h2>
+            <p>This hands-on experience in the **OverTheWire Bandit** game is part of my cybersecurity project portfolio. It helped me develop a deeper understanding of Linux systems, SSH access, and security principles. I continue to build on this knowledge as I progress through further levels in the Bandit series.</p>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p>Portfolio Project by Hashmatullah Bahadari &copy; 2024</p>
+    </footer>
+</body>
+</html>
