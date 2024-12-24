@@ -15,19 +15,15 @@
       color: #333;
     }
 
-      header {
-      background-image: url('back.JPG');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+    header {
+      background-color: #007bff;
       color: white;
-      padding: 100px 40px;
-      text-align: left;
+      padding: 40px;
+      text-align: center;
       font-size: 36px;
       font-weight: 700;
       letter-spacing: 1px;
     }
-
 
     .container {
       max-width: 1200px;
@@ -115,7 +111,6 @@
       margin-top: 30px;
     }
 
-    /* Action Button Styles */
     .action-btns {
       display: flex;
       flex-direction: column;
@@ -147,7 +142,6 @@
       background-color: #0056b3;
     }
 
-    /* Mobile responsiveness */
     @media (max-width: 768px) {
       .form-container {
         grid-template-columns: 1fr;
@@ -177,7 +171,6 @@
       }
     }
 
-    /* Print Styling */
     @media print {
       body {
         margin: 0;
@@ -319,7 +312,6 @@
   </div>
 
   <script>
-    // JavaScript functions for calculations and PDF export
     let selectedCrypto = 'bitcoin';
 
     function fetchCryptoPrice() {
@@ -346,105 +338,81 @@
       const riskPercentage = parseFloat(document.getElementById('riskPercentage').value) / 100;
       const leverage = parseFloat(document.getElementById('leverage').value);
 
-      const positionSize = (accountBalance * riskPercentage) / (entryPrice - stopLoss);
-      const risk = (entryPrice - stopLoss) * positionSize;
-      const reward = (takeProfit - entryPrice) * positionSize;
-      const rrRatio = reward / risk;
-      const pnl = (exitPrice - entryPrice) * positionSize;
+      if (!entryPrice || !exitPrice || !tradeSize || !stopLoss || !takeProfit || !accountBalance || !riskPercentage || !leverage) {
+        return;
+      }
 
+      // Calculate P&L
+      const pnl = (exitPrice - entryPrice) * tradeSize;
       document.getElementById('pnl').textContent = pnl.toFixed(2);
+
+      // Calculate risk
+      const risk = Math.abs(entryPrice - stopLoss) * tradeSize;
       document.getElementById('risk').textContent = risk.toFixed(2);
+
+      // Calculate reward
+      const reward = Math.abs(exitPrice - entryPrice) * tradeSize;
       document.getElementById('reward').textContent = reward.toFixed(2);
+
+      // Calculate risk/reward ratio
+      const rrRatio = reward / risk;
       document.getElementById('rrRatio').textContent = rrRatio.toFixed(2);
+
+      // Calculate position size
+      const positionSize = (accountBalance * riskPercentage) / risk;
       document.getElementById('positionSize').textContent = positionSize.toFixed(2);
-      document.getElementById('maxDrawdown').textContent = Math.abs(risk).toFixed(2);
+
+      // Calculate max drawdown
+      const maxDrawdown = Math.abs(accountBalance * riskPercentage);
+      document.getElementById('maxDrawdown').textContent = maxDrawdown.toFixed(2);
 
       document.getElementById('results').style.display = 'block';
-      createChart(risk, reward);
+
+      // Update the chart
+      updateChart(pnl, risk, reward, rrRatio);
     }
 
-    function createChart(risk, reward) {
+    function updateChart(pnl, risk, reward, rrRatio) {
       const ctx = document.getElementById('barChart').getContext('2d');
-      const chartData = {
-        labels: ['Risk', 'Reward'],
-        datasets: [{
-          label: 'Amount ($)',
-          data: [risk, reward],
-          backgroundColor: ['#ff0000', '#00cc00']
-        }]
-      };
-
-      const chartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['P&L', 'Risk', 'Reward', 'Risk/Reward'],
+          datasets: [{
+            label: 'Values',
+            data: [pnl, risk, reward, rrRatio],
+            backgroundColor: ['#4CAF50', '#FF5722', '#2196F3', '#FFC107'],
+            borderColor: ['#4CAF50', '#FF5722', '#2196F3', '#FFC107'],
+            borderWidth: 1
+          }]
         },
-    }
-
-    // Function to create a simple chart with Chart.js
-    const ctx = document.getElementById("cryptoChart").getContext("2d");
-    const cryptoChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ["10:00", "12:00", "14:00", "16:00", "18:00", "20:00"], // Placeholder times
-        datasets: [{
-          label: "Cryptocurrency Price",
-          data: [500, 510, 490, 520, 530, 540], // Placeholder data
-          borderColor: "rgba(75, 192, 192, 1)",
-          fill: false,
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: "top",
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
           }
         }
-      }
-    });
-    }
-
-    function exportPDF() {
-      const doc = new jsPDF();
-      doc.setFontSize(18);
-      doc.text('Crypto Trading Report', 20, 20);
-      doc.setFontSize(12);
-      doc.text(`Entry Price: $${document.getElementById('entryPrice').value}`, 20, 40);
-      doc.text(`Exit Price: $${document.getElementById('exitPrice').value}`, 20, 50);
-      doc.text(`Trade Size: ${document.getElementById('tradeSize').value} units`, 20, 60);
-      doc.text(`Stop Loss: $${document.getElementById('stopLoss').value}`, 20, 70);
-      doc.text(`Take Profit: $${document.getElementById('takeProfit').value}`, 20, 80);
-      doc.text(`Account Balance: $${document.getElementById('accountBalance').value}`, 20, 90);
-      doc.text(`Risk Percentage: ${document.getElementById('riskPercentage').value}%`, 20, 100);
-
-      doc.text('Trade Results:', 20, 120);
-      doc.autoTable({
-        startY: 130,
-        head: [['Metric', 'Value']],
-        body: [
-          ['P&L ($)', document.getElementById('pnl').textContent],
-          ['Risk ($)', document.getElementById('risk').textContent],
-          ['Reward ($)', document.getElementById('reward').textContent],
-          ['Risk/Reward Ratio', document.getElementById('rrRatio').textContent],
-          ['Position Size (Units)', document.getElementById('positionSize').textContent],
-          ['Max Drawdown ($)', document.getElementById('maxDrawdown').textContent]
-        ]
       });
-
-      doc.save('crypto-trading-report.pdf');
     }
 
     function clearResults() {
       document.getElementById('tradeForm').reset();
       document.getElementById('results').style.display = 'none';
-      document.getElementById('barChart').getContext('2d').clearRect(0, 0, 400, 400);
     }
 
-    window.onload = fetchCryptoPrice;
+    function exportPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+      doc.text('Crypto Trading Results', 10, 10);
+      doc.text(`P&L: $${document.getElementById('pnl').textContent}`, 10, 20);
+      doc.text(`Risk: $${document.getElementById('risk').textContent}`, 10, 30);
+      doc.text(`Reward: $${document.getElementById('reward').textContent}`, 10, 40);
+      doc.text(`Risk/Reward: ${document.getElementById('rrRatio').textContent}`, 10, 50);
+      doc.text(`Position Size: ${document.getElementById('positionSize').textContent}`, 10, 60);
+      doc.text(`Max Drawdown: $${document.getElementById('maxDrawdown').textContent}`, 10, 70);
+      doc.save('crypto_trade_results.pdf');
+    }
   </script>
 </body>
 </html>
