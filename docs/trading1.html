@@ -18,10 +18,11 @@
     header {
       background-color: #003366;
       color: white;
-      padding: 50px 40px;
+      padding: 40px 20px;
       text-align: center;
       font-size: 28px;
       font-weight: 700;
+      border-bottom: 4px solid #003366;
     }
 
     .container {
@@ -86,6 +87,7 @@
       font-size: 22px;
       margin-bottom: 15px;
       color: #003366;
+      font-weight: 700;
     }
 
     .results table {
@@ -104,13 +106,20 @@
       background-color: #f1f1f1;
     }
 
+    .results tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .results tr:hover {
+      background-color: #f1f1f1;
+    }
+
     .chart-container {
       width: 100%;
       height: 300px;
       margin-top: 30px;
     }
 
-    /* Action Button Styles */
     .action-btns {
       display: flex;
       flex-direction: column;
@@ -140,36 +149,6 @@
 
     .action-btns button:hover {
       background-color: #0056b3;
-    }
-
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-      .form-container {
-        grid-template-columns: 1fr;
-      }
-
-      header {
-        padding: 80px 20px;
-        font-size: 28px;
-      }
-
-      .results {
-        margin-top: 20px;
-      }
-
-      .action-btns {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .action-btns .button-row {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .action-btns button {
-        width: 100%;
-      }
     }
 
     /* Print Styling */
@@ -300,12 +279,32 @@
 
     <div class="results" id="results">
       <h2>Trade Results</h2>
-      <p><strong>P&L ($):</strong> <span id="pnl">0.00</span></p>
-      <p><strong>Risk ($):</strong> <span id="risk">0.00</span></p>
-      <p><strong>Reward ($):</strong> <span id="reward">0.00</span></p>
-      <p><strong>Risk/Reward Ratio:</strong> <span id="rrRatio">0.00</span></p>
-      <p><strong>Position Size (Units):</strong> <span id="positionSize">0.00</span></p>
-      <p><strong>Max Drawdown ($):</strong> <span id="maxDrawdown">0.00</span></p>
+      <table>
+        <tr>
+          <th>P&L ($)</th>
+          <td id="pnl">0.00</td>
+        </tr>
+        <tr>
+          <th>Risk ($)</th>
+          <td id="risk">0.00</td>
+        </tr>
+        <tr>
+          <th>Reward ($)</th>
+          <td id="reward">0.00</td>
+        </tr>
+        <tr>
+          <th>Risk/Reward Ratio</th>
+          <td id="rrRatio">0.00</td>
+        </tr>
+        <tr>
+          <th>Position Size (Units)</th>
+          <td id="positionSize">0.00</td>
+        </tr>
+        <tr>
+          <th>Max Drawdown ($)</th>
+          <td id="maxDrawdown">0.00</td>
+        </tr>
+      </table>
 
       <div class="chart-container">
         <canvas id="barChart"></canvas>
@@ -326,8 +325,6 @@
         .then(data => {
           const price = data[selectedCrypto].usd;
           document.getElementById('entryPrice').value = price;
-          document.getElementById('exitPrice').value = price;
-          updateCalculations();
         });
     }
 
