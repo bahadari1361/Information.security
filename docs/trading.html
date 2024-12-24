@@ -308,6 +308,7 @@
             <option value="uniswap">Uniswap</option>
           </select>
         </div>
+
         <!-- Buy/Sell Dropdown -->
         <div>
           <label for="buySell">Buy/Sell</label>
@@ -316,9 +317,38 @@
             <option value="sell">Sell</option>
           </select>
         </div>
+
         <div>
-          <label for="quantity">Amount (in USD)</label>
-          <input type="number" id="quantity" required />
+          <label for="entryPrice">Entry Price ($)</label>
+          <input type="number" id="entryPrice" required />
+        </div>
+        <div>
+          <label for="exitPrice">Exit Price ($)</label>
+          <input type="number" id="exitPrice" required />
+        </div>
+        <div>
+          <label for="tradeSize">Trade Size (Units)</label>
+          <input type="number" id="tradeSize" required />
+        </div>
+        <div>
+          <label for="stopLoss">Stop Loss ($)</label>
+          <input type="number" id="stopLoss" required />
+        </div>
+        <div>
+          <label for="takeProfit">Take Profit ($)</label>
+          <input type="number" id="takeProfit" required />
+        </div>
+        <div>
+          <label for="accountBalance">Account Balance ($)</label>
+          <input type="number" id="accountBalance" required />
+        </div>
+        <div>
+          <label for="riskPercentage">Risk Percentage (%)</label>
+          <input type="number" id="riskPercentage" required />
+        </div>
+        <div>
+          <label for="leverage">Leverage</label>
+          <input type="number" id="leverage" required />
         </div>
         <div>
           <button type="submit">Submit</button>
@@ -397,7 +427,7 @@
     }
 
     function updateTradeDetails() {
-      quantity = parseFloat(document.getElementById('quantity').value) || 0;
+      quantity = parseFloat(document.getElementById('tradeSize').value) || 0;
       let totalPrice = pricePerCoin * quantity;
 
       document.getElementById('cryptoName').textContent = selectedCrypto.charAt(0).toUpperCase() + selectedCrypto.slice(1);
