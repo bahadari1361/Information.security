@@ -9,14 +9,14 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #2f2f2f;
+      background-color: #2f2f2f; /* Dark gray background */
       margin: 0;
       padding: 0;
-      color: #fff;
+      color: #fff; /* Text color changed to white for better contrast */
     }
 
     header {
-      background-color: #000000;
+      background-color: #000000; /* Black header background */
       color: white;
       padding: 40px;
       text-align: center;
@@ -57,56 +57,34 @@
       max-width: 1200px;
       margin: 40px auto;
       padding: 20px;
-      background-color: #1f1f1f;
+      background-color: #1f1f1f; /* Dark gray container */
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
     }
 
-    .form-container {
-      width: 50%;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
+    .motivations-container {
       padding-right: 30px;
       border-right: 1px solid #444;
     }
 
-    .form-container h1 {
+    .motivations-container h1 {
       font-size: 32px;
       font-weight: 700;
       margin-bottom: 20px;
       color: #007bff;
     }
 
-    form {
-      display: grid;
-      gap: 30px;
-    }
-
-    label {
-      font-weight: 600;
+    .motivations-container p {
+      font-size: 16px;
+      line-height: 1.5;
       color: #ccc;
-      margin-bottom: 8px;
-    }
-
-    input, select, button {
-      padding: 12px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #444;
-      width: 100%;
-      background-color: #333;
-      color: #fff;
     }
 
     .crypto-logo {
-      width: 100px;
+      width: 100px; /* Increase the size of the logo */
       height: 100px;
       object-fit: cover;
-      margin: 20px auto 0;
+      margin: 20px auto 0; /* Center the logo with space on top */
     }
 
     .results {
@@ -183,34 +161,17 @@
       background-color: #0056b3;
     }
 
-    .motivational-container {
-      margin-top: 20px;
-      background-color: #f8f9fa;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      font-size: 16px;
-      width: 100%;
-    }
-
-    .motivational-container p {
-      margin-bottom: 10px;
-      color: #333;
-      font-weight: bold;
-      text-align: left;
-    }
-
     .crypto-logo-left {
-      width: 80px;
+      width: 80px; /* Adjusted size of Bitcoin logo on the left */
       height: 80px;
       object-fit: cover;
       margin: 10px auto;
     }
 
     @media (max-width: 768px) {
-      .form-container {
-        width: 100%;
-        grid-template-columns: 1fr;
+      .motivations-container {
+        padding-right: 0;
+        border-right: none;
       }
 
       header {
@@ -304,61 +265,82 @@
       <div class="crypto-symbol"><img src="https://cryptologos.cc/logos/uniswap-uni-logo.png" alt="Uniswap">UNI</div>
     </div>
   </header>
+
   <div class="container">
-    <div class="form-container">
-      <h1>Trade Inputs</h1>
-      <form id="trade-form">
-        <div class="form-row">
-          <label for="crypto-symbol">Select Crypto Symbol</label>
-          <select id="crypto-symbol" name="crypto-symbol" required>
-            <option value="">Select a symbol</option>
-            <option value="BTC">Bitcoin</option>
-            <option value="ETH">Ethereum</option>
-            <option value="BNB">Binance Coin</option>
-            <option value="ADA">Cardano</option>
-            <option value="XRP">Ripple</option>
-            <option value="SOL">Solana</option>
-            <option value="DOT">Polkadot</option>
-            <option value="LTC">Litecoin</option>
-            <option value="DOGE">Dogecoin</option>
-            <option value="LINK">Chainlink</option>
-            <option value="UNI">Uniswap</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label for="trade-action">Action</label>
-          <select id="trade-action" name="trade-action" required>
-            <option value="Buy">Buy</option>
-            <option value="Sell">Sell</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label for="amount">Amount</label>
-          <input type="number" id="amount" name="amount" required placeholder="Enter amount">
-        </div>
-        <div class="form-row">
-          <label for="price">Price</label>
-          <input type="number" id="price" name="price" required placeholder="Enter price">
-        </div>
-        <div class="action-btns">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+    <div class="motivations-container">
+      <h1>Motivations</h1>
+      <p>The motivation behind crypto trading is to take advantage of price fluctuations in various cryptocurrencies, enabling traders to capitalize on potential gains. Understanding market trends, leveraging technical analysis, and managing risk are key factors that guide successful trading strategies.</p>
+      <p>Cryptocurrency trading offers an exciting way to diversify investment portfolios. With the growing popularity of digital assets, many traders see potential in exploiting volatility for profit. However, it is crucial to remain aware of the risks and only trade with capital you can afford to lose.</p>
     </div>
-    <div class="results">
+
+    <div class="crypto-logo-center">
+      <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" class="crypto-logo" style="width: 150px; height: 150px;">
+    </div>
+
+    <div class="results" id="results">
       <h2>Trade Summary</h2>
-      <p><strong>Crypto Symbol:</strong> <span id="crypto-symbol-result"></span></p>
-      <p><strong>Action:</strong> <span id="trade-action-result"></span></p>
-      <p><strong>Amount:</strong> <span id="amount-result"></span></p>
-      <p><strong>Price:</strong> <span id="price-result"></span></p>
+      <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
+      <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
+      <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
+
       <div class="chart-container">
-        <canvas id="cryptoChart"></canvas>
+        <canvas id="profitLossChart"></canvas>
+      </div>
+    </div>
+
+    <div class="action-btns">
+      <div class="button-row">
+        <button onclick="exportToPDF()">Export to PDF</button>
+        <button onclick="window.print()">Print</button>
       </div>
     </div>
   </div>
-  <div class="motivational-container">
-    <h3>Your Success is Just One Trade Away!</h3>
-    <p>Keep learning, stay disciplined, and keep growing in the world of trading. Each trade is a step closer to mastering the market!</p>
-  </div>
+
+  <script>
+    const { jsPDF } = window.jspdf;
+
+    function exportToPDF() {
+      const doc = new jsPDF();
+
+      const tradeSummary = document.getElementById('results').innerHTML;
+      doc.html(tradeSummary, {
+        callback: function (doc) {
+          doc.save('crypto_trade_summary.pdf');
+        }
+      });
+    }
+
+    const profitLossData = {
+      labels: ['Initial', 'Current'],
+      datasets: [{
+        label: 'Profit/Loss',
+        data: [0, 0],
+        backgroundColor: ['#ff0000', '#00ff00'],
+        borderColor: ['#ff0000', '#00ff00'],
+        borderWidth: 1
+      }]
+    };
+
+    const ctx = document.getElementById('profitLossChart').getContext('2d');
+    const profitLossChart = new Chart(ctx, {
+      type: 'bar',
+      data: profitLossData,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          tooltip: {
+            callbacks: {
+              label: function (tooltipItem) {
+                return tooltipItem.raw > 0 ? `$${tooltipItem.raw.toFixed(2)} Gain` : `$${Math.abs(tooltipItem.raw).toFixed(2)} Loss`;
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
