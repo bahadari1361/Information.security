@@ -327,6 +327,14 @@
           <label for="totalValue">Total Value</label>
           <input type="text" id="totalValue" name="totalValue" disabled />
         </div>
+        <div>
+          <label for="transactionFee">Transaction Fee</label>
+          <input type="text" id="transactionFee" name="transactionFee" disabled />
+        </div>
+        <div>
+          <label for="walletBalance">Wallet Balance</label>
+          <input type="text" id="walletBalance" name="walletBalance" disabled />
+        </div>
         <button type="submit">Submit Trade</button>
       </form>
     </div>
@@ -391,25 +399,6 @@
 
       // Update total value input
       document.getElementById("totalValue").value = totalValue.toFixed(2);
-
-      // Fetch price data for the chart (for demonstration purposes, using dummy data)
-      const priceHistory = [cryptoPrice, cryptoPrice * 1.01, cryptoPrice * 1.02, cryptoPrice * 0.99, cryptoPrice * 1.03];
-      
-      // Create a chart displaying price history
-      const ctx = document.getElementById('cryptoChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ['1h', '2h', '3h', '4h', '5h'],
-          datasets: [{
-            label: 'Price History (USD)',
-            data: priceHistory,
-            borderColor: '#007bff',
-            fill: false,
-            tension: 0.1
-          }]
-        }
-      });
     });
 
     // Export results to PDF
