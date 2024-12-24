@@ -100,10 +100,10 @@
     }
 
     .crypto-logo {
-      width: 60px;
-      height: 60px;
-      margin-right: 20px;
+      width: 100px; /* Increase the size of the logo */
+      height: 100px;
       object-fit: cover;
+      margin: 20px auto 0; /* Center the logo with space on top */
     }
 
     .results {
@@ -178,6 +178,25 @@
 
     .action-btns button:hover {
       background-color: #0056b3;
+    }
+
+    .crypto-logo-left {
+      width: 80px; /* Adjusted size of Bitcoin logo on the left */
+      height: 80px;
+      object-fit: cover;
+      margin: 10px auto;
+    }
+
+    .motivational-text {
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+      margin-top: 30px;
+      font-weight: 500;
+    }
+
+    .motivational-text p {
+      margin: 5px 0;
     }
 
     @media (max-width: 768px) {
@@ -279,27 +298,23 @@
 
   <div class="container">
     <div class="form-container">
-      <h1>Trade Inputs</h1>
       <form id="tradeForm">
-        <!-- Bitcoin Logo -->
-        <div style="display: flex; align-items: center;">
-          <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin" class="crypto-logo">
-          <select id="cryptoSelect" onchange="fetchCryptoPrice()">
-            <option value="bitcoin">Bitcoin (BTC)</option>
-            <option value="ethereum">Ethereum (ETH)</option>
-            <option value="binancecoin">Binance Coin (BNB)</option>
-            <option value="cardano">Cardano (ADA)</option>
+        <div>
+          <label for="cryptoSelect">Select Cryptocurrency</label>
+          <select id="cryptoSelect" onchange="fetchCryptoPrice()" required>
+            <option value="bitcoin">Bitcoin</option>
+            <option value="ethereum">Ethereum</option>
+            <option value="binancecoin">Binance Coin</option>
+            <option value="cardano">Cardano</option>
             <option value="ripple">XRP</option>
-            <option value="solana">Solana (SOL)</option>
-            <option value="polkadot">Polkadot (DOT)</option>
-            <option value="litecoin">Litecoin (LTC)</option>
-            <option value="dogecoin">Dogecoin (DOGE)</option>
-            <option value="chainlink">Chainlink (LINK)</option>
-            <option value="uniswap">Uniswap (UNI)</option>
+            <option value="solana">Solana</option>
+            <option value="polkadot">Polkadot</option>
+            <option value="litecoin">Litecoin</option>
+            <option value="dogecoin">Dogecoin</option>
+            <option value="chainlink">Chainlink</option>
+            <option value="uniswap">Uniswap</option>
           </select>
         </div>
-
-        <!-- Form Inputs -->
         <div>
           <label for="entryPrice">Entry Price ($)</label>
           <input type="number" id="entryPrice" oninput="updateCalculations()" required>
@@ -334,13 +349,24 @@
         </div>
       </form>
     </div>
+    
+    <!-- Motivational Text -->
+    <div class="motivational-text">
+      <p>"Every trade is a lesson. Every loss is an opportunity to grow."</p>
+      <p>"Stay patient, stay focused. Success will follow."</p>
+      <p>"Risk wisely, trade smartly, and keep learning."</p>
+      <p>"Success in trading comes from persistence, not perfection."</p>
+    </div>
+
+    <div class="crypto-logo-center">
+      <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana" class="crypto-logo">
+    </div>
 
     <div class="results" id="results">
       <h2>Trade Summary</h2>
       <p><strong>Estimated Profit: $<span id="estimatedProfit">0</span></strong></p>
       <p><strong>Estimated Loss: $<span id="estimatedLoss">0</span></strong></p>
       <p><strong>Risk-Reward Ratio: <span id="riskRewardRatio">0</span></strong></p>
-
       <div class="chart-container">
         <canvas id="profitLossChart"></canvas>
       </div>
@@ -350,6 +376,7 @@
       <div class="button-row">
         <button onclick="exportToPDF()">Export to PDF</button>
         <button onclick="resetForm()">Reset</button>
+        <button onclick="window.print()">Print</button>
       </div>
     </div>
   </div>
@@ -372,10 +399,21 @@
 
     let selectedCrypto = "bitcoin";
 
-    // Fetch crypto price on selection
+    // Fetch crypto price from an API (CoinGecko API for real-time data)
     function fetchCryptoPrice() {
       selectedCrypto = document.getElementById("cryptoSelect").value;
-      updateCalculations();
+      
+      // Fetch current price from CoinGecko API
+      fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${selectedCrypto}&vs_currencies=usd`)
+        .then(response => response.json())
+        .then(data => {
+          let cryptoPrice = data[selectedCrypto].usd;
+          cryptoPrices[selectedCrypto] = cryptoPrice;
+          updateCalculations();
+        })
+        .catch(error => {
+          console.error("Error fetching crypto price:", error);
+        });
     }
 
     function updateCalculations() {
@@ -388,7 +426,6 @@
       let riskPercentage = parseFloat(document.getElementById("riskPercentage").value);
       let leverage = parseFloat(document.getElementById("leverage").value);
 
-      // Fetching price of selected cryptocurrency
       let cryptoPrice = cryptoPrices[selectedCrypto];
 
       if (isNaN(entryPrice) || isNaN(exitPrice) || isNaN(tradeSize) || isNaN(stopLoss) || isNaN(takeProfit) || isNaN(accountBalance) || isNaN(riskPercentage) || isNaN(leverage)) {
