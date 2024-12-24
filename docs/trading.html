@@ -16,13 +16,26 @@
     }
 
     header {
-      background-color: #007bff;
+      background-color: #808080; /* Gray header color */
       color: white;
       padding: 40px;
       text-align: center;
-      font-size: 36px;
+      font-size: 24px;
       font-weight: 700;
       letter-spacing: 1px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .crypto-symbol {
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
     }
 
     .container {
@@ -223,7 +236,17 @@
 </head>
 <body>
   <header>
-    Crypto Trading Dashboard
+    <div class="crypto-symbol">BTC</div>
+    <div class="crypto-symbol">ETH</div>
+    <div class="crypto-symbol">BNB</div>
+    <div class="crypto-symbol">ADA</div>
+    <div class="crypto-symbol">XRP</div>
+    <div class="crypto-symbol">SOL</div>
+    <div class="crypto-symbol">DOT</div>
+    <div class="crypto-symbol">LTC</div>
+    <div class="crypto-symbol">DOGE</div>
+    <div class="crypto-symbol">LINK</div>
+    <div class="crypto-symbol">UNI</div>
   </header>
 
   <div class="container">
