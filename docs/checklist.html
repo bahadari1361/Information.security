@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audit Tools and Checklists</title>
+    <title>ISO/IEC 27001 Audit Checklist</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.8;
+            line-height: 1.6;
             color: #333;
             background-color: #f7f7f7;
             margin: 0;
             padding: 0;
         }
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 20px auto;
             background: #fff;
             padding: 20px 30px;
@@ -28,18 +28,24 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        ul {
-            list-style: none;
-            padding-left: 0;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-        ul li {
-            display: flex;
-            align-items: center;
-            margin: 10px 0;
-            font-size: 16px;
+        table, th, td {
+            border: 1px solid #ddd;
         }
-        input[type="checkbox"] {
-            margin-right: 10px;
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
         .note {
             font-style: italic;
@@ -54,41 +60,129 @@
 </head>
 <body>
     <div class="container">
-        <h1>Audit Preparation Checklist</h1>
-        <ul>
-            <li>
-                <input type="checkbox">
-                Develop detailed checklists aligned with ISO/IEC 27001 Annex A controls.
-            </li>
-            <li>
-                <input type="checkbox">
-                Customize tools and templates for documenting findings and collecting evidence.
-            </li>
-            <li>
-                <input type="checkbox">
-                Use automation software to streamline repetitive tasks like scheduling and reporting.
-            </li>
-            <li>
-                <input type="checkbox">
-                Train team members on the proper use of audit tools and checklists.
-            </li>
-            <li>
-                <input type="checkbox">
-                Test audit tools through a pilot audit or simulation to ensure effectiveness.
-            </li>
-            <li>
-                <input type="checkbox">
-                Ensure accessibility of all tools and checklists to the audit team.
-            </li>
-            <li>
-                <input type="checkbox">
-                Prepare secure storage for evidence collected during the audit.
-            </li>
-        </ul>
-        
+        <h1>ISO/IEC 27001 Audit Checklist</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Clause/Control</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Mandatory Clauses -->
+                <tr>
+                    <td>4. Context of the Organization</td>
+                    <td>Define internal and external issues, interested parties, and scope of the ISMS.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>5. Leadership</td>
+                    <td>Ensure leadership commitment, define roles, and communicate the ISMS policy.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>6. Planning</td>
+                    <td>Conduct risk assessments, define risk treatment plans, and set objectives.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>7. Support</td>
+                    <td>Provide necessary resources, competence, awareness, and documented information.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>8. Operation</td>
+                    <td>Implement risk treatment plans and manage ISMS operations effectively.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>9. Performance Evaluation</td>
+                    <td>Monitor, measure, analyze, and evaluate ISMS performance; conduct internal audits and management reviews.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>10. Improvement</td>
+                    <td>Identify nonconformities and opportunities for continual improvement.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+
+                <!-- Annex A Controls -->
+                <tr>
+                    <td>A.5. Information Security Policies</td>
+                    <td>Ensure policies are established, approved, and communicated.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.6. Organization of Information Security</td>
+                    <td>Define roles, responsibilities, and contact with authorities or groups.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.7. Human Resource Security</td>
+                    <td>Implement security during hiring, training, and termination processes.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.8. Asset Management</td>
+                    <td>Identify, classify, and protect organizational assets.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.9. Access Control</td>
+                    <td>Ensure appropriate access controls, including user access management and authentication.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.10. Cryptography</td>
+                    <td>Define and implement cryptographic controls to protect information.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.11. Physical and Environmental Security</td>
+                    <td>Implement controls to secure physical premises and equipment.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.12. Operations Security</td>
+                    <td>Ensure secure operations, including logging, monitoring, and malware protection.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.13. Communications Security</td>
+                    <td>Secure network communications and protect data in transit.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.14. System Acquisition, Development, and Maintenance</td>
+                    <td>Ensure security is integrated into the development and acquisition processes.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.15. Supplier Relationships</td>
+                    <td>Manage information security risks in supplier relationships.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.16. Information Security Incident Management</td>
+                    <td>Establish procedures for reporting and responding to incidents.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.17. Business Continuity Management</td>
+                    <td>Ensure information security continuity during disruptions.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+                <tr>
+                    <td>A.18. Compliance</td>
+                    <td>Ensure compliance with legal, regulatory, and contractual requirements.</td>
+                    <td><input type="checkbox"></td>
+                </tr>
+            </tbody>
+        </table>
+
         <div class="note">
-            <strong>Note:</strong> Completing this checklist before starting the audit will enhance accuracy, efficiency, 
-            and compliance with ISO/IEC 27001 standards.
+            <strong>Note:</strong> This checklist is a structured guide to ensure compliance with ISO/IEC 27001 standards. Customize it based on your organization's specific context and requirements.
         </div>
     </div>
 </body>
